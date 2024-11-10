@@ -1,0 +1,13 @@
+package com.app.userservice.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "admins")
+public class Admin extends User {
+
+    private Qualification qualification;  // Può essere "SuperAdmin" o "Admin"
+
+    // Getters e Setters
+}
