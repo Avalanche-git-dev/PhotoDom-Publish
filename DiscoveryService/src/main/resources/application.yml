@@ -1,11 +1,13 @@
 server:
-  port: 8761  # Porta su cui verrà eseguito il Discovery Service
+  port: 8761
 
 eureka:
   client:
-    register-with-eureka: false  # Il server non si registra con se stesso
-    fetch-registry: false        # Il server non deve recuperare il registro, è il registro centrale
+    register-with-eureka: false
+    fetch-registry: false
+  instance:
+    hostname: localhost
 
 spring:
   application:
-    name: discovery-service  # Nome del servizio per la registrazione
+    name: discovery-service

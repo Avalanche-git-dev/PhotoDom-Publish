@@ -33,11 +33,10 @@ public class User {
     private boolean isBlocked;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable=false)
     private Role role;
 
-    public enum Role {
-        USER, ADMIN
-    }
+   
 
 	public Long getId() {
 		return id;
@@ -99,7 +98,6 @@ public class User {
 
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
     
     
