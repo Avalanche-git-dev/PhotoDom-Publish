@@ -8077,3 +8077,10 @@ Caused by: java.util.concurrent.CancellationException: null
 2024-11-17 23:28:33,637 [Stop Help Server] INFO  org.eclipse.jetty.server.Server - Stopped oejs.Server@7aecf2b8{STOPPING}[12.0.12,sto=0]
 2024-11-17 23:28:33,662 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@265230b5{HTTP/1.1, (http/1.1)}{127.0.0.1:0}
 2024-11-17 23:29:29,771 [Worker-0: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2024-11-17 23:32:09,048 [Worker-10: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.photodom:user-service:0.0.1-SNAPSHOT @ C:\Users\momo\Documents\PhotoDom-MicroServices\UserService\pom.xml.
+2024-11-17 23:32:10,779 [Worker-10: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 2 resources from src\main\resources to target\classes
+2024-11-17 23:32:10,825 [Worker-10: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 2 resources from src\main\resources to target\classes
+2024-11-17 23:32:10,842 [Worker-10: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\momo\Documents\PhotoDom-MicroServices\UserService\src\test\resources
+2024-11-17 23:32:12,637 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 2 resources from src\main\resources to target\classes
+2024-11-17 23:32:12,643 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 2 resources from src\main\resources to target\classes
+2024-11-17 23:32:12,654 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\momo\Documents\PhotoDom-MicroServices\UserService\src\test\resources
