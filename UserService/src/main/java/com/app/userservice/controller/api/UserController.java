@@ -49,7 +49,7 @@ public class UserController {
         return ResponseEntity.ok(UserMapper.toUserDto(user));
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public ResponseEntity<UserDto> createUser(@RequestBody User user) {
         User createdUser = userService.createUser(user); // Può lanciare DuplicateUsernameException o DuplicateEmailException
         return ResponseEntity.status(HttpStatus.CREATED).body(UserMapper.toUserDto(createdUser));

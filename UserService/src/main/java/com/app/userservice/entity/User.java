@@ -30,13 +30,29 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-    private boolean isBlocked;
+    
 
     @Enumerated(EnumType.STRING)
     @Column(nullable=false)
     private Role role;
+    
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private UserStatus status; 
+
 
    
+
+
+
+
+	public UserStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(UserStatus status) {
+		this.status = status;
+	}
 
 	public Long getId() {
 		return id;
@@ -70,13 +86,6 @@ public class User {
 		this.email = email;
 	}
 
-	public boolean isBlocked() {
-		return isBlocked;
-	}
-
-	public void setBlocked(boolean isBlocked) {
-		this.isBlocked = isBlocked;
-	}
 
 	public Role getRole() {
 		return role;
@@ -86,14 +95,17 @@ public class User {
 		this.role = role;
 	}
 
-	public User(Long id, String username, String password, String email, boolean isBlocked, Role role) {
+
+
+
+	public User(Long id, String username, String password, String email, Role role, UserStatus status) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.email = email;
-		this.isBlocked = isBlocked;
 		this.role = role;
+		this.status = status;
 	}
 
 	public User() {

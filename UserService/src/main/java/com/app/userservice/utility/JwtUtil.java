@@ -27,9 +27,9 @@ public class JwtUtil {
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
-    public String extractUsername(String token) {
-        return extractClaim(token, Claims::getSubject);
-    }
+//    public String extractUsername(String token) {
+//        return extractClaim(token, Claims::getSubject);
+//    }
 
     public Date extractExpiration(String token) {
         return extractClaim(token, Claims::getExpiration);
@@ -57,14 +57,26 @@ public class JwtUtil {
         return (extractedUsername.equals(username) && !isTokenExpired(token));
     }
 
-    public String generateToken(String username,Long userId) {
+    public String generateToken(String username,Long userId,String role) {
         return Jwts.builder()
                 .setSubject(username)
                 .claim("userId", userId)
+                .claim("role", role)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + jwtExpiration))
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
+    
+    public String extractRole(String token) {
+        Claims claims = extractAllClaims(token); // Usa il metodo per estrarre tutti i claims
+        return claims.get("role", String.class); // Estrai il ruolo come claim di tipo String
+    }
+    public String extractUsername(String token) {
+        Claims claims = extractAllClaims(token); // Usa il metodo per estrarre tutti i claims
+        return claims.getSubject(); // Estrai il subject (username) dal token
+    }
+
+
 }
 

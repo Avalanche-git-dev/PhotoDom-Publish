@@ -13,7 +13,7 @@ public class UserMapper {
         userDto.setId(user.getId());
         userDto.setUsername(user.getUsername());
         userDto.setEmail(user.getEmail());
-        userDto.setBlocked(user.isBlocked());
+        userDto.setStatus(user.getStatus());
         userDto.setRole(user.getRole());
         return userDto;
     }
@@ -27,7 +27,7 @@ public class UserMapper {
         adminDto.setId(admin.getId());
         adminDto.setUsername(admin.getUsername());
         adminDto.setEmail(admin.getEmail());
-        adminDto.setBlocked(admin.isBlocked());
+        adminDto.setStatus(admin.getStatus());
         adminDto.setRole(admin.getRole());
         adminDto.setQualification(admin.getQualification());
         return adminDto;

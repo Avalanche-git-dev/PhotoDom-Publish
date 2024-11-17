@@ -11,12 +11,17 @@ import org.springframework.stereotype.Service;
 
 import com.app.userservice.configuration.KafkaProducerService;
 import com.app.userservice.configuration.TopicConstants;
+import com.app.userservice.entity.Admin;
+import com.app.userservice.entity.Qualification;
 import com.app.userservice.entity.Role;
 import com.app.userservice.entity.User;
+import com.app.userservice.entity.UserStatus;
+import com.app.userservice.exception.AdminAlreadyExistsException;
 import com.app.userservice.exception.DuplicateEmailException;
 import com.app.userservice.exception.DuplicateUsernameException;
 import com.app.userservice.exception.InvalidFieldException;
 import com.app.userservice.exception.UserNotFoundException;
+import com.app.userservice.model.AdminDto;
 import com.app.userservice.model.UserDto;
 import com.app.userservice.model.UserMapper;
 import com.app.userservice.repository.UserRepository;
@@ -49,16 +54,19 @@ public class UserService {
     public User getUserById(Long id) {
         return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
     }
-
+    
+    
     public User createUser(User user) {
         if (userRepository.findByUsername(user.getUsername()).isPresent()) {
             throw new DuplicateUsernameException("Username already exists: " + user.getUsername());
         }
+        
         if (userRepository.findByEmail(user.getEmail()).isPresent()) {
             throw new DuplicateEmailException("Email already exists: " + user.getEmail());
         }
+        
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setBlocked(false);
+        user.setStatus(UserStatus.ACTIVE);
         user.setRole(Role.USER);
         return userRepository.save(user);
     }
@@ -88,7 +96,7 @@ public class UserService {
             user.setRole(userDetails.getRole());
         }
 
-        user.setBlocked(userDetails.isBlocked());
+        user.setStatus(userDetails.getStatus());
         return userRepository.save(user);
     }
     
@@ -104,17 +112,99 @@ public class UserService {
     
     
     
+//    public String authenticate(String username, String password) {
+//        User user = userRepository.findByUsername(username)
+//                .orElseThrow(() -> new UserNotFoundException("User not found with username: " + username));
+//
+//        if (!passwordEncoder.matches(password, user.getPassword())) {
+//            throw new InvalidFieldException("Invalid username or password");
+//        }
+//        
+//        kafkaProducerService.sendMessage(TopicConstants.USER_LOGGED_TOPIC,"user-logged");
+//
+//        return jwtUtil.generateToken(user.getUsername(),user.getId());
+//    }
+//    
+    
+    
+    
     public String authenticate(String username, String password) {
         User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UserNotFoundException("User not found with username: " + username));
+            .orElseThrow(() -> new UserNotFoundException("User not found with username: " + username));
+
+        if (user.getStatus() == UserStatus.BANNED) {
+            throw new InvalidFieldException("User is banned and cannot authenticate.");
+        }
 
         if (!passwordEncoder.matches(password, user.getPassword())) {
-            throw new InvalidFieldException("Invalid username or password");
+            throw new InvalidFieldException("Invalid username or password.");
         }
-        
         kafkaProducerService.sendMessage(TopicConstants.USER_LOGGED_TOPIC,"user-logged");
 
-        return jwtUtil.generateToken(user.getUsername(),user.getId());
+        return jwtUtil.generateToken(user.getUsername(), user.getId(), user.getRole().name());
     }
+    
+    
+    
+    
+    public void banUser(Long id) {
+        User user = userRepository.findById(id)
+            .orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
+        user.setStatus(UserStatus.BANNED);
+        userRepository.save(user);
+    }
+
+    public void unbanUser(Long id) {
+        User user = userRepository.findById(id)
+            .orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
+        user.setStatus(UserStatus.ACTIVE);
+        userRepository.save(user);
+    }
+    
+    
+    
+    public AdminDto nominateAdmin(Long id, Qualification qualification) {
+        User user = userRepository.findById(id)
+            .orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
+
+        if (user.getRole() == Role.ADMIN) {
+            throw new AdminAlreadyExistsException("User is already an ADMIN");
+        }
+
+        user.setRole(Role.ADMIN);
+        user.setStatus(UserStatus.ACTIVE);
+        userRepository.save(user);
+        Admin admin = userRepository.save(new Admin(user.getId(),user.getUsername(),user.getPassword(),user.getEmail(),user.getRole(),user.getStatus(),Qualification.ADMIN));
+        return UserMapper.toAdminDto(admin);
+    }
+    
+    
+//    @Transactional
+//    public AdminDto nominateAdmin(Long id, Qualification qualification) {
+//        User user = userRepository.findById(id)
+//            .orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
+//
+//        if (user.getRole() == Role.ADMIN) {
+//            throw new AdminAlreadyExistsException("User is already an ADMIN");
+//        }
+//
+//        // Imposta il ruolo dell'utente a ADMIN
+//        user.setRole(Role.ADMIN);
+//        user.setStatus(UserStatus.ACTIVE);
+//        userRepository.save(user); // Salva l'entità esistente con il nuovo ruolo
+//
+//        // Crea un nuovo record di Admin e imposta i dettagli specifici
+//        Admin admin = new Admin();
+//        admin.setId(user.getId()); // Imposta l'ID uguale a quello dell'utente per mantenere l'associazione
+//        admin.setQualification(qualification);
+//
+//        adminRepository.save(admin); // Salva l'entità Admin nella tabella unita
+//
+//        return UserMapper.toAdminDto(admin);
+//    }
+
+
+
+
 
 }

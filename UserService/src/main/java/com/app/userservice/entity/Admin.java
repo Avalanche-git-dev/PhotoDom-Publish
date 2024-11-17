@@ -19,9 +19,15 @@ public class Admin extends User {
     
 
 
-	public Admin(Long id, String username, String password, String email, boolean isBlocked, Role role,
+
+	
+
+
+	
+
+	public Admin(Long id, String username, String password, String email, Role role, UserStatus status,
 			Qualification qualification) {
-		super(id, username, password, email, isBlocked, role);
+		super(id, username, password, email, role, status);
 		this.qualification = qualification;
 	}
 
