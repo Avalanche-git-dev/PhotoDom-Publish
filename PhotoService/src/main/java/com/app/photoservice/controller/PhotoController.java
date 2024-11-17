@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,7 +23,7 @@ import com.app.photoservice.service.PhotoService;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/photos")
+@RequestMapping("/api/photos")
 public class PhotoController {
 
     @Autowired
@@ -98,21 +97,51 @@ public class PhotoController {
 
 
 
+//
+//    @PostMapping("/like")
+//    public ResponseEntity<String> likePhoto(@RequestParam Long userId, @RequestParam Long photoId) {
+//        if (photoService.addLike(userId, photoId)) {
+//            return ResponseEntity.ok("Like added successfully");
+//        }
+//        return ResponseEntity.status(HttpStatus.CONFLICT).body("Like already exists");
+//    }
+//
+//    @DeleteMapping("/unlike")
+//    public ResponseEntity<String> unlikePhoto(@RequestParam Long userId, @RequestParam Long photoId) {
+//        if (photoService.removeLike(userId, photoId)) {
+//            return ResponseEntity.ok("Like removed successfully");
+//        }
+//        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Like not found");
+//    }
+    
+    
+    
+    @PostMapping("/{id}/like/a")
+    public ResponseEntity<String> addLike(
+            @PathVariable Long id,
+            @RequestHeader("Authorization") String tokenID) {
+        String token = tokenID.replace("Bearer ", "").trim();
 
-    @PostMapping("/like")
-    public ResponseEntity<String> likePhoto(@RequestParam Long userId, @RequestParam Long photoId) {
-        if (photoService.addLike(userId, photoId)) {
+        boolean likeAdded = photoService.addLike(token, id);
+        if (likeAdded) {
             return ResponseEntity.ok("Like added successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("User has already liked this photo");
         }
-        return ResponseEntity.status(HttpStatus.CONFLICT).body("Like already exists");
     }
 
-    @DeleteMapping("/unlike")
-    public ResponseEntity<String> unlikePhoto(@RequestParam Long userId, @RequestParam Long photoId) {
-        if (photoService.removeLike(userId, photoId)) {
+    @DeleteMapping("/{id}/like/r")
+    public ResponseEntity<String> removeLike(
+            @PathVariable Long photoId,
+            @RequestHeader("Authorization") String tokenID) {
+        String token = tokenID.replace("Bearer ", "").trim();
+
+        boolean likeRemoved = photoService.removeLike(token, photoId);
+        if (likeRemoved) {
             return ResponseEntity.ok("Like removed successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Like not found");
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Like not found");
     }
 }
 

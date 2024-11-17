@@ -127,8 +127,35 @@ public class PhotoService {
 
 
 
+//
+//    public boolean addLike(Long userId, Long photoId) {
+//        Optional<Like> existingLike = likeRepository.findByUserIdAndPhotoId(userId, photoId);
+//        if (existingLike.isPresent()) {
+//            return false; // L'utente ha già messo un "like"
+//        }
+//
+//        PhotoMetadata photo = photoMetadataRepository.findById(photoId)
+//            .orElseThrow(() -> new RuntimeException("Photo not found"));
+//
+//        Like like = new Like();
+//        like.setUserId(userId);
+//        like.setPhoto(photo);
+//        likeRepository.save(like);
+//        return true;
+//    }
+//
+//    public boolean removeLike(Long userId, Long photoId) {
+//        Optional<Like> like = likeRepository.findByUserIdAndPhotoId(userId, photoId);
+//        if (like.isPresent()) {
+//            likeRepository.delete(like.get());
+//            return true;
+//        }
+//        return false; // L'utente non ha messo un "like"
+//    }
+    
+    public boolean addLike(String token, Long photoId) {
+        Long userId = jwt.extractUserId(token); // Estrai l'userId dal token
 
-    public boolean addLike(Long userId, Long photoId) {
         Optional<Like> existingLike = likeRepository.findByUserIdAndPhotoId(userId, photoId);
         if (existingLike.isPresent()) {
             return false; // L'utente ha già messo un "like"
@@ -144,7 +171,9 @@ public class PhotoService {
         return true;
     }
 
-    public boolean removeLike(Long userId, Long photoId) {
+    public boolean removeLike(String token, Long photoId) {
+        Long userId = jwt.extractUserId(token); // Estrai l'userId dal token
+
         Optional<Like> like = likeRepository.findByUserIdAndPhotoId(userId, photoId);
         if (like.isPresent()) {
             likeRepository.delete(like.get());
@@ -152,5 +181,9 @@ public class PhotoService {
         }
         return false; // L'utente non ha messo un "like"
     }
+    
+    
+    
+    
 }
 
