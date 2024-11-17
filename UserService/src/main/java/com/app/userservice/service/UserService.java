@@ -9,6 +9,8 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.app.userservice.configuration.KafkaProducerService;
+import com.app.userservice.configuration.TopicConstants;
 import com.app.userservice.entity.Role;
 import com.app.userservice.entity.User;
 import com.app.userservice.exception.DuplicateEmailException;
@@ -32,6 +34,9 @@ public class UserService {
 
     @Autowired
     private JwtUtil jwtUtil;
+    
+    @Autowired
+    private KafkaProducerService  kafkaProducerService;
     
     public List<UserDto> getAllUsers() {
         List<UserDto> users = userRepository.findAll().stream()
@@ -106,8 +111,10 @@ public class UserService {
         if (!passwordEncoder.matches(password, user.getPassword())) {
             throw new InvalidFieldException("Invalid username or password");
         }
+        
+        kafkaProducerService.sendMessage(TopicConstants.USER_LOGGED_TOPIC,"user-logged");
 
-        return jwtUtil.generateToken(user.getUsername());
+        return jwtUtil.generateToken(user.getUsername(),user.getId());
     }
 
 }
