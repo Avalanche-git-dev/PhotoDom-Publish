@@ -4,7 +4,10 @@ import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.codec.multipart.FilePart;
+import org.springframework.http.codec.multipart.Part;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,11 +15,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.app.photoservice.dto.PhotoDto;
 import com.app.photoservice.service.PhotoService;
+
+import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/photos")
@@ -24,26 +29,75 @@ public class PhotoController {
 
     @Autowired
     private PhotoService photoService;
+    
+    
+  
+    
+    
+//    @PostMapping("/upload")
+//    public Mono<ResponseEntity<PhotoDto>> uploadPhoto(
+//            @RequestPart("file") Mono<Part> filePart,
+//            @RequestHeader("Authorization") String token) {
+//
+//        return filePart
+//                .cast(FilePart.class) // Cast to FilePart to handle file operations
+//                .flatMap(file -> {
+//                    try {
+//                        return photoService.savePhoto(file, token)
+//                                           .map(savedPhoto -> ResponseEntity.ok(savedPhoto));
+//                    } catch (IOException e) {
+//                        return Mono.just(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null));
+//                    }
+//                });
+//    }
+    
+    
+    
     @PostMapping("/upload")
-    public ResponseEntity<PhotoDto> uploadPhoto(
-            @RequestParam MultipartFile file,
-            @RequestHeader("Authorization") String token) {
-    	
-    	
-        try {
-            PhotoDto savedPhoto = photoService.savePhoto(file, token);
-            return ResponseEntity.ok(savedPhoto);
-        } catch (IOException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                                 .body(null);
-        }
+    public Mono<ResponseEntity<PhotoDto>> uploadPhoto(
+            @RequestPart("file") Mono<Part> filePart,
+            @RequestHeader("Authorization") String tokenID) {
+    	String token = tokenID.replace("Bearer ", "").trim();
+
+        return filePart
+                .cast(FilePart.class) // Cast a FilePart per gestire le operazioni sul file
+                .flatMap(file -> photoService.savePhoto(file, token)
+                        .map(savedPhoto -> ResponseEntity.ok(savedPhoto)));
     }
 
+
+//    @GetMapping("/{id}")
+//    public ResponseEntity<PhotoDto> getPhotoMetadata(@PathVariable Long id) throws IllegalStateException, IOException {
+//        PhotoDto photoDto = photoService.getPhotoDto(id);
+//        return ResponseEntity.ok(photoDto);
+//    }
+
+    
+    
     @GetMapping("/{id}")
-    public ResponseEntity<PhotoDto> getPhotoMetadata(@PathVariable Long id) throws IllegalStateException, IOException {
-        PhotoDto photoDto = photoService.getPhotoDto(id);
-        return ResponseEntity.ok(photoDto);
+    public Mono<ResponseEntity<byte[]>> getPhoto(@PathVariable Long id) {
+        return photoService.getPhotoById(id)
+                .flatMap(photoDto -> {
+                    try {
+                        byte[] imageBytes = photoDto.getPhotoStream().readAllBytes();
+                        return Mono.just(
+                                ResponseEntity.ok()
+                                        .contentType(MediaType.parseMediaType(photoDto.getContentType()))
+                                        .header("Filename", photoDto.getFilename())
+                                        .header("Size", String.valueOf(photoDto.getSize()))
+                                        .header("UserId", String.valueOf(photoDto.getUserId()))
+                                        .header("LikeCount", String.valueOf(photoDto.getLikeCount()))
+                                        .body(imageBytes)
+                        );
+                    } catch (IOException e) {
+                        return Mono.error(new RuntimeException("Error reading photo data", e));
+                    }
+                })
+                .onErrorResume(e -> Mono.just(ResponseEntity.status(HttpStatus.NOT_FOUND).build()));
     }
+
+
+
 
     @PostMapping("/like")
     public ResponseEntity<String> likePhoto(@RequestParam Long userId, @RequestParam Long photoId) {

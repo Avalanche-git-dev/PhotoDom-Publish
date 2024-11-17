@@ -6,17 +6,18 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.gridfs.GridFsResource;
+import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.app.photoservice.configuration.JwtUtil;
 import com.app.photoservice.dto.PhotoDto;
 import com.app.photoservice.dto.PhotoMapper;
 import com.app.photoservice.entity.Like;
 import com.app.photoservice.entity.PhotoMetadata;
-import com.app.photoservice.exception.PhotoNotFoundException;
 import com.app.photoservice.repository.LikeRepository;
 import com.app.photoservice.repository.PhotoMetadataRepository;
+
+import reactor.core.publisher.Mono;
 
 @Service
 public class PhotoService {
@@ -45,35 +46,87 @@ public class PhotoService {
 //    }
     
     
-    public PhotoDto savePhoto(MultipartFile file, String token) throws IOException {
-        // Salva la foto in MongoDB e ottieni l'ID del file
-        String fileId = photoStorageService.savePhoto(file.getInputStream(), file.getOriginalFilename(), file.getContentType());
+//    public PhotoDto savePhoto(MultipartFile file, String token) throws IOException {
+//        // Salva la foto in MongoDB e ottieni l'ID del file
+//        String fileId = photoStorageService.savePhoto(file.getInputStream(), file.getOriginalFilename(), file.getContentType());
+//        Long userId = jwt.extractUserId(token);
+//
+//        // Crea e salva i metadati della foto in PostgreSQL
+//        PhotoMetadata metadata = new PhotoMetadata();
+//        metadata.setUserId(userId);
+//        metadata.setFilename(file.getOriginalFilename());
+//        metadata.setContentType(file.getContentType());
+//        metadata.setSize(file.getSize());
+//        metadata.setFileId(fileId);
+//        metadata.setUploadDate(new Date());
+//        
+//        PhotoMetadata savedMetadata = photoMetadataRepository.save(metadata);
+//
+//        // Restituisci un PhotoDto con i dettagli della foto salvata
+//        return PhotoMapper.toPhotoDto(savedMetadata, null, 0);
+//    }
+    
+    
+    
+    public Mono<PhotoDto> savePhoto(FilePart file, String token) {
         Long userId = jwt.extractUserId(token);
 
-        // Crea e salva i metadati della foto in PostgreSQL
-        PhotoMetadata metadata = new PhotoMetadata();
-        metadata.setUserId(userId);
-        metadata.setFilename(file.getOriginalFilename());
-        metadata.setContentType(file.getContentType());
-        metadata.setSize(file.getSize());
-        metadata.setFileId(fileId);
-        metadata.setUploadDate(new Date());
-        
-        PhotoMetadata savedMetadata = photoMetadataRepository.save(metadata);
+        return file.content() // Ottiene il contenuto del FilePart come un Flux di DataBuffer
+                .map(dataBuffer -> dataBuffer.asInputStream(true)) // Converte DataBuffer in InputStream
+                .next() // Prende solo il primo elemento, dato che vogliamo un unico InputStream
+                .flatMap(inputStream -> {
+                    // Salva la foto in MongoDB e ottieni l'ID del file
+                    String fileId = photoStorageService.savePhoto(inputStream, file.filename(), file.headers().getContentType().toString());
 
-        // Restituisci un PhotoDto con i dettagli della foto salvata
-        return PhotoMapper.toPhotoDto(savedMetadata, null, 0);
+                    // Crea e salva i metadati della foto in PostgreSQL
+                    PhotoMetadata metadata = new PhotoMetadata();
+                    metadata.setUserId(userId);
+                    metadata.setFilename(file.filename());
+                    metadata.setContentType(file.headers().getContentType().toString());
+                    metadata.setSize(file.headers().getContentLength());
+                    metadata.setFileId(fileId);
+                    metadata.setUploadDate(new Date());
+
+                    // Salvataggio reattivo dei metadati
+                    return Mono.fromCallable(() -> photoMetadataRepository.save(metadata))
+                            .map(savedMetadata -> PhotoMapper.toPhotoDto(savedMetadata, null, 0));
+                });
     }
 
-    public PhotoDto getPhotoDto(Long photoId) throws IllegalStateException, IOException {
-        PhotoMetadata metadata = photoMetadataRepository.findById(photoId)
-            .orElseThrow(() -> new PhotoNotFoundException("Photo not found"));
+//    public PhotoDto getPhotoDto(Long photoId) throws IllegalStateException, IOException {
+//        PhotoMetadata metadata = photoMetadataRepository.findById(photoId)
+//            .orElseThrow(() -> new PhotoNotFoundException("Photo not found"));
+//
+//        int likeCount = likeRepository.countByPhotoId(photoId);
+//        GridFsResource photoStream = photoStorageService.getPhoto(metadata.getFileId());
+//
+//        return PhotoMapper.toPhotoDto(metadata, photoStream.getInputStream(), likeCount);
+//    }
+    
+    public Mono<PhotoDto> getPhotoById(Long photoId) {
+        return Mono.defer(() -> {
+            Optional<PhotoMetadata> optionalMetadata = photoMetadataRepository.findById(photoId);
+            
+            if (optionalMetadata.isEmpty()) {
+                return Mono.error(new RuntimeException("Photo not found"));
+            }
 
-        int likeCount = likeRepository.countByPhotoId(photoId);
-        GridFsResource photoStream = photoStorageService.getPhoto(metadata.getFileId());
+            PhotoMetadata metadata = optionalMetadata.get();
+            GridFsResource photoResource = photoStorageService.getPhoto(metadata.getFileId());
 
-        return PhotoMapper.toPhotoDto(metadata, photoStream.getInputStream(), likeCount);
+            try {
+                // Usa la classe mapper per creare il PhotoDto
+            	int likeCount = likeRepository.countByPhotoId(photoId);
+                PhotoDto photoDto = PhotoMapper.toPhotoDto(metadata, photoResource.getInputStream(), likeCount);
+                return Mono.just(photoDto);
+            } catch (IOException e) {
+                return Mono.error(new RuntimeException("Error reading photo stream", e));
+            }
+        });
     }
+
+
+
 
     public boolean addLike(Long userId, Long photoId) {
         Optional<Like> existingLike = likeRepository.findByUserIdAndPhotoId(userId, photoId);
