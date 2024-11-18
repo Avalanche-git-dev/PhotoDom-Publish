@@ -41,13 +41,7 @@ public class UserService {
     @Autowired
     private KafkaProducerService  kafkaProducerService;
     
-//    public List<UserDto> getAllUsers() {
-//        List<UserDto> users = userRepository.findAll().stream()
-//                .map(UserMapper::toUserDto)
-//                .collect(Collectors.toList());
-//        return users;
-//    }
-//    
+   
     
     public List<UserDto> getAllUsers() {
         List<UserDto> users = userRepository.findAll().stream()
