@@ -1,7 +1,10 @@
 package com.app.userservice.controller.api;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.userservice.entity.Qualification;
+import com.app.userservice.model.UserDto;
 import com.app.userservice.service.UserService;
 
 @RestController
@@ -38,9 +42,15 @@ public class AdminController {
     
     
     
-//    @GetMapping("/banned-users")
-//    public ResponseEntity<List<User>> getAllBannedUsers() {
-//        List<User> bannedUsers = userService.getBannedUsers();
-//        return ResponseEntity.ok(bannedUsers);
-//    }
-}
+    @GetMapping("/banned")
+    public ResponseEntity<List<UserDto>> getBannedUsers() {
+        List<UserDto> bannedUsers = userService.getAllBannedUsers();
+        return ResponseEntity.ok(bannedUsers);
+    }
+
+    @GetMapping("/inactive")
+    public ResponseEntity<List<UserDto>> getInactiveUsers() {
+        List<UserDto> inactiveUsers = userService.getAllInactiveUsers();
+        return ResponseEntity.ok(inactiveUsers);
+    }
+    }
