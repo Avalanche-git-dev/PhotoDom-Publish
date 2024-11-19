@@ -132,11 +132,11 @@ public class PhotoController {
 
     @DeleteMapping("/{id}/like/r")
     public ResponseEntity<String> removeLike(
-            @PathVariable Long photoId,
+            @PathVariable Long id,
             @RequestHeader("Authorization") String tokenID) {
         String token = tokenID.replace("Bearer ", "").trim();
 
-        boolean likeRemoved = photoService.removeLike(token, photoId);
+        boolean likeRemoved = photoService.removeLike(token, id);
         if (likeRemoved) {
             return ResponseEntity.ok("Like removed successfully");
         } else {
