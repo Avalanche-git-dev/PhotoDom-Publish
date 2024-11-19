@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -26,11 +27,22 @@ public class Comment implements CommentComponent {
     private Date createdDate;
 
     // Implementazione dei metodi di CommentComponent
+//    @Override
+//    public void addReply(CommentComponent comment) {
+//        replies.add((Comment) comment);
+//        ((Comment) comment).setParentCommentId(this.id);
+//    }
+    
     @Override
     public void addReply(CommentComponent comment) {
-        replies.add((Comment) comment);
-        ((Comment) comment).setParentCommentId(this.id);
+        Comment reply = (Comment) comment;
+        if (reply.getId() == null || reply.getId().isEmpty()) {
+            reply.setId(new ObjectId().toString()); // Genera un ObjectId unico per il commento figlio
+        }
+        replies.add(reply);
+        reply.setParentCommentId(this.id);
     }
+
 
     @Override
     public void removeReply(CommentComponent comment) {
