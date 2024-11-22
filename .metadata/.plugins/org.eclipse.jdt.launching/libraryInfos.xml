@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <libraryInfos>
+    <libraryInfo home="C:\Program Files\Eclipse Adoptium\jre-11.0.25.9-hotspot" version="11.0.25"/>
+    <libraryInfo home="C:\Program Files\Eclipse Adoptium\jdk-11.0.25.9-hotspot" version="11.0.25"/>
+    <libraryInfo home="C:\Program Files\Eclipse Adoptium\jdk-17.0.13.11-hotspot" version="17.0.13"/>
+    <libraryInfo home="C:\Program Files\Eclipse Adoptium\jdk-21.0.5.11-hotspot" version="21.0.5"/>
     <libraryInfo home="D:\SpringToolSuite\spring-tool-suite-4-4.26.0.RELEASE-e4.33.0-win32.win32.x86_64\sts-4.26.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.4.v20240802-1551" version="21.0.4">
         <bootpath>
             <entry path="null"/>
