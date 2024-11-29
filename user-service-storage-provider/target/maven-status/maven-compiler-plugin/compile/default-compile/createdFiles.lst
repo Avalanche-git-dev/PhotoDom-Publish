@@ -1,0 +1,10 @@
+com\example\storage\exception\UserNotFoundException.class
+com\example\storage\client\UserServiceClientHttp.class
+com\example\storage\client\UserServiceClientHttp$2.class
+com\example\storage\provider\UserAdapter.class
+com\example\storage\model\UserDto.class
+com\example\storage\provider\UserServiceStorageProvider.class
+com\example\storage\factory\UserServiceStorageProviderFactory.class
+com\example\storage\client\UserServiceClient.class
+com\example\storage\client\UserServiceClientHttp$1.class
+com\example\storage\model\LoginRequest.class

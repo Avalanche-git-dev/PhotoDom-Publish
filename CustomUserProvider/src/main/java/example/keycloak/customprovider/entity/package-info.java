@@ -1,1 +1,0 @@
-package example.keycloak.customprovider.entity;

@@ -20,9 +20,8 @@ public class LoginRequest {
 		this.username = username;
 		this.password = password;
 	}
+	
 	public LoginRequest() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public String toString() {

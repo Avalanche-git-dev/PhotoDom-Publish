@@ -1,4 +1,4 @@
-!SESSION 2024-11-21 20:48:15.570 -----------------------------------------------
+!SESSION 2024-11-28 15:00:28.039 -----------------------------------------------
 eclipse.buildId=4.33.0.202410162246
 java.version=21.0.4
 java.vendor=Eclipse Adoptium
@@ -7,90 +7,290 @@ Framework arguments:  -product org.springframework.boot.ide.branding.sts4
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.springframework.boot.ide.branding.sts4
 
 This is a continuation of log file C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.bak_0.log
-Created Time: 2024-11-22 00:05:05.434
+Created Time: 2024-11-28 20:00:25.962
 
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 00:05:05.434
-!MESSAGE Classpath changed for project: CustomUserProvider
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 00:05:05.435
-!MESSAGE Boot project ADDED: CustomUserProvider
-
-!ENTRY org.eclipse.lsp4e 2 0 2024-11-22 00:05:11.720
-!MESSAGE Could not get hover region due to timeout after 1000 milliseconds
+!ENTRY org.eclipse.lsp4e 4 0 2024-11-28 20:00:25.963
+!MESSAGE LanguageServer not initialized within 10s
 !STACK 0
 java.util.concurrent.TimeoutException
 	at java.base/java.util.concurrent.CompletableFuture.timedGet(CompletableFuture.java:1960)
 	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2095)
-	at org.eclipse.lsp4e.operations.hover.LSPTextHover.getHoverRegion(LSPTextHover.java:152)
-	at org.eclipse.ui.internal.genericeditor.hover.CompositeTextHover.getHoverRegion(CompositeTextHover.java:101)
-	at org.eclipse.jface.text.TextViewerHoverManager.computeInformation(TextViewerHoverManager.java:128)
-	at org.eclipse.jface.text.AbstractInformationControlManager.doShowInformation(AbstractInformationControlManager.java:1101)
-	at org.eclipse.jface.text.AbstractHoverInformationControlManager$MouseTracker.mouseHover(AbstractHoverInformationControlManager.java:511)
-	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:225)
-	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:91)
-	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4326)
-	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1174)
-	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4124)
-	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3712)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1151)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1042)
-	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:153)
-	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:639)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
-	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:546)
-	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
-	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
-	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:143)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:109)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:439)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:271)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:668)
-	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:605)
-	at org.eclipse.equinox.launcher.Main.run(Main.java:1481)
+	at org.eclipse.lsp4e.LanguageServerWrapper.getServerCapabilities(LanguageServerWrapper.java:924)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.capabilitiesComply(LanguageServiceAccessor.java:203)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.getStartedWrappers(LanguageServiceAccessor.java:412)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.getStartedWrappers(LanguageServiceAccessor.java:399)
+	at org.eclipse.lsp4e.LanguageServers$LanguageServerProjectExecutor.getServers(LanguageServers.java:331)
+	at org.eclipse.lsp4e.LanguageServers.executeOnServers(LanguageServers.java:421)
+	at org.eclipse.lsp4e.LanguageServers.collectAll(LanguageServers.java:91)
+	at org.eclipse.lsp4e.LanguageServers.collectAll(LanguageServers.java:74)
+	at org.springframework.ide.eclipse.boot.dash.liveprocess.DefaultLiveProcessCommandExecutor.executeCommand(DefaultLiveProcessCommandExecutor.java:54)
+	at org.springframework.ide.eclipse.boot.dash.BootDashActivator$1.stateChanged(BootDashActivator.java:219)
+	at org.springframework.ide.eclipse.boot.dash.BootDashActivator$1.stateChanged(BootDashActivator.java:1)
+	at org.springframework.ide.eclipse.boot.dash.util.RunStateTracker.updateOwnerStatesAndFireEvents(RunStateTracker.java:216)
+	at org.springframework.ide.eclipse.boot.dash.util.RunStateTracker$1.gotValue(RunStateTracker.java:151)
+	at org.springframework.ide.eclipse.boot.dash.util.RunStateTracker$1.gotValue(RunStateTracker.java:1)
+	at org.springsource.ide.eclipse.commons.livexp.core.LiveExpression.changed(LiveExpression.java:137)
+	at org.springsource.ide.eclipse.commons.livexp.core.LiveExpression.refresh(LiveExpression.java:81)
+	at org.springsource.ide.eclipse.commons.livexp.core.LiveVariable.setValue(LiveVariable.java:46)
+	at org.springframework.ide.eclipse.boot.dash.util.AbstractPollingAppReadyStateMonitor$1.run(AbstractPollingAppReadyStateMonitor.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
 
-!ENTRY org.eclipse.lsp4e 4 0 2024-11-22 00:05:11.989
-!MESSAGE InterruptedException
+!ENTRY org.eclipse.lsp4e 4 0 2024-11-28 20:00:25.964
+!MESSAGE ExecutionException occurred during shutdown of EndpointProxy for org.eclipse.lsp4j.jsonrpc.RemoteEndpoint@18824c6e
 !STACK 0
-java.lang.InterruptedException
-	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:386)
+java.util.concurrent.ExecutionException: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: È in corso la chiusura della pipe
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:396)
 	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
-	at org.eclipse.lsp4e.operations.hover.LSPTextHover.getHoverInfo(LSPTextHover.java:73)
-	at org.eclipse.ui.internal.genericeditor.hover.CompositeTextHover.getHoverInfo2(CompositeTextHover.java:60)
-	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+	at org.eclipse.lsp4e.LanguageServerWrapper$LanguageServerContext.close(LanguageServerWrapper.java:165)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$10(LanguageServerWrapper.java:610)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
+Caused by: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: È in corso la chiusura della pipe
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:72)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:356)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.request(RemoteEndpoint.java:171)
+	at org.eclipse.lsp4j.jsonrpc.services.EndpointProxy.invoke(EndpointProxy.java:91)
+	at jdk.proxy19/jdk.proxy19.$Proxy92.shutdown(Unknown Source)
+	at org.eclipse.lsp4e.LanguageServerWrapper$LanguageServerContext.close(LanguageServerWrapper.java:163)
+	... 8 more
+Caused by: java.io.IOException: È in corso la chiusura della pipe
+	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:367)
+	at java.base/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:125)
+	at java.base/java.io.BufferedOutputStream.implFlush(BufferedOutputStream.java:252)
+	at java.base/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:240)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:69)
+	... 13 more
 
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 01:00:25.590
-!MESSAGE Classpath changed for project: keycloack-user-storage-provider
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 01:00:25.735
-!MESSAGE Classpath changed for project: keycloack-user-storage-provider
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 01:00:26.355
-!MESSAGE Classpath changed for project: keycloack-user-storage-provider
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 01:00:37.466
-!MESSAGE Classpath changed for project: keycloack-user-storage-provider
-
-!ENTRY org.eclipse.lsp4e 2 0 2024-11-22 01:12:26.717
-!MESSAGE Could not get hover region due to timeout after 1000 milliseconds
+!ENTRY org.eclipse.lsp4e 4 0 2024-11-28 20:00:35.967
+!MESSAGE LanguageServer not initialized within 10s
 !STACK 0
 java.util.concurrent.TimeoutException
 	at java.base/java.util.concurrent.CompletableFuture.timedGet(CompletableFuture.java:1960)
 	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2095)
-	at org.eclipse.lsp4e.operations.hover.LSPTextHover.getHoverRegion(LSPTextHover.java:152)
-	at org.eclipse.ui.internal.genericeditor.hover.CompositeTextHover.getHoverRegion(CompositeTextHover.java:101)
-	at org.eclipse.jface.text.TextViewerHoverManager.computeInformation(TextViewerHoverManager.java:128)
-	at org.eclipse.jface.text.AbstractInformationControlManager.doShowInformation(AbstractInformationControlManager.java:1101)
-	at org.eclipse.jface.text.AbstractHoverInformationControlManager$MouseTracker.mouseHover(AbstractHoverInformationControlManager.java:511)
-	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:225)
-	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:91)
-	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4326)
-	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1174)
-	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4124)
-	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3712)
+	at org.eclipse.lsp4e.LanguageServerWrapper.getServerCapabilities(LanguageServerWrapper.java:924)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.capabilitiesComply(LanguageServiceAccessor.java:203)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.getStartedWrappers(LanguageServiceAccessor.java:412)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.getStartedWrappers(LanguageServiceAccessor.java:399)
+	at org.eclipse.lsp4e.LanguageServers$LanguageServerProjectExecutor.getServers(LanguageServers.java:331)
+	at org.eclipse.lsp4e.LanguageServers.executeOnServers(LanguageServers.java:421)
+	at org.eclipse.lsp4e.LanguageServers.computeFirst(LanguageServers.java:168)
+	at org.eclipse.lsp4e.LanguageServers.computeFirst(LanguageServers.java:144)
+	at org.springframework.ide.eclipse.boot.launch.BootLsCommandUtils.executeCommand(BootLsCommandUtils.java:45)
+	at org.springframework.ide.eclipse.boot.dash.model.AbstractLaunchConfigurationsDashElement.lambda$7(AbstractLaunchConfigurationsDashElement.java:609)
+	at org.springframework.ide.eclipse.boot.dash.livexp.PollingLiveExp$3.compute(PollingLiveExp.java:136)
+	at org.springsource.ide.eclipse.commons.livexp.core.LiveExpression.refresh(LiveExpression.java:74)
+	at org.springframework.ide.eclipse.boot.dash.livexp.PollingLiveExp.refresh(PollingLiveExp.java:73)
+	at org.springframework.ide.eclipse.boot.dash.livexp.PollingLiveExp$1.run(PollingLiveExp.java:59)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2024-11-28 20:00:35.968
+!MESSAGE Operator called default onErrorDropped
+!STACK 0
+reactor.core.Exceptions$ErrorCallbackNotImplemented: java.util.concurrent.CancellationException
+Caused by: java.util.concurrent.CancellationException
+	at java.base/java.util.concurrent.CompletableFuture.cancel(CompletableFuture.java:2510)
+	at org.eclipse.lsp4e.LanguageServerWrapper.stop(LanguageServerWrapper.java:584)
+	at org.eclipse.lsp4e.LanguageServerWrapper.start(LanguageServerWrapper.java:315)
+	at org.eclipse.lsp4e.LanguageServerWrapper.start(LanguageServerWrapper.java:285)
+	at org.eclipse.lsp4e.LanguageServerWrapper.getInitializedServer(LanguageServerWrapper.java:813)
+	at org.eclipse.lsp4e.LanguageServers$LanguageServerProjectExecutor.getServers(LanguageServers.java:334)
+	at org.eclipse.lsp4e.LanguageServers.executeOnServers(LanguageServers.java:421)
+	at org.eclipse.lsp4e.LanguageServers.computeFirst(LanguageServers.java:168)
+	at org.eclipse.lsp4e.LanguageServers.computeFirst(LanguageServers.java:144)
+	at org.springframework.ide.eclipse.boot.launch.BootLsCommandUtils.executeCommand(BootLsCommandUtils.java:45)
+	at org.springframework.ide.eclipse.boot.dash.model.AbstractLaunchConfigurationsDashElement.lambda$7(AbstractLaunchConfigurationsDashElement.java:609)
+	at org.springframework.ide.eclipse.boot.dash.livexp.PollingLiveExp$3.compute(PollingLiveExp.java:136)
+	at org.springsource.ide.eclipse.commons.livexp.core.LiveExpression.refresh(LiveExpression.java:74)
+	at org.springframework.ide.eclipse.boot.dash.livexp.PollingLiveExp.refresh(PollingLiveExp.java:73)
+	at org.springframework.ide.eclipse.boot.dash.livexp.PollingLiveExp$1.run(PollingLiveExp.java:59)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-11-28 20:00:35.969
+!MESSAGE ExecutionException occurred during shutdown of EndpointProxy for org.eclipse.lsp4j.jsonrpc.RemoteEndpoint@229e86eb
+!STACK 0
+java.util.concurrent.ExecutionException: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: È in corso la chiusura della pipe
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:396)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.LanguageServerWrapper$LanguageServerContext.close(LanguageServerWrapper.java:165)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$10(LanguageServerWrapper.java:610)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
+Caused by: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: È in corso la chiusura della pipe
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:72)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:356)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.request(RemoteEndpoint.java:171)
+	at org.eclipse.lsp4j.jsonrpc.services.EndpointProxy.invoke(EndpointProxy.java:91)
+	at jdk.proxy19/jdk.proxy19.$Proxy92.shutdown(Unknown Source)
+	at org.eclipse.lsp4e.LanguageServerWrapper$LanguageServerContext.close(LanguageServerWrapper.java:163)
+	... 8 more
+Caused by: java.io.IOException: È in corso la chiusura della pipe
+	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:367)
+	at java.base/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:125)
+	at java.base/java.io.BufferedOutputStream.implFlush(BufferedOutputStream.java:252)
+	at java.base/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:240)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:69)
+	... 13 more
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-11-28 20:17:10.409
+!MESSAGE ExecutionException occurred during shutdown of EndpointProxy for org.eclipse.lsp4j.jsonrpc.RemoteEndpoint@66ada2c4
+!STACK 0
+java.util.concurrent.ExecutionException: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: È in corso la chiusura della pipe
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:396)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.LanguageServerWrapper$LanguageServerContext.close(LanguageServerWrapper.java:165)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$10(LanguageServerWrapper.java:610)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
+Caused by: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: È in corso la chiusura della pipe
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:72)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:356)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.request(RemoteEndpoint.java:171)
+	at org.eclipse.lsp4j.jsonrpc.services.EndpointProxy.invoke(EndpointProxy.java:91)
+	at jdk.proxy19/jdk.proxy19.$Proxy92.shutdown(Unknown Source)
+	at org.eclipse.lsp4e.LanguageServerWrapper$LanguageServerContext.close(LanguageServerWrapper.java:163)
+	... 8 more
+Caused by: java.io.IOException: È in corso la chiusura della pipe
+	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:367)
+	at java.base/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:125)
+	at java.base/java.io.BufferedOutputStream.implFlush(BufferedOutputStream.java:252)
+	at java.base/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:240)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:69)
+	... 13 more
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-11-28 20:17:20.409
+!MESSAGE LanguageServer not initialized within 10s
+!STACK 0
+java.util.concurrent.TimeoutException
+	at java.base/java.util.concurrent.CompletableFuture.timedGet(CompletableFuture.java:1960)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2095)
+	at org.eclipse.lsp4e.LanguageServerWrapper.getServerCapabilities(LanguageServerWrapper.java:924)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.capabilitiesComply(LanguageServiceAccessor.java:203)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.getStartedWrappers(LanguageServiceAccessor.java:412)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.getStartedWrappers(LanguageServiceAccessor.java:399)
+	at org.eclipse.lsp4e.LanguageServers$LanguageServerProjectExecutor.getServers(LanguageServers.java:331)
+	at org.eclipse.lsp4e.LanguageServers.executeOnServers(LanguageServers.java:421)
+	at org.eclipse.lsp4e.LanguageServers.computeFirst(LanguageServers.java:168)
+	at org.eclipse.lsp4e.LanguageServers.computeFirst(LanguageServers.java:144)
+	at org.springframework.ide.eclipse.boot.launch.BootLsCommandUtils.executeCommand(BootLsCommandUtils.java:45)
+	at org.springframework.ide.eclipse.boot.dash.model.AbstractLaunchConfigurationsDashElement.lambda$7(AbstractLaunchConfigurationsDashElement.java:609)
+	at org.springframework.ide.eclipse.boot.dash.livexp.PollingLiveExp$3.compute(PollingLiveExp.java:136)
+	at org.springsource.ide.eclipse.commons.livexp.core.LiveExpression.refresh(LiveExpression.java:74)
+	at org.springframework.ide.eclipse.boot.dash.livexp.PollingLiveExp.refresh(PollingLiveExp.java:73)
+	at org.springframework.ide.eclipse.boot.dash.livexp.PollingLiveExp$1.run(PollingLiveExp.java:59)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-11-28 20:17:20.410
+!MESSAGE ExecutionException occurred during shutdown of EndpointProxy for org.eclipse.lsp4j.jsonrpc.RemoteEndpoint@35edff12
+!STACK 0
+java.util.concurrent.ExecutionException: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: È in corso la chiusura della pipe
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:396)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.LanguageServerWrapper$LanguageServerContext.close(LanguageServerWrapper.java:165)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$10(LanguageServerWrapper.java:610)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
+Caused by: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: È in corso la chiusura della pipe
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:72)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:356)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.request(RemoteEndpoint.java:171)
+	at org.eclipse.lsp4j.jsonrpc.services.EndpointProxy.invoke(EndpointProxy.java:91)
+	at jdk.proxy19/jdk.proxy19.$Proxy92.shutdown(Unknown Source)
+	at org.eclipse.lsp4e.LanguageServerWrapper$LanguageServerContext.close(LanguageServerWrapper.java:163)
+	... 8 more
+Caused by: java.io.IOException: È in corso la chiusura della pipe
+	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:367)
+	at java.base/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:125)
+	at java.base/java.io.BufferedOutputStream.implFlush(BufferedOutputStream.java:252)
+	at java.base/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:240)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:69)
+	... 13 more
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-11-28 20:36:10.036
+!MESSAGE ExecutionException occurred during shutdown of EndpointProxy for org.eclipse.lsp4j.jsonrpc.RemoteEndpoint@3f04f14a
+!STACK 0
+java.util.concurrent.ExecutionException: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: È in corso la chiusura della pipe
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:396)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.LanguageServerWrapper$LanguageServerContext.close(LanguageServerWrapper.java:165)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$10(LanguageServerWrapper.java:610)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
+Caused by: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: È in corso la chiusura della pipe
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:72)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:356)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.request(RemoteEndpoint.java:171)
+	at org.eclipse.lsp4j.jsonrpc.services.EndpointProxy.invoke(EndpointProxy.java:91)
+	at jdk.proxy19/jdk.proxy19.$Proxy92.shutdown(Unknown Source)
+	at org.eclipse.lsp4e.LanguageServerWrapper$LanguageServerContext.close(LanguageServerWrapper.java:163)
+	... 8 more
+Caused by: java.io.IOException: È in corso la chiusura della pipe
+	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:367)
+	at java.base/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:125)
+	at java.base/java.io.BufferedOutputStream.implFlush(BufferedOutputStream.java:252)
+	at java.base/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:240)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:69)
+	... 13 more
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-11-28 20:36:20.037
+!MESSAGE LanguageServer not initialized within 10s
+!STACK 0
+java.util.concurrent.TimeoutException
+	at java.base/java.util.concurrent.CompletableFuture.timedGet(CompletableFuture.java:1960)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2095)
+	at org.eclipse.lsp4e.LanguageServerWrapper.getServerCapabilities(LanguageServerWrapper.java:924)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.capabilitiesComply(LanguageServiceAccessor.java:203)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.getStartedWrappers(LanguageServiceAccessor.java:412)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.getStartedWrappers(LanguageServiceAccessor.java:399)
+	at org.eclipse.lsp4e.LanguageServers$LanguageServerProjectExecutor.getServers(LanguageServers.java:331)
+	at org.eclipse.lsp4e.LanguageServers.anyMatching(LanguageServers.java:244)
+	at org.eclipse.lsp4e.operations.codeactions.LSPCodeActionMarkerResolution.checkMarkerResolution(LSPCodeActionMarkerResolution.java:134)
+	at org.eclipse.lsp4e.operations.codeactions.LSPCodeActionMarkerResolution.hasResolutions(LSPCodeActionMarkerResolution.java:210)
+	at org.eclipse.ui.internal.ide.registry.MarkerHelpRegistry.hasResolution(MarkerHelpRegistry.java:263)
+	at org.eclipse.ui.internal.ide.registry.MarkerHelpRegistry.hasResolutions(MarkerHelpRegistry.java:236)
+	at org.eclipse.jdt.internal.ui.text.correction.JavaCorrectionProcessor.hasCorrections(JavaCorrectionProcessor.java:148)
+	at org.eclipse.jdt.internal.ui.text.correction.JavaCorrectionProcessor.hasCorrections(JavaCorrectionProcessor.java:138)
+	at org.eclipse.jdt.internal.ui.text.correction.JavaCorrectionProcessor.canFix(JavaCorrectionProcessor.java:525)
+	at org.eclipse.jface.text.quickassist.QuickAssistAssistant.canFix(QuickAssistAssistant.java:130)
+	at org.eclipse.ui.texteditor.DefaultMarkerAnnotationAccess.hasQuickFix(DefaultMarkerAnnotationAccess.java:435)
+	at org.eclipse.ui.texteditor.DefaultMarkerAnnotationAccess.getImage(DefaultMarkerAnnotationAccess.java:390)
+	at org.eclipse.ui.texteditor.DefaultMarkerAnnotationAccess.paint(DefaultMarkerAnnotationAccess.java:266)
+	at org.eclipse.jface.text.source.AnnotationRulerColumn.doPaint1(AnnotationRulerColumn.java:795)
+	at org.eclipse.jface.text.source.AnnotationRulerColumn.doubleBufferPaint(AnnotationRulerColumn.java:530)
+	at org.eclipse.jface.text.source.AnnotationRulerColumn.redraw(AnnotationRulerColumn.java:821)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4099)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3715)
 	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1151)
 	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
 	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1042)
@@ -111,892 +311,70 @@ java.util.concurrent.TimeoutException
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:605)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1481)
 
-!ENTRY org.eclipse.lsp4e 2 0 2024-11-22 01:12:27.720
-!MESSAGE Could not get hover information due to timeout after 1000 milliseconds
+!ENTRY org.eclipse.lsp4e 4 0 2024-11-28 20:36:21.417
+!MESSAGE ExecutionException occurred during shutdown of EndpointProxy for org.eclipse.lsp4j.jsonrpc.RemoteEndpoint@2cc57023
+!STACK 0
+java.util.concurrent.ExecutionException: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: È in corso la chiusura della pipe
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:396)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.LanguageServerWrapper$LanguageServerContext.close(LanguageServerWrapper.java:165)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$10(LanguageServerWrapper.java:610)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
+Caused by: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: È in corso la chiusura della pipe
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:72)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:356)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.request(RemoteEndpoint.java:171)
+	at org.eclipse.lsp4j.jsonrpc.services.EndpointProxy.invoke(EndpointProxy.java:91)
+	at jdk.proxy19/jdk.proxy19.$Proxy92.shutdown(Unknown Source)
+	at org.eclipse.lsp4e.LanguageServerWrapper$LanguageServerContext.close(LanguageServerWrapper.java:163)
+	... 8 more
+Caused by: java.io.IOException: È in corso la chiusura della pipe
+	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:367)
+	at java.base/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:125)
+	at java.base/java.io.BufferedOutputStream.implFlush(BufferedOutputStream.java:252)
+	at java.base/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:240)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:69)
+	... 13 more
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-11-28 20:36:31.418
+!MESSAGE LanguageServer not initialized within 10s
 !STACK 0
 java.util.concurrent.TimeoutException
 	at java.base/java.util.concurrent.CompletableFuture.timedGet(CompletableFuture.java:1960)
 	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2095)
-	at org.eclipse.lsp4e.operations.hover.LSPTextHover.getHoverInfo(LSPTextHover.java:73)
-	at org.eclipse.ui.internal.genericeditor.hover.CompositeTextHover.getHoverInfo2(CompositeTextHover.java:60)
-	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 01:14:02.760
-!MESSAGE Classpath changed for project: CustomUserProvider
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 01:14:07.536
-!MESSAGE Classpath changed for project: CustomUserProvider
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 01:14:22.675
-!MESSAGE Classpath changed for project: CustomUserProvider
-
-!ENTRY org.eclipse.m2e.logback.appender 4 0 2024-11-22 01:21:00.664
-!MESSAGE Could not read pom.xml
-!STACK 1
-org.eclipse.core.runtime.CoreException: Could not read pom.xml
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:245)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refreshPhase2(ProjectRegistryManager.java:591)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:491)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:370)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:322)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:146)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:84)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:83)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:192)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-Caused by: org.apache.maven.model.io.ModelParseException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...\n\r\n\r\n\t\t Usa la versione compatibile con il tuo MySQL Server \r\n\t\t<d... @28:5) 
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:96)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:74)
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:243)
-	... 24 more
-Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...\n\r\n\r\n\t\t Usa la versione compatibile con il tuo MySQL Server \r\n\t\t<d... @28:5) 
-	at org.codehaus.plexus.util.xml.pull.MXParser.nextTag(MXParser.java:1364)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.parseModel(MavenXpp3Reader.java:2317)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:623)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:654)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:93)
-	... 26 more
-!SUBENTRY 1 org.eclipse.m2e.core 4 0 2024-11-22 01:21:00.664
-!MESSAGE Could not read pom.xml
-!STACK 0
-org.apache.maven.model.io.ModelParseException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...\n\r\n\r\n\t\t Usa la versione compatibile con il tuo MySQL Server \r\n\t\t<d... @28:5) 
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:96)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:74)
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:243)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refreshPhase2(ProjectRegistryManager.java:591)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:491)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:370)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:322)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:146)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:84)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:83)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:192)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...\n\r\n\r\n\t\t Usa la versione compatibile con il tuo MySQL Server \r\n\t\t<d... @28:5) 
-	at org.codehaus.plexus.util.xml.pull.MXParser.nextTag(MXParser.java:1364)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.parseModel(MavenXpp3Reader.java:2317)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:623)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:654)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:93)
-	... 26 more
-
-!ENTRY org.eclipse.m2e.logback.appender 4 0 2024-11-22 01:21:01.951
-!MESSAGE Could not read pom.xml
-!STACK 1
-org.eclipse.core.runtime.CoreException: Could not read pom.xml
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:245)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refreshPhase2(ProjectRegistryManager.java:591)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:491)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:370)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:322)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:146)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:84)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:83)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:192)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-Caused by: org.apache.maven.model.io.ModelParseException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...\n\r\n\r\n\t\t Usa la versione compatibile con il tuo MySQL Server \r\n\t\t<d... @28:5) 
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:96)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:74)
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:243)
-	... 24 more
-Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...\n\r\n\r\n\t\t Usa la versione compatibile con il tuo MySQL Server \r\n\t\t<d... @28:5) 
-	at org.codehaus.plexus.util.xml.pull.MXParser.nextTag(MXParser.java:1364)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.parseModel(MavenXpp3Reader.java:2317)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:623)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:654)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:93)
-	... 26 more
-!SUBENTRY 1 org.eclipse.m2e.core 4 0 2024-11-22 01:21:01.951
-!MESSAGE Could not read pom.xml
-!STACK 0
-org.apache.maven.model.io.ModelParseException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...\n\r\n\r\n\t\t Usa la versione compatibile con il tuo MySQL Server \r\n\t\t<d... @28:5) 
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:96)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:74)
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:243)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refreshPhase2(ProjectRegistryManager.java:591)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:491)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:370)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:322)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:146)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:84)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:83)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:192)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...\n\r\n\r\n\t\t Usa la versione compatibile con il tuo MySQL Server \r\n\t\t<d... @28:5) 
-	at org.codehaus.plexus.util.xml.pull.MXParser.nextTag(MXParser.java:1364)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.parseModel(MavenXpp3Reader.java:2317)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:623)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:654)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:93)
-	... 26 more
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 01:21:02.342
-!MESSAGE Classpath changed for project: keycloack-user-storage-provider
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 01:21:02.342
-!MESSAGE Boot project REMOVED: keycloack-user-storage-provider
-
-!ENTRY org.eclipse.m2e.logback.appender 4 0 2024-11-22 01:21:03.274
-!MESSAGE Failed to read Maven project: Some problems were encountered while processing the POMs:
-[FATAL] Non-parseable POM C:\Users\momo\Documents\PhotoDom-MicroServices\keycloack-user-storage-provider\pom.xml: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...</dependency>\r\n\r\n\t\t JPA API \r\n\t\t<d... @73:5)  @ line 73, column 5
-!STACK 0
-org.apache.maven.project.ProjectBuildingException: Some problems were encountered while processing the POMs:
-[FATAL] Non-parseable POM C:\Users\momo\Documents\PhotoDom-MicroServices\keycloack-user-storage-provider\pom.xml: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...</dependency>\r\n\r\n\t\t JPA API \r\n\t\t<d... @73:5)  @ line 73, column 5
-
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readMavenProjects(IMavenToolbox.java:140)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.lambda$22(ProjectRegistryManager.java:943)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.readProjectsWithDependencies(ProjectRegistryManager.java:939)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.create(ProjectRegistryManager.java:219)
-	at org.eclipse.m2e.core.internal.project.registry.MavenProjectManager.create(MavenProjectManager.java:105)
-	at org.eclipse.m2e.core.ui.internal.actions.SelectionUtil.getMavenProject(SelectionUtil.java:239)
-	at org.eclipse.m2e.editor.pom.MavenPomEditor.readMavenProject(MavenPomEditor.java:709)
-	at org.eclipse.m2e.editor.pom.MavenPomEditor$4.run(MavenPomEditor.java:1029)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-
-!ENTRY org.eclipse.m2e.logback.appender 4 0 2024-11-22 01:21:03.379
-!MESSAGE Could not read pom.xml
-!STACK 1
-org.eclipse.core.runtime.CoreException: Could not read pom.xml
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:245)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refreshPhase2(ProjectRegistryManager.java:591)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:491)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:370)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:322)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:146)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:84)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:83)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:192)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-Caused by: org.apache.maven.model.io.ModelParseException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...</dependency>\r\n\r\n\t\t JPA API \r\n\t\t<d... @73:5) 
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:96)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:74)
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:243)
-	... 24 more
-Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...</dependency>\r\n\r\n\t\t JPA API \r\n\t\t<d... @73:5) 
-	at org.codehaus.plexus.util.xml.pull.MXParser.nextTag(MXParser.java:1364)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.parseModel(MavenXpp3Reader.java:2317)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:623)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:654)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:93)
-	... 26 more
-!SUBENTRY 1 org.eclipse.m2e.core 4 0 2024-11-22 01:21:03.379
-!MESSAGE Could not read pom.xml
-!STACK 0
-org.apache.maven.model.io.ModelParseException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...</dependency>\r\n\r\n\t\t JPA API \r\n\t\t<d... @73:5) 
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:96)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:74)
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:243)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refreshPhase2(ProjectRegistryManager.java:591)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:491)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:370)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:322)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:146)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:84)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:83)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:192)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...</dependency>\r\n\r\n\t\t JPA API \r\n\t\t<d... @73:5) 
-	at org.codehaus.plexus.util.xml.pull.MXParser.nextTag(MXParser.java:1364)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.parseModel(MavenXpp3Reader.java:2317)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:623)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:654)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:93)
-	... 26 more
-
-!ENTRY org.eclipse.m2e.logback.appender 4 0 2024-11-22 01:21:08.959
-!MESSAGE Failed to read Maven project: Some problems were encountered while processing the POMs:
-[FATAL] Non-parseable POM C:\Users\momo\Documents\PhotoDom-MicroServices\keycloack-user-storage-provider\pom.xml: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...mvnrepository.com/artifact/org.keycloak/keycloak-services \r\n\r\n\t\t<d... @106:5)  @ line 106, column 5
-!STACK 0
-org.apache.maven.project.ProjectBuildingException: Some problems were encountered while processing the POMs:
-[FATAL] Non-parseable POM C:\Users\momo\Documents\PhotoDom-MicroServices\keycloack-user-storage-provider\pom.xml: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...mvnrepository.com/artifact/org.keycloak/keycloak-services \r\n\r\n\t\t<d... @106:5)  @ line 106, column 5
-
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readMavenProjects(IMavenToolbox.java:140)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.lambda$22(ProjectRegistryManager.java:943)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.readProjectsWithDependencies(ProjectRegistryManager.java:939)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.create(ProjectRegistryManager.java:219)
-	at org.eclipse.m2e.core.internal.project.registry.MavenProjectManager.create(MavenProjectManager.java:105)
-	at org.eclipse.m2e.core.ui.internal.actions.SelectionUtil.getMavenProject(SelectionUtil.java:239)
-	at org.eclipse.m2e.editor.pom.MavenPomEditor.readMavenProject(MavenPomEditor.java:709)
-	at org.eclipse.m2e.editor.pom.MavenPomEditor$4.run(MavenPomEditor.java:1029)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-
-!ENTRY org.eclipse.m2e.logback.appender 4 0 2024-11-22 01:21:09.065
-!MESSAGE Could not read pom.xml
-!STACK 1
-org.eclipse.core.runtime.CoreException: Could not read pom.xml
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:245)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refreshPhase2(ProjectRegistryManager.java:591)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:491)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:370)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:322)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:146)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:84)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:83)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:192)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-Caused by: org.apache.maven.model.io.ModelParseException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...<version>3.1.0</version>  Compatibile con Spring 6 \r\n\t\t</... @101:5) 
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:96)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:74)
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:243)
-	... 24 more
-Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...<version>3.1.0</version>  Compatibile con Spring 6 \r\n\t\t</... @101:5) 
-	at org.codehaus.plexus.util.xml.pull.MXParser.nextTag(MXParser.java:1364)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.parseDependency(MavenXpp3Reader.java:1422)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.parseModel(MavenXpp3Reader.java:2321)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:623)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:654)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:93)
-	... 26 more
-!SUBENTRY 1 org.eclipse.m2e.core 4 0 2024-11-22 01:21:09.065
-!MESSAGE Could not read pom.xml
-!STACK 0
-org.apache.maven.model.io.ModelParseException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...<version>3.1.0</version>  Compatibile con Spring 6 \r\n\t\t</... @101:5) 
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:96)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:74)
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:243)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refreshPhase2(ProjectRegistryManager.java:591)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:491)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:370)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:322)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:146)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:84)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:83)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:192)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...<version>3.1.0</version>  Compatibile con Spring 6 \r\n\t\t</... @101:5) 
-	at org.codehaus.plexus.util.xml.pull.MXParser.nextTag(MXParser.java:1364)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.parseDependency(MavenXpp3Reader.java:1422)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.parseModel(MavenXpp3Reader.java:2321)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:623)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:654)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:93)
-	... 26 more
-
-!ENTRY org.eclipse.m2e.logback.appender 4 0 2024-11-22 01:21:14.764
-!MESSAGE Failed to read Maven project: Some problems were encountered while processing the POMs:
-[FATAL] Non-parseable POM C:\Users\momo\Documents\PhotoDom-MicroServices\keycloack-user-storage-provider\pom.xml: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...d>\r\n\t\t<plugins>\r\n\t\t\t Plugin per la compilazione del codice \r\n\t\t\t<p... @126:6)  @ line 126, column 6
-!STACK 0
-org.apache.maven.project.ProjectBuildingException: Some problems were encountered while processing the POMs:
-[FATAL] Non-parseable POM C:\Users\momo\Documents\PhotoDom-MicroServices\keycloack-user-storage-provider\pom.xml: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...d>\r\n\t\t<plugins>\r\n\t\t\t Plugin per la compilazione del codice \r\n\t\t\t<p... @126:6)  @ line 126, column 6
-
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readMavenProjects(IMavenToolbox.java:140)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.lambda$22(ProjectRegistryManager.java:943)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.readProjectsWithDependencies(ProjectRegistryManager.java:939)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.create(ProjectRegistryManager.java:219)
-	at org.eclipse.m2e.core.internal.project.registry.MavenProjectManager.create(MavenProjectManager.java:105)
-	at org.eclipse.m2e.core.ui.internal.actions.SelectionUtil.getMavenProject(SelectionUtil.java:239)
-	at org.eclipse.m2e.editor.pom.MavenPomEditor.readMavenProject(MavenPomEditor.java:709)
-	at org.eclipse.m2e.editor.pom.MavenPomEditor$4.run(MavenPomEditor.java:1029)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-
-!ENTRY org.eclipse.m2e.logback.appender 4 0 2024-11-22 01:21:15.139
-!MESSAGE Could not read pom.xml
-!STACK 1
-org.eclipse.core.runtime.CoreException: Could not read pom.xml
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:245)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refreshPhase2(ProjectRegistryManager.java:591)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:491)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:370)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:322)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:146)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:84)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:83)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:192)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-Caused by: org.apache.maven.model.io.ModelParseException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ... versione compatibile con il\r\n\t\t\tresto delle tue dipendenze \r\n\t\t</... @110:5) 
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:96)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:74)
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:243)
-	... 24 more
-Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ... versione compatibile con il\r\n\t\t\tresto delle tue dipendenze \r\n\t\t</... @110:5) 
-	at org.codehaus.plexus.util.xml.pull.MXParser.nextTag(MXParser.java:1364)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.parseDependency(MavenXpp3Reader.java:1422)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.parseModel(MavenXpp3Reader.java:2321)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:623)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:654)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:93)
-	... 26 more
-!SUBENTRY 1 org.eclipse.m2e.core 4 0 2024-11-22 01:21:15.139
-!MESSAGE Could not read pom.xml
-!STACK 0
-org.apache.maven.model.io.ModelParseException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ... versione compatibile con il\r\n\t\t\tresto delle tue dipendenze \r\n\t\t</... @110:5) 
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:96)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:74)
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:243)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refreshPhase2(ProjectRegistryManager.java:591)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:491)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:370)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:322)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:146)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:84)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:83)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:192)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ... versione compatibile con il\r\n\t\t\tresto delle tue dipendenze \r\n\t\t</... @110:5) 
-	at org.codehaus.plexus.util.xml.pull.MXParser.nextTag(MXParser.java:1364)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.parseDependency(MavenXpp3Reader.java:1422)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.parseModel(MavenXpp3Reader.java:2321)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:623)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:654)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:93)
-	... 26 more
-
-!ENTRY org.eclipse.m2e.logback.appender 4 0 2024-11-22 01:21:18.087
-!MESSAGE Failed to read Maven project: Some problems were encountered while processing the POMs:
-[FATAL] Non-parseable POM C:\Users\momo\Documents\PhotoDom-MicroServices\keycloack-user-storage-provider\pom.xml: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...d>\r\n\t\t<plugins>\r\n\t\t\t Plugin per la compilazione del codice \r\n\t\t\t<p... @125:6)  @ line 125, column 6
-!STACK 0
-org.apache.maven.project.ProjectBuildingException: Some problems were encountered while processing the POMs:
-[FATAL] Non-parseable POM C:\Users\momo\Documents\PhotoDom-MicroServices\keycloack-user-storage-provider\pom.xml: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...d>\r\n\t\t<plugins>\r\n\t\t\t Plugin per la compilazione del codice \r\n\t\t\t<p... @125:6)  @ line 125, column 6
-
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readMavenProjects(IMavenToolbox.java:140)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.lambda$22(ProjectRegistryManager.java:943)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.readProjectsWithDependencies(ProjectRegistryManager.java:939)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.create(ProjectRegistryManager.java:219)
-	at org.eclipse.m2e.core.internal.project.registry.MavenProjectManager.create(MavenProjectManager.java:105)
-	at org.eclipse.m2e.core.ui.internal.actions.SelectionUtil.getMavenProject(SelectionUtil.java:239)
-	at org.eclipse.m2e.editor.pom.MavenPomEditor.readMavenProject(MavenPomEditor.java:709)
-	at org.eclipse.m2e.editor.pom.MavenPomEditor$4.run(MavenPomEditor.java:1029)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-
-!ENTRY org.eclipse.m2e.logback.appender 4 0 2024-11-22 01:21:18.396
-!MESSAGE Could not read pom.xml
-!STACK 1
-org.eclipse.core.runtime.CoreException: Could not read pom.xml
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:245)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refreshPhase2(ProjectRegistryManager.java:591)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:491)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:370)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:322)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:146)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:84)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:83)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:192)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-Caused by: org.apache.maven.model.io.ModelParseException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...d>\r\n\t\t<plugins>\r\n\t\t\t Plugin per la compilazione del codice \r\n\t\t\t<p... @125:6) 
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:96)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:74)
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:243)
-	... 24 more
-Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...d>\r\n\t\t<plugins>\r\n\t\t\t Plugin per la compilazione del codice \r\n\t\t\t<p... @125:6) 
-	at org.codehaus.plexus.util.xml.pull.MXParser.nextTag(MXParser.java:1364)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.parseBuild(MavenXpp3Reader.java:1050)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.parseModel(MavenXpp3Reader.java:2364)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:623)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:654)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:93)
-	... 26 more
-!SUBENTRY 1 org.eclipse.m2e.core 4 0 2024-11-22 01:21:18.396
-!MESSAGE Could not read pom.xml
-!STACK 0
-org.apache.maven.model.io.ModelParseException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...d>\r\n\t\t<plugins>\r\n\t\t\t Plugin per la compilazione del codice \r\n\t\t\t<p... @125:6) 
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:96)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:74)
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:243)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refreshPhase2(ProjectRegistryManager.java:591)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:491)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:370)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:322)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:146)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:84)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:83)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:192)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...d>\r\n\t\t<plugins>\r\n\t\t\t Plugin per la compilazione del codice \r\n\t\t\t<p... @125:6) 
-	at org.codehaus.plexus.util.xml.pull.MXParser.nextTag(MXParser.java:1364)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.parseBuild(MavenXpp3Reader.java:1050)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.parseModel(MavenXpp3Reader.java:2364)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:623)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:654)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:93)
-	... 26 more
-
-!ENTRY org.eclipse.m2e.logback.appender 4 0 2024-11-22 01:21:20.090
-!MESSAGE Failed to read Maven project: Some problems were encountered while processing the POMs:
-[FATAL] Non-parseable POM C:\Users\momo\Documents\PhotoDom-MicroServices\keycloack-user-storage-provider\pom.xml: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...guration>\r\n\t\t\t</plugin>\r\n\t\t\t Plugin per creare un file JAR \r\n\t\t\t<p... @135:6)  @ line 135, column 6
-!STACK 0
-org.apache.maven.project.ProjectBuildingException: Some problems were encountered while processing the POMs:
-[FATAL] Non-parseable POM C:\Users\momo\Documents\PhotoDom-MicroServices\keycloack-user-storage-provider\pom.xml: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...guration>\r\n\t\t\t</plugin>\r\n\t\t\t Plugin per creare un file JAR \r\n\t\t\t<p... @135:6)  @ line 135, column 6
-
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readMavenProjects(IMavenToolbox.java:140)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.lambda$22(ProjectRegistryManager.java:943)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.readProjectsWithDependencies(ProjectRegistryManager.java:939)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.create(ProjectRegistryManager.java:219)
-	at org.eclipse.m2e.core.internal.project.registry.MavenProjectManager.create(MavenProjectManager.java:105)
-	at org.eclipse.m2e.core.ui.internal.actions.SelectionUtil.getMavenProject(SelectionUtil.java:239)
-	at org.eclipse.m2e.editor.pom.MavenPomEditor.readMavenProject(MavenPomEditor.java:709)
-	at org.eclipse.m2e.editor.pom.MavenPomEditor$4.run(MavenPomEditor.java:1029)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-
-!ENTRY org.eclipse.m2e.logback.appender 4 0 2024-11-22 01:21:20.480
-!MESSAGE Could not read pom.xml
-!STACK 1
-org.eclipse.core.runtime.CoreException: Could not read pom.xml
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:245)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refreshPhase2(ProjectRegistryManager.java:591)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:491)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:370)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:322)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:146)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:84)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:83)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:192)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-Caused by: org.apache.maven.model.io.ModelParseException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...guration>\r\n\t\t\t</plugin>\r\n\t\t\t Plugin per creare un file JAR \r\n\t\t\t<p... @135:6) 
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:96)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:74)
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:243)
-	... 24 more
-Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...guration>\r\n\t\t\t</plugin>\r\n\t\t\t Plugin per creare un file JAR \r\n\t\t\t<p... @135:6) 
-	at org.codehaus.plexus.util.xml.pull.MXParser.nextTag(MXParser.java:1364)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.parseBuild(MavenXpp3Reader.java:1050)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.parseModel(MavenXpp3Reader.java:2364)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:623)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:654)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:93)
-	... 26 more
-!SUBENTRY 1 org.eclipse.m2e.core 4 0 2024-11-22 01:21:20.480
-!MESSAGE Could not read pom.xml
-!STACK 0
-org.apache.maven.model.io.ModelParseException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...guration>\r\n\t\t\t</plugin>\r\n\t\t\t Plugin per creare un file JAR \r\n\t\t\t<p... @135:6) 
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:96)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:74)
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:243)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refreshPhase2(ProjectRegistryManager.java:591)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:491)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:370)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:322)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:146)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:84)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:83)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:192)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: expected START_TAG or END_TAG not TEXT (position: TEXT seen ...guration>\r\n\t\t\t</plugin>\r\n\t\t\t Plugin per creare un file JAR \r\n\t\t\t<p... @135:6) 
-	at org.codehaus.plexus.util.xml.pull.MXParser.nextTag(MXParser.java:1364)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.parseBuild(MavenXpp3Reader.java:1050)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.parseModel(MavenXpp3Reader.java:2364)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:623)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:654)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:93)
-	... 26 more
-
-!ENTRY org.eclipse.m2e.logback.appender 4 0 2024-11-22 01:21:22.188
-!MESSAGE Failed to read Maven project: Some problems were encountered while processing the POMs:
-[FATAL] Non-parseable POM C:\Users\momo\Documents\PhotoDom-MicroServices\keycloack-user-storage-provider\pom.xml: start tag not allowed in epilog but got p (position: END_TAG seen ...</build>\r\n\r\n\r\n</project>\r\n\r\n\r\n\r\n\r\n<p... @166:3)  @ line 166, column 3
-!STACK 0
-org.apache.maven.project.ProjectBuildingException: Some problems were encountered while processing the POMs:
-[FATAL] Non-parseable POM C:\Users\momo\Documents\PhotoDom-MicroServices\keycloack-user-storage-provider\pom.xml: start tag not allowed in epilog but got p (position: END_TAG seen ...</build>\r\n\r\n\r\n</project>\r\n\r\n\r\n\r\n\r\n<p... @166:3)  @ line 166, column 3
-
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readMavenProjects(IMavenToolbox.java:140)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.lambda$22(ProjectRegistryManager.java:943)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.readProjectsWithDependencies(ProjectRegistryManager.java:939)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.create(ProjectRegistryManager.java:219)
-	at org.eclipse.m2e.core.internal.project.registry.MavenProjectManager.create(MavenProjectManager.java:105)
-	at org.eclipse.m2e.core.ui.internal.actions.SelectionUtil.getMavenProject(SelectionUtil.java:239)
-	at org.eclipse.m2e.editor.pom.MavenPomEditor.readMavenProject(MavenPomEditor.java:709)
-	at org.eclipse.m2e.editor.pom.MavenPomEditor$4.run(MavenPomEditor.java:1029)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-
-!ENTRY org.eclipse.m2e.logback.appender 4 0 2024-11-22 01:21:22.341
-!MESSAGE Could not read pom.xml
-!STACK 1
-org.eclipse.core.runtime.CoreException: Could not read pom.xml
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:245)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refreshPhase2(ProjectRegistryManager.java:591)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:491)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:370)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:322)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:146)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:84)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:83)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:192)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-Caused by: org.apache.maven.model.io.ModelParseException: start tag not allowed in epilog but got p (position: END_TAG seen ...</build>\r\n\r\n\r\n</project>\r\n\r\n\r\n\r\n\r\n<p... @166:3) 
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:96)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:74)
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:243)
-	... 24 more
-Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: start tag not allowed in epilog but got p (position: END_TAG seen ...</build>\r\n\r\n\r\n</project>\r\n\r\n\r\n\r\n\r\n<p... @166:3) 
-	at org.codehaus.plexus.util.xml.pull.MXParser.parseEpilog(MXParser.java:2028)
-	at org.codehaus.plexus.util.xml.pull.MXParser.nextImpl(MXParser.java:1753)
-	at org.codehaus.plexus.util.xml.pull.MXParser.next(MXParser.java:1375)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:627)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:654)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:93)
-	... 26 more
-!SUBENTRY 1 org.eclipse.m2e.core 4 0 2024-11-22 01:21:22.341
-!MESSAGE Could not read pom.xml
-!STACK 0
-org.apache.maven.model.io.ModelParseException: start tag not allowed in epilog but got p (position: END_TAG seen ...</build>\r\n\r\n\r\n</project>\r\n\r\n\r\n\r\n\r\n<p... @166:3) 
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:96)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:74)
-	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:243)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refreshPhase2(ProjectRegistryManager.java:591)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:491)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:370)
-	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:322)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:146)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:84)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
-	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:83)
-	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:192)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: start tag not allowed in epilog but got p (position: END_TAG seen ...</build>\r\n\r\n\r\n</project>\r\n\r\n\r\n\r\n\r\n<p... @166:3) 
-	at org.codehaus.plexus.util.xml.pull.MXParser.parseEpilog(MXParser.java:2028)
-	at org.codehaus.plexus.util.xml.pull.MXParser.nextImpl(MXParser.java:1753)
-	at org.codehaus.plexus.util.xml.pull.MXParser.next(MXParser.java:1375)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:627)
-	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:654)
-	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:93)
-	... 26 more
-
-!ENTRY org.eclipse.m2e.logback.appender 2 0 2024-11-22 01:21:48.847
-!MESSAGE The artifact org.hibernate:hibernate-core:jar:6.3.2.Final has been relocated to org.hibernate.orm:hibernate-core:jar:6.3.2.Final
-
-!ENTRY org.eclipse.m2e.logback.appender 2 0 2024-11-22 01:21:48.848
-!MESSAGE The artifact org.hibernate:hibernate-core:jar:6.3.2.Final has been relocated to org.hibernate.orm:hibernate-core:jar:6.3.2.Final
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 01:21:52.223
-!MESSAGE Classpath changed for project: keycloack-user-storage-provider
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 01:21:52.274
-!MESSAGE Boot project ADDED: keycloack-user-storage-provider
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 01:21:52.414
-!MESSAGE Classpath changed for project: keycloack-user-storage-provider
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 01:22:46.728
-!MESSAGE Classpath changed for project: keycloack-user-storage-provider
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 01:22:48.021
-!MESSAGE Classpath changed for project: keycloack-user-storage-provider
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 01:22:51.449
-!MESSAGE Classpath changed for project: keycloack-user-storage-provider
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 01:23:58.882
-!MESSAGE Classpath changed for project: keycloack-user-storage-provider
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 01:24:06.835
-!MESSAGE Classpath changed for project: keycloack-user-storage-provider
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 01:24:45.902
-!MESSAGE Classpath changed for project: keycloack-user-storage-provider
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 01:24:50.349
-!MESSAGE Classpath changed for project: keycloack-user-storage-provider
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 01:26:21.972
-!MESSAGE Classpath changed for project: keycloack-user-storage-provider
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 01:26:51.769
-!MESSAGE Classpath changed for project: keycloack-user-storage-provider
-
-!ENTRY org.eclipse.m2e.logback.appender 2 0 2024-11-22 01:32:36.648
-!MESSAGE The artifact org.hibernate:hibernate-core:jar:6.4.4.Final has been relocated to org.hibernate.orm:hibernate-core:jar:6.4.4.Final
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 01:32:38.666
-!MESSAGE Classpath changed for project: keycloack-user-storage-provider
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 01:32:38.828
-!MESSAGE Classpath changed for project: keycloack-user-storage-provider
-
-!ENTRY org.eclipse.m2e.logback.appender 2 0 2024-11-22 01:32:41.291
-!MESSAGE The artifact org.hibernate:hibernate-core:jar:6.4.4.Final has been relocated to org.hibernate.orm:hibernate-core:jar:6.4.4.Final
-
-!ENTRY org.eclipse.lsp4e 2 0 2024-11-22 01:33:12.385
-!MESSAGE Could not get trigger characters due to timeout after 50 milliseconds
-!STACK 0
-java.util.concurrent.TimeoutException
-	at java.base/java.util.concurrent.CompletableFuture.timedGet(CompletableFuture.java:1960)
-	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2095)
-	at org.eclipse.lsp4e.operations.completion.LSContentAssistProcessor.getFuture(LSContentAssistProcessor.java:336)
-	at org.eclipse.lsp4e.operations.completion.LSContentAssistProcessor.getCompletionProposalAutoActivationCharacters(LSContentAssistProcessor.java:377)
-	at org.eclipse.jface.text.contentassist.IContentAssistProcessorExtension$1.isCompletionProposalAutoActivation(IContentAssistProcessorExtension.java:115)
-	at org.eclipse.jface.text.contentassist.ContentAssistant.getAutoActivationTriggerType(ContentAssistant.java:1249)
-	at org.eclipse.jface.text.contentassist.ContentAssistant$AutoAssistListener.keyPressed(ContentAssistant.java:346)
-	at org.eclipse.jface.text.contentassist.ContentAssistant$AutoAssistListener.verifyKey(ContentAssistant.java:375)
-	at org.eclipse.jface.text.TextViewer$VerifyKeyListenersManager.verifyKey(TextViewer.java:482)
-	at org.eclipse.swt.custom.StyledTextListener.handleEvent(StyledTextListener.java:68)
-	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:91)
-	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4326)
-	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1174)
-	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1198)
-	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1183)
-	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:853)
-	at org.eclipse.swt.custom.StyledText.handleKeyDown(StyledText.java:5740)
-	at org.eclipse.swt.custom.StyledText.lambda$28(StyledText.java:5424)
-	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:91)
-	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4326)
-	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1174)
-	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1198)
-	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1183)
-	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1225)
-	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1221)
-	at org.eclipse.swt.widgets.Widget.wmKeyDown(Widget.java:1950)
-	at org.eclipse.swt.widgets.Control.WM_KEYDOWN(Control.java:5150)
-	at org.eclipse.swt.widgets.Canvas.WM_KEYDOWN(Canvas.java:408)
-	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4759)
-	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:342)
-	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5091)
-	at org.eclipse.swt.internal.win32.OS.DispatchMessage(Native Method)
-	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3710)
+	at org.eclipse.lsp4e.LanguageServerWrapper.getServerCapabilities(LanguageServerWrapper.java:924)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.capabilitiesComply(LanguageServiceAccessor.java:203)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.getStartedWrappers(LanguageServiceAccessor.java:412)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.getStartedWrappers(LanguageServiceAccessor.java:399)
+	at org.eclipse.lsp4e.LanguageServers$LanguageServerProjectExecutor.getServers(LanguageServers.java:331)
+	at org.eclipse.lsp4e.LanguageServers.executeOnServers(LanguageServers.java:421)
+	at org.eclipse.lsp4e.LanguageServers.computeFirst(LanguageServers.java:168)
+	at org.eclipse.lsp4e.LanguageServers.computeFirst(LanguageServers.java:144)
+	at org.eclipse.lsp4e.operations.codeactions.LSPCodeActionMarkerResolution.checkMarkerResolution(LSPCodeActionMarkerResolution.java:144)
+	at org.eclipse.lsp4e.operations.codeactions.LSPCodeActionMarkerResolution.hasResolutions(LSPCodeActionMarkerResolution.java:210)
+	at org.eclipse.ui.internal.ide.registry.MarkerHelpRegistry.hasResolution(MarkerHelpRegistry.java:263)
+	at org.eclipse.ui.internal.ide.registry.MarkerHelpRegistry.hasResolutions(MarkerHelpRegistry.java:236)
+	at org.eclipse.jdt.internal.ui.text.correction.JavaCorrectionProcessor.hasCorrections(JavaCorrectionProcessor.java:148)
+	at org.eclipse.jdt.internal.ui.text.correction.JavaCorrectionProcessor.hasCorrections(JavaCorrectionProcessor.java:138)
+	at org.eclipse.jdt.internal.ui.text.correction.JavaCorrectionProcessor.canFix(JavaCorrectionProcessor.java:525)
+	at org.eclipse.jface.text.quickassist.QuickAssistAssistant.canFix(QuickAssistAssistant.java:130)
+	at org.eclipse.ui.texteditor.DefaultMarkerAnnotationAccess.hasQuickFix(DefaultMarkerAnnotationAccess.java:435)
+	at org.eclipse.ui.texteditor.DefaultMarkerAnnotationAccess.getImage(DefaultMarkerAnnotationAccess.java:390)
+	at org.eclipse.ui.texteditor.DefaultMarkerAnnotationAccess.paint(DefaultMarkerAnnotationAccess.java:266)
+	at org.eclipse.jface.text.source.AnnotationRulerColumn.doPaint1(AnnotationRulerColumn.java:795)
+	at org.eclipse.jface.text.source.AnnotationRulerColumn.doubleBufferPaint(AnnotationRulerColumn.java:530)
+	at org.eclipse.jface.text.source.AnnotationRulerColumn.redraw(AnnotationRulerColumn.java:821)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4099)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3715)
 	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1151)
 	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
 	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1042)
@@ -1017,8 +395,212 @@ java.util.concurrent.TimeoutException
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:605)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1481)
 
-!ENTRY org.eclipse.m2e.logback.appender 2 0 2024-11-22 01:33:16.811
-!MESSAGE The artifact org.hibernate:hibernate-core:jar:6.3.2.Final has been relocated to org.hibernate.orm:hibernate-core:jar:6.3.2.Final
+!ENTRY org.eclipse.lsp4e 4 0 2024-11-28 20:36:31.419
+!MESSAGE ExecutionException occurred during shutdown of EndpointProxy for org.eclipse.lsp4j.jsonrpc.RemoteEndpoint@5c5be03b
+!STACK 0
+java.util.concurrent.ExecutionException: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: È in corso la chiusura della pipe
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:396)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.LanguageServerWrapper$LanguageServerContext.close(LanguageServerWrapper.java:165)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$10(LanguageServerWrapper.java:610)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
+Caused by: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: È in corso la chiusura della pipe
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:72)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:356)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.request(RemoteEndpoint.java:171)
+	at org.eclipse.lsp4j.jsonrpc.services.EndpointProxy.invoke(EndpointProxy.java:91)
+	at jdk.proxy19/jdk.proxy19.$Proxy92.shutdown(Unknown Source)
+	at org.eclipse.lsp4e.LanguageServerWrapper$LanguageServerContext.close(LanguageServerWrapper.java:163)
+	... 8 more
+Caused by: java.io.IOException: È in corso la chiusura della pipe
+	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:367)
+	at java.base/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:125)
+	at java.base/java.io.BufferedOutputStream.implFlush(BufferedOutputStream.java:252)
+	at java.base/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:240)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:69)
+	... 13 more
 
-!ENTRY org.springframework.tooling.boot.ls 1 0 2024-11-22 01:33:18.371
-!MESSAGE Classpath changed for project: keycloack-user-storage-provider
+!ENTRY org.eclipse.lsp4e 4 0 2024-11-28 20:37:26.897
+!MESSAGE ExecutionException occurred during shutdown of EndpointProxy for org.eclipse.lsp4j.jsonrpc.RemoteEndpoint@1f678ed2
+!STACK 0
+java.util.concurrent.ExecutionException: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: È in corso la chiusura della pipe
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:396)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.LanguageServerWrapper$LanguageServerContext.close(LanguageServerWrapper.java:165)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$10(LanguageServerWrapper.java:610)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
+Caused by: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: È in corso la chiusura della pipe
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:72)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:356)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.request(RemoteEndpoint.java:171)
+	at org.eclipse.lsp4j.jsonrpc.services.EndpointProxy.invoke(EndpointProxy.java:91)
+	at jdk.proxy19/jdk.proxy19.$Proxy92.shutdown(Unknown Source)
+	at org.eclipse.lsp4e.LanguageServerWrapper$LanguageServerContext.close(LanguageServerWrapper.java:163)
+	... 8 more
+Caused by: java.io.IOException: È in corso la chiusura della pipe
+	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:367)
+	at java.base/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:125)
+	at java.base/java.io.BufferedOutputStream.implFlush(BufferedOutputStream.java:252)
+	at java.base/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:240)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:69)
+	... 13 more
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-11-28 20:37:36.899
+!MESSAGE LanguageServer not initialized within 10s
+!STACK 0
+java.util.concurrent.TimeoutException
+	at java.base/java.util.concurrent.CompletableFuture.timedGet(CompletableFuture.java:1960)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2095)
+	at org.eclipse.lsp4e.LanguageServerWrapper.getServerCapabilities(LanguageServerWrapper.java:924)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.capabilitiesComply(LanguageServiceAccessor.java:203)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.getStartedWrappers(LanguageServiceAccessor.java:412)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.getStartedWrappers(LanguageServiceAccessor.java:399)
+	at org.eclipse.lsp4e.LanguageServers$LanguageServerProjectExecutor.getServers(LanguageServers.java:331)
+	at org.eclipse.lsp4e.LanguageServers.executeOnServers(LanguageServers.java:421)
+	at org.eclipse.lsp4e.LanguageServers.computeFirst(LanguageServers.java:168)
+	at org.eclipse.lsp4e.LanguageServers.computeFirst(LanguageServers.java:144)
+	at org.springframework.ide.eclipse.boot.launch.BootLsCommandUtils.executeCommand(BootLsCommandUtils.java:45)
+	at org.springframework.ide.eclipse.boot.dash.model.AbstractLaunchConfigurationsDashElement.lambda$7(AbstractLaunchConfigurationsDashElement.java:609)
+	at org.springframework.ide.eclipse.boot.dash.livexp.PollingLiveExp$3.compute(PollingLiveExp.java:136)
+	at org.springsource.ide.eclipse.commons.livexp.core.LiveExpression.refresh(LiveExpression.java:74)
+	at org.springframework.ide.eclipse.boot.dash.livexp.PollingLiveExp.refresh(PollingLiveExp.java:73)
+	at org.springframework.ide.eclipse.boot.dash.livexp.PollingLiveExp$1.run(PollingLiveExp.java:59)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-11-28 20:37:36.899
+!MESSAGE ExecutionException occurred during shutdown of EndpointProxy for org.eclipse.lsp4j.jsonrpc.RemoteEndpoint@d6e9b42
+!STACK 0
+java.util.concurrent.ExecutionException: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: È in corso la chiusura della pipe
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:396)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.LanguageServerWrapper$LanguageServerContext.close(LanguageServerWrapper.java:165)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$10(LanguageServerWrapper.java:610)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
+Caused by: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: È in corso la chiusura della pipe
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:72)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:356)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.request(RemoteEndpoint.java:171)
+	at org.eclipse.lsp4j.jsonrpc.services.EndpointProxy.invoke(EndpointProxy.java:91)
+	at jdk.proxy19/jdk.proxy19.$Proxy92.shutdown(Unknown Source)
+	at org.eclipse.lsp4e.LanguageServerWrapper$LanguageServerContext.close(LanguageServerWrapper.java:163)
+	... 8 more
+Caused by: java.io.IOException: È in corso la chiusura della pipe
+	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:367)
+	at java.base/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:125)
+	at java.base/java.io.BufferedOutputStream.implFlush(BufferedOutputStream.java:252)
+	at java.base/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:240)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:69)
+	... 13 more
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-11-29 01:20:47.588
+!MESSAGE ExecutionException occurred during shutdown of EndpointProxy for org.eclipse.lsp4j.jsonrpc.RemoteEndpoint@10cb6c99
+!STACK 0
+java.util.concurrent.ExecutionException: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: È in corso la chiusura della pipe
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:396)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.LanguageServerWrapper$LanguageServerContext.close(LanguageServerWrapper.java:165)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$10(LanguageServerWrapper.java:610)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
+Caused by: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: È in corso la chiusura della pipe
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:72)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:356)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.request(RemoteEndpoint.java:171)
+	at org.eclipse.lsp4j.jsonrpc.services.EndpointProxy.invoke(EndpointProxy.java:91)
+	at jdk.proxy19/jdk.proxy19.$Proxy92.shutdown(Unknown Source)
+	at org.eclipse.lsp4e.LanguageServerWrapper$LanguageServerContext.close(LanguageServerWrapper.java:163)
+	... 8 more
+Caused by: java.io.IOException: È in corso la chiusura della pipe
+	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:367)
+	at java.base/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:125)
+	at java.base/java.io.BufferedOutputStream.implFlush(BufferedOutputStream.java:252)
+	at java.base/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:240)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:69)
+	... 13 more
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-11-29 01:20:57.587
+!MESSAGE LanguageServer not initialized within 10s
+!STACK 0
+java.util.concurrent.TimeoutException
+	at java.base/java.util.concurrent.CompletableFuture.timedGet(CompletableFuture.java:1960)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2095)
+	at org.eclipse.lsp4e.LanguageServerWrapper.getServerCapabilities(LanguageServerWrapper.java:924)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.capabilitiesComply(LanguageServiceAccessor.java:203)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.getStartedWrappers(LanguageServiceAccessor.java:412)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.getStartedWrappers(LanguageServiceAccessor.java:399)
+	at org.eclipse.lsp4e.LanguageServers$LanguageServerProjectExecutor.getServers(LanguageServers.java:331)
+	at org.eclipse.lsp4e.LanguageServers.executeOnServers(LanguageServers.java:421)
+	at org.eclipse.lsp4e.LanguageServers.collectAll(LanguageServers.java:91)
+	at org.eclipse.lsp4e.LanguageServers.collectAll(LanguageServers.java:74)
+	at org.springframework.ide.eclipse.boot.dash.liveprocess.DefaultLiveProcessCommandExecutor.executeCommand(DefaultLiveProcessCommandExecutor.java:62)
+	at org.springframework.ide.eclipse.boot.dash.BootDashActivator$1.stateChanged(BootDashActivator.java:229)
+	at org.springframework.ide.eclipse.boot.dash.BootDashActivator$1.stateChanged(BootDashActivator.java:1)
+	at org.springframework.ide.eclipse.boot.dash.util.RunStateTracker.updateOwnerStatesAndFireEvents(RunStateTracker.java:216)
+	at org.springframework.ide.eclipse.boot.dash.util.RunStateTracker.processTerminated(RunStateTracker.java:267)
+	at org.springframework.ide.eclipse.boot.util.ProcessTracker.processTerminated(ProcessTracker.java:112)
+	at org.springframework.ide.eclipse.boot.util.ProcessTracker.handleDebugEvent(ProcessTracker.java:78)
+	at org.springframework.ide.eclipse.boot.util.ProcessTracker$1.handleDebugEvents(ProcessTracker.java:48)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(DebugPlugin.java:1287)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(DebugPlugin.java:1321)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(DebugPlugin.java:498)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-11-29 01:20:59.314
+!MESSAGE ExecutionException occurred during shutdown of EndpointProxy for org.eclipse.lsp4j.jsonrpc.RemoteEndpoint@3f1e7584
+!STACK 0
+java.util.concurrent.ExecutionException: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: È in corso la chiusura della pipe
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:396)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.LanguageServerWrapper$LanguageServerContext.close(LanguageServerWrapper.java:165)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$10(LanguageServerWrapper.java:610)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
+Caused by: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: È in corso la chiusura della pipe
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:72)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:356)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.request(RemoteEndpoint.java:171)
+	at org.eclipse.lsp4j.jsonrpc.services.EndpointProxy.invoke(EndpointProxy.java:91)
+	at jdk.proxy19/jdk.proxy19.$Proxy92.shutdown(Unknown Source)
+	at org.eclipse.lsp4e.LanguageServerWrapper$LanguageServerContext.close(LanguageServerWrapper.java:163)
+	... 8 more
+Caused by: java.io.IOException: È in corso la chiusura della pipe
+	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:367)
+	at java.base/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:125)
+	at java.base/java.io.BufferedOutputStream.implFlush(BufferedOutputStream.java:252)
+	at java.base/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:240)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:69)
+	... 13 more

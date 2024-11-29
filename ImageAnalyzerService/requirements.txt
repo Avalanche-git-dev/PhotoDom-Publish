@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+pillow
+google-cloud-vision
+python-dotenv
+python-multipart
