@@ -1,63 +1,5 @@
 package com.api.gateway.filter;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.server.reactive.ServerHttpRequest;
-import org.springframework.stereotype.Component;
-import org.springframework.web.server.ServerWebExchange;
-import org.springframework.web.server.WebFilter;
-import org.springframework.web.server.WebFilterChain;
-
-import com.api.gateway.configuration.JwtUtil;
-
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.JwtException;
-import reactor.core.publisher.Mono;
-//
-//@Component
-//public class JwtAuthenticationFilter implements WebFilter {
-//
-//    @Value("${jwt.secret}")
-//    private String secretKey;
-//
-//    @Override
-//    public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
-//        ServerHttpRequest request = exchange.getRequest();
-//
-//        if (!request.getHeaders().containsKey(HttpHeaders.AUTHORIZATION)) {
-//            return chain.filter(exchange);
-//        }
-//
-//        String authHeader = request.getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
-//        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-//            return chain.filter(exchange);
-//        }
-//
-//        String token = authHeader.substring(7);
-//
-//        try {
-//            SecretKey key = Keys.hmacShaKeyFor(secretKey.getBytes());
-//            Claims claims = Jwts.parserBuilder()
-//                    .setSigningKey(key)
-//                    .build()
-//                    .parseClaimsJws(token)
-//                    .getBody();
-//
-//            if (claims.getExpiration().before(new Date())) {
-//                return Mono.error(new RuntimeException("JWT token is expired"));
-//            }
-//
-//            request.mutate().header("username", claims.getSubject()).build();
-//            exchange.mutate().request(request).build();
-//        } catch (Exception e) {
-//            return Mono.error(new RuntimeException("Invalid JWT token"));
-//        }
-//
-//        return chain.filter(exchange);
-//    }
-//}
-
 //
 //
 //@Component
@@ -124,56 +66,56 @@ import reactor.core.publisher.Mono;
 
 
 
-
-
-@Component
-public class JwtAuthenticationFilter implements WebFilter {
-
-    @Autowired
-    private JwtUtil jwt;
-
-    @Override
-    public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
-        ServerHttpRequest request = exchange.getRequest();
-
-        if (!request.getHeaders().containsKey(HttpHeaders.AUTHORIZATION)) {
-            return chain.filter(exchange);
-        }
-
-        String authHeader = request.getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
-        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            return chain.filter(exchange);
-        }
-
-        String token = authHeader.substring(7);
-
-        try {
-            // Verifica il token con la chiave del servizio utente
-           // Claims claims = jwt.extractAllClaimsByUserService(token);
-//if(!jwt.isUserTokenValid(token)) {
-//	return Mono.error(new RuntimeException("JWT token is expired"));
+//
+//
+//@Component
+//public class JwtAuthenticationFilter implements WebFilter {
+//
+//    @Autowired
+//    private JwtUtil jwt;
+//
+//    @Override
+//    public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
+//        ServerHttpRequest request = exchange.getRequest();
+//
+//        if (!request.getHeaders().containsKey(HttpHeaders.AUTHORIZATION)) {
+//            return chain.filter(exchange);
+//        }
+//
+//        String authHeader = request.getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
+//        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+//            return chain.filter(exchange);
+//        }
+//
+//        String token = authHeader.substring(7);
+//
+//        try {
+//            // Verifica il token con la chiave del servizio utente
+//           // Claims claims = jwt.extractAllClaimsByUserService(token);
+////if(!jwt.isUserTokenValid(token)) {
+////	return Mono.error(new RuntimeException("JWT token is expired"));
+////}
+////            if (claims.getExpiration().before(new Date())) {
+////                return Mono.error(new RuntimeException("JWT token is expired"));
+////            }
+//
+//            // Genera un nuovo token basato su quello vecchio
+//            String newToken = jwt.generateWrappedToken(token);
+//
+//            // Aggiungi il nuovo token all'intestazione Authorization per le richieste successive
+//            request = request.mutate()
+//                    .header(HttpHeaders.AUTHORIZATION, "Bearer " + newToken)
+//                    .build();
+//            exchange = exchange.mutate().request(request).build();
+//        } catch (ExpiredJwtException e) {
+//            return Mono.error(new RuntimeException("JWT token is expired"));
+//        }  catch (JwtException e) {
+//            return Mono.error(new RuntimeException("Invalid JWT token"));
+//        }catch (Exception e) {
+//            return Mono.error(new RuntimeException("Invalid JWT signature"));
+//        }
+//
+//        return chain.filter(exchange);
+//    }
 //}
-//            if (claims.getExpiration().before(new Date())) {
-//                return Mono.error(new RuntimeException("JWT token is expired"));
-//            }
-
-            // Genera un nuovo token basato su quello vecchio
-            String newToken = jwt.generateWrappedToken(token);
-
-            // Aggiungi il nuovo token all'intestazione Authorization per le richieste successive
-            request = request.mutate()
-                    .header(HttpHeaders.AUTHORIZATION, "Bearer " + newToken)
-                    .build();
-            exchange = exchange.mutate().request(request).build();
-        } catch (ExpiredJwtException e) {
-            return Mono.error(new RuntimeException("JWT token is expired"));
-        }  catch (JwtException e) {
-            return Mono.error(new RuntimeException("Invalid JWT token"));
-        }catch (Exception e) {
-            return Mono.error(new RuntimeException("Invalid JWT signature"));
-        }
-
-        return chain.filter(exchange);
-    }
-}
 

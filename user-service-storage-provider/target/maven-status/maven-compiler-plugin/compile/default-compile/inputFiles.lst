@@ -3,6 +3,7 @@ C:\Users\momo\Documents\PhotoDom-MicroServices\user-service-storage-provider\src
 C:\Users\momo\Documents\PhotoDom-MicroServices\user-service-storage-provider\src\main\java\com\example\storage\provider\UserAdapter.java
 C:\Users\momo\Documents\PhotoDom-MicroServices\user-service-storage-provider\src\main\java\com\example\storage\exception\UserNotFoundException.java
 C:\Users\momo\Documents\PhotoDom-MicroServices\user-service-storage-provider\src\main\java\com\example\storage\provider\UserServiceStorageProvider.java
+C:\Users\momo\Documents\PhotoDom-MicroServices\user-service-storage-provider\src\main\java\com\example\storage\model\UserRegistrationRequest.java
 C:\Users\momo\Documents\PhotoDom-MicroServices\user-service-storage-provider\src\main\java\com\example\storage\model\LoginRequest.java
 C:\Users\momo\Documents\PhotoDom-MicroServices\user-service-storage-provider\src\main\java\com\example\storage\factory\package-info.java
 C:\Users\momo\Documents\PhotoDom-MicroServices\user-service-storage-provider\src\main\java\com\example\storage\factory\UserServiceStorageProviderFactory.java
@@ -11,4 +12,5 @@ C:\Users\momo\Documents\PhotoDom-MicroServices\user-service-storage-provider\src
 C:\Users\momo\Documents\PhotoDom-MicroServices\user-service-storage-provider\src\main\java\com\example\storage\model\package-info.java
 C:\Users\momo\Documents\PhotoDom-MicroServices\user-service-storage-provider\src\main\java\com\example\storage\client\UserServiceClientHttp.java
 C:\Users\momo\Documents\PhotoDom-MicroServices\user-service-storage-provider\src\main\java\com\example\storage\client\package-info.java
+C:\Users\momo\Documents\PhotoDom-MicroServices\user-service-storage-provider\src\main\java\com\example\storage\model\Credentials.java
 C:\Users\momo\Documents\PhotoDom-MicroServices\user-service-storage-provider\src\main\java\com\example\storage\exception\package-info.java

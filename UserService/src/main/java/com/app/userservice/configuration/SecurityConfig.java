@@ -1,6 +1,5 @@
 package com.app.userservice.configuration;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -12,8 +11,8 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 	
-	@Autowired
-	JwtAuthenticationFilter JwtAuthenticationFilter;
+//	@Autowired
+//	JwtAuthenticationFilter JwtAuthenticationFilter;
 	
 	
 	
@@ -29,6 +28,34 @@ public class SecurityConfig {
 
 	        return http.build();
 	    }
+	
+	
+//	@Bean
+//	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//	    http
+//	        // Disabilita CSRF
+//	        .csrf(csrf -> csrf.disable())
+//	        
+//	        // Configurazione per gestire le diverse tipologie di autenticazione
+//	        .authorizeHttpRequests(authz -> authz
+//	            // Permetti accesso solo con Basic Auth a questi endpoint
+//	            .requestMatchers("/api/users/login", "/api/users/register").authenticated()
+//	            
+//	            // Richiedi autenticazione JWT per tutte le altre richieste
+//	            .anyRequest().authenticated()
+//	        )
+//
+//	        // Configurazione per Basic Auth
+//	        .httpBasic(Customizer.withDefaults())
+//
+//	        // Configurazione per JWT tramite OAuth2 Resource Server
+//	        .oauth2ResourceServer(oauth2 -> oauth2
+//	            .jwt(Customizer.withDefaults())
+//	        );
+//
+//	    return http.build();
+//	}
+
 
 	
 	

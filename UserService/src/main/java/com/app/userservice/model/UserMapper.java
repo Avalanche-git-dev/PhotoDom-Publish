@@ -13,6 +13,12 @@ public class UserMapper {
         userDto.setId(user.getId());
         userDto.setUsername(user.getUsername());
         userDto.setEmail(user.getEmail());
+        userDto.setFirstName(user.getFirstName());
+        userDto.setLastName(user.getLastName());
+        userDto.setBirthday(user.getBirthday());
+        userDto.setAge(Long.valueOf(user.getAge()));
+        userDto.setNickname(user.getNickname());
+        userDto.setTelephone(user.getTelephone());
         userDto.setStatus(user.getStatus());
         userDto.setRole(user.getRole());
         return userDto;
@@ -27,6 +33,12 @@ public class UserMapper {
         adminDto.setId(admin.getId());
         adminDto.setUsername(admin.getUsername());
         adminDto.setEmail(admin.getEmail());
+        adminDto.setFirstName(admin.getFirstName());
+        adminDto.setLastName(admin.getLastName());
+        adminDto.setNickname(admin.getNickname());
+        adminDto.setTelephone(admin.getTelephone());
+        adminDto.setBirthday(admin.getBirthday());
+        adminDto.setAge(Long.valueOf(admin.getAge()));
         adminDto.setStatus(admin.getStatus());
         adminDto.setRole(admin.getRole());
         adminDto.setQualification(admin.getQualification());

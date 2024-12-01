@@ -34,37 +34,7 @@ public class PhotoService {
     @Autowired
     private JwtUtil jwt;
 
-//    public PhotoDto savePhoto(PhotoDto photoDto) {
-//        // Salva la foto in MongoDB
-//        String fileId = photoStorageService.savePhoto(photoDto.getPhotoStream(), photoDto.getFilename(), photoDto.getContentType());
-//
-//        // Salva i metadati della foto in PostgreSQL
-//        PhotoMetadata metadata = PhotoMapper.toPhotoMetadata(photoDto, fileId);
-//        PhotoMetadata savedMetadata = photoMetadataRepository.save(metadata);
-//
-//        return PhotoMapper.toPhotoDto(savedMetadata, null, 0);
-//    }
-    
-    
-//    public PhotoDto savePhoto(MultipartFile file, String token) throws IOException {
-//        // Salva la foto in MongoDB e ottieni l'ID del file
-//        String fileId = photoStorageService.savePhoto(file.getInputStream(), file.getOriginalFilename(), file.getContentType());
-//        Long userId = jwt.extractUserId(token);
-//
-//        // Crea e salva i metadati della foto in PostgreSQL
-//        PhotoMetadata metadata = new PhotoMetadata();
-//        metadata.setUserId(userId);
-//        metadata.setFilename(file.getOriginalFilename());
-//        metadata.setContentType(file.getContentType());
-//        metadata.setSize(file.getSize());
-//        metadata.setFileId(fileId);
-//        metadata.setUploadDate(new Date());
-//        
-//        PhotoMetadata savedMetadata = photoMetadataRepository.save(metadata);
-//
-//        // Restituisci un PhotoDto con i dettagli della foto salvata
-//        return PhotoMapper.toPhotoDto(savedMetadata, null, 0);
-//    }
+
     
     
     

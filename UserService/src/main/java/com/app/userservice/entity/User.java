@@ -1,6 +1,9 @@
 package com.app.userservice.entity;
 
 
+import java.time.LocalDate;
+import java.time.Period;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -11,6 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -29,6 +33,21 @@ public class User {
 
     @Column(nullable = false, unique = true)
     private String email;
+    
+    @Column(nullable = false)
+    private String firstName;
+    
+    @Column(nullable = false)
+    private String lastName;
+    
+    @Column(nullable = false)
+    private LocalDate birthday;
+    
+    @Column(unique=true,nullable=false)
+    private String nickname;
+    
+    @Column(nullable = false, unique = true)
+    private String telephone;
 
     
 
@@ -98,12 +117,22 @@ public class User {
 
 
 
-	public User(Long id, String username, String password, String email, Role role, UserStatus status) {
+
+
+	
+
+	public User(Long id, String username, String password, String email, String firstName, String lastName,
+			LocalDate birthday, String nickname, String telephone, Role role, UserStatus status) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.birthday = birthday;
+		this.nickname = nickname;
+		this.telephone = telephone;
 		this.role = role;
 		this.status = status;
 	}
@@ -111,8 +140,56 @@ public class User {
 	public User() {
 		super();
 	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+
+
+	public LocalDate getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(LocalDate birthday) {
+		this.birthday = birthday;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
     
-    
+	    @Transient
+	    public int getAge() {
+	        if (birthday == null) {
+	            throw new IllegalStateException("Birthday is not set.");
+	        }
+	        return Period.between(birthday, LocalDate.now()).getYears();
+	    }
     
 
 }

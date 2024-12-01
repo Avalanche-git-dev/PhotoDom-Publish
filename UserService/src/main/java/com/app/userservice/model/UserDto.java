@@ -1,27 +1,25 @@
 package com.app.userservice.model;
 
+import java.time.LocalDate;
+
 import com.app.userservice.entity.Role;
 import com.app.userservice.entity.UserStatus;
 
 public class UserDto {
 	
-	
-    private Long id;
+
+	private Long id;
     private String username;
     private String email;
+    private String firstName;
+    private String lastName;
+    private LocalDate birthday;
+    private Long age;
+    private String nickname;
+    private String telephone;
     private UserStatus status;
     private Role role;
     
-    
-	public UserDto(Long id, String username, String email, UserStatus status, Role role) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.email = email;
-		this.status = status;
-		this.role = role;
-	}
-	
 	public UserDto() {
 		super();
 	}
@@ -57,7 +55,71 @@ public class UserDto {
 		this.role = role;
 	}
 
-    
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+
+	public Long getAge() {
+		return age;
+	}
+
+	public void setAge(Long age) {
+		this.age = age;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+	public UserDto(Long id, String username, String email, String firstName, String lastName, LocalDate birthday,
+			Long age, String nickname, String telephone, UserStatus status, Role role) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.birthday = birthday;
+		this.age = age;
+		this.nickname = nickname;
+		this.telephone = telephone;
+		this.status = status;
+		this.role = role;
+	}
+
+	public LocalDate getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(LocalDate birthday) {
+		this.birthday = birthday;
+	}
+
     
     
     

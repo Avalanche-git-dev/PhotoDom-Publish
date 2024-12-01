@@ -1,5 +1,7 @@
 package com.app.userservice.entity;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -10,6 +12,8 @@ import jakarta.persistence.Table;
 @Table(name = "admins")
 public class Admin extends User {
 	
+	
+
 	@Enumerated(EnumType.STRING)
 	@Column(nullable=false)
     private Qualification qualification;
@@ -18,17 +22,13 @@ public class Admin extends User {
     
     
 
-
-
 	
 
-
-	
-
-	public Admin(Long id, String username, String password, String email, Role role, UserStatus status,
+	public Admin(Long id, String username, String password, String email, String firstName, String lastName,
+			LocalDate birthday, String nickname, String telephone, Role role, UserStatus status,
 			Qualification qualification) {
-		super(id, username, password, email, role, status);
-		this.qualification = qualification;
+		super(id, username, password, email, firstName, lastName, birthday, nickname, telephone, role, status);
+		this.qualification = Qualification.ADMIN;
 	}
 
 	public Admin() {

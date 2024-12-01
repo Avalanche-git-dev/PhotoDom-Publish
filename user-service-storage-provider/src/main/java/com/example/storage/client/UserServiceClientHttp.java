@@ -8,8 +8,10 @@ import org.keycloak.models.KeycloakSession;
 import org.keycloak.util.JsonSerialization;
 
 import com.example.storage.factory.UserServiceStorageProviderFactory;
+import com.example.storage.model.Credentials;
 import com.example.storage.model.LoginRequest;
 import com.example.storage.model.UserDto;
+import com.example.storage.model.UserRegistrationRequest;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import jakarta.ws.rs.WebApplicationException;
@@ -37,11 +39,15 @@ public class UserServiceClientHttp implements UserServiceClient {
     @Override
     @SneakyThrows
     public UserDto getUserById(Long id) {
-        String url = String.format("%s/%d", baseUrl, id); // URL configurato correttamente
+        String url = String.format("%s/user", baseUrl); // URL configurato correttamente
         log.info("Sending request to fetch user by ID: {}", id);
 
-        SimpleHttp.Response response = SimpleHttp.doGet(url, session).authBasic(baseUsername, basePassword).asResponse();
+        SimpleHttp request = SimpleHttp.doGet(url, session)
+        		.authBasic(baseUsername, basePassword)
+                .param("id",String.valueOf(id)); // Passa il parametro come query string
 
+        SimpleHttp.Response response = request.asResponse();
+        
         if (response.getStatus() == 404) {
             log.warn("User with ID '{}' not found.", id);
             throw new WebApplicationException("User not found", 404);
@@ -204,7 +210,82 @@ public class UserServiceClientHttp implements UserServiceClient {
             throw new WebApplicationException("Unexpected server error", response.getStatus());
         }
     }
-    
+
+
+    @Override
+    @SneakyThrows
+    public String deleteUser(Long id) {
+        String url = String.format("%s/delete", baseUrl); // Solo il percorso base
+        log.info("Sending request to delete user with ID: {}", id);
+
+        SimpleHttp.Response response = SimpleHttp.doDelete(url, session)
+                .authBasic(baseUsername, basePassword)
+                .param("id", String.valueOf(id)) // Aggiunge il parametro come query
+                .asResponse();
+
+        if (response.getStatus() == 200) {
+            log.info("Successfully deleted user with ID: {}", id);
+            return "User deleted successfully.";
+        } else if (response.getStatus() == 404) {
+            log.warn("User with ID '{}' not found.", id);
+            throw new WebApplicationException("User not found", 404);
+        } else {
+            log.error("Failed to delete user with ID '{}'. Server returned: {}", id, response.getStatus());
+            throw new WebApplicationException("Unexpected server error", response.getStatus());
+        }
+    }
+
+    @Override
+    @SneakyThrows
+    public UserDto register(UserRegistrationRequest user) {
+        String url = String.format("%s/register", baseUrl); // Aggiunge il suffisso "/register"
+        log.info("Sending request to register user: {}", user.getUsername());
+
+        SimpleHttp.Response response = SimpleHttp.doPost(url, session)
+                .authBasic(baseUsername, basePassword)
+                .header("Content-Type", "application/json")
+                .json(user)
+                .asResponse();
+
+        if (response.getStatus() == 201) { // 201 Created
+            log.info("Successfully registered user: {}", user.getUsername());
+            return response.asJson(UserDto.class);
+        } else if (response.getStatus() == 409) { // Conflict
+            log.warn("Conflict while registering user: {}", user.getUsername());
+            throw new WebApplicationException("User already exists", 409);
+        } else {
+            log.error("Failed to register user '{}'. Server returned: {}", user.getUsername(), response.getStatus());
+            throw new WebApplicationException("Unexpected server error", response.getStatus());
+        }
+    }
+
+	@Override
+	@SneakyThrows
+	public String updateCredential(Long id, Credentials credentials) {
+	    String url = String.format("%s/credentials", baseUrl); // Solo il percorso base
+	    log.info("Sending request to update credentials for user with ID: {}", id);
+
+	    SimpleHttp.Response response = SimpleHttp.doPut(url, session)
+	            .authBasic(baseUsername, basePassword)
+	            .param("id", String.valueOf(id)) // Aggiunge il parametro come query
+	            .header("Content-Type", "application/json")
+	            .json(credentials)
+	            .asResponse();
+
+	    if (response.getStatus() == 200) {
+	        log.info("Successfully updated credentials for user with ID: {}", id);
+	        return "Password updated successfully.";
+	    } else if (response.getStatus() == 400) {
+	        log.warn("Bad request while updating credentials for user with ID: {}", id);
+	        throw new WebApplicationException("Invalid request data", 400);
+	    } else {
+	        log.error("Failed to update credentials for user '{}'. Server returned: {}", id, response.getStatus());
+	        throw new WebApplicationException("Unexpected server error", response.getStatus());
+	    }
+	}
+
+
+
     
     
     

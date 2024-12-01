@@ -8,10 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.userservice.entity.Qualification;
 import com.app.userservice.model.UserDto;
 import com.app.userservice.service.UserService;
 
@@ -35,8 +33,8 @@ public class AdminController {
     }
 
     @PostMapping("/{id}/admin/a")
-    public ResponseEntity<String> addAdmin(@PathVariable Long id, @RequestParam Qualification qualification) {
-        userService.nominateAdmin(id, qualification);
+    public ResponseEntity<String> addAdmin(@PathVariable Long id) {
+        userService.nominateAdmin(id);
         return ResponseEntity.ok("User with ID " + id + " has been promoted to Admin.");
     }
     

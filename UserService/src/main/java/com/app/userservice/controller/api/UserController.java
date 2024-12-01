@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.userservice.configuration.KafkaProducerService;
 import com.app.userservice.entity.User;
+import com.app.userservice.model.Credentials;
 import com.app.userservice.model.LoginRequest;
 import com.app.userservice.model.UserDto;
 import com.app.userservice.model.UserMapper;
@@ -39,8 +40,8 @@ public class UserController {
 		return ResponseEntity.ok(users);
 	}
 
-	@GetMapping("/{id}")
-	public ResponseEntity<UserDto> getUserById(@PathVariable Long id) {
+	@GetMapping("/user")
+	public ResponseEntity<UserDto> getUserById(@RequestParam Long id) {
 		User user = userService.getUserById(id); // Se non viene trovato, lancerà UserNotFoundException dal servizio
 
 		String message = "User details retrieved: " + UserMapper.toUserDto(user).toString();
@@ -62,10 +63,10 @@ public class UserController {
 		return ResponseEntity.ok(UserMapper.toUserDto(updatedUser));
 	}
 
-	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-		userService.deleteUser(id); // Può lanciare UserNotFoundException
-		return ResponseEntity.noContent().build();
+	@DeleteMapping("/delete")
+	public ResponseEntity<String> deleteUser(@RequestParam Long id) {
+	    userService.deleteUser(id); // Gestisce eventuali eccezioni come UserNotFoundException
+	    return ResponseEntity.ok("User deleted successfully.");
 	}
 
 	@GetMapping("/username")
@@ -85,29 +86,31 @@ public class UserController {
 //		String token = userService.authenticate(loginRequest.getUsername(), loginRequest.getPassword());
 //		return ResponseEntity.ok(token);
 //	}
-	
+
 	@PostMapping("/login")
-	public ResponseEntity<UserDto> login (@RequestBody LoginRequest loginRequest){
+	public ResponseEntity<UserDto> login(@RequestBody LoginRequest loginRequest) {
 		UserDto user = userService.authenticate(loginRequest);
 		return ResponseEntity.ok(user);
-		
+
 	}
-	
-	
-	   @GetMapping("/count")
-	    public ResponseEntity<Integer> getUserCount() {
-	        int count = userService.getTotalUserCount();
-	        return ResponseEntity.ok(count);
-	    }
 
-	    @GetMapping("/users")
-	    public ResponseEntity<List<UserDto>> getUsers(@RequestParam(required = false) String search,
-	                                                  @RequestParam(defaultValue = "0") int first,
-	                                                  @RequestParam(defaultValue = "10") int max) {
-	        List<UserDto> users = userService.getUsers(search, first, max);
-	        return ResponseEntity.ok(users);
-	    }
+	@GetMapping("/count")
+	public ResponseEntity<Integer> getUserCount() {
+		int count = userService.getTotalUserCount();
+		return ResponseEntity.ok(count);
+	}
 
+	@GetMapping("/users")
+	public ResponseEntity<List<UserDto>> getUsers(@RequestParam(required = false) String search,
+			@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "10") int max) {
+		List<UserDto> users = userService.getUsers(search, first, max);
+		return ResponseEntity.ok(users);
+	}
 
+	@PutMapping("/credentials")
+	public ResponseEntity<String> changePsw(@RequestParam Long id, @RequestBody Credentials credentials) {
+		userService.updateCredentials(id, credentials);
+		return ResponseEntity.ok("Password updated successfully.");
+	}
 
 }

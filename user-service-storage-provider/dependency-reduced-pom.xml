@@ -41,25 +41,25 @@
     <dependency>
       <groupId>org.keycloak</groupId>
       <artifactId>keycloak-core</artifactId>
-      <version>25.0.0</version>
+      <version>26.0.0</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.keycloak</groupId>
       <artifactId>keycloak-server-spi</artifactId>
-      <version>25.0.0</version>
+      <version>26.0.0</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.keycloak</groupId>
       <artifactId>keycloak-server-spi-private</artifactId>
-      <version>25.0.0</version>
+      <version>26.0.0</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.keycloak</groupId>
       <artifactId>keycloak-services</artifactId>
-      <version>25.0.0</version>
+      <version>26.0.0</version>
       <scope>provided</scope>
       <exclusions>
         <exclusion>
@@ -71,7 +71,7 @@
     <dependency>
       <groupId>org.keycloak</groupId>
       <artifactId>keycloak-model-storage</artifactId>
-      <version>25.0.0</version>
+      <version>26.0.0</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -109,7 +109,7 @@
   </dependencies>
   <properties>
     <java.version>17</java.version>
-    <keycloak.version>25.0.0</keycloak.version>
+    <keycloak.version>26.0.0</keycloak.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>

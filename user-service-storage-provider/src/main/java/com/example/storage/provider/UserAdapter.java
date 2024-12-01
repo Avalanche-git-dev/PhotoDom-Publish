@@ -1,5 +1,7 @@
 package com.example.storage.provider;
 
+import java.time.format.DateTimeFormatter;
+
 // package com.example.storage.provider;
 
 // import java.util.HashSet;
@@ -216,6 +218,16 @@ public class UserAdapter extends AbstractUserAdapter {
     public String getEmail() {
         return user.getEmail();
     }
+    
+    @Override
+    public String getLastName() {
+        return user.getLastName();
+    }
+    
+    @Override
+    public String getFirstName() {
+        return user.getFirstName();
+    }
 
     @Override
     public String getFirstAttribute(String name) {
@@ -228,9 +240,20 @@ public class UserAdapter extends AbstractUserAdapter {
         MultivaluedHashMap<String, String> attributes = new MultivaluedHashMap<>();
         attributes.add(UserModel.USERNAME, getUsername());
         attributes.add(UserModel.EMAIL, getEmail());
-        attributes.add(UserModel.FIRST_NAME, "");
-        attributes.add(UserModel.LAST_NAME, "");
-        attributes.add("externalId", String.valueOf(user.getId()));
+        attributes.add(UserModel.FIRST_NAME, getFirstName());
+        attributes.add(UserModel.LAST_NAME, getLastName());
+       // attributes.add("Birthday",String.valueOf(user.getBirthday()));
+        
+        
+        if (user.getBirthday() != null) {
+            String formattedDate = user.getBirthday().format(DateTimeFormatter.ISO_LOCAL_DATE); // "yyyy-MM-dd"
+            attributes.add("Birthday", formattedDate);
+        }
+        
+        attributes.add("Age", String.valueOf(user.getAge()));
+        attributes.add("Nickname", user.getNickname());
+        attributes.add("Telephone", user.getTelephone());
+        attributes.add("ExternalId", String.valueOf(user.getId()));
         
         
         if (user.getRole() != null) {
@@ -316,6 +339,13 @@ public class UserAdapter extends AbstractUserAdapter {
 	UserFederatedStorageProvider getFederatedStorage() {
 		return UserStorageUtil.userFederatedStorage(session);
 	}
+	
+	
+	 @Override
+	    public boolean isEmailVerified() {
+	        return true;
+	    }
+
 
 
 
