@@ -94,18 +94,18 @@ public class UserController {
 
 	}
 
-	@GetMapping("/count")
-	public ResponseEntity<Integer> getUserCount() {
-		int count = userService.getTotalUserCount();
-		return ResponseEntity.ok(count);
-	}
+//	@GetMapping("/count")
+//	public ResponseEntity<Integer> getUserCount() {
+//		int count = userService.getTotalUserCount();
+//		return ResponseEntity.ok(count);
+//	}
 
-	@GetMapping("/users")
-	public ResponseEntity<List<UserDto>> getUsers(@RequestParam(required = false) String search,
-			@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "10") int max) {
-		List<UserDto> users = userService.getUsers(search, first, max);
-		return ResponseEntity.ok(users);
-	}
+//	@GetMapping("/users")
+//	public ResponseEntity<List<UserDto>> getUsers(@RequestParam(required = false) String search,
+//			@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "15") int max) {
+//		List<UserDto> users = userService.getUsers(search, first, max);
+//		return ResponseEntity.ok(users);
+//	}
 
 	@PutMapping("/credentials")
 	public ResponseEntity<String> changePsw(@RequestParam Long id, @RequestBody Credentials credentials) {

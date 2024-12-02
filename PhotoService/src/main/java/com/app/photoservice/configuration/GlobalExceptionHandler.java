@@ -18,31 +18,24 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 
-//    // Gestione personalizzata per IOException
-//    @ExceptionHandler(IOException.class)
-//    public ResponseEntity<String> handleIOException(IOException ex) {
-//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-//                             .body("An error occurred while processing the request: " + ex.getMessage());
-//    }
-//
-//    // Gestione generica per tutte le altre eccezioni
-//    @ExceptionHandler(Exception.class)
-//    public ResponseEntity<String> handleGeneralException(Exception ex) {
-//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-//                             .body("An unexpected error occurred: " + ex.getMessage());
-//    }
-    
-    
+    // Gestione personalizzata per IOException
     @ExceptionHandler(IOException.class)
     public ResponseEntity<String> handleIOException(IOException ex) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                             .body("An error occurred while retrieving the photo: " + ex.getMessage());
+                             .body("Errore durante l'elaborazione della richiesta: " + ex.getMessage());
     }
 
-    // Gestisce IllegalStateException
+    // Gestione per IllegalStateException
     @ExceptionHandler(IllegalStateException.class)
     public ResponseEntity<String> handleIllegalStateException(IllegalStateException ex) {
         return ResponseEntity.status(HttpStatus.CONFLICT)
-                             .body("Illegal state detected: " + ex.getMessage());
+                             .body("Stato illegale rilevato: " + ex.getMessage());
+    }
+
+    // Gestione generica per tutte le altre eccezioni
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handleGeneralException(Exception ex) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                             .body("Si è verificato un errore inatteso: " + ex.getMessage());
     }
 }
