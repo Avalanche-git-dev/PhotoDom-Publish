@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.userservice.configuration.KafkaProducerService;
 import com.app.userservice.entity.User;
 import com.app.userservice.model.Credentials;
-import com.app.userservice.model.LoginRequest;
 import com.app.userservice.model.UserDto;
 import com.app.userservice.model.UserMapper;
 import com.app.userservice.service.UserService;
@@ -40,7 +38,7 @@ public class UserController {
 		return ResponseEntity.ok(users);
 	}
 
-	@GetMapping("/user")
+	@GetMapping("/profile")
 	public ResponseEntity<UserDto> getUserById(@RequestParam Long id) {
 		User user = userService.getUserById(id); // Se non viene trovato, lancerà UserNotFoundException dal servizio
 
@@ -56,8 +54,8 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(UserMapper.toUserDto(createdUser));
 	}
 
-	@PutMapping("/update/{id}")
-	public ResponseEntity<UserDto> updateUser(@PathVariable Long id, @RequestBody UserDto userDetails) {
+	@PutMapping("/profile/update")
+	public ResponseEntity<UserDto> updateUser(@RequestParam Long id, @RequestBody UserDto userDetails) {
 		User updatedUser = userService.updateUser(id, userDetails); // Può lanciare UserNotFoundException o
 																	// InvalidFieldException
 		return ResponseEntity.ok(UserMapper.toUserDto(updatedUser));
@@ -65,34 +63,35 @@ public class UserController {
 
 	@DeleteMapping("/delete")
 	public ResponseEntity<String> deleteUser(@RequestParam Long id) {
-	    userService.deleteUser(id); // Gestisce eventuali eccezioni come UserNotFoundException
-	    return ResponseEntity.ok("User deleted successfully.");
+		userService.deleteUser(id); // Gestisce eventuali eccezioni come UserNotFoundException
+		return ResponseEntity.ok("User deleted successfully.");
 	}
 
-	@GetMapping("/username")
-	public ResponseEntity<UserDto> getUserByUsername(@RequestParam String username) {
-		User user = userService.getUserByUsername(username);
-		return ResponseEntity.ok(UserMapper.toUserDto(user));
+	@PutMapping("/credentials/update")
+	public ResponseEntity<String> changePsw(@RequestParam Long id, @RequestBody Credentials credentials) {
+		userService.updateCredentials(id, credentials);
+		return ResponseEntity.ok("Password updated successfully.");
 	}
 
-	@GetMapping("/email")
-	public ResponseEntity<UserDto> getUserByEmail(@RequestParam String email) {
-		User user = userService.getUserByEmail(email);
-		return ResponseEntity.ok(UserMapper.toUserDto(user));
-	}
-
-//	@PostMapping("/login")
-//	public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
-//		String token = userService.authenticate(loginRequest.getUsername(), loginRequest.getPassword());
-//		return ResponseEntity.ok(token);
+//
+//	@GetMapping("/username")
+//	public ResponseEntity<UserDto> getUserByUsername(@RequestParam String username) {
+//		User user = userService.getUserByUsername(username);
+//		return ResponseEntity.ok(UserMapper.toUserDto(user));
+//	}
+//
+//	@GetMapping("/email")
+//	public ResponseEntity<UserDto> getUserByEmail(@RequestParam String email) {
+//		User user = userService.getUserByEmail(email);
+//		return ResponseEntity.ok(UserMapper.toUserDto(user));
 //	}
 
-	@PostMapping("/login")
-	public ResponseEntity<UserDto> login(@RequestBody LoginRequest loginRequest) {
-		UserDto user = userService.authenticate(loginRequest);
-		return ResponseEntity.ok(user);
-
-	}
+//	@PostMapping("/login")
+//	public ResponseEntity<UserDto> login(@RequestBody LoginRequest loginRequest) {
+//		UserDto user = userService.authenticate(loginRequest);
+//		return ResponseEntity.ok(user);
+//
+//	}
 
 //	@GetMapping("/count")
 //	public ResponseEntity<Integer> getUserCount() {
@@ -106,11 +105,5 @@ public class UserController {
 //		List<UserDto> users = userService.getUsers(search, first, max);
 //		return ResponseEntity.ok(users);
 //	}
-
-	@PutMapping("/credentials")
-	public ResponseEntity<String> changePsw(@RequestParam Long id, @RequestBody Credentials credentials) {
-		userService.updateCredentials(id, credentials);
-		return ResponseEntity.ok("Password updated successfully.");
-	}
 
 }

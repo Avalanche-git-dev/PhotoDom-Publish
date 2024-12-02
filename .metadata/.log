@@ -2733,3 +2733,1408 @@ java.lang.InterruptedException
 
 !ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-02 11:56:51.404
 !MESSAGE Classpath changed for project: UserService
+
+!ENTRY org.eclipse.jdt.core 2 0 2024-12-02 13:19:33.030
+!MESSAGE Java Index broken - will be automatically deleted to repair: file:/C:/Users/momo/Documents/PhotoDom-MicroServices/.metadata/.plugins/org.eclipse.jdt.core/503230505.index
+!STACK 0
+java.io.UTFDataFormatException: Failed to read index data from file:/C:/Users/momo/Documents/PhotoDom-MicroServices/.metadata/.plugins/org.eclipse.jdt.core/503230505.index at offset 1907 and size 1937001825
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readCategoryTable(DiskIndex.java:685)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeCategory(DiskIndex.java:480)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeCategories(DiskIndex.java:472)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:573)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.OutOfMemoryError: Java heap space
+	at org.eclipse.jdt.internal.compiler.util.HashtableOfObject.<init>(HashtableOfObject.java:57)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readCategoryTable(DiskIndex.java:681)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeCategory(DiskIndex.java:480)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeCategories(DiskIndex.java:472)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:573)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager$$Lambda/0x0000000100919730.run(Unknown Source)
+	at java.base/java.lang.Thread.runWith(Thread.java:1596)
+	... 1 more
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 13:19:33.033
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readCategoryTable(DiskIndex.java:675)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeCategory(DiskIndex.java:480)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeCategories(DiskIndex.java:472)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:573)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 13:26:13.128
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-02 13:46:56.695
+!MESSAGE Classpath changed for project: UserService
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 13:47:01.581
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-02 13:47:01.661
+!MESSAGE Classpath changed for project: UserService
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 13:59:41.466
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 13:59:49.236
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 13:59:51.642
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:00:10.612
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:00:24.841
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:00:32.792
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:01:04.503
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:01:07.544
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:01:13.487
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:01:14.587
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:01:17.133
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:01:20.079
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:01:40.066
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:02:01.147
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:02:05.026
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:02:06.827
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:02:08.378
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:02:09.629
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:02:38.990
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:02:43.755
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:02:49.658
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:03:17.177
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:03:57.885
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:04:01.064
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:04:29.747
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:04:31.247
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:30:18.610
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-02 14:30:18.976
+!MESSAGE Classpath changed for project: UserService
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-02 14:30:19.352
+!MESSAGE Classpath changed for project: UserService
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2024-12-02 14:30:20.022
+!MESSAGE Could not download sources for org.webjars:swagger-ui:5.18.2
+!STACK 1
+org.eclipse.core.runtime.CoreException: Could not resolve artifact org.webjars:swagger-ui:jar:sources:5.18.2
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.lambda$7(MavenImpl.java:540)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:292)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:509)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:494)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.download(DownloadSourcesJob.java:308)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadAttachments(DownloadSourcesJob.java:282)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadMaven(DownloadSourcesJob.java:252)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadFilesAndPopulateToUpdate(DownloadSourcesJob.java:220)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.lambda$0(DownloadSourcesJob.java:149)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
+	at org.eclipse.m2e.core.embedder.IMaven.execute(IMaven.java:300)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Contains: Missing org.webjars:swagger-ui:jar:sources:5.18.2
+!SUBENTRY 1 org.eclipse.m2e.core 4 -1 2024-12-02 14:30:20.054
+!MESSAGE Could not resolve artifact org.webjars:swagger-ui:jar:sources:5.18.2
+!SUBENTRY 2 org.eclipse.m2e.core 4 0 2024-12-02 14:30:20.054
+!MESSAGE Missing org.webjars:swagger-ui:jar:sources:5.18.2
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-02 14:30:21.780
+!MESSAGE Classpath changed for project: UserService
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2024-12-02 14:30:34.481
+!MESSAGE Could not download javadoc for org.webjars:swagger-ui:5.18.2
+!STACK 1
+org.eclipse.core.runtime.CoreException: Could not resolve artifact org.webjars:swagger-ui:jar:javadoc:5.18.2
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.lambda$7(MavenImpl.java:540)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:292)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:509)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:494)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.download(DownloadSourcesJob.java:308)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadAttachments(DownloadSourcesJob.java:294)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadMaven(DownloadSourcesJob.java:252)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadFilesAndPopulateToUpdate(DownloadSourcesJob.java:220)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.lambda$0(DownloadSourcesJob.java:149)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
+	at org.eclipse.m2e.core.embedder.IMaven.execute(IMaven.java:300)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Contains: Missing org.webjars:swagger-ui:jar:javadoc:5.18.2
+!SUBENTRY 1 org.eclipse.m2e.core 4 -1 2024-12-02 14:30:34.481
+!MESSAGE Could not resolve artifact org.webjars:swagger-ui:jar:javadoc:5.18.2
+!SUBENTRY 2 org.eclipse.m2e.core 4 0 2024-12-02 14:30:34.481
+!MESSAGE Missing org.webjars:swagger-ui:jar:javadoc:5.18.2
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:37:39.390
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:37:52.249
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:37:55.444
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:40:21.182
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:42:18.253
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:42:24.334
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2024-12-02 14:43:33.409
+!MESSAGE Could not download sources for org.webjars:swagger-ui:5.2.0
+!STACK 1
+org.eclipse.core.runtime.CoreException: Could not resolve artifact org.webjars:swagger-ui:jar:sources:5.2.0
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.lambda$7(MavenImpl.java:540)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:292)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:509)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:494)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.download(DownloadSourcesJob.java:308)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadAttachments(DownloadSourcesJob.java:282)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadMaven(DownloadSourcesJob.java:252)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadFilesAndPopulateToUpdate(DownloadSourcesJob.java:220)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.lambda$0(DownloadSourcesJob.java:149)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:458)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:339)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:278)
+	at org.eclipse.m2e.core.embedder.IMaven.execute(IMaven.java:300)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Contains: Missing org.webjars:swagger-ui:jar:sources:5.2.0
+!SUBENTRY 1 org.eclipse.m2e.core 4 -1 2024-12-02 14:43:33.410
+!MESSAGE Could not resolve artifact org.webjars:swagger-ui:jar:sources:5.2.0
+!SUBENTRY 2 org.eclipse.m2e.core 4 0 2024-12-02 14:43:33.410
+!MESSAGE Missing org.webjars:swagger-ui:jar:sources:5.2.0
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:43:33.613
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-02 14:43:34.055
+!MESSAGE Classpath changed for project: UserService
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-02 14:43:35.917
+!MESSAGE Classpath changed for project: UserService
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-02 14:43:39.310
+!MESSAGE Classpath changed for project: UserService
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-02 14:43:40.504
+!MESSAGE Classpath changed for project: UserService
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:45:16.402
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:45:21.599
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-02 14:57:03.871
+!MESSAGE Classpath changed for project: PhotoService
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 14:57:44.043
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-02 14:57:44.100
+!MESSAGE Classpath changed for project: PhotoService
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:02:19.789
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:02:23.195
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:03:02.754
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:03:04.699
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.lsp4e 2 0 2024-12-02 15:03:06.116
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:386)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:66)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:04:24.173
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:04:27.178
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:04:30.653
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:05:16.122
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:05:21.939
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:05:25.644
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:05:32.278
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.lsp4e 2 0 2024-12-02 15:05:33.773
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:386)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:66)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:06:02.402
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:06:05.053
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:06:13.934
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:09:36.120
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:09:39.280
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:09:50.691
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:10:16.613
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:12:42.298
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-02 15:13:44.348
+!MESSAGE Classpath changed for project: PhotoService
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:14:06.590
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:14:19.008
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:15:56.857
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:16:00.416
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:16:03.005
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:17:25.040
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:17:40.886
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:20:03.121
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:20:12.144
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:20:14.215
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:20:43.394
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-02 15:20:43.395
+!MESSAGE Classpath changed for project: PhotoService
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-02 15:20:43.749
+!MESSAGE Classpath changed for project: PhotoService
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-02 15:20:45.880
+!MESSAGE Classpath changed for project: PhotoService
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:25:37.915
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-12-02 15:25:40.381
+!MESSAGE Failed to save JDT index: Index for /UserService
+!STACK 0
+java.io.FileNotFoundException: C:\Users\momo\Documents\PhotoDom-MicroServices\.metadata\.plugins\org.eclipse.jdt.core\503230505.index (Impossibile trovare il file specificato)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jdt.internal.core.index.FileIndexLocation.getInputStream(FileIndexLocation.java:84)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:624)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1144)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1187)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:831)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)

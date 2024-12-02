@@ -1,7 +1,5 @@
 package com.app.photoservice.configuration;
 import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,66 +16,71 @@ public class SecurityConfig {
 
 
 	
-	@Bean
-	ReactiveJwtAuthenticationConverterAdapter jwtAuthenticationConverter() {
-	    JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
-	    converter.setJwtGrantedAuthoritiesConverter(jwt -> {
-	        List<String> roles = jwt.getClaimAsStringList("realm_access.roles"); // Usa il claim corretto
-	        if (roles != null) {
-	            return roles.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
-	        }
-	        return Collections.emptyList();
-	    });
-	    return new ReactiveJwtAuthenticationConverterAdapter(converter);
-	}
-	
-	
-
-	
-	@Bean
-	SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
-	    http.csrf(csrf -> csrf.disable())
-	        .authorizeExchange(exchange -> exchange
-	            .anyExchange().authenticated()) // Richiedi autenticazione per tutte le richieste
-	        .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())));
-
-	    return http.build();
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 //	@Bean
 //	ReactiveJwtAuthenticationConverterAdapter jwtAuthenticationConverter() {
 //	    JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
 //	    converter.setJwtGrantedAuthoritiesConverter(jwt -> {
-//	        List<String> roles = jwt.getClaimAsStringList("role");
-//	        return roles.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+//	        List<String> roles = jwt.getClaimAsStringList("realm_access.roles"); // Usa il claim corretto
+//	        if (roles != null) {
+//	            return roles.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+//	        }
+//	        return Collections.emptyList();
 //	    });
 //	    return new ReactiveJwtAuthenticationConverterAdapter(converter);
 //	}
 //	
-	
+//	
+//
+//	
 //	@Bean
 //	SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
-//		http.csrf(csrf -> csrf.disable()) // Disabilita CSRF
-//				.authorizeExchange(exchange -> exchange.pathMatchers("/api/photos/upload")
-//						.permitAll()
-//						.anyExchange()
-//						.authenticated())
-//						.oauth2ResourceServer(oauth2->oauth2.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())));// Permetti
-//		/*Customizer.withDefaults())*/																					
+//	    http.csrf(csrf -> csrf.disable())
+//	        .authorizeExchange(exchange -> exchange
+//	            .anyExchange().authenticated()) // Richiedi autenticazione per tutte le richieste
+//	        .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())));
 //
-//		return http.build();
+//	    return http.build();
 //	}
+//	
+	
+	
+	
+	
+
+	@Bean
+	SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
+	    http.csrf(csrf -> csrf.disable())
+	        .authorizeExchange(exchange -> exchange
+	        	.pathMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/webjars/**").permitAll() // Consenti l'accesso a Swagger
+	            .anyExchange().authenticated() // Autentica tutti gli altri endpoint
+	        )
+	        .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())));
+
+	    return http.build();
+	}
+
+	    @Bean
+	    ReactiveJwtAuthenticationConverterAdapter jwtAuthenticationConverter() {
+	        JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
+	        
+	        converter.setJwtGrantedAuthoritiesConverter(jwt -> {
+	            // Estrae il ruolo dal claim "role"
+	            String role = jwt.getClaimAsString("role");
+	            if (role != null) {
+	                // Converte il ruolo in un SimpleGrantedAuthority con prefisso "ROLE_"
+	                return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + role.toUpperCase()));
+	            }
+	            return Collections.emptyList(); // Nessun ruolo trovato
+	        });
+
+	        // Adatta il converter per Reactive Security
+	        return new ReactiveJwtAuthenticationConverterAdapter(converter);
+	    }
+	
+	
+	
+	
+
 	
 	
 	
