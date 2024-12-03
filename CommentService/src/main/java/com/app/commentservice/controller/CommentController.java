@@ -29,26 +29,26 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
-    @PostMapping
+    @PostMapping("/comment/add")
     public Mono<ResponseEntity<Comment>> addComment(@RequestBody Comment comment) {
         return commentService.addComment(comment)
                 .map(savedComment -> ResponseEntity.status(HttpStatus.CREATED).body(savedComment));
     }
 
-    @GetMapping("/{id}")
-    public Mono<CommentDto> getCommentById(@PathVariable String id) {
+    @GetMapping("/comment")
+    public Mono<CommentDto> getCommentById(@RequestParam String id) {
         return commentService.getCommentById(id)
                              .map(CommentMapper::toDto);
     }
 
-    @GetMapping("/photo/{id}")
-    public Flux<CommentDto> getCommentsByPhoto(@PathVariable String id) {
-        return commentService.getCommentsByPhotoId(id)
+    @GetMapping("/comment/photo")
+    public Flux<CommentDto> getCommentsByPhoto(@RequestParam String photoId) {
+        return commentService.getCommentsByPhotoId(photoId)
                              .map(CommentMapper::toDto);
     }
 
-    @GetMapping("/{id}/replies")
-    public Flux<CommentDto> getReplies(@PathVariable String id) {
+    @GetMapping("/comment/replies")
+    public Flux<CommentDto> getReplies(@RequestParam String id) {
         return commentService.getReplies(id)
                              .map(CommentMapper::toDto);
     }
@@ -59,8 +59,8 @@ public class CommentController {
                              .map(CommentMapper::toDto);
     }
 
-    @DeleteMapping("/{id}")
-    public Mono<ResponseEntity<Void>> deleteComment(@PathVariable String id) {
+    @DeleteMapping("/comment/delete")
+    public Mono<ResponseEntity<Void>> deleteComment(@RequestParam String id) {
         return commentService.deleteComment(id)
                              .then(Mono.just(ResponseEntity.noContent().build()));
     }

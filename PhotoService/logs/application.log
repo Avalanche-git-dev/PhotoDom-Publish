@@ -1,0 +1,88 @@
+2024-12-03 00:19:42 [reactor-http-nio-2] DEBUG o.s.w.s.a.HttpWebHandlerAdapter - [b821315f-5] HTTP GET "/v3/api-docs"
+2024-12-03 00:19:42 [parallel-5] DEBUG o.s.w.s.s.DefaultWebSessionManager - Created new WebSession.
+2024-12-03 00:19:42 [parallel-5] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/logout', method=POST}
+2024-12-03 00:19:42 [parallel-5] DEBUG o.s.s.w.s.u.m.PathPatternParserServerWebExchangeMatcher - Request 'GET /v3/api-docs' doesn't match 'POST /logout'
+2024-12-03 00:19:42 [parallel-5] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - No matches found
+2024-12-03 00:19:42 [parallel-5] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/swagger-ui.html', method=null}
+2024-12-03 00:19:42 [parallel-5] DEBUG o.s.s.w.s.u.m.PathPatternParserServerWebExchangeMatcher - Request 'GET /v3/api-docs' doesn't match 'null /swagger-ui.html'
+2024-12-03 00:19:42 [parallel-5] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/swagger-ui/**', method=null}
+2024-12-03 00:19:42 [parallel-5] DEBUG o.s.s.w.s.u.m.PathPatternParserServerWebExchangeMatcher - Request 'GET /v3/api-docs' doesn't match 'null /swagger-ui/**'
+2024-12-03 00:19:42 [parallel-5] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/v3/api-docs/**', method=null}
+2024-12-03 00:19:42 [parallel-5] DEBUG o.s.s.w.s.u.m.PathPatternParserServerWebExchangeMatcher - Checking match of request : '/v3/api-docs'; against '/v3/api-docs/**'
+2024-12-03 00:19:42 [parallel-5] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/webjars/**', method=null}
+2024-12-03 00:19:42 [parallel-5] DEBUG o.s.s.w.s.u.m.PathPatternParserServerWebExchangeMatcher - Request 'GET /v3/api-docs' doesn't match 'null /webjars/**'
+2024-12-03 00:19:42 [parallel-5] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - matched
+2024-12-03 00:19:42 [parallel-5] DEBUG o.s.s.w.s.a.DelegatingReactiveAuthorizationManager - Checking authorization on '/v3/api-docs' using org.springframework.security.config.web.server.ServerHttpSecurity$AuthorizeExchangeSpec$Access$$Lambda/0x0000000800b48800@62add44f
+2024-12-03 00:19:42 [parallel-5] DEBUG o.s.s.w.s.a.AuthorizationWebFilter - Authorization successful
+2024-12-03 00:19:42 [parallel-5] DEBUG o.s.w.r.r.m.a.RequestMappingHandlerMapping - [b821315f-5] Mapped to org.springdoc.webflux.api.OpenApiWebfluxResource#openapiJson(ServerHttpRequest, String, Locale)
+2024-12-03 00:19:42 [parallel-5] DEBUG o.s.w.r.r.m.a.ResponseBodyResultHandler - [b821315f-5] Using 'application/json' given [application/json, */*] and supported [application/json]
+2024-12-03 00:19:42 [parallel-5] DEBUG o.s.w.r.r.m.a.ResponseBodyResultHandler - [b821315f-5] 0..1 [byte[]]
+2024-12-03 00:19:42 [parallel-5] DEBUG o.s.core.codec.ByteArrayEncoder - [b821315f-5] Writing 2339 bytes
+2024-12-03 00:19:42 [parallel-5] DEBUG o.s.w.s.a.HttpWebHandlerAdapter - [b821315f-5] Completed 200 OK
+2024-12-03 00:47:02 [reactor-http-nio-2] DEBUG o.s.w.s.a.HttpWebHandlerAdapter - [b821315f-6] HTTP GET "/v3/api-docs"
+2024-12-03 00:47:02 [parallel-6] DEBUG o.s.w.s.s.DefaultWebSessionManager - Created new WebSession.
+2024-12-03 00:47:02 [parallel-6] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/logout', method=POST}
+2024-12-03 00:47:02 [parallel-6] DEBUG o.s.s.w.s.u.m.PathPatternParserServerWebExchangeMatcher - Request 'GET /v3/api-docs' doesn't match 'POST /logout'
+2024-12-03 00:47:02 [parallel-6] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - No matches found
+2024-12-03 00:47:02 [parallel-6] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/swagger-ui.html', method=null}
+2024-12-03 00:47:02 [parallel-6] DEBUG o.s.s.w.s.u.m.PathPatternParserServerWebExchangeMatcher - Request 'GET /v3/api-docs' doesn't match 'null /swagger-ui.html'
+2024-12-03 00:47:02 [parallel-6] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/swagger-ui/**', method=null}
+2024-12-03 00:47:02 [parallel-6] DEBUG o.s.s.w.s.u.m.PathPatternParserServerWebExchangeMatcher - Request 'GET /v3/api-docs' doesn't match 'null /swagger-ui/**'
+2024-12-03 00:47:02 [parallel-6] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/v3/api-docs/**', method=null}
+2024-12-03 00:47:02 [parallel-6] DEBUG o.s.s.w.s.u.m.PathPatternParserServerWebExchangeMatcher - Checking match of request : '/v3/api-docs'; against '/v3/api-docs/**'
+2024-12-03 00:47:02 [parallel-6] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/webjars/**', method=null}
+2024-12-03 00:47:02 [parallel-6] DEBUG o.s.s.w.s.u.m.PathPatternParserServerWebExchangeMatcher - Request 'GET /v3/api-docs' doesn't match 'null /webjars/**'
+2024-12-03 00:47:02 [parallel-6] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - matched
+2024-12-03 00:47:02 [parallel-6] DEBUG o.s.s.w.s.a.DelegatingReactiveAuthorizationManager - Checking authorization on '/v3/api-docs' using org.springframework.security.config.web.server.ServerHttpSecurity$AuthorizeExchangeSpec$Access$$Lambda/0x0000000800b48800@62add44f
+2024-12-03 00:47:02 [parallel-6] DEBUG o.s.s.w.s.a.AuthorizationWebFilter - Authorization successful
+2024-12-03 00:47:02 [parallel-6] DEBUG o.s.w.r.r.m.a.RequestMappingHandlerMapping - [b821315f-6] Mapped to org.springdoc.webflux.api.OpenApiWebfluxResource#openapiJson(ServerHttpRequest, String, Locale)
+2024-12-03 00:47:02 [parallel-6] DEBUG o.s.w.r.r.m.a.ResponseBodyResultHandler - [b821315f-6] Using 'application/json' given [application/json, */*] and supported [application/json]
+2024-12-03 00:47:02 [parallel-6] DEBUG o.s.w.r.r.m.a.ResponseBodyResultHandler - [b821315f-6] 0..1 [byte[]]
+2024-12-03 00:47:02 [parallel-6] DEBUG o.s.core.codec.ByteArrayEncoder - [b821315f-6] Writing 2339 bytes
+2024-12-03 00:47:02 [parallel-6] DEBUG o.s.w.s.a.HttpWebHandlerAdapter - [b821315f-6] Completed 200 OK
+2024-12-03 00:48:04 [reactor-http-nio-2] DEBUG o.s.w.s.a.HttpWebHandlerAdapter - [b821315f-7] HTTP GET "/v3/api-docs"
+2024-12-03 00:48:04 [parallel-7] DEBUG o.s.w.s.s.DefaultWebSessionManager - Created new WebSession.
+2024-12-03 00:48:04 [parallel-7] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/logout', method=POST}
+2024-12-03 00:48:04 [parallel-7] DEBUG o.s.s.w.s.u.m.PathPatternParserServerWebExchangeMatcher - Request 'GET /v3/api-docs' doesn't match 'POST /logout'
+2024-12-03 00:48:04 [parallel-7] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - No matches found
+2024-12-03 00:48:04 [parallel-7] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/swagger-ui.html', method=null}
+2024-12-03 00:48:04 [parallel-7] DEBUG o.s.s.w.s.u.m.PathPatternParserServerWebExchangeMatcher - Request 'GET /v3/api-docs' doesn't match 'null /swagger-ui.html'
+2024-12-03 00:48:04 [parallel-7] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/swagger-ui/**', method=null}
+2024-12-03 00:48:04 [parallel-7] DEBUG o.s.s.w.s.u.m.PathPatternParserServerWebExchangeMatcher - Request 'GET /v3/api-docs' doesn't match 'null /swagger-ui/**'
+2024-12-03 00:48:04 [parallel-7] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/v3/api-docs/**', method=null}
+2024-12-03 00:48:04 [parallel-7] DEBUG o.s.s.w.s.u.m.PathPatternParserServerWebExchangeMatcher - Checking match of request : '/v3/api-docs'; against '/v3/api-docs/**'
+2024-12-03 00:48:04 [parallel-7] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/webjars/**', method=null}
+2024-12-03 00:48:04 [parallel-7] DEBUG o.s.s.w.s.u.m.PathPatternParserServerWebExchangeMatcher - Request 'GET /v3/api-docs' doesn't match 'null /webjars/**'
+2024-12-03 00:48:04 [parallel-7] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - matched
+2024-12-03 00:48:04 [parallel-7] DEBUG o.s.s.w.s.a.DelegatingReactiveAuthorizationManager - Checking authorization on '/v3/api-docs' using org.springframework.security.config.web.server.ServerHttpSecurity$AuthorizeExchangeSpec$Access$$Lambda/0x0000000800b48800@62add44f
+2024-12-03 00:48:04 [parallel-7] DEBUG o.s.s.w.s.a.AuthorizationWebFilter - Authorization successful
+2024-12-03 00:48:04 [parallel-7] DEBUG o.s.w.r.r.m.a.RequestMappingHandlerMapping - [b821315f-7] Mapped to org.springdoc.webflux.api.OpenApiWebfluxResource#openapiJson(ServerHttpRequest, String, Locale)
+2024-12-03 00:48:04 [parallel-7] DEBUG o.s.w.r.r.m.a.ResponseBodyResultHandler - [b821315f-7] Using 'application/json' given [application/json, */*] and supported [application/json]
+2024-12-03 00:48:04 [parallel-7] DEBUG o.s.w.r.r.m.a.ResponseBodyResultHandler - [b821315f-7] 0..1 [byte[]]
+2024-12-03 00:48:04 [parallel-7] DEBUG o.s.core.codec.ByteArrayEncoder - [b821315f-7] Writing 2339 bytes
+2024-12-03 00:48:04 [parallel-7] DEBUG o.s.w.s.a.HttpWebHandlerAdapter - [b821315f-7] Completed 200 OK
+2024-12-03 00:48:24 [reactor-http-nio-2] DEBUG o.s.w.s.a.HttpWebHandlerAdapter - [b821315f-8] HTTP GET "/v3/api-docs"
+2024-12-03 00:48:24 [parallel-8] DEBUG o.s.w.s.s.DefaultWebSessionManager - Created new WebSession.
+2024-12-03 00:48:24 [parallel-8] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/logout', method=POST}
+2024-12-03 00:48:24 [parallel-8] DEBUG o.s.s.w.s.u.m.PathPatternParserServerWebExchangeMatcher - Request 'GET /v3/api-docs' doesn't match 'POST /logout'
+2024-12-03 00:48:24 [parallel-8] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - No matches found
+2024-12-03 00:48:24 [parallel-8] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/swagger-ui.html', method=null}
+2024-12-03 00:48:24 [parallel-8] DEBUG o.s.s.w.s.u.m.PathPatternParserServerWebExchangeMatcher - Request 'GET /v3/api-docs' doesn't match 'null /swagger-ui.html'
+2024-12-03 00:48:24 [parallel-8] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/swagger-ui/**', method=null}
+2024-12-03 00:48:24 [parallel-8] DEBUG o.s.s.w.s.u.m.PathPatternParserServerWebExchangeMatcher - Request 'GET /v3/api-docs' doesn't match 'null /swagger-ui/**'
+2024-12-03 00:48:24 [parallel-8] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/v3/api-docs/**', method=null}
+2024-12-03 00:48:24 [parallel-8] DEBUG o.s.s.w.s.u.m.PathPatternParserServerWebExchangeMatcher - Checking match of request : '/v3/api-docs'; against '/v3/api-docs/**'
+2024-12-03 00:48:24 [parallel-8] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/webjars/**', method=null}
+2024-12-03 00:48:24 [parallel-8] DEBUG o.s.s.w.s.u.m.PathPatternParserServerWebExchangeMatcher - Request 'GET /v3/api-docs' doesn't match 'null /webjars/**'
+2024-12-03 00:48:24 [parallel-8] DEBUG o.s.s.w.s.u.m.OrServerWebExchangeMatcher - matched
+2024-12-03 00:48:24 [parallel-8] DEBUG o.s.s.w.s.a.DelegatingReactiveAuthorizationManager - Checking authorization on '/v3/api-docs' using org.springframework.security.config.web.server.ServerHttpSecurity$AuthorizeExchangeSpec$Access$$Lambda/0x0000000800b48800@62add44f
+2024-12-03 00:48:24 [parallel-8] DEBUG o.s.s.w.s.a.AuthorizationWebFilter - Authorization successful
+2024-12-03 00:48:24 [parallel-8] DEBUG o.s.w.r.r.m.a.RequestMappingHandlerMapping - [b821315f-8] Mapped to org.springdoc.webflux.api.OpenApiWebfluxResource#openapiJson(ServerHttpRequest, String, Locale)
+2024-12-03 00:48:24 [parallel-8] DEBUG o.s.w.r.r.m.a.ResponseBodyResultHandler - [b821315f-8] Using 'application/json' given [application/json, */*] and supported [application/json]
+2024-12-03 00:48:24 [parallel-8] DEBUG o.s.w.r.r.m.a.ResponseBodyResultHandler - [b821315f-8] 0..1 [byte[]]
+2024-12-03 00:48:24 [parallel-8] DEBUG o.s.core.codec.ByteArrayEncoder - [b821315f-8] Writing 2339 bytes
+2024-12-03 00:48:24 [parallel-8] DEBUG o.s.w.s.a.HttpWebHandlerAdapter - [b821315f-8] Completed 200 OK
+2024-12-03 01:45:35 [RMI TCP Connection(179)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-12-03 01:45:35 [RMI TCP Connection(179)-127.0.0.1] DEBUG o.s.b.a.ApplicationAvailabilityBean - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2024-12-03 01:45:36 [RMI TCP Connection(179)-127.0.0.1] DEBUG o.s.b.w.r.c.AnnotationConfigReactiveWebServerApplicationContext - Closing org.springframework.boot.web.reactive.context.AnnotationConfigReactiveWebServerApplicationContext@5aa0dbf4, started on Mon Dec 02 22:55:39 CET 2024
+2024-12-03 01:45:38 [RMI TCP Connection(179)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'

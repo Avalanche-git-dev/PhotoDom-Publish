@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.userservice.model.UserDto;
@@ -20,20 +20,20 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/{id}/ban/s")
-    public ResponseEntity<String> banUser(@PathVariable Long id) {
+    @PostMapping("/ban/add")
+    public ResponseEntity<String> banUser(@RequestParam Long id) {
         userService.banUser(id);
         return ResponseEntity.ok("User with ID " + id + " has been banned.");
     }
 
-    @PostMapping("/{id}/ban/r")
-    public ResponseEntity<String> removeBanUser(@PathVariable Long id) {
+    @PostMapping("/ban/remove")
+    public ResponseEntity<String> removeBanUser(@RequestParam Long id) {
         userService.unbanUser(id);
         return ResponseEntity.ok("User with ID " + id + " has been unbanned.");
     }
 
-    @PostMapping("/{id}/admin/a")
-    public ResponseEntity<String> addAdmin(@PathVariable Long id) {
+    @PostMapping("/promote/admin")
+    public ResponseEntity<String> addAdmin(@RequestParam Long id) {
         userService.nominateAdmin(id);
         return ResponseEntity.ok("User with ID " + id + " has been promoted to Admin.");
     }

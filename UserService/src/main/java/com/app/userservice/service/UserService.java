@@ -9,8 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.app.userservice.configuration.KafkaProducerService;
-import com.app.userservice.configuration.TopicConstants;
+import com.app.userservice.constants.TopicConstants;
 import com.app.userservice.entity.Admin;
 import com.app.userservice.entity.Qualification;
 import com.app.userservice.entity.Role;
@@ -22,6 +21,7 @@ import com.app.userservice.exception.DuplicateUsernameException;
 import com.app.userservice.exception.InvalidFieldException;
 import com.app.userservice.exception.UserException;
 import com.app.userservice.exception.UserNotFoundException;
+import com.app.userservice.kafka.KafkaProducerService;
 import com.app.userservice.model.Credentials;
 import com.app.userservice.model.LoginRequest;
 import com.app.userservice.model.UserDto;

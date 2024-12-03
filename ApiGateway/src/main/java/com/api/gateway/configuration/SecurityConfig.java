@@ -38,7 +38,7 @@ public class SecurityConfig {
 	@Bean
 	SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
 		http.csrf(csrf -> csrf.disable()) // Disabilita CSRF
-				.authorizeExchange(exchange -> exchange.pathMatchers("/eureka/**","/api/users/register")
+				.authorizeExchange(exchange -> exchange.pathMatchers(freeResourceUrls)
 						.permitAll()
 						.anyExchange()
 						.authenticated())
@@ -52,5 +52,10 @@ public class SecurityConfig {
 
 		return http.build();
 	}
+	
+	
+	
+	 private final String[] freeResourceUrls = {"/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**",
+	            "/swagger-resources/**", "/api-docs/**", "/aggregate/**", "/webjars/**", "/actuator/prometheus"};
 
 }

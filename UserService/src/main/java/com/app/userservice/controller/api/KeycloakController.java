@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.userservice.configuration.KafkaProducerService;
 import com.app.userservice.entity.User;
+import com.app.userservice.kafka.KafkaProducerService;
 import com.app.userservice.model.LoginRequest;
 import com.app.userservice.model.UserDto;
 import com.app.userservice.model.UserMapper;

@@ -79,7 +79,7 @@ public ResponseEntity<PhotoDto> getPhotoMetadata(@RequestParam Long photoId) thr
     
     
     
-    @PostMapping("/like/a")
+    @PostMapping("/like/add")
     public Mono<ResponseEntity<String>> addLike(@RequestParam Long photoId) {
         return photoService.addLike(photoId)
                 .map(result -> result
@@ -89,7 +89,7 @@ public ResponseEntity<PhotoDto> getPhotoMetadata(@RequestParam Long photoId) thr
     
     
     
-    @DeleteMapping("/like/d")
+    @DeleteMapping("/like/remove")
     public Mono<ResponseEntity<String>> removeLike(@RequestParam Long photoId) {
         return photoService.removeLike(photoId)
                 .map(result -> result
