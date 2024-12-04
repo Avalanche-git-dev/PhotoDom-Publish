@@ -1,5 +1,6 @@
 package com.app.commentservice.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -9,9 +10,14 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "comments")
-public class Comment implements CommentComponent {
+public class Comment implements CommentComponent, Serializable {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     private String id;
 
     private String content;
@@ -21,7 +27,7 @@ public class Comment implements CommentComponent {
     private String userId;  // Usando l'ID come stringa per riferimenti a User
 
     private String parentCommentId; // ID del commento genitore
-
+   
     private List<Comment> replies = new ArrayList<>();
 
     private Date createdDate;

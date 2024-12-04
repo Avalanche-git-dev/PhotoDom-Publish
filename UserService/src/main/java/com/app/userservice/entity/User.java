@@ -4,6 +4,8 @@ package com.app.userservice.entity;
 import java.time.LocalDate;
 import java.time.Period;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -184,6 +186,7 @@ public class User {
 	}
     
 	    @Transient
+	    @JsonIgnore
 	    public int getAge() {
 	        if (birthday == null) {
 	            throw new IllegalStateException("Birthday is not set.");

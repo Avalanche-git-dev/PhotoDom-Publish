@@ -2,6 +2,7 @@ package com.app.userservice.filter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -11,6 +12,7 @@ import com.app.userservice.exception.AdminAlreadyExistsException;
 import com.app.userservice.exception.DuplicateEmailException;
 import com.app.userservice.exception.DuplicateUsernameException;
 import com.app.userservice.exception.InvalidFieldException;
+import com.app.userservice.exception.NotAuthorizedException;
 import com.app.userservice.exception.UserException;
 import com.app.userservice.exception.UserNotFoundException;
 
@@ -54,6 +56,30 @@ public class GlobalExceptionHandler {
         logger.error("Handled AdminAlreadyExistsException: {}", ex.getMessage(), ex);
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
     }
+    
+    
+    @ExceptionHandler(IllegalStateException.class)
+    public ResponseEntity<String> handleIllegalStateException(IllegalStateException ex) {
+        logger.error("Handled IllegalStateException: {}", ex.getMessage(), ex);
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
+    }
+    
+    
+    @ExceptionHandler(NotAuthorizedException.class)
+    public ResponseEntity<String> handleNotAuthorizedException(NotAuthorizedException ex) {
+        logger.error("Handled NotAuthorizedException: {}", ex.getMessage(), ex);
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
+    }
+    
+    
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<String> handleDataIntegrityViolationException(DataIntegrityViolationException ex) {
+        logger.error("Handled DataIntegrityViolationException: {}", ex.getMessage(), ex);
+        return new ResponseEntity<>("Data integrity error: " + ex.getMostSpecificCause().getMessage(), HttpStatus.CONFLICT);
+    }
+
+    
+    
 }
 
 

@@ -5,6 +5,11 @@ import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.reactive.function.server.RequestPredicates;
+import org.springframework.web.reactive.function.server.RouterFunction;
+import org.springframework.web.reactive.function.server.RouterFunctions;
+import org.springframework.web.reactive.function.server.ServerResponse;
 
 @Configuration
 public class RoutesConfiguration {
@@ -94,8 +99,20 @@ public class RoutesConfiguration {
 	            .uri(commentServiceUri))
 	        .build();
 	}
-
 	
+	
+	
+	
+	@Bean
+	public RouterFunction<ServerResponse> fallbackRoute() {
+	    return RouterFunctions.route(RequestPredicates.GET("/fallback/{serviceName}"),
+	        request -> {
+	            String serviceName = request.pathVariable("serviceName");
+	            return ServerResponse.status(HttpStatus.SERVICE_UNAVAILABLE)
+	                    .bodyValue("Service " + serviceName + " is currently unavailable. Please try again later.");
+	        });
+	}
+
 	
 	
 	

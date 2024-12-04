@@ -17,5 +17,4 @@ spring:
     mongodb:
       uri: mongodb://localhost:27017/photo_storage
 
-security:
-  enabled: true
+

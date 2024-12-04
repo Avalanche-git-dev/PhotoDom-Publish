@@ -37,12 +37,25 @@ public class PhotoMetadata {
     
     @Column(nullable = false)
     private Date uploadDate;
+    
+    
+    @Column(nullable = false,columnDefinition = "integer default 0")
+    private int likeCount = 0; 
 
-    @OneToMany(mappedBy = "photo", cascade = CascadeType.ALL, orphanRemoval = true)
+    public int getLikeCount() {
+		return likeCount;
+	}
+
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
+	}
+
+	@OneToMany(mappedBy = "photo", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Like> likes = new ArrayList<>();
 
+
 	public PhotoMetadata(Long id, String filename, String contentType, Long size, String fileId, Long userId,
-			List<Like> likes,Date uploadDate) {
+			Date uploadDate, int likeCount, List<Like> likes) {
 		super();
 		this.id = id;
 		this.filename = filename;
@@ -50,8 +63,9 @@ public class PhotoMetadata {
 		this.size = size;
 		this.fileId = fileId;
 		this.userId = userId;
+		this.uploadDate = uploadDate;
+		this.likeCount = likeCount;
 		this.likes = likes;
-		this.uploadDate=uploadDate;
 	}
 
 	public PhotoMetadata() {

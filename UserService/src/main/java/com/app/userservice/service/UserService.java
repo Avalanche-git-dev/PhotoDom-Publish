@@ -5,6 +5,9 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,6 +22,7 @@ import com.app.userservice.exception.AdminAlreadyExistsException;
 import com.app.userservice.exception.DuplicateEmailException;
 import com.app.userservice.exception.DuplicateUsernameException;
 import com.app.userservice.exception.InvalidFieldException;
+import com.app.userservice.exception.NotAuthorizedException;
 import com.app.userservice.exception.UserException;
 import com.app.userservice.exception.UserNotFoundException;
 import com.app.userservice.kafka.KafkaProducerService;
@@ -27,6 +31,7 @@ import com.app.userservice.model.LoginRequest;
 import com.app.userservice.model.UserDto;
 import com.app.userservice.model.UserMapper;
 import com.app.userservice.repository.UserRepository;
+import com.app.userservice.utility.UserContext;
 
 @Service
 public class UserService {
@@ -37,18 +42,22 @@ public class UserService {
 	@Autowired
 	private PasswordEncoder passwordEncoder; // Per codificare e verificare le password
 
-//	@Autowired
-//	private JwtUtil jwtUtil;
+	
+	@Autowired
+	private UserContext currentUser;
 
 	@Autowired
 	private KafkaProducerService kafkaProducerService;
-
+	
+	
+	
+	@Cacheable(value = "user", key = "'list::keycloak'")
 	public List<UserDto> getAllUsers() {
 		List<UserDto> users = userRepository.findAll().stream().map(UserMapper::toUserDto).collect(Collectors.toList());
 		return users;
 	}
 
-	//@Cacheable("users")
+	@Cacheable(value = "user", key = "#id")
 	public User getUserById(Long id) {
 		return userRepository.findById(id)
 				.orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
@@ -58,7 +67,10 @@ public class UserService {
 
 
 
-	@CacheEvict(value = "users", key = "#id")
+	@Caching(evict= {
+		    @CacheEvict(value = "user", key = "#id"),
+		    @CacheEvict(value = "user", key = "'list::inactive'"),
+		    @CacheEvict(value = "user", key = "'list::banned'")})
 	public void deleteUser(Long id) {
 		if (!userRepository.existsById(id)) {
 			throw new UserNotFoundException("User not found with id: " + id);
@@ -66,21 +78,8 @@ public class UserService {
 		userRepository.deleteById(id);
 	}
 
-//	public String authenticate(String username, String password) {
-//		User user = userRepository.findByUsername(username)
-//				.orElseThrow(() -> new UserNotFoundException("User not found with username: " + username));
-//
-//		if (user.getStatus() == UserStatus.BANNED) {
-//			throw new InvalidFieldException("User is banned and cannot authenticate.");
-//		}
-//
-//		if (!passwordEncoder.matches(password, user.getPassword())) {
-//			throw new InvalidFieldException("Invalid username or password.");
-//		}
-//		kafkaProducerService.sendMessage(TopicConstants.USER_LOGGED_TOPIC, "user-logged");
-//
-//		return jwtUtil.generateToken(user.getUsername(), user.getId(), user.getRole().name());
-//	}
+
+	
 
 	public UserDto authenticate(LoginRequest loginRequest) {
 		User user = userRepository.findByUsername(loginRequest.getUsername()).orElseThrow(
@@ -123,12 +122,12 @@ public class UserService {
 		return userRepository.findByEmail(email)
 				.orElseThrow(() -> new UserNotFoundException("User not found with email: " + email));
 	}
-
+	@Cacheable(value = "user", key = "'list::banned'")
 	public List<UserDto> getAllBannedUsers() {
 		return userRepository.findByStatus(UserStatus.BANNED).stream().map(UserMapper::toUserDto)
 				.collect(Collectors.toList());
 	}
-
+	@Cacheable(value = "user", key = "'list::inactive'")
 	public List<UserDto> getAllInactiveUsers() {
 		return userRepository.findByStatus(UserStatus.INACTIVE).stream().map(UserMapper::toUserDto)
 				.collect(Collectors.toList());
@@ -139,7 +138,10 @@ public class UserService {
 	 public int getTotalUserCount() {
 	        return (int) userRepository.count(); // Conteggio totale degli utenti
 	    }
-
+	 
+	 
+	 
+	    @Cacheable(value = "user", key = "'list::keycloak'")
 	    public List<UserDto> getUsers(String search, int first, int max) {
 	        if (search != null && !search.isEmpty()) {
 	            return userRepository.findByUsernameContainingIgnoreCase(search, PageRequest.of(first / max, max))
@@ -158,7 +160,7 @@ public class UserService {
 	    
 	    
 	    
-	    
+	    @CachePut(value = "user", key = "#user.id")
 	    public User createUser(User user) {
 	    	
 	    	
@@ -207,9 +209,13 @@ public class UserService {
 	    }
 	    
 	    
-	    public boolean updateCredentials(Long id, Credentials credentials) {
-	        User user = userRepository.findById(id).orElseThrow(() -> 
-	            new UserNotFoundException("User not found with id: " + id));
+	    public boolean updateCredentials(/*Long id,*/ Credentials credentials) {
+	        User user = userRepository.findById(currentUser.getCurrentUserId()).orElseThrow(() -> 
+	            new UserNotFoundException("User not found with id: " + currentUser.getCurrentUserId()));
+	        
+	        if(currentUser.getCurrentUserId()!=user.getId()) {
+	        	throw new NotAuthorizedException("You cannot modify other's credential. ");
+	        }
 
 	        // Verifica della password attuale
 	        if (!passwordEncoder.matches(credentials.getOldPassword(), user.getPassword())) {
@@ -293,11 +299,19 @@ public class UserService {
 	    
 	    
 	    
-	    
-		// @CacheEvict(value = "users", key = "#id")
-		public User updateUser(Long id, UserDto userDetails) {
-			User user = userRepository.findById(id)
-					.orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
+	    @Caching(evict= {
+	    @CacheEvict(value = "user", key = "@userContext.getCurrentUserId()"),
+	    @CacheEvict(value = "user", key = "'list::inactive'"),
+	    @CacheEvict(value = "user", key = "'list::banned'")})
+		public User updateUser(/*Long id,*/ UserDto userDetails) {
+			User user = userRepository.findById(currentUser.getCurrentUserId())
+					.orElseThrow(() -> new UserNotFoundException("User not found with id: " + currentUser.getCurrentUserId()));
+			
+			
+			
+			if(currentUser.getCurrentUserId()!=user.getId()) {
+	        	throw new NotAuthorizedException("You cannot modify other's profile . You will be contacted by ADMIN for your violation. ");
+	        }
 	
 			if (userDetails.getUsername() != null && !userDetails.getUsername().isEmpty()) {
 				if (user.getUsername().equals(userDetails.getUsername())
@@ -364,73 +378,7 @@ public class UserService {
 	    
 	    
 	    
-//	    
-//		// @CacheEvict(value = "users", key = "#id")
-//		public User updateUser(Long id, UserDto userDetails) {
-//			User user = userRepository.findById(id)
-//					.orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
-//	
-//			if (userDetails.getUsername() != null && !userDetails.getUsername().isEmpty()) {
-//				if (!user.getUsername().equals(userDetails.getUsername())
-//						&& userRepository.findByUsername(userDetails.getUsername()).isPresent()) {
-//					throw new DuplicateUsernameException("Username already exists: " + userDetails.getUsername());
-//				}
-//				user.setUsername(userDetails.getUsername());
-//			}
-//	
-//			if (userDetails.getEmail() != null && !userDetails.getEmail().isEmpty()) {
-//				if (!user.getEmail().equals(userDetails.getEmail())
-//						&& userRepository.findByEmail(userDetails.getEmail()).isPresent()) {
-//					throw new DuplicateEmailException("Email already exists: " + userDetails.getEmail());
-//				}
-//				user.setEmail(userDetails.getEmail());
-//			}
-//	
-//			if (userDetails.getRole() != null) {
-//				user.setRole(userDetails.getRole());
-//			}
-//			
-//			
-//			
-//	        // Aggiorna firstName
-//	        if (userDetails.getFirstName() != null && !userDetails.getFirstName().isEmpty()) {
-//	            user.setFirstName(userDetails.getFirstName());
-//	        }
-//
-//	        // Aggiorna lastName
-//	        if (userDetails.getLastName() != null && !userDetails.getLastName().isEmpty()) {
-//	            user.setLastName(userDetails.getLastName());
-//	        }
-//
-//	        // Aggiorna nickname
-//	        if (userDetails.getNickname() != null && !userDetails.getNickname().isEmpty()) {
-//	            if (!user.getNickname().equals(userDetails.getNickname())
-//	                    && userRepository.findByNickname(userDetails.getNickname()).isPresent()) {
-//	                throw new DuplicateUsernameException("Nickname already exists: " + userDetails.getNickname());
-//	            }
-//	            user.setNickname(userDetails.getNickname());
-//	        }
-//	        
-//	        
-//	        
-//	        // Aggiorna telephone
-//	        if (userDetails.getTelephone() != null && !userDetails.getTelephone().isEmpty()) {
-//	            if (!userDetails.getTelephone().matches("\\d{10}")) {
-//	                throw new InvalidFieldException("Telephone number must be 10 digits.");
-//	            }
-//	            if (!user.getTelephone().equals(userDetails.getTelephone())
-//	                    && userRepository.findByTelephone(userDetails.getTelephone()).isPresent()) {
-//	                throw new InvalidFieldException("Telephone number already exists: " + userDetails.getTelephone());
-//	            }
-//	            user.setTelephone(userDetails.getTelephone());
-//	        }
-//	
-//			return userRepository.save(user);
-//		}
-//
-//	    
-	    
-	    
+  
 	    
 	    	
 	    }
