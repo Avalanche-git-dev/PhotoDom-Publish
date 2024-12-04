@@ -59,25 +59,25 @@ public class RoutesConfiguration {
 
 	@Bean
 	RouteLocator userServiceRouteLocator(RouteLocatorBuilder builder) {
-		return builder.routes().route("user-service", r -> r.path("/api/users/**")
-//	                .filters(f -> f
-//	                    .circuitBreaker(c -> c.setName("userServiceCB").setFallbackUri("forward:/fallback/users")))
+		return builder.routes().route("user-service", r -> r.path("/api/users/**","/keycloak/**")
+	                .filters(f -> f.circuitBreaker(c -> c.setName("userServiceCB")
+                .setFallbackUri("forward:/fallback/users")))
 				.uri(userServiceUri)).build();
 	}
 
 	@Bean
 	RouteLocator photoServiceRouteLocator(RouteLocatorBuilder builder) {
 		return builder.routes().route("photo-service", r -> r.path("/api/photos/**")
-//	                .filters(f -> f
-//	                    .circuitBreaker(c -> c.setName("photoServiceCB").setFallbackUri("forward:/fallback/photos")))
+				 .filters(f -> f.circuitBreaker(c -> c.setName("photoServiceCB")
+                         .setFallbackUri("forward:/fallback/photos")))
 				.uri(photoServiceUri)).build();
 	}
 
 	@Bean
 	RouteLocator commentServiceRouteLocator(RouteLocatorBuilder builder) {
 		return builder.routes().route("comment-service", r -> r.path("/api/comments/**")
-//	                    .filters(f -> f
-//	                        .circuitBreaker(c -> c.setName("commentServiceCB").setFallbackUri("forward:/fallback/comments")))
+				.filters(f -> f.circuitBreaker(c -> c.setName("commentServiceCB")
+                        .setFallbackUri("forward:/fallback/comments")))
 				.uri(commentServiceUri)).build();
 	}
 	
@@ -103,15 +103,26 @@ public class RoutesConfiguration {
 	
 	
 	
-	@Bean
-	public RouterFunction<ServerResponse> fallbackRoute() {
+//	@Bean
+//	public RouterFunction<ServerResponse> fallbackRoute() {
+//	    return RouterFunctions.route(RequestPredicates.GET("/fallback/{serviceName}"),
+//	        request -> {
+//	            String serviceName = request.pathVariable("serviceName");
+//	            return ServerResponse.status(HttpStatus.SERVICE_UNAVAILABLE)
+//	                    .bodyValue("Service " + serviceName + " is currently unavailable. Please try again later.");
+//	        });
+//	}
+	
+	 @Bean
+     RouterFunction<ServerResponse> fallbackRoute() {
 	    return RouterFunctions.route(RequestPredicates.GET("/fallback/{serviceName}"),
 	        request -> {
 	            String serviceName = request.pathVariable("serviceName");
 	            return ServerResponse.status(HttpStatus.SERVICE_UNAVAILABLE)
-	                    .bodyValue("Service " + serviceName + " is currently unavailable. Please try again later.");
+	                    .bodyValue("Service " + serviceName + " is temporarily unavailable. Please try again later.");
 	        });
 	}
+
 
 	
 	

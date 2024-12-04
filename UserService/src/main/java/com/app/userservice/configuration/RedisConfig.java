@@ -45,8 +45,11 @@ public class RedisConfig {
 	    public RedisCacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
 	        // Configura un PolymorphicTypeValidator per il supporto del polimorfismo
 	        BasicPolymorphicTypeValidator typeValidator = BasicPolymorphicTypeValidator.builder()
-	                .allowIfSubType("com.app.userservice.entity") // Permetti la serializzazione solo per il package specificato
+	                .allowIfSubType("com.app.userservice.entity")
+	                .allowIfSubType("java.util")
+	                .allowIfSubType("java.lang")// Permetti tipi standard come ArrayList
 	                .build();
+// Permetti la serializzazione solo per il package specificato
 
 	        // Configura l'ObjectMapper per includere il tipo '@class'
 	        ObjectMapper objectMapper = new ObjectMapper();
