@@ -138,7 +138,16 @@ public class PhotoMetadata {
 		this.likes = likes;
 	}
 
+	@Override
+	public String toString() {
+		return "PhotoMetadata [id=" + id + ", filename=" + filename + ", contentType=" + contentType + ", size=" + size
+				+ ", fileId=" + fileId + ", userId=" + userId + ", uploadDate=" + uploadDate + ", likeCount="
+				+ likeCount + "]";
+	}
+
     
+	
+	
     
     
 }

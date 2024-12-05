@@ -5,9 +5,13 @@ import java.time.LocalDate;
 import com.app.userservice.entity.Role;
 import com.app.userservice.entity.UserStatus;
 
+
 public class UserDto {
 	
 
+	/**
+	 * 
+	 */
 	private Long id;
     private String username;
     private String email;

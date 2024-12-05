@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import com.mongodb.client.gridfs.model.GridFSFile;
 
+import reactor.core.publisher.Mono;
+
 @Service
 public class PhotoStorageService {
 
@@ -30,5 +32,14 @@ public class PhotoStorageService {
         }
         throw new RuntimeException("File not found");
     }
+    
+    
+//    public Mono<String> savePhoto(InputStream photoStream, String filename, String contentType) {
+//        return Mono.fromCallable(() -> {
+//            ObjectId id = gridFsTemplate.store(photoStream, filename, contentType);
+//            return id.toString();
+//        });
+//    }
+
 }
 

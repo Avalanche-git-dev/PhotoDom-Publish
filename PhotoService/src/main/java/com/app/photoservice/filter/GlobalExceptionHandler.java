@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.app.photoservice.exception.PhotoNotFoundException;
+import com.app.photoservice.exception.PhotoReadingException;
 
 
 @RestControllerAdvice
@@ -57,5 +58,13 @@ public class GlobalExceptionHandler {
                              .body("Si è verificato un errore inatteso: " + ex.getMessage());
     }
     
+    
+    
+    @ExceptionHandler(PhotoReadingException.class)
+    public ResponseEntity<String> handlePhotoReadingException(PhotoReadingException ex) {
+    	logger.error("Handled PhotoReadingException: {}", ex.getMessage(), ex);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                             .body("Si è verificato un errore inatteso: " + ex.getMessage());
+    }
     
 }

@@ -2,6 +2,7 @@ package com.app.photoservice.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.codec.multipart.FilePart;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.photoservice.dto.CommentDto;
+import com.app.photoservice.dto.PhotoDto;
 import com.app.photoservice.service.PhotoService;
 
 import reactor.core.publisher.Flux;
@@ -115,12 +116,34 @@ public class PhotoController {
     @Autowired
     private PhotoService photoService;
 
+//    @PostMapping("/upload")
+//    public Mono<ResponseEntity<PhotoDto>> uploadPhoto(@RequestPart("file") FilePart file) {
+//        return photoService.savePhoto(file)
+//                .map(ResponseEntity::ok)
+//                .onErrorResume(e -> Mono.just(ResponseEntity.badRequest().body(null)));
+//    }
+    
+    
+    
+//    @PostMapping("/upload")
+//    public Mono<ResponseEntity<ResponseEntity<String>>> uploadPhoto(@RequestPart("file") FilePart file) {
+//        return photoService.savePhoto(file)
+//                .map(ResponseEntity::ok) // Mappa la risposta in un ResponseEntity
+//                .onErrorResume(e -> Mono.just(ResponseEntity.badRequest().body(/*"Errore: " + e.getMessage()*/null)));
+//    }
+    
+    
     @PostMapping("/upload")
-    public Mono<ResponseEntity<CommentDto>> uploadPhoto(@RequestPart("file") FilePart file) {
+    public Mono<ResponseEntity<String>> uploadPhoto(@RequestPart("file") FilePart file) {
         return photoService.savePhoto(file)
-                .map(ResponseEntity::ok)
-                .onErrorResume(e -> Mono.just(ResponseEntity.badRequest().body(null)));
+            .map(response -> ResponseEntity.ok(response))
+            .onErrorResume(e -> Mono.just(
+                ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Errore: " + e.getMessage())
+            ));
     }
+
+
 
     @GetMapping("/photo")
     public Mono<ResponseEntity<byte[]>> getPhotoById(@RequestParam Long photoId) {
@@ -132,7 +155,7 @@ public class PhotoController {
     }
 
     @GetMapping("/data/photo")
-    public Mono<ResponseEntity<CommentDto>> getPhotoMetadata(@RequestParam Long photoId) {
+    public Mono<ResponseEntity<PhotoDto>> getPhotoMetadata(@RequestParam Long photoId) {
         return photoService.getPhotoMetadata(photoId)
                 .map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.notFound().build());
@@ -157,7 +180,7 @@ public class PhotoController {
     
     
     @GetMapping("/metadata/batch")
-    public Flux<CommentDto> getPhotoMetadataBatch(
+    public Flux<PhotoDto> getPhotoMetadataBatch(
             @RequestParam int page,
             @RequestParam int size) {
         return photoService.getPhotoMetadataBatch(page, size);
@@ -165,7 +188,7 @@ public class PhotoController {
 
     // Nuovo metodo: Ottieni batch completo di foto con immagini
     @GetMapping("/full/batch")
-    public Flux<CommentDto> getPhotosBatch(
+    public Flux<PhotoDto> getPhotosBatch(
             @RequestParam int page,
             @RequestParam int size) {
         return photoService.getPhotosBatch(page, size);
@@ -173,7 +196,7 @@ public class PhotoController {
 
     // Nuovo metodo: Ottieni batch di metadati di foto per utente
     @GetMapping("/metadata/user/batch")
-    public Flux<CommentDto> getPhotoMetadataBatchByUser(
+    public Flux<PhotoDto> getPhotoMetadataBatchByUser(
             @RequestParam int page,
             @RequestParam int size) {
         return photoService.getPhotoMetadataBatchByUser(page, size);
@@ -181,7 +204,7 @@ public class PhotoController {
 
     // Nuovo metodo: Ottieni batch completo di foto per utente
     @GetMapping("/full/user/batch")
-    public Flux<CommentDto> getPhotosBatchByUser(
+    public Flux<PhotoDto> getPhotosBatchByUser(
             @RequestParam int page,
             @RequestParam int size) {
         return photoService.getPhotosBatchByUser(page, size);

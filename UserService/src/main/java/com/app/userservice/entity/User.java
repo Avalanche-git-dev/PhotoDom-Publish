@@ -17,7 +17,6 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "users")

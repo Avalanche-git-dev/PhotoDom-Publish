@@ -4,8 +4,8 @@ import com.app.photoservice.entity.PhotoMetadata;
 
 public class PhotoMapper {
 
-    public static CommentDto toPhotoDto(PhotoMetadata photoMetadata, byte[] imageBytes, int likeCount) {
-        CommentDto photoDto = new CommentDto();
+    public static PhotoDto toPhotoDto(PhotoMetadata photoMetadata, byte[] imageBytes, int likeCount) {
+        PhotoDto photoDto = new PhotoDto();
         photoDto.setId(photoMetadata.getId());
         photoDto.setUserId(photoMetadata.getUserId());
         photoDto.setFilename(photoMetadata.getFilename());
@@ -16,7 +16,7 @@ public class PhotoMapper {
         return photoDto;
     }
 
-    public static PhotoMetadata toPhotoMetadata(CommentDto photoDto, String fileId) {
+    public static PhotoMetadata toPhotoMetadata(PhotoDto photoDto, String fileId) {
         PhotoMetadata photoMetadata = new PhotoMetadata();
         photoMetadata.setUserId(photoDto.getUserId());
         photoMetadata.setFilename(photoDto.getFilename());
@@ -29,7 +29,7 @@ public class PhotoMapper {
     
     
     
-    public static CommentDto toPhotoDto(PhotoMetadata photoMetadata, byte[] imageBytes) {
+    public static PhotoDto toPhotoDto(PhotoMetadata photoMetadata, byte[] imageBytes) {
         return toPhotoDto(photoMetadata, imageBytes, photoMetadata.getLikeCount());
     }
 }

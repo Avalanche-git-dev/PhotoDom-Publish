@@ -1,0 +1,5 @@
+kafka-python
+redis
+python-dotenv
+pillow
+google-cloud-vision

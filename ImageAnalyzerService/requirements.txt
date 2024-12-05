@@ -4,3 +4,5 @@ pillow
 google-cloud-vision
 python-dotenv
 python-multipart
+kafka-python
+redis
