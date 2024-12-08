@@ -3,8 +3,11 @@ package com.app.userservice.controller.api;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,16 +42,16 @@ public class UserController {
 	public ResponseEntity<UserDto> getUserById(@RequestParam Long id) {
 		User user = userService.getUserById(id);
 
-		String message = "User details retrieved: " + UserMapper.toUserDto(user).toString();
+		String message = "User: " + UserMapper.toUserDto(user).toString();
 		kafkaProducerService.sendMessage("user-details-topic", message);
 		return ResponseEntity.ok(UserMapper.toUserDto(user));
 	}
 
-//	@PostMapping("/register")
-//	public ResponseEntity<UserDto> createUser(@RequestBody User user) {
-//		User createdUser = userService.createUser(user);
-//		return ResponseEntity.status(HttpStatus.CREATED).body(UserMapper.toUserDto(createdUser));
-//	}
+	@PostMapping("/register")
+	public ResponseEntity<UserDto> createUser(@RequestBody User user) {
+		User createdUser = userService.createUser(user);
+		return ResponseEntity.status(HttpStatus.CREATED).body(UserMapper.toUserDto(createdUser));
+	}
 
 	@PutMapping("/profile/update")
 	public ResponseEntity<UserDto> updateUser(/* @RequestParam Long id, */ @RequestBody UserDto userDetails) {
@@ -56,11 +59,11 @@ public class UserController {
 		return ResponseEntity.ok(UserMapper.toUserDto(updatedUser));
 	}
 
-//	@DeleteMapping("/delete")
-//	public ResponseEntity<String> deleteUser(@RequestParam Long id) {
-//		userService.deleteUser(id);
-//		return ResponseEntity.ok("User deleted successfully.");
-//	}
+	@DeleteMapping("/delete")
+	public ResponseEntity<String> deleteUser(@RequestParam Long id) {
+		userService.deleteUser(id);
+		return ResponseEntity.ok("User deleted successfully.");
+	}
 
 	@PutMapping("/credentials/update")
 	public ResponseEntity<String> changePsw(/* @RequestParam Long id, */ @RequestBody Credentials credentials) {
@@ -68,6 +71,16 @@ public class UserController {
 		return ResponseEntity.ok("Password updated successfully.");
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 //
 //	@GetMapping("/username")
 //	public ResponseEntity<UserDto> getUserByUsername(@RequestParam String username) {

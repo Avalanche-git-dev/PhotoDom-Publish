@@ -59,7 +59,7 @@ public class RoutesConfiguration {
 
 	@Bean
 	RouteLocator userServiceRouteLocator(RouteLocatorBuilder builder) {
-		return builder.routes().route("user-service", r -> r.path("/api/users/**","/keycloak/**")
+		return builder.routes().route("user-service", r -> r.path("/api/users/**","/keycloak/**","/api/admins/**")
 	                .filters(f -> f.circuitBreaker(c -> c.setName("userServiceCB")
                 .setFallbackUri("forward:/fallback/users")))
 				.uri(userServiceUri)).build();

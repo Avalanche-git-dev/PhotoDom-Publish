@@ -36,6 +36,7 @@ public class SecurityConfig {
         http
             .securityMatcher("/api/**") // Filtra "/api/**"
             .authorizeHttpRequests(auth -> auth
+            	.requestMatchers("/api/users/register").permitAll()
                 .requestMatchers("/api/admins/**").hasRole("ADMIN") // Solo gli ADMIN possono accedere
                 .anyRequest().authenticated() // Tutti gli altri richiedono autenticazione
             )

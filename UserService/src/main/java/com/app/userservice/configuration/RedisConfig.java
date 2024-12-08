@@ -1,63 +1,78 @@
 package com.app.userservice.configuration;
 
-
-
 import java.time.Duration;
 
-import org.springframework.cache.CacheManager;
+//import java.time.Duration;
+
+//import com.fasterxml.jackson.annotation.JsonTypeInfo;
+//import com.fasterxml.jackson.databind.ObjectMapper;
+//import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 @Configuration
 public class RedisConfig {
 	
 	
+	private final ObjectMapper objectMapper;
 	
 	
-    @Bean
-    public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
-        // Configura un ObjectMapper per serializzare gli oggetti complessi
-    	ObjectMapper objectMapper = new ObjectMapper();
-    	objectMapper.activateDefaultTyping(
-    	    BasicPolymorphicTypeValidator.builder()
-    	        .allowIfSubType("com.app.userservice") // Specifica il package corretto
-    	        .build(),
-    	    ObjectMapper.DefaultTyping.NON_FINAL,
-    	    JsonTypeInfo.As.PROPERTY
-    	);
-    	objectMapper.findAndRegisterModules();
-        objectMapper.disable(com.fasterxml.jackson.databind.SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+	 public RedisConfig(ObjectMapper objectMapper) {
+	        this.objectMapper = objectMapper;
+	    }
 
-        // Configura un serializzatore generico con Jackson
-        GenericJackson2JsonRedisSerializer serializer = new GenericJackson2JsonRedisSerializer(objectMapper);
+	@Bean
+	RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
+		RedisTemplate<String, Object> template = new RedisTemplate<>();
+		template.setConnectionFactory(redisConnectionFactory);
 
-        // Configura RedisCacheManager con TTL e serializzatore
-        RedisCacheConfiguration cacheConfig = RedisCacheConfiguration.defaultCacheConfig()
-                .entryTtl(Duration.ofMinutes(10))
-                .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()))
-                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(serializer));
+		// Set key serializer
+		template.setKeySerializer(new StringRedisSerializer());
+		// Set value serializer
+		template.setValueSerializer(new GenericJackson2JsonRedisSerializer(objectMapper));
 
-        return RedisCacheManager.builder(redisConnectionFactory)
-                .cacheDefaults(cacheConfig)
-                .build();
-    }
+		return template;
+	}
 
+	@Bean
+	RedisCacheConfiguration cacheConfiguration() {
+		return RedisCacheConfiguration.defaultCacheConfig()
+				.entryTtl(Duration.ofMinutes(5))
+				.serializeKeysWith(
+						RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()))
+				.serializeValuesWith(RedisSerializationContext.SerializationPair
+						.fromSerializer(new GenericJackson2JsonRedisSerializer(objectMapper)));
+	}
 
 
 
 
-	
+@Bean
+public RedisCacheManager cacheManger(RedisConnectionFactory redisConnectionFactory) {
+	 RedisCacheConfiguration cacheConfig = cacheConfiguration();
+	  return RedisCacheManager.builder(redisConnectionFactory)
+              .cacheDefaults(cacheConfig)
+              .build();
+}
+
+
+
+
+
+
+} 
+
+
 //	 @Bean
 //	    public RedisCacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
 //	        // Configura un PolymorphicTypeValidator per il supporto del polimorfismo
@@ -88,4 +103,3 @@ public class RedisConfig {
 //	                .cacheDefaults(cacheConfig)
 //	                .build();
 //	    }
-}

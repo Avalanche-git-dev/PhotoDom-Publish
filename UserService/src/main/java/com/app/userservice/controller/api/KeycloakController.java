@@ -3,9 +3,7 @@ package com.app.userservice.controller.api;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -53,8 +51,8 @@ public class KeycloakController {
 
 	@PostMapping("/login")
 	public ResponseEntity<UserDto> login(@RequestBody LoginRequest loginRequest) {
-		UserDto user = userService.authenticate(loginRequest);
-		return ResponseEntity.ok(user);
+		User user = userService.authenticate(loginRequest);
+		return ResponseEntity.ok(UserMapper.toUserDto(user));
 
 	}
 
@@ -77,19 +75,17 @@ public class KeycloakController {
 //		return ResponseEntity.ok("Password updated successfully.");
 //	}
 //	
-	@DeleteMapping("/delete")
-	public ResponseEntity<String> deleteUser(@RequestParam Long id) {
-	    userService.deleteUser(id); // Gestisce eventuali eccezioni come UserNotFoundException
-	    return ResponseEntity.ok("User deleted successfully.");
-	}
-
+//	@DeleteMapping("/delete")
+//	public ResponseEntity<String> deleteUser(@RequestParam Long id) {
+//	    userService.deleteUser(id); // Gestisce eventuali eccezioni come UserNotFoundException
+//	    return ResponseEntity.ok("User deleted successfully.");
+//	}
 	
-	
-	@PostMapping("/register")
-	public ResponseEntity<UserDto> createUser(@RequestBody User user) {
-		User createdUser = userService.createUser(user); // Può lanciare DuplicateUsernameException o
-															// DuplicateEmailException
-		return ResponseEntity.status(HttpStatus.CREATED).body(UserMapper.toUserDto(createdUser));
-	}
+//	@PostMapping("/register")
+//	public ResponseEntity<UserDto> createUser(@RequestBody User user) {
+//		User createdUser = userService.createUser(user); // Può lanciare DuplicateUsernameException o
+//															// DuplicateEmailException
+//		return ResponseEntity.status(HttpStatus.CREATED).body(UserMapper.toUserDto(createdUser));
+//	}
 
 }
