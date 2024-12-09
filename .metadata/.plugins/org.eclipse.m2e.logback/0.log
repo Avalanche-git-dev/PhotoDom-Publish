@@ -4084,3 +4084,24 @@ Caused by: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
 2024-12-08 03:12:48,264 [Worker-13: Launching Executing clean in C__Users_momo_Documents_PhotoDom-MicroServices_user-service-storage-provider] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\SpringToolSuite\spring-tool-suite-4-4.26.0.RELEASE-e4.33.0-win32.win32.x86_64\sts-4.26.0.RELEASE\plugins\com.google.guava.failureaccess_1.0.2.jar
 2024-12-08 03:12:48,303 [Worker-13: Launching Executing clean in C__Users_momo_Documents_PhotoDom-MicroServices_user-service-storage-provider] INFO  o.e.m.i.launch.MavenLaunchDelegate - Run build in "C:\Users\momo\Documents\PhotoDom-MicroServices\user-service-storage-provider":
 2024-12-08 03:12:48,304 [Worker-13: Launching Executing clean in C__Users_momo_Documents_PhotoDom-MicroServices_user-service-storage-provider] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B -Dstyle.color=always clean
+2024-12-08 03:12:56,361 [Worker-231: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-12-08 03:12:56,362 [Worker-231: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-12-08 03:12:56,365 [Worker-231: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\momo\Documents\PhotoDom-MicroServices\PhotoService\src\test\resources
+2024-12-08 03:12:58,286 [Worker-231: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-12-08 03:12:58,286 [Worker-231: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2024-12-08 03:12:58,287 [Worker-231: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2024-12-08 03:12:58,334 [Worker-231: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-12-08 03:12:58,334 [Worker-231: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2024-12-08 03:12:58,334 [Worker-231: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-12-08 03:19:26,738 [Worker-13: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-12-08 03:19:27,171 [Worker-13: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-12-08 03:19:27,191 [Worker-13: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\momo\Documents\PhotoDom-MicroServices\CommentService\src\test\resources
+2024-12-08 03:19:30,291 [Worker-13: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-12-08 03:19:30,293 [Worker-13: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-12-08 03:19:30,297 [Worker-13: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\test\resources to target\test-classes
+2024-12-08 03:20:00,964 [Stop Help Server] INFO  org.eclipse.jetty.server.Server - Stopped oejs.Server@2de47c87{STOPPING}[12.0.12,sto=0]
+2024-12-08 03:20:01,461 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@368855b5{HTTP/1.1, (http/1.1)}{127.0.0.1:0}
+2024-12-08 14:16:48,647 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2024-12-08 14:21:46,400 [Worker-3: Launching UserService - UserServiceApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 2 resources from src\main\resources to target\classes
+2024-12-08 14:21:46,470 [Worker-3: Launching UserService - UserServiceApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 2 resources from src\main\resources to target\classes
+2024-12-08 14:21:46,501 [Worker-3: Launching UserService - UserServiceApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\test\resources to target\test-classes

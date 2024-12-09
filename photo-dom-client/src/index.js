@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import './css/bootstrap.css';
 import './css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { AuthProvider } from './utils/AuthContext';
 
 // Per funzionalità JS come dropdown e modali
 
@@ -13,7 +14,10 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    {/* <App /> */}
+    <AuthProvider>
     <App />
+  </AuthProvider>
   </React.StrictMode>
 );
 

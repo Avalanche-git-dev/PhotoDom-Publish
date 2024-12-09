@@ -1,0 +1,85 @@
+
+  
+ 
+ 
+
+
+
+ .logout-btn {
+    padding: 10px 25px;
+    /* border-radius: 30px !important;  */
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    color: #ffffff; /* Colore del testo */
+    border: none; /* Rimuove i bordi */
+}
+
+.logout-btn:hover {
+    /* background-color: #FF4500; Colore di hover per il pulsante */
+    /* transform: scale(1.05); Effetto hover */
+}
+  
+  /* Icona delle impostazioni */
+  .settings-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: color 0.3s ease;
+  }
+  
+  .settings-icon:hover {
+    color: #ffc107;
+  }
+
+
+
+
+
+
+
+  
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* .logo {
+    height: 40px;
+    margin-right: 10px;
+  } */
+
+  .logo {
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  
+  /* Link di navigazione */
+  .nav-link {
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+
+  .custom-navbar {
+    padding: 8px 16px; /* Ridotta altezza della navbar */
+}
+  
+  
+ 
+  
+  /* Bottone Logout */
+ 
+  
+ 
+  
+  /* Icona delle impostazioni */
+  .settings-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: color 0.3s ease;
+  }
+  
+  
+  
