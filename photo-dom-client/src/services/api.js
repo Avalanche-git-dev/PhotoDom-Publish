@@ -29,6 +29,22 @@ const api = {
     return response.json();
   },
 
+  register: async (formData) => {
+    const response = await fetch('http://localhost:8080/api/users/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+  
+    if (!response.ok) {
+      const errorResponse = await response.json();
+      throw new Error(errorResponse.message || 'Errore durante la registrazione.');
+    }
+  
+    return response.json();
+  },
+  
+
   // Refresh del token
   refreshToken: async (refreshToken) => {
     const body = new URLSearchParams({

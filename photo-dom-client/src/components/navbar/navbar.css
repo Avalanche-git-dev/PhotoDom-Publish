@@ -4,82 +4,73 @@
  
 
 
+/* Navbar generale */
+.custom-navbar {
+  padding: 8px 16px; /* Margini interni della navbar */
+  display: flex;
+  justify-content: space-between; /* Spazia gli elementi orizzontalmente */
+  align-items: center; /* Centra verticalmente */
+}
 
- .logout-btn {
-    padding: 10px 25px;
-    /* border-radius: 30px !important;  */
-    font-size: 16px;
-    font-weight: 500;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    color: #ffffff; /* Colore del testo */
-    border: none; /* Rimuove i bordi */
+/* Logo e Brand */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 40px;
+  margin-right: 10px;
+}
+
+/* Sezione dei link di navigazione */
+.navbar-nav {
+  display: flex;
+  gap: 15px; /* Spaziatura tra i link */
+  margin-right: auto; /* Spinge i link verso sinistra */
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  font-size: 1rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Effetto hover sui link della navbar */
+.nav-link:hover {
+  text-decoration: underline;
+  background-color: #495057; /* Sottolinea durante l'hover */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Bottone Logout */
+.logout-btn {
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: none;
+  cursor: pointer;
+  margin-left: auto; /* Spinge il pulsante a destra */
 }
 
 .logout-btn:hover {
-    /* background-color: #FF4500; Colore di hover per il pulsante */
-    /* transform: scale(1.05); Effetto hover */
+  transform: scale(1.05); /* Leggero effetto di zoom */
 }
-  
-  /* Icona delle impostazioni */
-  .settings-icon {
-    font-size: 1.5rem;
-    cursor: pointer;
-    margin-left: 10px;
-    transition: color 0.3s ease;
-  }
-  
-  .settings-icon:hover {
-    color: #ffc107;
-  }
 
-
-
-
-
-
-
-  
-  .navbar-brand {
-    display: flex;
-    align-items: center;
-  }
-  
-  /* .logo {
-    height: 40px;
-    margin-right: 10px;
-  } */
-
-  .logo {
-    height: 40px;
-    margin-right: 10px;
-  }
-  
-  
-  /* Link di navigazione */
-  .nav-link {
-    font-size: 1rem;
-    transition: color 0.3s ease;
-  }
-
-  .custom-navbar {
-    padding: 8px 16px; /* Ridotta altezza della navbar */
+/* Icona Impostazioni */
+.settings-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: color 0.3s ease;
 }
-  
-  
- 
-  
-  /* Bottone Logout */
- 
-  
- 
-  
-  /* Icona delle impostazioni */
-  .settings-icon {
-    font-size: 1.5rem;
-    cursor: pointer;
-    margin-left: 10px;
-    transition: color 0.3s ease;
-  }
-  
-  
-  
+
+/* Effetto hover sull'icona impostazioni */
+.settings-icon:hover {
+  transform: rotate(15deg); /* Rotazione durante l'hover */
+}

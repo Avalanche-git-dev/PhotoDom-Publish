@@ -41,6 +41,7 @@
 
 import React from 'react';
 import { useAuth } from '../../utils/AuthContext';
+import Feed from '../feed/feed.js'
 
 const Dashboard = () => {
   const { userInfo } = useAuth();
@@ -50,9 +51,17 @@ const Dashboard = () => {
   }
 
   return (
+    // <div className="dashboard">
+    //   <h1>Benvenuto {userInfo.Nickname || 'Guest'}!</h1>
+    //   <p>Questa è la tua dashboard. Puoi esplorare le tue foto o quelle di altri utenti.</p>
+    // </div>
+
+
+
     <div className="dashboard">
       <h1>Benvenuto {userInfo.Nickname || 'Guest'}!</h1>
-      <p>Questa è la tua dashboard. Puoi esplorare le tue foto o quelle di altri utenti.</p>
+      <p>Esplora il feed delle foto!</p>
+      <Feed />
     </div>
   );
 };

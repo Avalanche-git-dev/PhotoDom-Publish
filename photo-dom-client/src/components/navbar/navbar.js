@@ -1,79 +1,3 @@
-// import React from "react";
-// import { NavLink, useNavigate } from "react-router-dom";
-// import { useAuth } from "../../utils/AuthContext";
-
-// const Navbar = () => {
-//   const { logout } = useAuth();
-//   const navigate = useNavigate();
-
-//   const handleLogout = async () => {
-//     const success = await logout();
-//     if (success) {
-//       navigate('/login', { state: { message: 'Logout eseguito con successo!' } });
-//     }
-//   };
-
-//   return (
-//     <nav className="navbar">
-//       <ul>
-//         <li>
-//           <NavLink to="/dashboard">Dashboard</NavLink>
-//         </li>
-//         <li>
-//           <NavLink to="/profile">Profile</NavLink>
-//         </li>
-//         <li>
-//           <NavLink to="/gallery">Gallery</NavLink>
-//         </li>
-//         <li>
-//           <NavLink to="/explore">Explore</NavLink>
-//         </li>
-//         <li>
-//           <button onClick={handleLogout}>Logout</button>
-//         </li>
-//       </ul>
-//     </nav>
-//   );
-// };
-
-// export default Navbar;
-
-
-
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import { useAuth } from '../../utils/AuthContext'; // Usa il tuo AuthProvider
-
-// const Navbar = () => {
-//   const { isAuthenticated } = useAuth();
-
-//   if (!isAuthenticated) {
-//     return null; // Nasconde la navbar se l'utente non è autenticato
-//   }
-
-//   return (
-//     <nav className="navbar">
-//       <ul className="navbar-list">
-//         <li className="navbar-item">
-//           <Link to="/dashboard">Dashboard</Link>
-//         </li>
-//         <li className="navbar-item">
-//           <Link to="/profile">Profile</Link>
-//         </li>
-//         <li className="navbar-item">
-//           <Link to="/gallery">Gallery</Link>
-//         </li>
-//         <li className="navbar-item">
-//           <Link to="/explore">Explore</Link>
-//         </li>
-//       </ul>
-//     </nav>
-//   );
-// };
-
-// export default Navbar;
-
-
 
 
 import React from "react";
@@ -82,19 +6,8 @@ import { useAuth } from "../../utils/AuthContext";
 import './navbar.css'
 import icon from '../../images/icon.webp';
 
-// const Navbar = () => {
-//   const { logout } = useAuth();
-//   const navigate = useNavigate();
-
-//   const handleLogout = async () => {
-//     const result = await logout(); // Chiamata alla funzione di logout
-//     if (result) {
-//       navigate("/login", { state: { message: "Logout eseguito con successo!" } });
-//     }
-//   };
-
 const Navbar = () => {
-  const { userInfo } = useAuth(); // Verifica se l'utente è loggato
+  const { userInfo } = useAuth(); // verifico se l'utente è loggato use context gestito con local storage + rendering condizionale
 
  
   const { logout } = useAuth();
@@ -106,13 +19,12 @@ const Navbar = () => {
 
     const success = await logout();
     if (success) {
-      // navigate("/login", { state: { message: "Logout eseguito con successo!" } });
        navigate("/login");
     }
   };
 
   if (!userInfo) {
-    return null; // Non mostrare nulla se l'utente non è autenticato
+    return null; // rendering condizionale
   }
 
   return (

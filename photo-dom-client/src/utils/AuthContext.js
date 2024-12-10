@@ -41,11 +41,18 @@ export const AuthProvider = ({ children }) => {
   };
 
   // Verifica se il token è scaduto
-  const isTokenExpired = (token) => {
+  // const isTokenExpired = (token) => {
+  //   const decoded = decodeToken(token);
+  //   if (!decoded) return true;
+  //   return Date.now() / 1000 > decoded.exp;
+  // };
+
+
+  const isTokenExpired = useCallback((token) => {
     const decoded = decodeToken(token);
     if (!decoded) return true;
     return Date.now() / 1000 > decoded.exp;
-  };
+  },[]);
 
   // Refresh del token
   const refreshAccessToken = useCallback(async () => {
@@ -95,7 +102,7 @@ export const AuthProvider = ({ children }) => {
   const clearMessage = () => setMessage("");
 
 
-
+  //pensiamo a come fare , ricorda non è compilato.
   // const logout = useCallback(async () => {
   //   try {
   //     // Logout logica
@@ -109,6 +116,16 @@ export const AuthProvider = ({ children }) => {
 
 
 // senza refresh token grazie al cazzo che non mi va l'end point di end session....
+
+
+const getUserId = useCallback(() => {
+  if (userInfo?.userId) {
+    return userInfo.userId;
+  }
+
+  const decoded = decodeToken(tokens.accessToken);
+  return decoded?.userId; // Cerca `userId` come attributo personalizzato nel token
+}, [userInfo, tokens.accessToken]);
   
   
     
@@ -147,7 +164,7 @@ export const AuthProvider = ({ children }) => {
         fetchUserInfo();
       }
     }
-  }, [refreshAccessToken, fetchUserInfo]);
+  }, [refreshAccessToken, fetchUserInfo,isTokenExpired]);
 
   return (
     <AuthContext.Provider
@@ -162,6 +179,8 @@ export const AuthProvider = ({ children }) => {
         message,
         setMessage,
         clearMessage,
+        isTokenExpired,
+        getUserId,
       }}
     >
       {children}

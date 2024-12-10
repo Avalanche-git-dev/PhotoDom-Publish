@@ -10,7 +10,9 @@ import Login from './components/login/login'
 import Register from './components/register/register';
 import Navbar from './components/navbar/navbar';
 import Dashboard from './components/dashboard/dashboard';
+import Profile from './components/profile/profile'
 import ProtectedRoute from './components/ProtectedRoute';
+
 
 function App() {
   return (
@@ -37,7 +39,7 @@ function App() {
 
 
 
-        {/* <Route
+        <Route
           path="/profile"
           element={
             <ProtectedRoute>
@@ -48,7 +50,7 @@ function App() {
 
 
 
-        <Route
+        {/* <Route
           path="/gallery"
           element={
             <ProtectedRoute>
