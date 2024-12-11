@@ -78,6 +78,20 @@ public class SecurityConfig {
 	    }
 	
 	
+	    
+//	    @Bean
+//	    public CorsConfigurationSource corsConfigurationSource() {
+//	        CorsConfiguration configuration = new CorsConfiguration();
+//	        configuration.addAllowedOrigin("http://localhost:3000"); // Frontend URL
+//	        configuration.addAllowedMethod("*"); // Consenti tutti i metodi HTTP (GET, POST, ecc.)
+//	        configuration.addAllowedHeader("*"); // Consenti tutti gli header
+//	        configuration.setAllowCredentials(true); // Permetti le credenziali (JWT, Cookie, ecc.)
+//
+//	        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//	        source.registerCorsConfiguration("/**", configuration); // Applica la configurazione a tutte le rotte
+//	        return source;
+//	    }
+	
 	
 	
 

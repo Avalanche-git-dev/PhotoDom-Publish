@@ -1,5 +1,7 @@
 package com.app.commentservice.filter;
 
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -10,19 +12,26 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-	
-	
-	private static final Logger logger  = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+
+    private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<String> handleIllegalArgument(IllegalArgumentException ex) {
-    	logger.error("Handled IllegalArgumentException: {}", ex.getMessage(), ex);
-        return ResponseEntity.badRequest().body(ex.getMessage());
+    public ResponseEntity<Map<String, Object>> handleIllegalArgument(IllegalArgumentException ex) {
+        logger.error("Handled IllegalArgumentException: {}", ex.getMessage(), ex);
+        return ResponseEntity.badRequest().body(Map.of(
+                "success", false,
+                "message", ex.getMessage(),
+                "status", HttpStatus.BAD_REQUEST.value()
+        ));
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> handleGeneralException(Exception ex) {
-    	logger.error("Handled Exception: {}", ex.getMessage(), ex);
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Errore interno del server");
+    public ResponseEntity<Map<String, Object>> handleGeneralException(Exception ex) {
+        logger.error("Handled Exception: {}", ex.getMessage(), ex);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of(
+                "success", false,
+                "message", "Internal server error",
+                "status", HttpStatus.INTERNAL_SERVER_ERROR.value()
+        ));
     }
 }

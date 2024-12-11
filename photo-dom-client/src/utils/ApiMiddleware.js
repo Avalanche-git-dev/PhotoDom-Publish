@@ -46,6 +46,7 @@ export const ApiMiddleware = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
+        
       }),
 
     put: async (endpoint, data) =>

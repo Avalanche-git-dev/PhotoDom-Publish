@@ -28,6 +28,8 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('refresh_token');
     setTokens({ accessToken: null, refreshToken: null });
     setUserInfo(null);
+    localStorage.clear();
+    sessionStorage.clear();
   }, []);
 
   // Decodifica il token per ottenere informazioni utente
@@ -144,6 +146,14 @@ const getUserId = useCallback(() => {
     } finally {
       clearTokens();
       setMessage("Logout eseguito con successo!");
+      document.cookie.split(";").forEach((cookie) => {
+        const eqPos = cookie.indexOf("=");
+        const name = eqPos > -1 ? cookie.substring(0, eqPos) : cookie;
+        document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
+      });
+    
+      // Reindirizza alla pagina di login
+      // window.location.href = "/login";
       return true;
     }
   }, [clearTokens,tokens.refreshToken]);

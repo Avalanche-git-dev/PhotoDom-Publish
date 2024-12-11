@@ -149,25 +149,6 @@ public class UserServiceClientHttp implements UserServiceClient {
         return response.asJson(UserDto.class);
     }
 
-
-//    
-//    
-//    @Override
-//    @SneakyThrows
-//    public List<UserDto> getAllUsersByP(int page, int size) {
-//        String url = String.format("%s/users?page=%d&size=%d", baseUrl, page, size);
-//        log.info("Fetching users with pagination: page={}, size={}", page, size);
-//
-//        SimpleHttp.Response response = SimpleHttp.doGet(url, session).asResponse();
-//
-//        if (response.getStatus() == 200) {
-//            log.info("Successfully fetched users.");
-//            return JsonSerialization.readValue(response.asString(), new TypeReference<List<UserDto>>() {});
-//        } else {
-//            log.error("Failed to fetch users. Status: {}", response.getStatus());
-//            throw new WebApplicationException("Unexpected server error", response.getStatus());
-//        }
-//    }
     
     
     

@@ -1,6 +1,10 @@
 package com.app.photoservice.controller;
 
 
+import java.util.Base64;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -20,95 +24,6 @@ import com.app.photoservice.service.PhotoService;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-
-//
-//@RestController
-//@RequestMapping("/api/photos")
-//public class PhotoController {
-//
-//    @Autowired
-//    private PhotoService photoService;
-//
-//    @PostMapping("/upload")
-//    public Mono<ResponseEntity<PhotoDto>> uploadPhoto(@RequestPart("file") FilePart file) {
-//        return photoService.savePhoto(file)
-//                .map(ResponseEntity::ok)
-//                .onErrorResume(e -> Mono.just(ResponseEntity.badRequest().body(null)));
-//    }
-//
-////    @GetMapping("/photo")
-////    public Mono<ResponseEntity<PhotoDto>> getPhotoById(@RequestParam Long photoId) {
-////        return photoService.getPhotoById(photoId)
-////                .map(ResponseEntity::ok)
-////                .onErrorResume(e -> Mono.just(ResponseEntity.notFound().build()));
-////    }
-//    
-//    
-//    @GetMapping("/photo")
-//    public Mono<ResponseEntity<byte[]>> getPhotoById(@RequestParam Long photoId) {
-//        return photoService.getPhotoById(photoId)
-//                .map(photoDto -> {
-//                    try {
-//                        byte[] imageBytes = photoDto.getImageBytes();
-//                        return ResponseEntity.ok()
-//                                .contentType(MediaType.parseMediaType(photoDto.getContentType()))
-//                                .header("Filename", photoDto.getFilename())
-//                                .header("Size", String.valueOf(photoDto.getSize()))
-//                                .header("UserId", String.valueOf(photoDto.getUserId()))
-//                                .header("LikeCount", String.valueOf(photoDto.getLikeCount()))
-//                                .body(imageBytes);
-//                    } catch (Exception e) {
-//                        throw new RuntimeException("Errore durante la lettura dei dati della foto", e);
-//                    }
-//                });
-//    }
-//
-//
-//
-//    
-//@GetMapping("/data/photo")
-//public ResponseEntity<PhotoDto> getPhotoMetadata(@RequestParam Long photoId) throws IllegalStateException, IOException {
-//    PhotoDto photoDto = photoService.getPhotoDto(photoId);
-//    return ResponseEntity.ok(photoDto);
-//}
-//    
-//    
-//    
-//    
-//
-//
-//    
-//    
-//    
-//    @PostMapping("/like/add")
-//    public Mono<ResponseEntity<String>> addLike(@RequestParam Long photoId) {
-//        return photoService.addLike(photoId)
-//                .map(result -> result
-//                        ? ResponseEntity.ok("Like aggiunto!")
-//                        : ResponseEntity.badRequest().body("Like già esistente."));
-//    }
-//    
-//    
-//    
-//    @DeleteMapping("/like/remove")
-//    public Mono<ResponseEntity<String>> removeLike(@RequestParam Long photoId) {
-//        return photoService.removeLike(photoId)
-//                .map(result -> result
-//                        ? ResponseEntity.ok("Like rimosso!")
-//                        : ResponseEntity.badRequest().body("Like non esistente."));
-//    }
-//
-//
-//}
-//
-
-
-
-
-
-
-
-
 @RestController
 @RequestMapping("/api/photos")
 public class PhotoController {
@@ -116,21 +31,7 @@ public class PhotoController {
     @Autowired
     private PhotoService photoService;
 
-//    @PostMapping("/upload")
-//    public Mono<ResponseEntity<PhotoDto>> uploadPhoto(@RequestPart("file") FilePart file) {
-//        return photoService.savePhoto(file)
-//                .map(ResponseEntity::ok)
-//                .onErrorResume(e -> Mono.just(ResponseEntity.badRequest().body(null)));
-//    }
     
-    
-    
-//    @PostMapping("/upload")
-//    public Mono<ResponseEntity<ResponseEntity<String>>> uploadPhoto(@RequestPart("file") FilePart file) {
-//        return photoService.savePhoto(file)
-//                .map(ResponseEntity::ok) // Mappa la risposta in un ResponseEntity
-//                .onErrorResume(e -> Mono.just(ResponseEntity.badRequest().body(/*"Errore: " + e.getMessage()*/null)));
-//    }
     
     
     @PostMapping("/upload")
@@ -153,6 +54,8 @@ public class PhotoController {
                         .body(photoDto.getImageBytes()))
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
+    
+    
 
     @GetMapping("/data/photo")
     public Mono<ResponseEntity<PhotoDto>> getPhotoMetadata(@RequestParam Long photoId) {
@@ -161,54 +64,90 @@ public class PhotoController {
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
+    
+    
     @PostMapping("/like/add")
-    public Mono<ResponseEntity<String>> addLike(@RequestParam Long photoId) {
+    public Mono<ResponseEntity<Map<String, String>>> addLike(@RequestParam Long photoId) {
         return photoService.addLike(photoId)
-                .map(result -> result
-                        ? ResponseEntity.ok("Like aggiunto!")
-                        : ResponseEntity.badRequest().body("Like già esistente."));
+                .map(result -> {
+                    Map<String, String> response = new HashMap<>();
+                    if (result) {
+                        response.put("message", "Like aggiunto!");
+                        return ResponseEntity.ok(response);
+                    } else {
+                        response.put("message", "Like già esistente.");
+                        return ResponseEntity.badRequest().body(response);
+                    }
+                });
     }
 
+    
     @DeleteMapping("/like/remove")
-    public Mono<ResponseEntity<String>> removeLike(@RequestParam Long photoId) {
+    public Mono<ResponseEntity<Map<String, String>>> removeLike(@RequestParam Long photoId) {
         return photoService.removeLike(photoId)
-                .map(result -> result
-                        ? ResponseEntity.ok("Like rimosso!")
-                        : ResponseEntity.badRequest().body("Like non esistente."));
+                .map(result -> {
+                    Map<String, String> response = new HashMap<>();
+                    if (result) {
+                        response.put("message", "Like rimosso!");
+                        return ResponseEntity.ok(response);
+                    } else {
+                        response.put("message", "Like non esistente.");
+                        return ResponseEntity.badRequest().body(response);
+                    }
+                });
+    }
+
+    
+    
+
+    @GetMapping("/full/batch")
+    public Flux<PhotoDto> getPhotosBatch(
+    		@RequestParam(defaultValue = "0") int page,
+    		@RequestParam(defaultValue = "15") int size) {
+        return photoService.getPhotosBatch(page, size).map(photoDto -> {
+           
+            String imageBase64 = Base64.getEncoder().encodeToString(photoDto.getImageBytes());
+            photoDto.setImageBase64(imageBase64); 
+            photoDto.setImageBytes(null); 
+            return photoDto;
+        });
     }
     
     
+    
+    
+    @GetMapping("/full/user/batch")
+    public Flux<PhotoDto> getPhotosBatchByUser(
+    		@RequestParam(defaultValue = "0")int page,
+            @RequestParam(defaultValue = "15") int size) {
+        return photoService.getPhotosBatchByUser(page, size)
+                .map(photoDto -> {
+                    // Codifica l'immagine in Base64
+                    String imageBase64 = Base64.getEncoder().encodeToString(photoDto.getImageBytes());
+                    photoDto.setImageBase64(imageBase64); 
+                    photoDto.setImageBytes(null); 
+                    return photoDto;
+                });
+    }
+    
+
+  
+    
+    
+    
+    @GetMapping("/metadata/user/batch")
+    public Flux<PhotoDto> getPhotoMetadataBatchByUser(
+    		@RequestParam(defaultValue = "0")int page,
+    		@RequestParam(defaultValue = "15") int size) {
+        return photoService.getPhotoMetadataBatchByUser(page, size);
+    }
     
     @GetMapping("/metadata/batch")
     public Flux<PhotoDto> getPhotoMetadataBatch(
-            @RequestParam int page,
-            @RequestParam int size) {
+    		@RequestParam(defaultValue = "0") int page,
+    		@RequestParam(defaultValue = "15") int size) {
         return photoService.getPhotoMetadataBatch(page, size);
     }
 
-    // Nuovo metodo: Ottieni batch completo di foto con immagini
-    @GetMapping("/full/batch")
-    public Flux<PhotoDto> getPhotosBatch(
-            @RequestParam int page,
-            @RequestParam int size) {
-        return photoService.getPhotosBatch(page, size);
-    }
-
-    // Nuovo metodo: Ottieni batch di metadati di foto per utente
-    @GetMapping("/metadata/user/batch")
-    public Flux<PhotoDto> getPhotoMetadataBatchByUser(
-            @RequestParam int page,
-            @RequestParam int size) {
-        return photoService.getPhotoMetadataBatchByUser(page, size);
-    }
-
-    // Nuovo metodo: Ottieni batch completo di foto per utente
-    @GetMapping("/full/user/batch")
-    public Flux<PhotoDto> getPhotosBatchByUser(
-            @RequestParam int page,
-            @RequestParam int size) {
-        return photoService.getPhotosBatchByUser(page, size);
-    }
-    
     
 }

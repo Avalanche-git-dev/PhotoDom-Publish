@@ -1,6 +1,7 @@
 package com.app.photoservice.service;
 
 import java.io.InputStream;
+import java.util.Optional;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,6 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.gridfs.GridFsResource;
 import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.stereotype.Service;
-
-import com.mongodb.client.gridfs.model.GridFSFile;
 
 
 @Service
@@ -24,14 +23,14 @@ public class PhotoStorageService {
         return id.toString();
     }
 
-    public GridFsResource getPhoto(String fileId) {
-        GridFSFile file = gridFsTemplate.findOne(new Query(Criteria.where("_id").is(fileId)));
-        if (file != null) {
-            return gridFsTemplate.getResource(file);
-        }
-        throw new RuntimeException("File not found");
-    }
-    
+//    public GridFsResource getPhoto(String fileId) {
+//        GridFSFile file = gridFsTemplate.findOne(new Query(Criteria.where("_id").is(fileId)));
+//        if (file != null) {
+//            return gridFsTemplate.getResource(file);
+//        }
+//        throw new RuntimeException("File not found");
+//    }
+//    
     
 //    public Mono<String> savePhoto(InputStream photoStream, String filename, String contentType) {
 //        return Mono.fromCallable(() -> {
@@ -39,6 +38,14 @@ public class PhotoStorageService {
 //            return id.toString();
 //        });
 //    }
+    
+    
+    
+    public GridFsResource getPhoto(String fileId) {
+        return Optional.ofNullable(gridFsTemplate.findOne(new Query(Criteria.where("_id").is(fileId))))
+            .map(gridFsTemplate::getResource)
+            .orElseThrow(() -> new RuntimeException("File not found"));
+    }
 
 }
 

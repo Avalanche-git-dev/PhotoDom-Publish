@@ -1,4 +1,8 @@
-2024-12-09 00:48:24 [http-nio-8081-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing POST /keycloak/login
-2024-12-09 00:48:24 [http-nio-8081-exec-9] DEBUG o.s.s.a.d.DaoAuthenticationProvider - Authenticated user
-2024-12-09 00:48:24 [http-nio-8081-exec-9] DEBUG o.s.s.w.a.w.BasicAuthenticationFilter - Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=sysadmin, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_Service]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_Service]]
-2024-12-09 00:48:24 [http-nio-8081-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured POST /keycloak/login
+2024-12-12 00:03:21 [http-nio-8081-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/users/profile?id=58
+2024-12-12 00:03:21 [http-nio-8081-exec-9] DEBUG o.s.s.o.s.r.a.JwtAuthenticationProvider - Authenticated token
+2024-12-12 00:03:21 [http-nio-8081-exec-9] DEBUG o.s.s.o.s.r.w.a.BearerTokenAuthenticationFilter - Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@4bf2cde1, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ADMIN]]
+2024-12-12 00:03:21 [http-nio-8081-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/users/profile?id=58
+2024-12-12 00:03:21 [http-nio-8081-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/users/profile?id=58
+2024-12-12 00:03:21 [http-nio-8081-exec-10] DEBUG o.s.s.o.s.r.a.JwtAuthenticationProvider - Authenticated token
+2024-12-12 00:03:21 [http-nio-8081-exec-10] DEBUG o.s.s.o.s.r.w.a.BearerTokenAuthenticationFilter - Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@4bf2cde1, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ADMIN]]
+2024-12-12 00:03:21 [http-nio-8081-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/users/profile?id=58

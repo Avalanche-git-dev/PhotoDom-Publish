@@ -6,6 +6,9 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.reactive.CorsConfigurationSource;
+import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 @Configuration
 @EnableWebFluxSecurity
@@ -15,7 +18,7 @@ public class SecurityConfig {
 
 	@Bean
 	SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
-		http.csrf(csrf -> csrf.disable()) // Disabilita CSRF
+		http.csrf(csrf -> csrf.disable()).cors(cors -> cors.configurationSource(corsConfigurationSource())) // Disabilita CSRF
 				.authorizeExchange(exchange -> exchange.pathMatchers(freeResourceUrls)
 						.permitAll()
 						.anyExchange()
@@ -30,6 +33,20 @@ public class SecurityConfig {
 
 		return http.build();
 	}
+	
+	
+	    @Bean
+	    public CorsConfigurationSource corsConfigurationSource() {
+	        CorsConfiguration configuration = new CorsConfiguration();
+	        configuration.addAllowedOrigin("http://localhost:3000"); // Frontend URL
+	        configuration.addAllowedMethod("*"); // Consenti tutti i metodi HTTP (GET, POST, ecc.)
+	        configuration.addAllowedHeader("*"); // Consenti tutti gli header
+	        configuration.setAllowCredentials(true); // Permetti le credenziali (JWT, Cookie, ecc.)
+
+	        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+	        source.registerCorsConfiguration("/**", configuration); // Applica la configurazione a tutte le rotte
+	        return source;
+	    }
 	
 	
 	

@@ -9,61 +9,57 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Document(collection = "comments")
 public class Comment implements CommentComponent, Serializable {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
+    @Id
     private String id;
 
     private String content;
 
-    private String photoId; // Usando l'ID come stringa per riferimenti a Photo
+    private String photoId; // ID della foto
 
-    private String userId;  // Usando l'ID come stringa per riferimenti a User
+    private String userId;  // ID dell'utente
 
     private String parentCommentId; // ID del commento genitore
-   
-    private List<Comment> replies = new ArrayList<>();
+
+    private List<String> replyIds = new ArrayList<>(); // Lista di ID delle risposte
 
     private Date createdDate;
 
-    // Implementazione dei metodi di CommentComponent
-//    @Override
-//    public void addReply(CommentComponent comment) {
-//        replies.add((Comment) comment);
-//        ((Comment) comment).setParentCommentId(this.id);
-//    }
-    
     @Override
     public void addReply(CommentComponent comment) {
-        Comment reply = (Comment) comment;
-        if (reply.getId() == null || reply.getId().isEmpty()) {
-            reply.setId(new ObjectId().toString()); // Genera un ObjectId unico per il commento figlio
+        if (comment == null) {
+            throw new IllegalArgumentException("Il commento non può essere null");
         }
-        replies.add(reply);
-        reply.setParentCommentId(this.id);
-    }
+        Comment reply = (Comment) comment;
 
+        if (reply.getId() == null || reply.getId().isEmpty()) {
+            reply.setId(new ObjectId().toString());
+        }
+        reply.setParentCommentId(this.id);
+
+        if (!replyIds.contains(reply.getId())) {
+            replyIds.add(reply.getId());
+        }
+    }
 
     @Override
     public void removeReply(CommentComponent comment) {
-        replies.remove(comment);
-        ((Comment) comment).setParentCommentId(null);
+        if (comment == null) {
+            throw new IllegalArgumentException("Il commento non può essere null");
+        }
+        replyIds.remove(((Comment) comment).getId());
     }
 
     @Override
+    @JsonIgnore
     public List<CommentComponent> getReplies() {
-        return new ArrayList<>(replies);
-    }
-
-    @Override
-    public String getContent() {
-        return content;
+        throw new UnsupportedOperationException("I reply devono essere caricati dal database tramite gli ID.");
     }
 
 	public String getId() {
@@ -72,6 +68,14 @@ public class Comment implements CommentComponent, Serializable {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	public String getPhotoId() {
@@ -98,6 +102,14 @@ public class Comment implements CommentComponent, Serializable {
 		this.parentCommentId = parentCommentId;
 	}
 
+	public List<String> getReplyIds() {
+		return replyIds;
+	}
+
+	public void setReplyIds(List<String> replyIds) {
+		this.replyIds = replyIds;
+	}
+
 	public Date getCreatedDate() {
 		return createdDate;
 	}
@@ -106,32 +118,11 @@ public class Comment implements CommentComponent, Serializable {
 		this.createdDate = createdDate;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
-	public void setReplies(List<Comment> replies) {
-		this.replies = replies;
-	}
-
-	public Comment(String id, String content, String photoId, String userId, String parentCommentId,
-			List<Comment> replies, Date createdDate) {
-		super();
-		this.id = id;
-		this.content = content;
-		this.photoId = photoId;
-		this.userId = userId;
-		this.parentCommentId = parentCommentId;
-		this.replies = replies;
-		this.createdDate = createdDate;
-	}
-
-	public Comment() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-    
-    
-    
-
+    // Getter e setter
+    // ...
 }
+

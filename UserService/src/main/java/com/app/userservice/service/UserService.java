@@ -27,6 +27,7 @@ import com.app.userservice.model.LoginRequest;
 import com.app.userservice.model.UserDto;
 import com.app.userservice.model.UserMapper;
 import com.app.userservice.repository.UserRepository;
+import com.app.userservice.socket.UserWebSocketHandler;
 import com.app.userservice.utility.UserContext;
 
 @Service
@@ -46,6 +47,10 @@ public class UserService {
 	
 //	@Autowired
 //	private RedisTemplate<String, Object> cachy;
+	
+	
+	 @Autowired
+	 private UserWebSocketHandler userWebSocketHandler;
 
 	
 	
@@ -133,6 +138,8 @@ public class UserService {
 				.orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
 		user.setStatus(UserStatus.BANNED);
 		userRepository.save(user);
+		String message = "User banned: " + id;
+	    userWebSocketHandler.notifyUserChange(message);
 	}
 
 	public void unbanUser(Long id) {
@@ -140,6 +147,8 @@ public class UserService {
 				.orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
 		user.setStatus(UserStatus.ACTIVE);
 		userRepository.save(user);
+		 String message = "User unbanned: " + id;
+	     userWebSocketHandler.notifyUserChange(message);
 	}
 	
 	
@@ -262,7 +271,9 @@ public class UserService {
 		// Codifica e aggiorna la password
 		user.setPassword(passwordEncoder.encode(credentials.getNewPassword()));
 		userRepository.save(user);
-
+		
+		
+		userWebSocketHandler.notifyUserUpdate("User credentials updated: " + user.getId());
 		return true;
 	}
 
@@ -314,6 +325,8 @@ public class UserService {
 			Admin admin = (Admin) user;
 			admin.setQualification(Qualification.ADMIN);
 			userRepository.save(admin);
+			String message = "User promoted to Admin: " + id;
+	        userWebSocketHandler.notifyUserChange(message);
 		}
 	}
 
@@ -379,6 +392,7 @@ public class UserService {
 			}
 			user.setTelephone(userDetails.getTelephone());
 		}
+	     userWebSocketHandler.notifyUserUpdate("User profile updated: " + user.getId());
 
 		return userRepository.save(user);
 	}

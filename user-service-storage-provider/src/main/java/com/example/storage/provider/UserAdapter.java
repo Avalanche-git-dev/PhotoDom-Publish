@@ -184,6 +184,7 @@ import org.keycloak.models.RealmModel;
 import org.keycloak.models.RoleModel;
 import org.keycloak.models.SubjectCredentialManager;
 import org.keycloak.models.UserModel;
+import org.keycloak.storage.ReadOnlyException;
 import org.keycloak.storage.StorageId;
 import org.keycloak.storage.UserStorageUtil;
 import org.keycloak.storage.adapter.AbstractUserAdapter;
@@ -345,8 +346,63 @@ public class UserAdapter extends AbstractUserAdapter {
 	    public boolean isEmailVerified() {
 	        return true;
 	    }
+	 
+	 
+	 
+	 @Override
+	    public void setUsername(String username) {
+	        throw new ReadOnlyException("user is read only for this update");
+	    }
+	 
+	 
+	 @Override
+	    public void setSingleAttribute(String name, String value) {
+	        throw new ReadOnlyException("user is read only for this update");
 
+	    }
 
+	 
+	 @Override
+	    public void removeAttribute(String name) {
+	        throw new ReadOnlyException("user is read only for this update");
+
+	    }
+
+	    @Override
+	    public void setAttribute(String name, List<String> values) {
+	        throw new ReadOnlyException("user is read only for this update");
+
+	    }
+
+	    
+	    
+	    @Override
+	    public void setFirstName(String firstName) {
+	        throw new ReadOnlyException("user is read only for this update");
+
+	    }
+	    
+	    
+	    @Override
+	    public void setLastName(String lastName) {
+	        throw new ReadOnlyException("user is read only for this update");
+
+	    }
+	    
+	    
+	    @Override
+	    public void setEmail(String email) {
+	        throw new ReadOnlyException("user is read only for this update");
+
+	    }
+	    
+	    
+	    
+	    @Override
+	    public void setEmailVerified(boolean verified) {
+	        throw new ReadOnlyException("user is read only for this update");
+
+	    }
 
 
 }

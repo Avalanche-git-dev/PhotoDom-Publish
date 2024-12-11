@@ -13,35 +13,7 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @Configuration
 @EnableWebFluxSecurity
 public class SecurityConfig {
-
-
 	
-//	@Bean
-//	ReactiveJwtAuthenticationConverterAdapter jwtAuthenticationConverter() {
-//	    JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
-//	    converter.setJwtGrantedAuthoritiesConverter(jwt -> {
-//	        List<String> roles = jwt.getClaimAsStringList("realm_access.roles"); // Usa il claim corretto
-//	        if (roles != null) {
-//	            return roles.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
-//	        }
-//	        return Collections.emptyList();
-//	    });
-//	    return new ReactiveJwtAuthenticationConverterAdapter(converter);
-//	}
-//	
-//	
-//
-//	
-//	@Bean
-//	SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
-//	    http.csrf(csrf -> csrf.disable())
-//	        .authorizeExchange(exchange -> exchange
-//	            .anyExchange().authenticated()) // Richiedi autenticazione per tutte le richieste
-//	        .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())));
-//
-//	    return http.build();
-//	}
-//	
 	
 	
 	

@@ -1,8 +1,10 @@
 package com.app.commentservice.model;
 
-import java.util.stream.Collectors;
-
 import com.app.commentservice.entity.Comment;
+
+
+
+
 
 public class CommentMapper {
 
@@ -16,7 +18,7 @@ public class CommentMapper {
                 comment.getPhotoId(),
                 comment.getUserId(),
                 comment.getParentCommentId(),
-                comment.getReplies().stream().map(reply -> ((Comment) reply).getId()).collect(Collectors.toList()),
+                comment.getReplyIds(),
                 comment.getCreatedDate()
         );
     }
@@ -31,8 +33,8 @@ public class CommentMapper {
         comment.setPhotoId(commentDto.getPhotoId());
         comment.setUserId(commentDto.getUserId());
         comment.setParentCommentId(commentDto.getParentCommentId());
+        comment.setReplyIds(commentDto.getRepliesIds());
         comment.setCreatedDate(commentDto.getCreatedDate());
-        // Le risposte non vengono convertite direttamente per evitare dipendenze circolari
         return comment;
     }
 }

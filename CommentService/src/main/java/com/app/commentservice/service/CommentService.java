@@ -1,87 +1,30 @@
 package com.app.commentservice.service;
 
 import java.util.Date;
-import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.app.commentservice.entity.Comment;
-import com.app.commentservice.entity.CommentComponent;
 import com.app.commentservice.repository.CommentRepository;
+import com.app.commentservice.socket.CommentWebSocketHandler;
 import com.app.commentservice.utils.UserContext;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-//
-//@Service
-//public class CommentService {
-//
-//    @Autowired
-//    private CommentRepository commentRepository;
-//
-//    @Autowired
-//    private UserContext userContext;
-//
-//    public Mono<Comment> addComment(Comment comment) {
-//        comment.setCreatedDate(new Date());
-//
-//        // Recupera l'ID utente e assegna dinamicamente al commento
-//        return userContext.getCurrentUserId()
-//            .flatMap(userId -> {
-//                comment.setUserId(String.valueOf(userId)); // Assegna l'utente corrente al commento
-//                return commentRepository.save(comment)
-//                    .flatMap(savedComment -> {
-//                        if (savedComment.getParentCommentId() != null) {
-//                            // Gestisce i commenti come risposte
-//                            return commentRepository.findById(savedComment.getParentCommentId())
-//                                .flatMap(parentComment -> {
-//                                    parentComment.addReply(savedComment);
-//                                    return commentRepository.save(parentComment).thenReturn(savedComment);
-//                                });
-//                        }
-//                        return Mono.just(savedComment);
-//                    });
-//            });
-//    }
-//
-//    public Mono<Comment> getCommentById(String commentId) {
-//        return commentRepository.findById(commentId)
-//                .switchIfEmpty(Mono.error(new IllegalArgumentException("Commento non trovato")));
-//    }
-//
-//    public Flux<Comment> getCommentsByPhotoId(String photoId) {
-//        return commentRepository.findByPhotoId(photoId)
-//                .switchIfEmpty(Flux.error(new IllegalArgumentException("Nessun commento trovato per questa foto")));
-//    }
-//
-//    public Flux<Comment> getReplies(String commentId) {
-//        return commentRepository.findByParentCommentId(commentId)
-//                .switchIfEmpty(Flux.error(new IllegalArgumentException("Nessuna risposta trovata per questo commento")));
-//    }
-//
-//    public Mono<Void> deleteComment(String commentId) {
-//        return commentRepository.findById(commentId)
-//            .switchIfEmpty(Mono.error(new IllegalArgumentException("Commento non trovato")))
-//            .flatMap(existingComment -> commentRepository.deleteById(commentId));
-//    }
-//
-//    public Flux<Comment> getCommentsByIds(List<String> ids) {
-//        return Flux.fromIterable(ids)
-//            .flatMap(commentRepository::findById)
-//            .switchIfEmpty(Flux.error(new IllegalArgumentException("Alcuni commenti non sono stati trovati")));
-//    }
-//}
-//
-//
+
 
 
 
 @Service
 public class CommentService {
+
+    private static final Logger logger = LoggerFactory.getLogger(CommentService.class);
 
     @Autowired
     private CommentRepository commentRepository;
@@ -89,126 +32,139 @@ public class CommentService {
     @Autowired
     private UserContext userContext;
 
-//    
-//    @CacheEvict(value = {"photoComments", "replies", "userComments"}, allEntries = true) 
-//    public Mono<Comment> addComment(Comment comment) {
-//        comment.setCreatedDate(new Date());
-//
-//        return userContext.getCurrentUserId()
-//            .flatMap(userId -> {
-//                comment.setUserId(String.valueOf(userId));
-//                
-//                // Se il commento ha un parentCommentId, aggiorna il padre
-//                if (comment.getParentCommentId() != null) {
-//                    return commentRepository.findById(comment.getParentCommentId())
-//                        .flatMap(parentComment -> {
-//                            parentComment.addReply(comment); // Aggiungi la risposta al padre
-//                            return commentRepository.save(parentComment) // Salva il padre aggiornato
-//                                    .thenReturn(comment);
-//                        });
-//                }
-//
-//                // Se non ha un parentCommentId, salva come un nuovo commento
-//                return commentRepository.save(comment);
-//            });
-//    }
+    @Autowired
+    private CommentWebSocketHandler commentWebSocketHandler;
+
+
+  
     
     
-    
-    @CacheEvict(value = {"photoComments", "replies", "userComments"}, allEntries = true) 
+    @CacheEvict(value = {"photo:comments", "replies", "user:comments"}, allEntries = true)
     public Mono<Comment> addComment(Comment comment) {
         comment.setCreatedDate(new Date());
 
         return userContext.getCurrentUserId()
-            .flatMap(userId -> {
-                comment.setUserId(String.valueOf(userId));
+                .flatMap(userId -> {
+                    comment.setUserId(String.valueOf(userId));
+                    logger.info("Tentativo di aggiungere un commento da parte dell'utente: {}", userId);
 
-                if (comment.getParentCommentId() != null) {
-                    return commentRepository.findById(comment.getParentCommentId())
-                        .flatMap(parentComment -> {
-                            long currentSize = calculateDocumentSize(parentComment);
+                    if (comment.getParentCommentId() != null) {
+                        // È una risposta
+                        return commentRepository.findById(comment.getParentCommentId())
+                                .flatMap(parentComment -> {
+                                    parentComment.addReply(comment);
+                                    return commentRepository.save(comment) // Salva la risposta
+                                            .flatMap(savedComment -> commentRepository.save(parentComment) // Aggiorna il padre
+                                                    .thenReturn(savedComment))
+                                            .doOnSuccess(savedComment -> {
+                                                commentWebSocketHandler.notifyCommentUpdate("Reply added: " + savedComment.getId());
+                                                logger.info("Risposta salvata con successo con ID: {}", savedComment.getId());
+                                            });
+                                });
+                    }
 
-                            if (currentSize + calculateDocumentSize(comment) > 15.5 * 1024 * 1024) {
-                                // Se il limite viene superato, crea un nuovo documento per la risposta
-                                return commentRepository.save(comment);
-                            } else {
-                                // Aggiungi la risposta al commento padre
-                                parentComment.addReply(comment);
-                                return commentRepository.save(parentComment).thenReturn(comment);
-                            }
-                        });
-                }
-                
-
-                // Se è un nuovo commento, salvalo
-                return commentRepository.save(comment);
-            });
+                    // È un commento principale
+                    return commentRepository.save(comment)
+                            .doOnSuccess(savedComment -> {
+                                commentWebSocketHandler.notifyCommentUpdate("Comment added: " + savedComment.getId());
+                                logger.info("Commento principale salvato con successo con ID: {}", savedComment.getId());
+                            });
+                })
+                .doOnError(error -> logger.error("Errore durante l'aggiunta del commento: {}", error.getMessage()));
     }
 
 
 
-    @Cacheable(value = "comments", key = "#commentId")
+    @Cacheable(value = "comments", key = "'comments:' + #commentId")
     public Mono<Comment> getCommentById(String commentId) {
+        logger.info("Recupero commento con ID: {}", commentId);
         return commentRepository.findById(commentId)
                 .switchIfEmpty(Mono.error(new IllegalArgumentException("Commento non trovato")));
     }
 
-    @Cacheable(value = "photoComments", key = "#photoId")
+    @Cacheable(value = "photo:comments", key = "'photo:comments:' + #photoId")
     public Flux<Comment> getCommentsByPhotoId(String photoId) {
+        logger.info("Recupero commenti per photoId: {}", photoId);
         return commentRepository.findByPhotoId(photoId)
+                .filter(comment -> comment.getParentCommentId() == null)
                 .switchIfEmpty(Flux.error(new IllegalArgumentException("Nessun commento trovato per questa foto")));
     }
-
-    @Cacheable(value = "replies", key = "#commentId")
-    public Flux<Comment> getReplies(String commentId) {
-        return commentRepository.findByParentCommentId(commentId)
-                .switchIfEmpty(Flux.error(new IllegalArgumentException("Nessuna risposta trovata per questo commento")));
-    }
-
-    @CacheEvict(value = {"comments", "photoComments", "replies", "userComments"}, allEntries = true)
-    public Mono<Void> deleteComment(String commentId) {
-        return commentRepository.findById(commentId)
-            .switchIfEmpty(Mono.error(new IllegalArgumentException("Commento non trovato")))
-            .flatMap(existingComment -> commentRepository.deleteById(commentId));
-    }
-
-    public Flux<Comment> getCommentsByIds(List<String> ids) {
-        return Flux.fromIterable(ids)
-            .flatMap(commentRepository::findById)
-            .switchIfEmpty(Flux.error(new IllegalArgumentException("Alcuni commenti non sono stati trovati")));
-    }
-
-    @Cacheable(value = "userComments", key = "#userId")
+    
+    
+    
+    
+    @Cacheable(value = "user:comments", key = "'user:comments:' + #userId")
     public Flux<Comment> getCommentsByUserId(String userId) {
+        logger.info("Recupero commenti per userId: {}", userId);
         return commentRepository.findByUserId(userId)
                 .switchIfEmpty(Flux.error(new IllegalArgumentException("Nessun commento trovato per questo utente")));
     }
+
+
     
     
     
-    
-    public long calculateDocumentSize(Comment comment) {
-        long size = 0;
+    @CacheEvict(value = {"comments", "photo:comments", "replies", "user:comments"}, allEntries = true)
+    public Mono<Void> deleteComment(String commentId) {
+        logger.info("Eliminazione commento con ID: {}", commentId);
 
-        // Calcola la lunghezza dei campi stringa
-        size += comment.getId() != null ? comment.getId().getBytes().length : 0;
-        size += comment.getContent() != null ? comment.getContent().getBytes().length : 0;
-        size += comment.getPhotoId() != null ? comment.getPhotoId().getBytes().length : 0;
-        size += comment.getUserId() != null ? comment.getUserId().getBytes().length : 0;
-        size += comment.getParentCommentId() != null ? comment.getParentCommentId().getBytes().length : 0;
-
-        // Calcola la lunghezza delle risposte ricorsivamente
-        if (comment.getReplies() != null) {
-            for (CommentComponent reply : comment.getReplies()) {
-                size += calculateDocumentSize((Comment) reply); // Richiama ricorsivamente per ogni risposta
-            }
-        }
-
-        // Calcola la lunghezza della data
-        size += comment.getCreatedDate() != null ? 8 : 0; // Una data occupa 8 byte in BSON
-
-        return size;
+        return commentRepository.findById(commentId)
+                .flatMap(comment -> {
+                    // Rimuovi il commento dalla lista di risposte del genitore, se esiste
+                    if (comment.getParentCommentId() != null) {
+                        return commentRepository.findById(comment.getParentCommentId())
+                                .flatMap(parentComment -> {
+                                    parentComment.getReplyIds().remove(commentId);
+                                    return commentRepository.save(parentComment)
+                                            .then(deleteCommentRecursively(commentId));
+                                });
+                    }
+                    return deleteCommentRecursively(commentId);
+                })
+                .doOnSuccess(unused -> {
+                    commentWebSocketHandler.notifyCommentUpdate("Comment deleted: " + commentId);
+                    logger.info("Commento eliminato con successo: {}", commentId);
+                })
+                .doOnError(error -> logger.error("Errore durante l'eliminazione del commento: {}", error.getMessage()));
     }
 
+    // Metodo ricorsivo per cancellare il commento e le sue risposte
+    private Mono<Void> deleteCommentRecursively(String commentId) {
+        return commentRepository.findById(commentId)
+                .flatMap(comment -> {
+                    Flux<Void> deleteReplies = Flux.fromIterable(comment.getReplyIds())
+                            .flatMap(this::deleteCommentRecursively);
+                    return deleteReplies.then(commentRepository.deleteById(commentId));
+                });
+    }
 
+    
+    
+    @Cacheable(value = "replies", key = "'replies:' + #commentId")
+    public Flux<Comment> getReplies(String commentId) {
+        logger.info("Recupero risposte per commentId: {}", commentId);
+
+        return commentRepository.findById(commentId)
+                .flatMapMany(parentComment -> {
+                    if (parentComment.getReplyIds() == null || parentComment.getReplyIds().isEmpty()) {
+                        return Flux.error(new IllegalArgumentException("Nessuna risposta trovata per questo commento"));
+                    }
+                    return Flux.fromIterable(parentComment.getReplyIds())
+                            .flatMap(replyId -> commentRepository.findById(replyId))
+                            .switchIfEmpty(Flux.error(new IllegalArgumentException("Risposte non trovate per alcuni ID")));
+                })
+                .switchIfEmpty(Flux.error(new IllegalArgumentException("Commento padre non trovato con ID: " + commentId)));
+    }
+
+    
+    
+    
+    
+
+    
+    
+    
+    
 }
+
+

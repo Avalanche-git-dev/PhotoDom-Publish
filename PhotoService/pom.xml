@@ -55,7 +55,6 @@
 		</dependency>
 
 
-
 		<!-- Spring Security Test -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -76,12 +75,12 @@
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
 		</dependency>
-		
-		
+
+
 		<dependency>
-    <groupId>org.apache.kafka</groupId>
-    <artifactId>kafka-clients</artifactId>
-</dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
+		</dependency>
 
 
 		<!-- Spring Boot Data Redis -->
@@ -107,22 +106,20 @@
 			<artifactId>springdoc-openapi-starter-webflux-api</artifactId>
 			<version>${spring-doc.version}</version>
 		</dependency>
-		
-			<!-- Logging -->
+
+		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 		</dependency>
-		
-		
 
-
-
+		<!-- Web Socket -->
+	
 
 	</dependencies>
 

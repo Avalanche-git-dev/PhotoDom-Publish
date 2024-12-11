@@ -1,18 +1,33 @@
 package com.app.photoservice.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PhotoDto {
     private Long id;
     private Long userId;
     private String filename;
     private String contentType;
     private Long size;
-    private byte[] imageBytes;
-    private int likeCount;
 
-    public PhotoDto() {
+    private byte[] imageBytes;
+    private int likeCount; 
+ 
+   private String imageBase64;
+
+    public String getImageBase64() {
+	return imageBase64;
+}
+
+
+public void setImageBase64(String imageBase64) {
+	this.imageBase64 = imageBase64;
+}
+
+
+	public PhotoDto() {
 		super();
 	}
     
@@ -59,12 +74,6 @@ public class PhotoDto {
 		this.size = size;
 	}
 	
-//	public InputStream getPhotoStream() {
-//		return photoStream;
-//	}
-//	public void setPhotoStream(InputStream photoStream) {
-//		this.photoStream = photoStream;
-//	}
 	public int getLikeCount() {
 		return likeCount;
 	}

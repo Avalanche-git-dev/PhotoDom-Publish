@@ -17,6 +17,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.gridfs.GridFsResource;
 import org.springframework.data.redis.core.ReactiveRedisTemplate;
+import org.springframework.http.MediaType;
 import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,7 @@ import com.app.photoservice.kafka.PhotoKafkaProducer;
 import com.app.photoservice.kafka.event.PhotoEvent;
 import com.app.photoservice.repository.LikeRepository;
 import com.app.photoservice.repository.PhotoMetadataRepository;
+import com.app.photoservice.socket.LikeStatusWebSocketHandler;
 import com.app.photoservice.utils.UserContext;
 
 import reactor.core.publisher.Flux;
@@ -64,7 +66,13 @@ public class PhotoService {
     
     
     
-    final static org.slf4j.Logger log =  LoggerFactory.getLogger(PhotoService.class);
+    
+    @Autowired
+    private  LikeStatusWebSocketHandler likeStatusWebSocketHandler;
+    
+    
+    
+     final static org.slf4j.Logger log =  LoggerFactory.getLogger(PhotoService.class);
     
     
     
@@ -88,10 +96,13 @@ public class PhotoService {
                             .set(cacheKey, base64Image)
                             .then(cachy.expire(cacheKey, Duration.ofMinutes(10)));
                         
+                     
+                        
                         Mono<Boolean> saveMetadata = saveMetadataToCache(
                                 tempFileId,
                                 file.filename(),
-                                file.headers().getContentType().toString()
+                                extracted(file).toString()
+                                
                             );
                         
                         if(saveMetadata==null) {
@@ -120,7 +131,23 @@ public class PhotoService {
                     .onErrorResume(e -> Mono.just("Errore durante il caricamento del file: " + e.getMessage()))
             );
     }
-                                
+
+
+
+
+
+
+
+
+
+	private MediaType extracted(FilePart file) {
+		return file.headers().getContentType();
+	}
+
+
+
+
+
 
 
     
@@ -254,6 +281,73 @@ public class PhotoService {
     }
 
     
+//    public Mono<Boolean> addLike(Long photoId) {
+//        return userContext.getCurrentUserId()
+//                .flatMap(userId -> {
+//                    Optional<Like> existingLike = likeRepository.findByUserIdAndPhotoId(userId, photoId);
+//                    if (existingLike.isPresent()) {
+//                        return Mono.just(false); // L'utente ha già messo un "like"
+//                    }
+//
+//                    PhotoMetadata photo = photoMetadataRepository.findById(photoId)
+//                            .orElseThrow(() -> new PhotoNotFoundException("Photo not found"));
+//
+//                    Like like = new Like();
+//                    like.setUserId(userId);
+//                    like.setPhoto(photo);
+//                    likeRepository.save(like);
+//
+//                    // Aggiorna il contatore dei like nell'entità PhotoMetadata
+//                    photo.setLikeCount(photo.getLikeCount() + 1);
+//                    photoMetadataRepository.save(photo);
+//
+//                    // Aggiorna il conteggio dei like nella cache
+//                    String cacheKey = "photo:" + photoId;
+//                    return reactiveRedisTemplate.opsForValue().get(cacheKey)
+//                            .flatMap(photoDto -> {
+//                                photoDto.setLikeCount(photoDto.getLikeCount() + 1);
+//                                return reactiveRedisTemplate.opsForValue()
+//                                        .set(cacheKey, photoDto)
+//                                        .then(reactiveRedisTemplate.expire(cacheKey, Duration.ofMinutes(2)))
+//                                        .thenReturn(true);
+//                            })
+//                            .switchIfEmpty(Mono.just(true)); // Se non è nella cache, non fare nulla
+//                });
+//    }
+//
+//    
+//    public Mono<Boolean> removeLike(Long photoId) {
+//        return userContext.getCurrentUserId()
+//                .flatMap(userId -> {
+//                    Optional<Like> like = likeRepository.findByUserIdAndPhotoId(userId, photoId);
+//                    if (like.isPresent()) {
+//                        likeRepository.delete(like.get());
+//
+//                        PhotoMetadata photo = photoMetadataRepository.findById(photoId)
+//                                .orElseThrow(() -> new PhotoNotFoundException("Photo not found"));
+//
+//                        // Aggiorna il contatore dei like nell'entità PhotoMetadata
+//                        photo.setLikeCount(photo.getLikeCount() - 1);
+//                        photoMetadataRepository.save(photo);
+//
+//                        // Aggiorna il conteggio dei like nella cache
+//                        String cacheKey = "photo:" + photoId;
+//                        return reactiveRedisTemplate.opsForValue().get(cacheKey)
+//                                .flatMap(photoDto -> {
+//                                    photoDto.setLikeCount(photoDto.getLikeCount() - 1);
+//                                    return reactiveRedisTemplate.opsForValue()
+//                                            .set(cacheKey, photoDto)
+//                                            .then(reactiveRedisTemplate.expire(cacheKey, Duration.ofMinutes(2)))
+//                                            .thenReturn(true);
+//                                })
+//                                .switchIfEmpty(Mono.just(true)); // Se non è nella cache, non fare nulla
+//                    }
+//                    return Mono.just(false); // L'utente non ha messo un "like"
+//                });
+//    }
+    
+    
+    
     public Mono<Boolean> addLike(Long photoId) {
         return userContext.getCurrentUserId()
                 .flatMap(userId -> {
@@ -284,11 +378,15 @@ public class PhotoService {
                                         .then(reactiveRedisTemplate.expire(cacheKey, Duration.ofMinutes(2)))
                                         .thenReturn(true);
                             })
-                            .switchIfEmpty(Mono.just(true)); // Se non è nella cache, non fare nulla
+                            .switchIfEmpty(Mono.just(true)) // Se non è nella cache, non fare nulla
+                            .doOnNext(success -> {
+                                // Notifica lo stato aggiornato al WebSocket
+                                likeStatusWebSocketHandler.notifyLikeStatus(photoId, true);
+                            });
                 });
     }
 
-    
+
     public Mono<Boolean> removeLike(Long photoId) {
         return userContext.getCurrentUserId()
                 .flatMap(userId -> {
@@ -313,13 +411,16 @@ public class PhotoService {
                                             .then(reactiveRedisTemplate.expire(cacheKey, Duration.ofMinutes(2)))
                                             .thenReturn(true);
                                 })
-                                .switchIfEmpty(Mono.just(true)); // Se non è nella cache, non fare nulla
+                                .switchIfEmpty(Mono.just(true)) // Se non è nella cache, non fare nulla
+                                .doOnNext(success -> {
+                                    // Notifica lo stato aggiornato al WebSocket
+                                    likeStatusWebSocketHandler.notifyLikeStatus(photoId, false);
+                                });
                     }
                     return Mono.just(false); // L'utente non ha messo un "like"
                 });
     }
 
-    
     
     
     
@@ -360,7 +461,7 @@ public class PhotoService {
                 }));
     }
     
-
+    
     
     
     /* <----------------------------------------------------------------------------------------------> */
@@ -383,8 +484,10 @@ public class PhotoService {
                                                 // Recupera immagine da GridFS
                                                 GridFsResource photoResource = photoStorageService.getPhoto(metadata.getFileId());
                                                 byte[] imageBytes = photoResource.getInputStream().readAllBytes();
+                                             // Ottieni il conteggio dei like
+                                                int likeCount = likeRepository.countByPhotoId(metadata.getId());
 
-                                                PhotoDto photoDto = PhotoMapper.toPhotoDto(metadata, imageBytes, metadata.getLikeCount());
+                                                PhotoDto photoDto = PhotoMapper.toPhotoDto(metadata, imageBytes, likeCount);
 
                                                 // Salva nella cache individuale
                                                 return reactiveRedisTemplate.opsForValue()
@@ -483,9 +586,21 @@ public class PhotoService {
                             });
                 });
     }
-
     
     
+    
+    // Polling try , do not do this go look for WebSocketing and how to implements , unusued method.
+    public Mono<Boolean> checkLikeStatus(Long photoId) {
+        return userContext.getCurrentUserId()
+                .flatMap(userId -> 
+                    Mono.fromCallable(() -> likeRepository.findByUserIdAndPhotoId(userId, photoId))
+                        .map(optionalLike -> optionalLike.isPresent())
+                        .defaultIfEmpty(false)
+                        .doOnNext(liked -> {
+                            likeStatusWebSocketHandler.notifyLikeStatus(photoId, liked);
+                        })
+                );
+    }
 
 
 }

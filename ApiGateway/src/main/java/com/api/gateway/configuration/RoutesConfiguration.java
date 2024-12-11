@@ -15,39 +15,8 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 public class RoutesConfiguration {
 	
 	
-	
 
-//	@Bean
-//	RouteLocator getCommentRouteLocator(RouteLocatorBuilder builder) {
-//	    return builder.routes()
-//	        .route("comment-service", r -> r.path("/api/comments/**")
-//	                                         .uri("lb://comment-service")) // Load balancing verso il servizio registrato in Eureka
-//	        .build();
-//	}
-//	
-//	
-//	
-//	
-//	
-//	@Bean
-//	RouteLocator getUserRouteLocator(RouteLocatorBuilder builder) {
-//	    return builder.routes()
-//	        .route("user-service", r -> r.path("/api/users/**", "/api/admins/**")
-//	                                      .uri("lb://user-service")) // Load balancing verso user-service
-//	        .build();
-//	}
-//
-//	
-//	
-//	@Bean
-//	RouteLocator getPhotoRouteLocator(RouteLocatorBuilder builder) {
-//	    return builder.routes()
-//	        .route("photo-service", r -> r.path("/api/photos/**")
-//	                                         .uri("lb://photo-service")) // Load balancing verso il servizio registrato in Eureka
-//	        .build();
-//	}
-//	
-//	
+
 	@Value("${comment.service.uri}")
 	private String commentServiceUri;
 
@@ -59,7 +28,10 @@ public class RoutesConfiguration {
 
 	@Bean
 	RouteLocator userServiceRouteLocator(RouteLocatorBuilder builder) {
-		return builder.routes().route("user-service", r -> r.path("/api/users/**","/keycloak/**","/api/admins/**")
+		return builder.routes().route("user-service-ws", r -> r
+				.path("/ws/users/**")
+				.uri(userServiceUri))
+				.route("user-service", r -> r.path("/api/users/**","/keycloak/**","/api/admins/**")
 	                .filters(f -> f.circuitBreaker(c -> c.setName("userServiceCB")
                 .setFallbackUri("forward:/fallback/users")))
 				.uri(userServiceUri)).build();
@@ -67,7 +39,11 @@ public class RoutesConfiguration {
 
 	@Bean
 	RouteLocator photoServiceRouteLocator(RouteLocatorBuilder builder) {
-		return builder.routes().route("photo-service", r -> r.path("/api/photos/**")
+		return builder.routes()
+				 .route("photo-service-ws", r -> r
+				            .path("/ws/photos/**","/ws/like/status/**") 
+				            .uri(photoServiceUri)) 
+				.route("photo-service", r -> r.path("/api/photos/**")
 				 .filters(f -> f.circuitBreaker(c -> c.setName("photoServiceCB")
                          .setFallbackUri("forward:/fallback/photos")))
 				.uri(photoServiceUri)).build();
@@ -75,7 +51,11 @@ public class RoutesConfiguration {
 
 	@Bean
 	RouteLocator commentServiceRouteLocator(RouteLocatorBuilder builder) {
-		return builder.routes().route("comment-service", r -> r.path("/api/comments/**")
+		return builder.routes()
+				.route("comment-service-ws",r ->r
+						.path("/ws/comments/**")
+						.uri(commentServiceUri))
+				.route("comment-service", r -> r.path("/api/comments/**")
 				.filters(f -> f.circuitBreaker(c -> c.setName("commentServiceCB")
                         .setFallbackUri("forward:/fallback/comments")))
 				.uri(commentServiceUri)).build();
@@ -103,15 +83,7 @@ public class RoutesConfiguration {
 	
 	
 	
-//	@Bean
-//	public RouterFunction<ServerResponse> fallbackRoute() {
-//	    return RouterFunctions.route(RequestPredicates.GET("/fallback/{serviceName}"),
-//	        request -> {
-//	            String serviceName = request.pathVariable("serviceName");
-//	            return ServerResponse.status(HttpStatus.SERVICE_UNAVAILABLE)
-//	                    .bodyValue("Service " + serviceName + " is currently unavailable. Please try again later.");
-//	        });
-//	}
+
 	
 	 @Bean
      RouterFunction<ServerResponse> fallbackRoute() {

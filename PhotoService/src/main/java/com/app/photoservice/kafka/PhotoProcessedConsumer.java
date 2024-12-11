@@ -17,6 +17,7 @@ import com.app.photoservice.entity.PhotoMetadata;
 import com.app.photoservice.kafka.event.PhotoProcessedEvent;
 import com.app.photoservice.repository.PhotoMetadataRepository;
 import com.app.photoservice.service.PhotoStorageService;
+import com.app.photoservice.socket.PhotoWebSocketHandler;
 
 import reactor.core.publisher.Mono;
 
@@ -29,16 +30,18 @@ public class PhotoProcessedConsumer {
     private final PhotoStorageService photoStorageService;
     private final ReactiveRedisTemplate<String, String> cachy;
     private final ReactiveRedisTemplate<String, PhotoDto> photoCache;
+    private final PhotoWebSocketHandler photoWebSocketHandler;
 
     public PhotoProcessedConsumer(
             PhotoMetadataRepository photoMetadataRepository,
             PhotoStorageService photoStorageService,
             @Qualifier("cachy") ReactiveRedisTemplate<String, String> cachy,
-            ReactiveRedisTemplate<String, PhotoDto> photoCache) {
+            ReactiveRedisTemplate<String, PhotoDto> photoCache,PhotoWebSocketHandler photoWebSocketHandler) {
         this.photoMetadataRepository = photoMetadataRepository;
         this.photoStorageService = photoStorageService;
         this.cachy = cachy;
         this.photoCache = photoCache;
+        this.photoWebSocketHandler=photoWebSocketHandler;
     }
 
     @KafkaListener(topics = "photo-processed", groupId = "photo-service-group", containerFactory = "kafkaListenerContainerFactory")
@@ -104,6 +107,7 @@ public class PhotoProcessedConsumer {
                     
 
                     PhotoMetadata savedMetadata = photoMetadataRepository.save(metadata);
+                    photoWebSocketHandler.notifyNewPhoto(savedMetadata.getId().toString());
                     
                     
 //                    try {

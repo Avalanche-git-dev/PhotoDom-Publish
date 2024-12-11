@@ -1,6 +1,7 @@
 package com.app.userservice.controller.api;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,23 +21,53 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
+//    @PostMapping("/ban/add")
+//    public ResponseEntity<String> banUser(@RequestParam Long id) {
+//        userService.banUser(id);
+//        return ResponseEntity.ok("User with ID " + id + " has been banned.");
+//    }
+//
+//    @PostMapping("/ban/remove")
+//    public ResponseEntity<String> removeBanUser(@RequestParam Long id) {
+//        userService.unbanUser(id);
+//        return ResponseEntity.ok("User with ID " + id + " has been unbanned.");
+//    }
+//
+//    @PostMapping("/promote/admin")
+//    public ResponseEntity<String> addAdmin(@RequestParam Long id) {
+//        userService.nominateAdmin(id);
+//        return ResponseEntity.ok("User with ID " + id + " has been promoted to Admin.");
+//    }
+    
+    
+    
     @PostMapping("/ban/add")
-    public ResponseEntity<String> banUser(@RequestParam Long id) {
+    public ResponseEntity<Map<String, Object>> banUser(@RequestParam Long id) {
         userService.banUser(id);
-        return ResponseEntity.ok("User with ID " + id + " has been banned.");
+        return ResponseEntity.ok(Map.of(
+                "success", true,
+                "message", "User with ID " + id + " has been banned."
+        ));
     }
 
     @PostMapping("/ban/remove")
-    public ResponseEntity<String> removeBanUser(@RequestParam Long id) {
+    public ResponseEntity<Map<String, Object>> removeBanUser(@RequestParam Long id) {
         userService.unbanUser(id);
-        return ResponseEntity.ok("User with ID " + id + " has been unbanned.");
+        return ResponseEntity.ok(Map.of(
+                "success", true,
+                "message", "User with ID " + id + " has been unbanned."
+        ));
     }
 
     @PostMapping("/promote/admin")
-    public ResponseEntity<String> addAdmin(@RequestParam Long id) {
+    public ResponseEntity<Map<String, Object>> addAdmin(@RequestParam Long id) {
         userService.nominateAdmin(id);
-        return ResponseEntity.ok("User with ID " + id + " has been promoted to Admin.");
+        return ResponseEntity.ok(Map.of(
+                "success", true,
+                "message", "User with ID " + id + " has been promoted to Admin."
+        ));
     }
+
     
     
     
