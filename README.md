@@ -1,11 +1,11 @@
 # PhotoDom
-Applicazione Social per pubblicazione e gestione di contenuti fotografici.
+Applicazione Social che permette ad utenti autenticati di pubblicare e gestire contenuti fotografici.
+
+# Tech Stack
 
 
 
 
 ## General Networking Schema
-
-
 ![Diagramma UML](PhotoDom-UML.svg)
 
