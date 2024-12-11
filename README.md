@@ -4,8 +4,8 @@ Applicazione Social per pubblicazione e gestione di contenuti fotografici.
 
 
 
-## Diagramma UML
-Questo è il diagramma UML della mia applicazione:
+## General Networking Schema
+
 
 ![Diagramma UML](PhotoDom-UML.svg)
 
