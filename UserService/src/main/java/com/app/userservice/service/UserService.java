@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.app.userservice.constants.TopicConstants;
 import com.app.userservice.entity.Admin;
 import com.app.userservice.entity.Qualification;
 import com.app.userservice.entity.Role;
@@ -21,7 +22,6 @@ import com.app.userservice.exception.InvalidFieldException;
 import com.app.userservice.exception.NotAuthorizedException;
 import com.app.userservice.exception.UserException;
 import com.app.userservice.exception.UserNotFoundException;
-import com.app.userservice.kafka.KafkaProducerService;
 import com.app.userservice.model.Credentials;
 import com.app.userservice.model.LoginRequest;
 import com.app.userservice.model.UserDto;
@@ -42,11 +42,9 @@ public class UserService {
 	@Autowired
 	private UserContext currentUser;
 
-	@Autowired
-	private KafkaProducerService kafkaProducerService;
+
 	
-//	@Autowired
-//	private RedisTemplate<String, Object> cachy;
+
 	
 	
 	 @Autowired
@@ -55,33 +53,21 @@ public class UserService {
 	
 	
 	
-	//
 	public List<UserDto> getAllUsers() {
 		List<UserDto> users = userRepository.findAll().stream().map(UserMapper::toUserDto).collect(Collectors.toList());
 		return users;
 	}
 	
 	
-	// @Cacheable(value = "user", key = "#id")
+   
 	public User getUserById(Long id) {
 		User user = userRepository.findById(id)
 				.orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
-//		String cacheKey = "user:" + user.getId();
-//		cachy.opsForValue().set(cacheKey, UserMapper.toUserDto(user), Duration.ofMinutes(5));
-		
-		//byte[] cachedUser =  cachy.getStringSerializer().serialize(cacheKey);
-	            
-		
-//	UserDto cachedUser =  (UserDto) cachy.opsForValue().get(cacheKey);
-//		if (cachedUser != null) {
-//		    System.out.println("User retrieved from Redis with key: " + cacheKey);
-//		}
 		return user;
 	}
 	
 	
 	
-    //
 	public void deleteUser(Long id) {
 		if (!userRepository.existsById(id)) {
 			throw new UserNotFoundException("User not found with id: " + id);
@@ -95,24 +81,7 @@ public class UserService {
 	
 
 
-//	public UserDto authenticate(LoginRequest loginRequest) {
-//		User user = userRepository.findByUsername(loginRequest.getUsername()).orElseThrow(
-//				() -> new UserNotFoundException("User not found with username: " + loginRequest.getUsername()));
-//		
-//		if (user.getStatus() == UserStatus.BANNED) {
-//			throw new InvalidFieldException("User is banned and cannot authenticate.");
-//		}
-//		
-//		if (!passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
-//			throw new InvalidFieldException("Invalid username or password.");
-//		}
-//		
-//		kafkaProducerService.sendMessage(TopicConstants.USER_LOGGED_TOPIC, "user-online");
-//		String cacheKey = "user:" + user.getId();
-//		cachy.opsForValue().set(cacheKey, UserMapper.toUserDto(user));
-//		
-//		return UserMapper.toUserDto(user);
-//	}
+
 
 	public User authenticate(LoginRequest loginRequest) {
 		User user = userRepository.findByUsername(loginRequest.getUsername()).orElseThrow(
@@ -126,7 +95,7 @@ public class UserService {
 			throw new InvalidFieldException("Invalid username or password.");
 		}
 
-		kafkaProducerService.sendMessage(TopicConstants.USER_LOGGED_TOPIC, "user-online");
+//		kafkaProducerService.sendMessage(TopicConstants.USER_LOGGED_TOPIC, "user-online");
 //		String cacheKey = "user:" + user.getId();
 //		cachy.opsForValue().set(cacheKey, UserMapper.toUserDto(user), Duration.ofMinutes(5));
 		return user;
@@ -184,16 +153,7 @@ public class UserService {
 		return (int) userRepository.count(); // Conteggio totale degli utenti
 	}
 
-	// @Cacheable(value = "user", key = "'list::keycloak'")
-	public List<UserDto> getUsers(String search, int first, int max) {
-		if (search != null && !search.isEmpty()) {
-			return userRepository.findByUsernameContainingIgnoreCase(search, PageRequest.of(first / max, max)).stream()
-					.map(UserMapper::toUserDto).toList();
-		} else {
-			return userRepository.findAll(PageRequest.of(first / max, max)).stream().map(UserMapper::toUserDto)
-					.toList();
-		}
-	}
+
 
 	public User createUser(User user) {
 
@@ -396,5 +356,23 @@ public class UserService {
 
 		return userRepository.save(user);
 	}
+	
+	
+	
+	
+	
+	public Page<UserDto> getUsers(String search, int first, int max) {
+	    Pageable pageable = PageRequest.of(first / max, max);
+
+	    if (search == null || search.trim().isEmpty()) {
+	        // Se non ci sono criteri di ricerca, restituisci tutti gli utenti (paginati)
+	        return userRepository.findAll(pageable).map(UserMapper::toUserDto);
+	    }
+
+	    // Cerca per username o email con criteri di ricerca
+	    return userRepository.findByUsernameContainingIgnoreCaseOrEmailContainingIgnoreCase(search, search, pageable)
+	                         .map(UserMapper::toUserDto);
+	}
+
 
 }
