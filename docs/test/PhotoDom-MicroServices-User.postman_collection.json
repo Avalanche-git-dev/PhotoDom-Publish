@@ -1,0 +1,922 @@
+{
+	"info": {
+		"_postman_id": "49457756-bbbe-4987-8187-f01b3c89f844",
+		"name": "PhotoDom-MicroServices-User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39018201"
+	},
+	"item": [
+		{
+			"name": "RegisterOAuth2Client",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "m6QSthqRFQ2jjKvLGLRb1AfOPnFtn7N4",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "user-service",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "offline_access",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"bombomania96\",\r\n  \"password\": \"negrone96\",\r\n  \"email\": \"momo96@gmail.com\",\r\n  \"firstName\": \"Momo\",\r\n  \"lastName\": \"Ashour\",\r\n  \"birthday\": \"1996-01-23\",\r\n  \"nickname\": \"Avalanchegit\",\r\n  \"telephone\": \"3333352349\"\r\n  \r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/users/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "sysadminpw",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "sysadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"bombomania1997\",\r\n  \"password\": \"negrone97\",\r\n  \"email\": \"momo97milanososo@gmail.com\",\r\n  \"firstName\": \"Momo\",\r\n  \"lastName\": \"Ashour\",\r\n  \"birthday\": \"1996-01-23\",\r\n  \"nickname\": \"Avalanchep\",\r\n  \"telephone\": \"1113052367\"\r\n  \r\n\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/users/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RegisterAdmin",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "m6QSthqRFQ2jjKvLGLRb1AfOPnFtn7N4",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "user-service",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "offline_access",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"admin\",\r\n  \"password\": \"admin96\",\r\n  \"email\": \"admin@example.com\",\r\n  \"firstName\": \"Mohamed\",\r\n  \"lastName\": \"Wonderland\",\r\n  \"birthday\": \"1996-11-23\",\r\n  \"nickname\": \"ADMIN\",\r\n  \"telephone\": \"3334445556\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/users/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllUser",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "d2tV9wkbN6ZB6REpadFLFlnX2q9psTiS",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "photo-service",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "offline_access",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtb21vIiwidXNlcklkIjoxLCJyb2xlIjoiVVNFUiIsImlhdCI6MTczMjY2MzczNCwiZXhwIjoxNzMyNjY3MzM0fQ.Vm1J3LA8TkuM02MKfskLHE0sv7f-pj18giG0liOxzX8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetProfileById",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "d2tV9wkbN6ZB6REpadFLFlnX2q9psTiS",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "photo-service",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "offline_access",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/users/profile?id=53",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"users",
+						"profile"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "53"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetProfileViewById",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "d2tV9wkbN6ZB6REpadFLFlnX2q9psTiS",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "photo-service",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "offline_access",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/users/profile/view?id=53",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"users",
+						"profile",
+						"view"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "53"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateUser",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "d2tV9wkbN6ZB6REpadFLFlnX2q9psTiS",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "photo-service",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "offline_access",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \r\n\r\n  \"firstName\": \"Villain\",\r\n  \"lastName\": \"Taddeus\",\r\n  \"photoProfileId\": \"13\"\r\n  \r\n  \r\n  }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/users/profile/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"users",
+						"profile",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateCredentials",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "d2tV9wkbN6ZB6REpadFLFlnX2q9psTiS",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "photo-service",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "offline_access",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"oldPassword\": \"momo96milan\",\r\n  \"newPassword\": \"momone96\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/users/credentials/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"users",
+						"credentials",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteUser",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "m6QSthqRFQ2jjKvLGLRb1AfOPnFtn7N4",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "user-service",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "offline_access",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtb21vIiwidXNlcklkIjoxLCJyb2xlIjoiVVNFUiIsImlhdCI6MTczMTkzNjIxNywiZXhwIjoxNzMxOTM5ODE3fQ.ehc_p2BihGzQ38MvfadHgWR3CmT0Fnh-34RKxAksw_A",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/api/users/delete?id=49",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"users",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "49"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nickname",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "d2tV9wkbN6ZB6REpadFLFlnX2q9psTiS",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "photo-service",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "offline_access",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/users/nickname?id=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"users",
+						"nickname"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nicknames",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "d2tV9wkbN6ZB6REpadFLFlnX2q9psTiS",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "photo-service",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "offline_access",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[1,2,3,4,5]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/users/nicknames",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"users",
+						"nicknames"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchByFilter",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlbGdxT01HbmdUOWVkd21kNDlMR2R1cFgyQmZ3el9XUm5pVVladmJpc0NvIn0.eyJleHAiOjE3MzY3MDkzMDIsImlhdCI6MTczNjcwODEwMiwianRpIjoiYjM0MDk4NGEtMWUxZi00N2Y2LTg2MDctNTgwYWMwZjAxMzllIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgwL3JlYWxtcy9QaG90b0RvbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJmOjhhZGI3YTIyLTU4ZTItNGE4Zi04MWJlLTBkNTc0YWE3MWI3Yjo1MyIsInR5cCI6IkJlYXJlciIsImF6cCI6ImFuZ3VsYXItY2xpZW50Iiwic2lkIjoiMWM1YWY3ZTItNmExNC00NTJkLWJjMzItNWRlMjJiZGMzNGE4IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjQyMDAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJ1c2VyIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgdXNlci1hY2Nlc3MiLCJyb2xlIjoiVVNFUiIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJ1c2VySWQiOiI1MyJ9.QSDkkyv1OjTMLSwteDD14q9P0Hg-iJCsefjsJi7XtBOR9FyYSC-2RuBfvbvPp0XPZEUhYizhEMS0_iv_RXEraDzfhkVpa19NIQX4EK9l3nbRT9RXOEYrcpO40_5FD4W1FJxdoVjY_1EcHzTw6bOdh7nmhmWc2uKuLtxCZ7KDa_hGsysHEwpZuAV0LZmTqH2QL0WENbb96mQD57HZ3EIA7dQNfpAvjcXRAlMEXgY7Q7cg2yhVBDSUDpHeVtww21PKsmWwdwDstmEFzI9vGJzOJHBL2zToq1wNmBqKGG1l2-pepWgpvITBu30_5-akz2U_P9v1rAOefno3yx5hqo1YpA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"momo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/users/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"users",
+						"search"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

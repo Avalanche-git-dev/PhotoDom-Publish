@@ -1,0 +1,821 @@
+{
+	"info": {
+		"_postman_id": "1511f423-f418-4cc0-b7d2-d8a024a829eb",
+		"name": "PhotoDom-MicroServices-Photo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39018201"
+	},
+	"item": [
+		{
+			"name": "FetchingAllPhotoByAlg",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlbGdxT01HbmdUOWVkd21kNDlMR2R1cFgyQmZ3el9XUm5pVVladmJpc0NvIn0.eyJleHAiOjE3MzY3NzM3NzIsImlhdCI6MTczNjc3MjU3MiwianRpIjoiNTU5ZDIxNmEtMmFlMC00NTJiLWIxOWItNGEyZjYxNzg5YjAzIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgwL3JlYWxtcy9QaG90b0RvbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJmOjhhZGI3YTIyLTU4ZTItNGE4Zi04MWJlLTBkNTc0YWE3MWI3Yjo1MyIsInR5cCI6IkJlYXJlciIsImF6cCI6ImFuZ3VsYXItY2xpZW50Iiwic2lkIjoiOTMwMzEwZGMtZmQxYy00MTIwLTljYWItZGU2MmVlODI4MWM5IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjQyMDAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJ1c2VyIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgdXNlci1hY2Nlc3MiLCJyb2xlIjoiVVNFUiIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJ1c2VySWQiOiI1MyJ9.VKueHu2F59uphpPlhx6GHaa3lsMbbk9WQH2C2EwtUCORGRu68s9rK-b_oA1z9CLZpXfcrCt28LJQyt4fu4pcX4RIia161RJmfKC6Q4OEZ3YYoV72S8yelZRK3pO1gSVYhIgQclY91V0a-MfKh5EuA0pV-fuPl14m7M1GjKD8filV4De_dDpA8ErDA5AhSEod4IalbXSQlkY9HgBEw-vGVpd2uHEVi6lzDaZmqtvQwENDQmU4rGhioraSoGkhmRwZ7szzu0jIFg_hOg7qKOPvsVfptqOYLgogC-OZKEaWx-cKvxB5Su_czrDmSQgNmB2H4SNhxS6MoggzTKiRE2fW8g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/api/photos/full/batch?page=0&size=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"photos",
+						"full",
+						"batch"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FetchingPhotoByUser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlbGdxT01HbmdUOWVkd21kNDlMR2R1cFgyQmZ3el9XUm5pVVladmJpc0NvIn0.eyJleHAiOjE3MzY3NzM3NzIsImlhdCI6MTczNjc3MjU3MiwianRpIjoiNTU5ZDIxNmEtMmFlMC00NTJiLWIxOWItNGEyZjYxNzg5YjAzIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgwL3JlYWxtcy9QaG90b0RvbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJmOjhhZGI3YTIyLTU4ZTItNGE4Zi04MWJlLTBkNTc0YWE3MWI3Yjo1MyIsInR5cCI6IkJlYXJlciIsImF6cCI6ImFuZ3VsYXItY2xpZW50Iiwic2lkIjoiOTMwMzEwZGMtZmQxYy00MTIwLTljYWItZGU2MmVlODI4MWM5IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjQyMDAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJ1c2VyIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgdXNlci1hY2Nlc3MiLCJyb2xlIjoiVVNFUiIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJ1c2VySWQiOiI1MyJ9.VKueHu2F59uphpPlhx6GHaa3lsMbbk9WQH2C2EwtUCORGRu68s9rK-b_oA1z9CLZpXfcrCt28LJQyt4fu4pcX4RIia161RJmfKC6Q4OEZ3YYoV72S8yelZRK3pO1gSVYhIgQclY91V0a-MfKh5EuA0pV-fuPl14m7M1GjKD8filV4De_dDpA8ErDA5AhSEod4IalbXSQlkY9HgBEw-vGVpd2uHEVi6lzDaZmqtvQwENDQmU4rGhioraSoGkhmRwZ7szzu0jIFg_hOg7qKOPvsVfptqOYLgogC-OZKEaWx-cKvxB5Su_czrDmSQgNmB2H4SNhxS6MoggzTKiRE2fW8g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/api/photos/full/user/batch?page=0&size=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"photos",
+						"full",
+						"user",
+						"batch"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FetchMetaDataByPage",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "d2tV9wkbN6ZB6REpadFLFlnX2q9psTiS",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "photo-service",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "offline_access",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/api/photos/metadata/batch?page=0&size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"photos",
+						"metadata",
+						"batch"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FetchMetaDataByUser",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "d2tV9wkbN6ZB6REpadFLFlnX2q9psTiS",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "photo-service",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "offline_access",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/api/photos/metadata/user/batch?page=1&size=30",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"photos",
+						"metadata",
+						"user",
+						"batch"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "30"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddLike",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "d2tV9wkbN6ZB6REpadFLFlnX2q9psTiS",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "photo-service",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "offline_access",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtb21vIiwidXNlcklkIjoxLCJyb2xlIjoiVVNFUiIsImlhdCI6MTczMjAzNjIzMiwiZXhwIjoxNzMyMDM5ODMyfQ.uC8iZVhZKpFTSDMB07Fkg3FwBtk2ybFTDWJ2pQQo0fQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8082/api/photos/like/add?photoId=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"photos",
+						"like",
+						"add"
+					],
+					"query": [
+						{
+							"key": "photoId",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "d2tV9wkbN6ZB6REpadFLFlnX2q9psTiS",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "photo-service",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "offline_access",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/momo/Downloads/ny.jpeg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8082/api/photos/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"photos",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RemoveLike",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "d2tV9wkbN6ZB6REpadFLFlnX2q9psTiS",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "photo-service",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "offline_access",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtb21vIiwidXNlcklkIjoxLCJyb2xlIjoiVVNFUiIsImlhdCI6MTczMjAzNjIzMiwiZXhwIjoxNzMyMDM5ODMyfQ.uC8iZVhZKpFTSDMB07Fkg3FwBtk2ybFTDWJ2pQQo0fQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8082/api/photos/like/remove?photoId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"photos",
+						"like",
+						"remove"
+					],
+					"query": [
+						{
+							"key": "photoId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPhotoByID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlbGdxT01HbmdUOWVkd21kNDlMR2R1cFgyQmZ3el9XUm5pVVladmJpc0NvIn0.eyJleHAiOjE3MzY3ODkwNDQsImlhdCI6MTczNjc4Nzg0NCwianRpIjoiMDVlOGI3OTYtZjlkYy00ZmRiLTlhNmMtNGM0OWZmZGMwMWMyIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgwL3JlYWxtcy9QaG90b0RvbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJmOjhhZGI3YTIyLTU4ZTItNGE4Zi04MWJlLTBkNTc0YWE3MWI3Yjo1OCIsInR5cCI6IkJlYXJlciIsImF6cCI6ImZyb250LWVuZC1jbGllbnQiLCJzaWQiOiI5NzNkNjIzNS00M2EwLTRjYzgtYjQ4YS0zMWJiNGYxMGZiNDMiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbImh0dHA6Ly9sb2NhbGhvc3Q6MzAwMCJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJhZG1pbiIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgdXNlci1hY2Nlc3MiLCJyb2xlIjoiQURNSU4iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwidXNlcklkIjoiNTgifQ.ssqrrvXz2QqwXKBDgoK5AWJl-BF4ShqSa4myGGfXflqbgN_lCXCutrww39mNACtWIFPa06taXENze2gvPsARHFb1BUA2QUO5O-0YHS_y6238MMVCeYKw23ZxUBEuLk9Wv453oVLVDL2eOSPTh68MTn5XbpGTmFPl7nVZmVpBBNMRG2dq24EIM5C_GBN4s8yNeYsAxfAEDLysXQX7BWI-tMoNhC3gz77ff-BdvlX7VXdMykAZBzeTU1kPuoRGot-tcouDmKXMZRMImjnaqEwsfT-8CVYE0Epd8XEKzObB05xeWpY3BX4KKdmN_qk7KtMunEjsqThLP9f5ryUc7Cnv7w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/api/photos/photo?photoId=58",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"photos",
+						"photo"
+					],
+					"query": [
+						{
+							"key": "photoId",
+							"value": "58"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MetaData",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlbGdxT01HbmdUOWVkd21kNDlMR2R1cFgyQmZ3el9XUm5pVVladmJpc0NvIn0.eyJleHAiOjE3MzY3ODkwNDQsImlhdCI6MTczNjc4Nzg0NCwianRpIjoiMDVlOGI3OTYtZjlkYy00ZmRiLTlhNmMtNGM0OWZmZGMwMWMyIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgwL3JlYWxtcy9QaG90b0RvbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJmOjhhZGI3YTIyLTU4ZTItNGE4Zi04MWJlLTBkNTc0YWE3MWI3Yjo1OCIsInR5cCI6IkJlYXJlciIsImF6cCI6ImZyb250LWVuZC1jbGllbnQiLCJzaWQiOiI5NzNkNjIzNS00M2EwLTRjYzgtYjQ4YS0zMWJiNGYxMGZiNDMiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbImh0dHA6Ly9sb2NhbGhvc3Q6MzAwMCJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJhZG1pbiIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgdXNlci1hY2Nlc3MiLCJyb2xlIjoiQURNSU4iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwidXNlcklkIjoiNTgifQ.ssqrrvXz2QqwXKBDgoK5AWJl-BF4ShqSa4myGGfXflqbgN_lCXCutrww39mNACtWIFPa06taXENze2gvPsARHFb1BUA2QUO5O-0YHS_y6238MMVCeYKw23ZxUBEuLk9Wv453oVLVDL2eOSPTh68MTn5XbpGTmFPl7nVZmVpBBNMRG2dq24EIM5C_GBN4s8yNeYsAxfAEDLysXQX7BWI-tMoNhC3gz77ff-BdvlX7VXdMykAZBzeTU1kPuoRGot-tcouDmKXMZRMImjnaqEwsfT-8CVYE0Epd8XEKzObB05xeWpY3BX4KKdmN_qk7KtMunEjsqThLP9f5ryUc7Cnv7w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/api/photos/data/photo?photoId=58",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"photos",
+						"data",
+						"photo"
+					],
+					"query": [
+						{
+							"key": "photoId",
+							"value": "58"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DebugToken",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "d2tV9wkbN6ZB6REpadFLFlnX2q9psTiS",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "photo-service",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "offline_access",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/debug/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"debug",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "likeStatus",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "d2tV9wkbN6ZB6REpadFLFlnX2q9psTiS",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "photo-service",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "offline_access",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/photos/like/status?photoId=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"photos",
+						"like",
+						"status"
+					],
+					"query": [
+						{
+							"key": "photoId",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPhotosBatchByUser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlbGdxT01HbmdUOWVkd21kNDlMR2R1cFgyQmZ3el9XUm5pVVladmJpc0NvIn0.eyJleHAiOjE3MzY3NzM3NzIsImlhdCI6MTczNjc3MjU3MiwianRpIjoiNTU5ZDIxNmEtMmFlMC00NTJiLWIxOWItNGEyZjYxNzg5YjAzIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgwL3JlYWxtcy9QaG90b0RvbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJmOjhhZGI3YTIyLTU4ZTItNGE4Zi04MWJlLTBkNTc0YWE3MWI3Yjo1MyIsInR5cCI6IkJlYXJlciIsImF6cCI6ImFuZ3VsYXItY2xpZW50Iiwic2lkIjoiOTMwMzEwZGMtZmQxYy00MTIwLTljYWItZGU2MmVlODI4MWM5IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjQyMDAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJ1c2VyIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgdXNlci1hY2Nlc3MiLCJyb2xlIjoiVVNFUiIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJ1c2VySWQiOiI1MyJ9.VKueHu2F59uphpPlhx6GHaa3lsMbbk9WQH2C2EwtUCORGRu68s9rK-b_oA1z9CLZpXfcrCt28LJQyt4fu4pcX4RIia161RJmfKC6Q4OEZ3YYoV72S8yelZRK3pO1gSVYhIgQclY91V0a-MfKh5EuA0pV-fuPl14m7M1GjKD8filV4De_dDpA8ErDA5AhSEod4IalbXSQlkY9HgBEw-vGVpd2uHEVi6lzDaZmqtvQwENDQmU4rGhioraSoGkhmRwZ7szzu0jIFg_hOg7qKOPvsVfptqOYLgogC-OZKEaWx-cKvxB5Su_czrDmSQgNmB2H4SNhxS6MoggzTKiRE2fW8g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/photos/full/user/photos?userId=58&page=0&size=10\n",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"photos",
+						"full",
+						"user",
+						"photos"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "58"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10\n"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeletePhoto",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlbGdxT01HbmdUOWVkd21kNDlMR2R1cFgyQmZ3el9XUm5pVVladmJpc0NvIn0.eyJleHAiOjE3MzY3ODkwNDQsImlhdCI6MTczNjc4Nzg0NCwianRpIjoiMDVlOGI3OTYtZjlkYy00ZmRiLTlhNmMtNGM0OWZmZGMwMWMyIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgwL3JlYWxtcy9QaG90b0RvbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJmOjhhZGI3YTIyLTU4ZTItNGE4Zi04MWJlLTBkNTc0YWE3MWI3Yjo1OCIsInR5cCI6IkJlYXJlciIsImF6cCI6ImZyb250LWVuZC1jbGllbnQiLCJzaWQiOiI5NzNkNjIzNS00M2EwLTRjYzgtYjQ4YS0zMWJiNGYxMGZiNDMiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbImh0dHA6Ly9sb2NhbGhvc3Q6MzAwMCJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJhZG1pbiIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgdXNlci1hY2Nlc3MiLCJyb2xlIjoiQURNSU4iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwidXNlcklkIjoiNTgifQ.ssqrrvXz2QqwXKBDgoK5AWJl-BF4ShqSa4myGGfXflqbgN_lCXCutrww39mNACtWIFPa06taXENze2gvPsARHFb1BUA2QUO5O-0YHS_y6238MMVCeYKw23ZxUBEuLk9Wv453oVLVDL2eOSPTh68MTn5XbpGTmFPl7nVZmVpBBNMRG2dq24EIM5C_GBN4s8yNeYsAxfAEDLysXQX7BWI-tMoNhC3gz77ff-BdvlX7VXdMykAZBzeTU1kPuoRGot-tcouDmKXMZRMImjnaqEwsfT-8CVYE0Epd8XEKzObB05xeWpY3BX4KKdmN_qk7KtMunEjsqThLP9f5ryUc7Cnv7w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/api/photos/delete?photoId=170",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"photos",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "photoId",
+							"value": "170"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

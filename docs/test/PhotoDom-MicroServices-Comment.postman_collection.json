@@ -1,0 +1,602 @@
+{
+	"info": {
+		"_postman_id": "3067f079-c205-407f-a71d-c571fe805336",
+		"name": "PhotoDom-MicroServices-Comment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39018201"
+	},
+	"item": [
+		{
+			"name": "AddComment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlbGdxT01HbmdUOWVkd21kNDlMR2R1cFgyQmZ3el9XUm5pVVladmJpc0NvIn0.eyJleHAiOjE3MzY3MDg0MzMsImlhdCI6MTczNjcwNzIzMywianRpIjoiYzk3MjQ5ZjctOTgxOC00NGUzLTg0ZjEtYTMyZjliOGJhNDk3IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgwL3JlYWxtcy9QaG90b0RvbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJmOjhhZGI3YTIyLTU4ZTItNGE4Zi04MWJlLTBkNTc0YWE3MWI3Yjo1MyIsInR5cCI6IkJlYXJlciIsImF6cCI6ImFuZ3VsYXItY2xpZW50Iiwic2lkIjoiMGI3ODAxZGYtYThhMy00ZDNlLTgxZjQtOTg5ZTJmYjdiOTg4IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjQyMDAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJ1c2VyIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgdXNlci1hY2Nlc3MiLCJyb2xlIjoiVVNFUiIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJ1c2VySWQiOiI1MyJ9.TBMjBkIqToJkc0INY_F5qZ0PvTfsWBGuApOyFZGgBVzWtaQJgkK2O_yjkr_lHvr2nV9mkKufRuok2EhYE2zqmVC3SgmGZM6wLIF_T3ACgkDOTDgyNMBp5kQmhJPZrvGiP42rcFJLdhCo9qtngEZAjiq3zh_MCsMAjgeN3WYlL7zfGyJwETqqe_cV-yfSpvkFiJrwoxIJCSDXvKdhjBJNN3CyVb5CGd2Go0D9W9-TQ3MKXy1DSnEHkQ4atLVRWWVUyR0FtTgoIrgQWpzG9UfdUztNnVpapbv9fmjUiya2pELyIfmh5EQHR8J36xrBNlvNVlRC-9aLBJkUgrHRuvpV5A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"content\": \"Commento count 3\",\r\n  \"photoId\": \"23\"\r\n  \r\n  \r\n  \r\n  \r\n  \r\n  \r\n  \r\n  \r\n  \r\n  \r\n  \r\n  \r\n  \r\n  \r\n  \r\n  \r\n  \r\n  \r\n  \r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/comments/comment/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"comments",
+						"comment",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCommentById",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "d2tV9wkbN6ZB6REpadFLFlnX2q9psTiS",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "photo-service",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "offline_access",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/comments/comment?id=6759f3e8da5b4f2fbfe85325",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"comments",
+						"comment"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "6759f3e8da5b4f2fbfe85325"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCommentsByUserId",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "d2tV9wkbN6ZB6REpadFLFlnX2q9psTiS",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "photo-service",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "offline_access",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/comments/comment/user?userId=53",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"comments",
+						"comment",
+						"user"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "53"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetRepliesByCommentId",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "d2tV9wkbN6ZB6REpadFLFlnX2q9psTiS",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "photo-service",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "offline_access",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/comments/comment/replies?id=6759f3e8da5b4f2fbfe85325",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"comments",
+						"comment",
+						"replies"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "6759f3e8da5b4f2fbfe85325"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCommentByPhotoId",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "d2tV9wkbN6ZB6REpadFLFlnX2q9psTiS",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "photo-service",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "offline_access",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/comments/comment/photo?photoId=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"comments",
+						"comment",
+						"photo"
+					],
+					"query": [
+						{
+							"key": "photoId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCommentsBatchByIds",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "d2tV9wkbN6ZB6REpadFLFlnX2q9psTiS",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "photo-service",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "offline_access",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/comments/batch?ids=673c7eec7dbbce0f62603be3,673c7f067dbbce0f62603be4&=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"comments",
+						"batch"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "673c7eec7dbbce0f62603be3,673c7f067dbbce0f62603be4"
+						},
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteCommentById",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "headerPrefix",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlbGdxT01HbmdUOWVkd21kNDlMR2R1cFgyQmZ3el9XUm5pVVladmJpc0NvIn0.eyJleHAiOjE3MzY0NTEzODgsImlhdCI6MTczNjQ1MDE4NywianRpIjoiNjdiNzc2NmQtMDZkYy00ZjYxLWFhMTQtOTgzMzg5NDU3OWRlIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgwL3JlYWxtcy9QaG90b0RvbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJmOjhhZGI3YTIyLTU4ZTItNGE4Zi04MWJlLTBkNTc0YWE3MWI3Yjo1MyIsInR5cCI6IkJlYXJlciIsImF6cCI6ImFuZ3VsYXItY2xpZW50Iiwic2lkIjoiZmY4YTBmMGEtNzgyMi00MGQzLTgyZjgtMGM3NGQ1YmQwZmQ4IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjQyMDAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJ1c2VyIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgdXNlci1hY2Nlc3MiLCJyb2xlIjoiVVNFUiIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJ1c2VySWQiOiI1MyJ9.oz-geLCNkA4Ingd_vBtp2x45b0uRYYxJ9FDt05MmCA7r5ctJny2t-7MBOIcoAyNdFFr3xKtnIlFvSdxW7wJpqVPO16pjHkwCijrIw0Oc_gJBW7HpwzBv3ccG6nUr8UIeFrKfahdDuGKQ7nOZnFmBz1QZDy12P3qGm47yoaZWV05uTcVsZgidMg0XonWgIT0eUv8WftgqIBFsjWOdqXhret1ZrZXBNFoR4xcBiRQSKzPBFUZ9dB5B_7R2Dsb80dSmCZbzDMahfBhq88j2gK7m3v4QSXYQi-Vldkb-_RdVcCIxBN1-XPUyWr6UrHlxVy0IIaubc79kmQxkl4gnYh-d-Q",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "d2tV9wkbN6ZB6REpadFLFlnX2q9psTiS",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "photo-service",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "offline_access",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/comments/comment/delete?id=67800a9c1b812d0e27c7bd7a ",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"comments",
+						"comment",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "67800a9c1b812d0e27c7bd7a "
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CommentCount",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlbGdxT01HbmdUOWVkd21kNDlMR2R1cFgyQmZ3el9XUm5pVVladmJpc0NvIn0.eyJleHAiOjE3MzY3MTA1MDksImlhdCI6MTczNjcwOTMwOSwianRpIjoiYmQ2M2I1MDAtZGY5Ni00MzIwLThkZjQtMWNkMGJkMzg1NTZjIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgwL3JlYWxtcy9QaG90b0RvbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJmOjhhZGI3YTIyLTU4ZTItNGE4Zi04MWJlLTBkNTc0YWE3MWI3Yjo1MyIsInR5cCI6IkJlYXJlciIsImF6cCI6ImFuZ3VsYXItY2xpZW50Iiwic2lkIjoiNjEwNjc0NWQtNWU4MS00NzY3LThkMzgtNWU2MjhlMjQ2MDcxIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjQyMDAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJ1c2VyIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgdXNlci1hY2Nlc3MiLCJyb2xlIjoiVVNFUiIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJ1c2VySWQiOiI1MyJ9.cIiFGLmYMB9hiR_wrKHPHwses4hjx2S5NVgJBbkAbBm1gvOW_mx4QPvNnLi-pEFBUscBd_WSMNyfD-wB129u1r_ocogz_dyPVTrEHw-EyHWI53SnQcUeqJGxEQ0xN-84pvKgZFq-KUZVRA2YcY6fvM4q9-Pp9UEB7t-iD7lhYtRJUZp5_ZrcMHzJ_nToUnHBNlomlTs3UDiWAhonzNO4JrjeaJXRXwZQrYIKQFxvzvjpkfry2EvLyv4rMRKGdywtTtx3tvJ1uJR1b-9DDLAXogXttTv00qpUrL1cCcPpq6YZXp0MeO01tE0Wh7RSeWo_78suUcSApwVTOcwSnbOTNg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/comments/count/comments?photoId=22",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"comments",
+						"count",
+						"comments"
+					],
+					"query": [
+						{
+							"key": "photoId",
+							"value": "22"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RepliesCount",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlbGdxT01HbmdUOWVkd21kNDlMR2R1cFgyQmZ3el9XUm5pVVladmJpc0NvIn0.eyJleHAiOjE3MzY3MTU4NDIsImlhdCI6MTczNjcxNDY0MiwianRpIjoiMzJhZWVmOGItODM1Yy00NGFlLTljMWUtNDExYjQzZmZhN2JjIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgwL3JlYWxtcy9QaG90b0RvbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJmOjhhZGI3YTIyLTU4ZTItNGE4Zi04MWJlLTBkNTc0YWE3MWI3Yjo1MyIsInR5cCI6IkJlYXJlciIsImF6cCI6ImFuZ3VsYXItY2xpZW50Iiwic2lkIjoiMjVlNDM5ZTAtOGJkZS00Yzc4LThhZGEtZDdmZjYwYjhjMmNjIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjQyMDAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJ1c2VyIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgdXNlci1hY2Nlc3MiLCJyb2xlIjoiVVNFUiIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJ1c2VySWQiOiI1MyJ9.PeCtAX6IMzMM1SRepygY_7iNq4mTOCE0uYq9r--CAzh7vmVoi81EqqUcR1RFA3mCdq5msOPW3YXkt4N_cegPwayQ6DpUK1H9PaRtWWG1h0BWa3hIx0WTFzcG0Tud9F-I9geJmgiCOus5Qyj0YxTiYVD8oyFdCW7kpIUMUCXrk1TV2vNhKyVDn83S8tyuY-VdUta5MDPp5uyBzsZh46yKEbHTEUF5k0Vw4Q-qm-U9KX3y-ulErSn8YwZvcB3v4vvS_oqhpR4XehKP5jvDJR-jezgt9OHHFHIkOw439uTYM2uz2h7IlsC3JFmQU2j7CXrV9gTXta0uzMomjx_cP4k9_g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/comments/count/replies?parentCommentId=678004747a51294909a4d7fc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"comments",
+						"count",
+						"replies"
+					],
+					"query": [
+						{
+							"key": "parentCommentId",
+							"value": "678004747a51294909a4d7fc"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

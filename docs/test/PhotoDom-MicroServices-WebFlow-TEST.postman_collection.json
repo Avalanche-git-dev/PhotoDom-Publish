@@ -1,0 +1,244 @@
+{
+	"info": {
+		"_postman_id": "3fd5bafa-8a4e-4531-9731-d6158d218327",
+		"name": "PhotoDom-MicroServices-WebFlow-TEST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39018201"
+	},
+	"item": [
+		{
+			"name": "KeyCloackEndPoint",
+			"item": [
+				{
+					"name": "TokenIDClient",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "angular-client",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "momone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "momone96",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "openid",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"realms",
+								"PhotoDom",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TokenIDClient Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "front-end-client",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin96",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "openid",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"realms",
+								"PhotoDom",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TokenRefreshLogout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "front-end-client",
+									"type": "text"
+								},
+								{
+									"key": "refresh_token",
+									"value": "eyJhbGciOiJIUzUxMiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0MDRiMWFlMi0wY2E5LTQ0M2EtOThiNS0zMzBlNTM0NTYyNzkifQ.eyJleHAiOjE3MzM3MDg2NzUsImlhdCI6MTczMzcwNjg3NSwianRpIjoiMWFlNGFhNWQtMzNiMC00ODVlLWI2YmItNDg2Mjg4ZDE0ZjU2IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgwL3JlYWxtcy9QaG90b0RvbSIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODE4MC9yZWFsbXMvUGhvdG9Eb20iLCJzdWIiOiJmOjhhZGI3YTIyLTU4ZTItNGE4Zi04MWJlLTBkNTc0YWE3MWI3Yjo2IiwidHlwIjoiUmVmcmVzaCIsImF6cCI6ImZyb250LWVuZC1jbGllbnQiLCJzaWQiOiI5OTljNTk5Mi02YWI5LTRmYTUtODg5Mi01NzAzZDA5MjI5ZTMiLCJzY29wZSI6Im9wZW5pZCB3ZWItb3JpZ2lucyByb2xlcyBiYXNpYyBhY3IgdXNlci1hY2Nlc3MifQ.x2Ff_vgpOBCDcU7pmYfla4faGE5_4VS7IKeQ_2EnWM7YYvfGPujMf_PjX_PrVvN1L9HHxDJ8ek_Zy0og0VB_4g",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"realms",
+								"PhotoDom",
+								"protocol",
+								"openid-connect",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserInfoWithRefreshToken",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "headerPrefix",
+									"value": "Bearer",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "d2tV9wkbN6ZB6REpadFLFlnX2q9psTiS",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "photo-service",
+									"type": "string"
+								},
+								{
+									"key": "client_authentication",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "offline_access",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "token",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/userinfo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"realms",
+								"PhotoDom",
+								"protocol",
+								"openid-connect",
+								"userinfo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

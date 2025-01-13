@@ -1,0 +1,410 @@
+{
+	"info": {
+		"_postman_id": "ffe58713-6ab6-4a40-af24-9a21e39696fe",
+		"name": "PhotoDom-MicroServices-Keycloak",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39018201"
+	},
+	"item": [
+		{
+			"name": "New Folder",
+			"item": [
+				{
+					"name": "http://localhost:8081/keycloak/users?first=0&max=5",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "sysadminpw",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "sysadmin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/keycloak/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"keycloak",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ProtectedLogin",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "sysadminpw",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "sysadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" :\"bombomania\",\r\n    \"password\":\"negrone96\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/keycloak/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"keycloak",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LoginAdmin",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "sysadminpw",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "sysadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin96\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/keycloak/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"keycloak",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LoginUser",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "sysadminpw",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "sysadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"momo\",\r\n    \"password\": \"momone96\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/keycloak/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"keycloak",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllUserByPagination",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "sysadminpw",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "sysadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/keycloak/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"keycloak",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CountUser",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "d2tV9wkbN6ZB6REpadFLFlnX2q9psTiS",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "photo-service",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "offline_access",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/realms/PhotoDom/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/keycloak/count",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"keycloak",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetById",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "sysadminpw",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "sysadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/keycloak/user?id=53",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"keycloak",
+						"user"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "53"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetByUsername",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "sysadminpw",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "sysadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/keycloak/username?username=momo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"keycloak",
+						"username"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "momo"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetByEmail",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "sysadminpw",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "sysadmin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/keycloak/email?email=momo29@example.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"keycloak",
+						"email"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "momo29@example.com"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

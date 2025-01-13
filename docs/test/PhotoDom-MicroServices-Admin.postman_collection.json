@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "cc06b436-17db-4b6f-8ae3-5c3ecb904a56",
+		"name": "PhotoDom-MicroServices-Admin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39018201"
+	},
+	"item": [
+		{
+			"name": "Inactive",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlbGdxT01HbmdUOWVkd21kNDlMR2R1cFgyQmZ3el9XUm5pVVladmJpc0NvIn0.eyJleHAiOjE3MzY3MDg4NjcsImlhdCI6MTczNjcwNzY2NywianRpIjoiZTRlZDYyZjUtN2JhYi00N2EzLWI4YjctMzAxNDk5ODYzNDVkIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgwL3JlYWxtcy9QaG90b0RvbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJmOjhhZGI3YTIyLTU4ZTItNGE4Zi04MWJlLTBkNTc0YWE3MWI3Yjo1OCIsInR5cCI6IkJlYXJlciIsImF6cCI6ImZyb250LWVuZC1jbGllbnQiLCJzaWQiOiJjNGE1MTkxZS0xYmI0LTQ0MDUtYmFjOC04ZDBiOGE0YmQ4OTQiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbImh0dHA6Ly9sb2NhbGhvc3Q6MzAwMCJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJhZG1pbiIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgdXNlci1hY2Nlc3MiLCJyb2xlIjoiQURNSU4iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwidXNlcklkIjoiNTgifQ.2zQ24OMX1eandzKN1z_gp6UaUAv7D3hbcsDtx79JJc5S0E-hCpmIRTOOVQg--JCjq2WjSaE7FDa2tVWcBA7LuYW9BqWSBS2kou1d3iyn6NHu-2ltqOu0aOQ_wy7vfuLZW47oJg691AdUrD1Vdqkr-lBQDLErRSxfaqT-NyemymqG7BnWcDQQ4Zy_aGZn_C7Up2DPWNixdCRsogzB-P1QQAUWeLrbHRrHVoiK-5yP_eDSnDsdfn-gE5NiRAcCj91i4xtxS3cGw8ZV-NidTzO1i7qD-rQtlDWxOQjZLXKqtWTFXzNU-lRc6m4JeGqKYKF-5oo-RILHTxMpjwVa4F7N1Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/admins/inactive",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"admins",
+						"inactive"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Banned",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlbGdxT01HbmdUOWVkd21kNDlMR2R1cFgyQmZ3el9XUm5pVVladmJpc0NvIn0.eyJleHAiOjE3MzY3MDg4NjcsImlhdCI6MTczNjcwNzY2NywianRpIjoiZTRlZDYyZjUtN2JhYi00N2EzLWI4YjctMzAxNDk5ODYzNDVkIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgwL3JlYWxtcy9QaG90b0RvbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJmOjhhZGI3YTIyLTU4ZTItNGE4Zi04MWJlLTBkNTc0YWE3MWI3Yjo1OCIsInR5cCI6IkJlYXJlciIsImF6cCI6ImZyb250LWVuZC1jbGllbnQiLCJzaWQiOiJjNGE1MTkxZS0xYmI0LTQ0MDUtYmFjOC04ZDBiOGE0YmQ4OTQiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbImh0dHA6Ly9sb2NhbGhvc3Q6MzAwMCJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJhZG1pbiIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgdXNlci1hY2Nlc3MiLCJyb2xlIjoiQURNSU4iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwidXNlcklkIjoiNTgifQ.2zQ24OMX1eandzKN1z_gp6UaUAv7D3hbcsDtx79JJc5S0E-hCpmIRTOOVQg--JCjq2WjSaE7FDa2tVWcBA7LuYW9BqWSBS2kou1d3iyn6NHu-2ltqOu0aOQ_wy7vfuLZW47oJg691AdUrD1Vdqkr-lBQDLErRSxfaqT-NyemymqG7BnWcDQQ4Zy_aGZn_C7Up2DPWNixdCRsogzB-P1QQAUWeLrbHRrHVoiK-5yP_eDSnDsdfn-gE5NiRAcCj91i4xtxS3cGw8ZV-NidTzO1i7qD-rQtlDWxOQjZLXKqtWTFXzNU-lRc6m4JeGqKYKF-5oo-RILHTxMpjwVa4F7N1Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/admins/banned",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"admins",
+						"banned"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nominate",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlbGdxT01HbmdUOWVkd21kNDlMR2R1cFgyQmZ3el9XUm5pVVladmJpc0NvIn0.eyJleHAiOjE3MzY3MDg4NjcsImlhdCI6MTczNjcwNzY2NywianRpIjoiZTRlZDYyZjUtN2JhYi00N2EzLWI4YjctMzAxNDk5ODYzNDVkIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgwL3JlYWxtcy9QaG90b0RvbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJmOjhhZGI3YTIyLTU4ZTItNGE4Zi04MWJlLTBkNTc0YWE3MWI3Yjo1OCIsInR5cCI6IkJlYXJlciIsImF6cCI6ImZyb250LWVuZC1jbGllbnQiLCJzaWQiOiJjNGE1MTkxZS0xYmI0LTQ0MDUtYmFjOC04ZDBiOGE0YmQ4OTQiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbImh0dHA6Ly9sb2NhbGhvc3Q6MzAwMCJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJhZG1pbiIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgdXNlci1hY2Nlc3MiLCJyb2xlIjoiQURNSU4iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwidXNlcklkIjoiNTgifQ.2zQ24OMX1eandzKN1z_gp6UaUAv7D3hbcsDtx79JJc5S0E-hCpmIRTOOVQg--JCjq2WjSaE7FDa2tVWcBA7LuYW9BqWSBS2kou1d3iyn6NHu-2ltqOu0aOQ_wy7vfuLZW47oJg691AdUrD1Vdqkr-lBQDLErRSxfaqT-NyemymqG7BnWcDQQ4Zy_aGZn_C7Up2DPWNixdCRsogzB-P1QQAUWeLrbHRrHVoiK-5yP_eDSnDsdfn-gE5NiRAcCj91i4xtxS3cGw8ZV-NidTzO1i7qD-rQtlDWxOQjZLXKqtWTFXzNU-lRc6m4JeGqKYKF-5oo-RILHTxMpjwVa4F7N1Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/admins/promote/admin?id=54",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"admins",
+						"promote",
+						"admin"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "54"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RemoveBan",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlbGdxT01HbmdUOWVkd21kNDlMR2R1cFgyQmZ3el9XUm5pVVladmJpc0NvIn0.eyJleHAiOjE3MzY3MDg4NjcsImlhdCI6MTczNjcwNzY2NywianRpIjoiZTRlZDYyZjUtN2JhYi00N2EzLWI4YjctMzAxNDk5ODYzNDVkIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgwL3JlYWxtcy9QaG90b0RvbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJmOjhhZGI3YTIyLTU4ZTItNGE4Zi04MWJlLTBkNTc0YWE3MWI3Yjo1OCIsInR5cCI6IkJlYXJlciIsImF6cCI6ImZyb250LWVuZC1jbGllbnQiLCJzaWQiOiJjNGE1MTkxZS0xYmI0LTQ0MDUtYmFjOC04ZDBiOGE0YmQ4OTQiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbImh0dHA6Ly9sb2NhbGhvc3Q6MzAwMCJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJhZG1pbiIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgdXNlci1hY2Nlc3MiLCJyb2xlIjoiQURNSU4iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwidXNlcklkIjoiNTgifQ.2zQ24OMX1eandzKN1z_gp6UaUAv7D3hbcsDtx79JJc5S0E-hCpmIRTOOVQg--JCjq2WjSaE7FDa2tVWcBA7LuYW9BqWSBS2kou1d3iyn6NHu-2ltqOu0aOQ_wy7vfuLZW47oJg691AdUrD1Vdqkr-lBQDLErRSxfaqT-NyemymqG7BnWcDQQ4Zy_aGZn_C7Up2DPWNixdCRsogzB-P1QQAUWeLrbHRrHVoiK-5yP_eDSnDsdfn-gE5NiRAcCj91i4xtxS3cGw8ZV-NidTzO1i7qD-rQtlDWxOQjZLXKqtWTFXzNU-lRc6m4JeGqKYKF-5oo-RILHTxMpjwVa4F7N1Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/admins/ban/remove?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"admins",
+						"ban",
+						"remove"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddBan",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlbGdxT01HbmdUOWVkd21kNDlMR2R1cFgyQmZ3el9XUm5pVVladmJpc0NvIn0.eyJleHAiOjE3MzY3MDg4NjcsImlhdCI6MTczNjcwNzY2NywianRpIjoiZTRlZDYyZjUtN2JhYi00N2EzLWI4YjctMzAxNDk5ODYzNDVkIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgwL3JlYWxtcy9QaG90b0RvbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJmOjhhZGI3YTIyLTU4ZTItNGE4Zi04MWJlLTBkNTc0YWE3MWI3Yjo1OCIsInR5cCI6IkJlYXJlciIsImF6cCI6ImZyb250LWVuZC1jbGllbnQiLCJzaWQiOiJjNGE1MTkxZS0xYmI0LTQ0MDUtYmFjOC04ZDBiOGE0YmQ4OTQiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbImh0dHA6Ly9sb2NhbGhvc3Q6MzAwMCJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJhZG1pbiIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgdXNlci1hY2Nlc3MiLCJyb2xlIjoiQURNSU4iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwidXNlcklkIjoiNTgifQ.2zQ24OMX1eandzKN1z_gp6UaUAv7D3hbcsDtx79JJc5S0E-hCpmIRTOOVQg--JCjq2WjSaE7FDa2tVWcBA7LuYW9BqWSBS2kou1d3iyn6NHu-2ltqOu0aOQ_wy7vfuLZW47oJg691AdUrD1Vdqkr-lBQDLErRSxfaqT-NyemymqG7BnWcDQQ4Zy_aGZn_C7Up2DPWNixdCRsogzB-P1QQAUWeLrbHRrHVoiK-5yP_eDSnDsdfn-gE5NiRAcCj91i4xtxS3cGw8ZV-NidTzO1i7qD-rQtlDWxOQjZLXKqtWTFXzNU-lRc6m4JeGqKYKF-5oo-RILHTxMpjwVa4F7N1Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/admins/ban/add?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"admins",
+						"ban",
+						"add"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
