@@ -46,15 +46,12 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-gateway</artifactId>
 		</dependency>
-	<!--	<dependency>
+
+		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
+			<artifactId>spring-cloud-starter-circuitbreaker-reactor-resilience4j</artifactId>
 		</dependency>
--->
-<dependency>
-    <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-starter-circuitbreaker-reactor-resilience4j</artifactId>
-</dependency>
+
 		<dependency>
 			<groupId>com.github.loki4j</groupId>
 			<artifactId>loki-logback-appender</artifactId>
@@ -73,7 +70,6 @@
 			<artifactId>springdoc-openapi-starter-webflux-api</artifactId>
 			<version>${spring-doc.version}</version>
 		</dependency>
-		
 
 
 		<!-- Test Dependencies -->
