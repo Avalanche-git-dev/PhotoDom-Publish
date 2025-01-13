@@ -1,7 +1,6 @@
 package com.app.photoservice.filter;
 
 import java.io.IOException;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,136 +9,62 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.app.photoservice.dto.PhotoResponse;
 import com.app.photoservice.exception.PhotoNotFoundException;
 import com.app.photoservice.exception.PhotoReadingException;
-
-//
-//@RestControllerAdvice
-//public class GlobalExceptionHandler {
-//	
-//	private static final Logger logger  = LoggerFactory.getLogger(GlobalExceptionHandler.class);
-//	
-//
-//    // Gestione personalizzata per PhotoNotFoundException
-//    @ExceptionHandler(PhotoNotFoundException.class)
-//    public ResponseEntity<String> handlePhotoNotFoundException(PhotoNotFoundException ex) {
-//    	logger.error("Handled PhotoNotFoundException: {}", ex.getMessage(), ex);
-//        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
-//    }
-//
-//    // Gestione personalizzata per IOException
-//    @ExceptionHandler(IOException.class)
-//    public ResponseEntity<String> handleIOException(IOException ex) {
-//    	logger.error("Handled IOException: {}", ex.getMessage(), ex);
-//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-//                             .body("Errore durante l'elaborazione della richiesta: " + ex.getMessage());
-//    }
-//
-//    // Gestione per IllegalStateException
-//    @ExceptionHandler(IllegalStateException.class)
-//    public ResponseEntity<String> handleIllegalStateException(IllegalStateException ex) {
-//    	logger.error("Handled IllegalStateException: {}", ex.getMessage(), ex);
-//        return ResponseEntity.status(HttpStatus.CONFLICT)
-//                             .body("Stato illegale rilevato: " + ex.getMessage());
-//    }
-//
-//    // Gestione generica per tutte le altre eccezioni
-//    @ExceptionHandler(Exception.class)
-//    public ResponseEntity<String> handleGeneralException(Exception ex) {
-//    	logger.error("Handled Exception: {}", ex.getMessage(), ex);
-//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-//                             .body("Si è verificato un errore inatteso: " + ex.getMessage());
-//    }
-//    
-//    
-//    @ExceptionHandler(RuntimeException.class)
-//    public ResponseEntity<String> handleGeneralException(RuntimeException ex) {
-//    	logger.error("Handled RuntimeException: {}", ex.getMessage(), ex);
-//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-//                             .body("Si è verificato un errore inatteso: " + ex.getMessage());
-//    }
-//    
-//    
-//    
-//    @ExceptionHandler(PhotoReadingException.class)
-//    public ResponseEntity<String> handlePhotoReadingException(PhotoReadingException ex) {
-//    	logger.error("Handled PhotoReadingException: {}", ex.getMessage(), ex);
-//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-//                             .body("Si è verificato un errore inatteso: " + ex.getMessage());
-//    }
-//    
-//}
-
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+	private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    @ExceptionHandler(PhotoNotFoundException.class)
-    public ResponseEntity<Map<String, Object>> handlePhotoNotFoundException(PhotoNotFoundException ex) {
-        logger.error("Handled PhotoNotFoundException: {}", ex.getMessage(), ex);
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of(
-            "success", false,
-            "error", "Photo not found",
-            "message", ex.getMessage(),
-            "status", HttpStatus.NOT_FOUND.value()
-        ));
-    }
+	@ExceptionHandler(PhotoNotFoundException.class)
+	public ResponseEntity<PhotoResponse<Void>> handlePhotoNotFoundException(PhotoNotFoundException ex) {
+		logger.error("Handled PhotoNotFoundException: {}", ex.getMessage(), ex);
+		return ResponseEntity.status(HttpStatus.NOT_FOUND)
+				.body(PhotoResponse.failure("Photo not found", HttpStatus.NOT_FOUND));
+	}
 
-    @ExceptionHandler(IOException.class)
-    public ResponseEntity<Map<String, Object>> handleIOException(IOException ex) {
-        logger.error("Handled IOException: {}", ex.getMessage(), ex);
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of(
-            "success", false,
-            "error", "I/O Error",
-            "message", "Errore durante l'elaborazione della richiesta: " + ex.getMessage(),
-            "status", HttpStatus.INTERNAL_SERVER_ERROR.value()
-        ));
-    }
+	@ExceptionHandler(IOException.class)
+	public ResponseEntity<PhotoResponse<Void>> handleIOException(IOException ex) {
+		logger.error("Handled IOException: {}", ex.getMessage(), ex);
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(PhotoResponse
+				.failure("Errore durante l'elaborazione della richiesta.", HttpStatus.INTERNAL_SERVER_ERROR));
+	}
 
-    @ExceptionHandler(IllegalStateException.class)
-    public ResponseEntity<Map<String, Object>> handleIllegalStateException(IllegalStateException ex) {
-        logger.error("Handled IllegalStateException: {}", ex.getMessage(), ex);
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of(
-            "success", false,
-            "error", "Illegal state",
-            "message", "Stato illegale rilevato: " + ex.getMessage(),
-            "status", HttpStatus.CONFLICT.value()
-        ));
-    }
+	@ExceptionHandler(IllegalStateException.class)
+	public ResponseEntity<PhotoResponse<Void>> handleIllegalStateException(IllegalStateException ex) {
+		logger.error("Handled IllegalStateException: {}", ex.getMessage(), ex);
+		return ResponseEntity.status(HttpStatus.CONFLICT)
+				.body(PhotoResponse.failure("Stato illegale rilevato.", HttpStatus.CONFLICT));
+	}
 
-    @ExceptionHandler(PhotoReadingException.class)
-    public ResponseEntity<Map<String, Object>> handlePhotoReadingException(PhotoReadingException ex) {
-        logger.error("Handled PhotoReadingException: {}", ex.getMessage(), ex);
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of(
-            "success", false,
-            "error", "Photo reading error",
-            "message", ex.getMessage(),
-            "status", HttpStatus.INTERNAL_SERVER_ERROR.value()
-        ));
-    }
+	@ExceptionHandler(RuntimeException.class)
+	public ResponseEntity<PhotoResponse<Void>> handleRuntimeException(RuntimeException ex) {
+		logger.error("Handled RuntimeException: {}", ex.getMessage(), ex);
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+				.body(PhotoResponse.failure("Errore di runtime.", HttpStatus.INTERNAL_SERVER_ERROR));
+	}
 
-    @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<Map<String, Object>> handleRuntimeException(RuntimeException ex) {
-        logger.error("Handled RuntimeException: {}", ex.getMessage(), ex);
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of(
-            "success", false,
-            "error", "Runtime error",
-            "message", ex.getMessage(),
-            "status", HttpStatus.INTERNAL_SERVER_ERROR.value()
-        ));
-    }
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<PhotoResponse<Void>> handleGeneralException(Exception ex) {
+		logger.error("Handled Exception: {}", ex.getMessage(), ex);
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+				.body(PhotoResponse.failure(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR));
+	}
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<Map<String, Object>> handleGeneralException(Exception ex) {
-        logger.error("Handled Exception: {}", ex.getMessage(), ex);
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of(
-            "success", false,
-            "error", "General error",
-            "message", "Si è verificato un errore inatteso: " + ex.getMessage(),
-            "status", HttpStatus.INTERNAL_SERVER_ERROR.value()
-        ));
-    }
+	@ExceptionHandler(PhotoReadingException.class)
+	public ResponseEntity<PhotoResponse<Void>> handlePhotoReadingException(PhotoReadingException ex) {
+		logger.error("Handled PhotoReadingException: {}", ex.getMessage(), ex);
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(PhotoResponse
+				.failure("Errore durante lettura della foto durante il caricamento", HttpStatus.INTERNAL_SERVER_ERROR));
+	}
+	
+	
+	@ExceptionHandler(SecurityException.class)
+	public ResponseEntity<PhotoResponse<Void>> handleSecurityException(SecurityException ex) {
+		logger.error("Handled SecurityException: {}", ex.getMessage(), ex);
+		return ResponseEntity.status(HttpStatus.FORBIDDEN).body(PhotoResponse
+				.failure("Non sei autorizzato ad eliminare il contenuto ", HttpStatus.FORBIDDEN));
+	}
 }
-

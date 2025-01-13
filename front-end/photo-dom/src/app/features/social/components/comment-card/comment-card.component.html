@@ -1,0 +1,44 @@
+
+
+
+
+ <mat-card class="comment-card">
+  <!-- Header -->
+  <app-app-header [userId]="comment.userId"></app-app-header>
+
+  <!-- Contenuto del commento -->
+  <p>{{ comment.content }}</p>
+
+  <!-- Azioni -->
+  <div class="actions">
+    <div class="action-item" *ngIf="canDelete">
+      <button mat-icon-button color="warn" (click)="deleteComment()">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <span>Elimina</span>
+    </div>
+    <div class="action-item">
+      <button mat-icon-button color="primary" (click)="toggleReplies()">
+        <mat-icon>reply</mat-icon>
+      </button>
+      <span>Rispondi ({{ replyCount }})</span>
+    </div>
+  </div>
+
+  <!-- Lista delle risposte -->
+  <app-comment-list
+    *ngIf="showReplies"
+    [photoId]="photoId"
+    [parentId]="comment.id || null"
+    [initialCommentCount]="replyCount"
+  ></app-comment-list>
+
+  <!-- Form per aggiungere risposte -->
+  <app-add-comment
+    *ngIf="showReplyForm"
+    [photoId]="photoId"
+    [parentId]="comment.id"
+    (commentAdded)="toggleReplyForm()"
+  ></app-add-comment>
+</mat-card>
+

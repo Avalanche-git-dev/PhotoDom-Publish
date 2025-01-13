@@ -1,0 +1,22 @@
+.manage-users-container {
+    padding: 20px;
+  }
+  
+  .users-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .loading-spinner {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .empty-list {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    color: gray;
+  }
+  

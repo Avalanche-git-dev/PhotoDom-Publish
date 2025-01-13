@@ -1,0 +1,45 @@
+/* Contenitore principale della carousel */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 700px; /* Larghezza massima */
+  margin: auto;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Immagine della slide */
+.carousel-img {
+  width: 100%;
+  display: block;
+  object-fit: cover; /* Assicura proporzioni corrette */
+  height: 400px;
+}
+
+/* Pulsanti di navigazione */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-btn.prev {
+  left: 10px;
+}
+
+.carousel-btn.next {
+  right: 10px;
+}
+
+.carousel-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}

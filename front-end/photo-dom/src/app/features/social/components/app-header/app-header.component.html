@@ -1,0 +1,8 @@
+<div class="app-header">
+    <div class="profile-photo">
+      <img *ngIf="profileImage" [src]="profileImage"/>
+      <mat-icon *ngIf="!profileImage">person</mat-icon>
+    </div>
+    <span class="nickname">{{ nickname }}</span>
+  </div>
+  

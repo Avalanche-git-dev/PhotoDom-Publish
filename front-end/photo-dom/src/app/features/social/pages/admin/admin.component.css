@@ -1,0 +1,24 @@
+.drawer-container {
+    height: 100vh;
+  }
+  
+  mat-drawer {
+    width: 250px;
+    background-color: #f4f4f4;
+  }
+  
+  mat-drawer-content {
+    padding: 20px;
+  }
+  
+  /* mat-nav-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  } */
+  
+  /* .active-link {
+    font-weight: bold;
+    color: #1976d2;
+  } */
+  

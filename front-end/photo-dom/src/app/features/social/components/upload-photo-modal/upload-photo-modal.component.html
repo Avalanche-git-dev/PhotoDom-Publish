@@ -1,0 +1,59 @@
+<!-- <h2 mat-dialog-title>Carica una foto</h2>
+<mat-dialog-content>
+  <input
+    type="file"
+    (change)="onFileSelected($event)"
+    accept="image/*"
+  />
+  <div *ngIf="isUploading" class="loading-spinner">Caricamento in corso...</div>
+  <div *ngIf="uploadSuccess === true" class="success-message">
+    Caricamento completato con successo!
+  </div>
+  <div *ngIf="uploadSuccess === false" class="error-message">
+    Errore durante il caricamento. Riprovare.
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="closeModal()">Annulla</button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="uploadPhoto()"
+    [disabled]="isUploading || !selectedFile"
+  >
+    Carica
+  </button>
+</mat-dialog-actions> -->
+
+
+
+
+
+
+
+<h2 mat-dialog-title>Carica una foto</h2>
+<mat-dialog-content>
+  <input
+    type="file"
+    (change)="onFileSelected($event)"
+    accept="image/*"
+  />
+  <div *ngIf="isUploading" class="loading-spinner">
+    <mat-progress-spinner diameter="40" mode="indeterminate"></mat-progress-spinner>
+  </div>
+
+  <div *ngIf="responseMessage" class="response-message" [ngClass]="{ error: isError, success: !isError }">
+    {{ responseMessage }}
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button color="secondary" (click)="closeModal()">Annulla</button>
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="uploadPhoto()"
+    [disabled]="isUploading || !selectedFile"
+  >
+    Carica
+  </button>
+</mat-dialog-actions>

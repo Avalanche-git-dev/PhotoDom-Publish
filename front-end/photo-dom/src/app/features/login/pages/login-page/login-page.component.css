@@ -1,0 +1,51 @@
+
+
+   /* Contenitore principale della pagina */
+.login-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  height: 100vh;
+  background-color: #f4f4f4;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+
+
+/* Responsività */
+@media (max-width: 768px) {
+  .login-page-container {
+    flex-direction: column;
+    gap: 35px;
+  }
+
+ 
+}
+
+
+.divider {
+  margin-top: 20px;
+  font-size: 14px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; 
+  border: 1px solid #777;
+  border-radius: 0;
+
+}
+
+ .divider a {
+  color: #1F4E7A;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.divider a:hover {
+  /* text-decoration: underline; */
+  transform: scale(1.5);
+} 

@@ -1,0 +1,19 @@
+
+
+  <div class="comment-list">
+    <!-- Lista dei commenti -->
+    <app-comment-card
+      *ngFor="let comment of comments"
+      [comment]="comment"
+      [photoId]="photoId"
+      (commentDeleted)="handleCommentDeleted()"
+    ></app-comment-card>
+  
+    <!-- Form per aggiungere un nuovo commento -->
+    <app-add-comment
+      [photoId]="photoId"
+      [parentId]="parentId || undefined"
+      (commentAdded)="loadComments()"
+    ></app-add-comment>
+  </div>
+  

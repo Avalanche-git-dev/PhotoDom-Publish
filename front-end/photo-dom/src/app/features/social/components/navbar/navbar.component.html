@@ -1,0 +1,61 @@
+<!-- <mat-toolbar color="primary">
+  <button mat-icon-button routerLink="/social" aria-label="Vai alla Home">
+    <mat-icon>home</mat-icon>
+  </button>
+
+  <button mat-icon-button routerLink="/social/profile" aria-label="Vai al profilo">
+    <mat-icon>person</mat-icon>
+  </button>
+
+   <button mat-icon-button (click)="openUploadModal()" aria-label="Carica Foto">
+    <mat-icon>add_a_photo</mat-icon>
+  </button>
+
+  <span class="navbar-spacer"></span>
+
+  <div class="search-box">
+    <input type="text" placeholder="Cerca..." (input)="onSearch($event)" />
+    <button mat-icon-button aria-label="Search">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+
+  <button mat-icon-button (click)="logout()" aria-label="Logout">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar> -->
+
+
+<mat-toolbar color="primary">
+  <button mat-icon-button routerLink="/social" aria-label="Vai alla Home">
+    <mat-icon>home</mat-icon>
+  </button>
+
+  <button mat-icon-button routerLink="/social/profile" aria-label="Vai al profilo">
+    <mat-icon>person</mat-icon>
+  </button>
+
+  <button
+    mat-icon-button
+    *ngIf="isAdmin"
+    routerLink="/social/admin-dashboard"
+    aria-label="Vai alla Dashboard Admin"
+  >
+    <mat-icon>admin_panel_settings</mat-icon>
+  </button>
+
+  <button mat-icon-button (click)="openUploadModal()" aria-label="Carica Foto">
+    <mat-icon>add_a_photo</mat-icon>
+  </button>
+
+  <span class="navbar-spacer"></span>
+
+   <!-- Barra di ricerca -->
+   <app-search-bar></app-search-bar>
+
+  <button mat-icon-button (click)="logout()" aria-label="Logout">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+

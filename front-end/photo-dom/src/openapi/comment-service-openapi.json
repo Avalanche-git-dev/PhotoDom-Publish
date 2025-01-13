@@ -1,0 +1,384 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Comment Service API",
+    "description": "These are the rest API for Comment Service",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8083",
+      "description": "Generated server url"
+    }
+  ],
+  "paths": {
+    "/api/comments/comment/add": {
+      "post": {
+        "tags": [
+          "comment-controller"
+        ],
+        "operationId": "addComment",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Comment"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentResponseString"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/comments/count/replies": {
+      "get": {
+        "tags": [
+          "comment-controller"
+        ],
+        "operationId": "countReplies",
+        "parameters": [
+          {
+            "name": "parentCommentId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentResponseLong"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/comments/count/comments": {
+      "get": {
+        "tags": [
+          "comment-controller"
+        ],
+        "operationId": "countMainComments",
+        "parameters": [
+          {
+            "name": "photoId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentResponseLong"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/comments/comment": {
+      "get": {
+        "tags": [
+          "comment-controller"
+        ],
+        "operationId": "getCommentById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/comments/comment/user": {
+      "get": {
+        "tags": [
+          "comment-controller"
+        ],
+        "operationId": "getCommentsByUser",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CommentDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/comments/comment/replies": {
+      "get": {
+        "tags": [
+          "comment-controller"
+        ],
+        "operationId": "getReplies",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CommentDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/comments/comment/photo": {
+      "get": {
+        "tags": [
+          "comment-controller"
+        ],
+        "operationId": "getCommentsByPhoto",
+        "parameters": [
+          {
+            "name": "photoId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CommentDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/comments/comment/delete": {
+      "delete": {
+        "tags": [
+          "comment-controller"
+        ],
+        "operationId": "deleteComment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentResponseVoid"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Comment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "photoId": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "parentCommentId": {
+            "type": "string"
+          },
+          "replyIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "CommentResponseString": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "type": "string"
+          }
+        }
+      },
+      "CommentResponseLong": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "CommentDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "photoId": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "parentCommentId": {
+            "type": "string"
+          },
+          "repliesIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "CommentResponseVoid": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  }
+}

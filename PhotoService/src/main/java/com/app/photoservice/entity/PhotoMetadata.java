@@ -16,33 +16,32 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "photo_metadata", schema = "photo_service_db")
 public class PhotoMetadata {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column(nullable = false)
-    private String filename;
+	@Column(nullable = false)
+	private String filename;
 
-    @Column(nullable = false)
-    private String contentType;
+	@Column(nullable = false)
+	private String contentType;
 
-    @Column(nullable = false)
-    private Long size;
+	@Column(nullable = false)
+	private Long size;
 
-    @Column(nullable = false, unique = true)
-    private String fileId; 
+	@Column(nullable = false, unique = true)
+	private String fileId;
 
-    @Column(nullable = false)
-    private Long userId; 
-    
-    @Column(nullable = false)
-    private Date uploadDate;
-    
-    
-    @Column(nullable = false,columnDefinition = "integer default 0")
-    private int likeCount = 0; 
+	@Column(nullable = false)
+	private Long userId;
 
-    public int getLikeCount() {
+	@Column(nullable = false)
+	private Date uploadDate;
+
+	@Column(nullable = false, columnDefinition = "integer default 0")
+	private int likeCount = 0;
+
+	public int getLikeCount() {
 		return likeCount;
 	}
 
@@ -51,8 +50,7 @@ public class PhotoMetadata {
 	}
 
 	@OneToMany(mappedBy = "photo", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Like> likes = new ArrayList<>();
-
+	private List<Like> likes = new ArrayList<>();
 
 	public PhotoMetadata(Long id, String filename, String contentType, Long size, String fileId, Long userId,
 			Date uploadDate, int likeCount, List<Like> likes) {
@@ -71,8 +69,6 @@ public class PhotoMetadata {
 	public PhotoMetadata() {
 		super();
 	}
-	
-	
 
 	public Date getUploadDate() {
 		return uploadDate;
@@ -145,10 +141,4 @@ public class PhotoMetadata {
 				+ likeCount + ", likes=" + likes + "]";
 	}
 
-
-    
-	
-	
-    
-    
 }

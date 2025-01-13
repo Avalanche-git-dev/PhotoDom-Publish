@@ -1,0 +1,28 @@
+<mat-card class="profile-card">
+    <!-- Intestazione con nickname e ruolo -->
+    <mat-card-header>
+      <mat-card-title>{{ user?.nickname || 'Nickname' }}</mat-card-title>
+      <mat-card-subtitle>{{ user?.role || 'Ruolo' }}</mat-card-subtitle>
+    </mat-card-header>
+  
+    <!-- Foto profilo centrata -->
+    <div class="profile-avatar">
+      <!-- <img [src]="profileImage" alt="Foto Profilo" /> -->
+      <img *ngIf="profileImage" [src]="profileImage"/>
+      <mat-icon *ngIf="!profileImage">person</mat-icon>
+    </div>
+  
+    <!-- Dettagli profilo -->
+    <mat-card-content>
+      <div class="profile-info">
+        <p><strong>Nome:</strong> {{ user?.firstName || 'Nome' }}</p>
+        <p><strong>Cognome:</strong> {{ user?.lastName || 'Cognome' }}</p>
+        <p><strong>Email:</strong> {{ user?.email || 'Email' }}</p>
+        <p><strong>Username:</strong> {{ user?.username || 'Username' }}</p>
+        <p><strong>Telefono:</strong> {{ user?.telephone || 'Telefono' }}</p>
+        <p><strong>Età:</strong> {{ user?.age || 'Età' }}</p>
+        <p><strong>Data di nascita:</strong> {{ user?.birthday || 'Data di nascita' }}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  

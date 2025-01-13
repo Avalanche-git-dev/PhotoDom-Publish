@@ -1,0 +1,21 @@
+.response-message {
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .response-message.success {
+    color: green;
+  }
+  
+  .response-message.error {
+    color: red;
+  }
+  
+  .loading-spinner {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+  

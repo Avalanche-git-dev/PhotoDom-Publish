@@ -1,0 +1,45 @@
+<mat-card class="profile-form-card">
+    <mat-card-title>Modifica Profilo</mat-card-title>
+  
+    <!-- Form di modifica -->
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      <!-- Nome -->
+      <mat-form-field appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="firstName" />
+      </mat-form-field>
+  
+      <!-- Cognome -->
+      <mat-form-field appearance="outline">
+        <mat-label>Cognome</mat-label>
+        <input matInput formControlName="lastName" />
+      </mat-form-field>
+  
+      <!-- Email -->
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" />
+      </mat-form-field>
+  
+      <!-- Telefono -->
+      <mat-form-field appearance="outline">
+        <mat-label>Telefono</mat-label>
+        <input matInput formControlName="telephone" />
+      </mat-form-field>
+  
+      <!-- Nickname -->
+      <mat-form-field appearance="outline">
+        <mat-label>Nickname</mat-label>
+        <input matInput formControlName="nickname" />
+      </mat-form-field>
+  
+      <!-- Messaggio di errore -->
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+  
+      <!-- Pulsante Salva -->
+      <button mat-flat-button color="primary" type="submit" [disabled]="profileForm.invalid">Salva</button>
+    </form>
+  </mat-card>
+  

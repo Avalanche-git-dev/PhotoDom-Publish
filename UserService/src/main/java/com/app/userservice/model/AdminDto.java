@@ -25,12 +25,13 @@ public class AdminDto extends UserDto {
 	}
 
 	public AdminDto(Long id, String username, String email, String firstName, String lastName, LocalDate birthday,
-			Long age, String nickname, String telephone, UserStatus status, Role role, Qualification qualification) {
-		super(id, username, email, firstName, lastName, birthday, age, nickname, telephone, status, role);
+			Long age, String nickname, String telephone, UserStatus status, Role role, Long photoProfileId,
+			Qualification qualification) {
+		super(id, username, email, firstName, lastName, birthday, age, nickname, telephone, status, role,
+				photoProfileId);
 		this.qualification = qualification;
 	}
 
-	
 	
 	
 	

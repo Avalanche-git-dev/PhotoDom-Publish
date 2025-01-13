@@ -1,0 +1,30 @@
+.profile-container {
+  display: flex;
+  gap: 16px;
+  padding: 16px; /* Margine interno generale */
+}
+
+/* Colonna di sinistra */
+.left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 320px; /* Larghezza fissa */
+}
+
+/* Colonna di destra */
+.right-column {
+  flex-grow: 1; /* Occupa lo spazio rimanente */
+  display: flex;
+  justify-content: center; /* Centra il contenuto orizzontalmente */
+  padding-right: 16px; /* Margine destro */
+}
+
+/* Griglia per i post */
+.right-column .posts-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Due colonne */
+  gap: 16px; /* Spaziatura tra le card */
+  max-width: 900px; /* Larghezza massima della griglia */
+  width: 100%; /* Adatta al contenitore */
+}

@@ -58,33 +58,3 @@ public class UserWebSocketHandler extends TextWebSocketHandler {
 
 }
 
-//@Component
-//public class UserWebSocketHandler extends TextWebSocketHandler {
-//
-//    private static final Logger logger = LoggerFactory.getLogger(UserWebSocketHandler.class);
-//    private final Set<WebSocketSession> sessions = Collections.synchronizedSet(new HashSet<>());
-//
-//    @Override
-//    public void afterConnectionEstablished(WebSocketSession session) {
-//        sessions.add(session);
-//        logger.info("WebSocket connection established: {}", session.getId());
-//    }
-//
-//    @Override
-//    public void afterConnectionClosed(WebSocketSession session, CloseStatus status) {
-//        sessions.remove(session);
-//        logger.info("WebSocket connection closed: {}", session.getId());
-//    }
-//
-//    public void notifyUserChange(String message) {
-//        synchronized (sessions) {
-//            sessions.forEach(session -> {
-//                try {
-//                    session.sendMessage(new TextMessage(message));
-//                } catch (IOException e) {
-//                    logger.error("Error sending message to WebSocket session {}: {}", session.getId(), e.getMessage());
-//                }
-//            });
-//        }
-//    }
-//}

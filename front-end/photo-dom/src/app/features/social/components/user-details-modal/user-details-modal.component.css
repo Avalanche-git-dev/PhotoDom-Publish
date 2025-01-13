@@ -1,0 +1,35 @@
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  mat-dialog-content {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  mat-dialog-content p {
+    margin: 10px 0;
+  }
+  
+  mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  
+  button {
+    font-weight: bold;
+  }
+  

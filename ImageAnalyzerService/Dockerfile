@@ -1,13 +1,11 @@
-
-
-
 FROM python:3.10
 
 WORKDIR /app
 
 # Copia i file necessari
-COPY requirements.txt ./
-COPY . /app
+COPY requirements.txt ./    
+COPY . /app  
+
 
 # Copia il file delle credenziali nel container
 COPY credentials/imageanalyzer-443109-c6a036efc6a7.json /app/credentials/imageanalyzer-443109-c6a036efc6a7.json
@@ -15,27 +13,8 @@ COPY credentials/imageanalyzer-443109-c6a036efc6a7.json /app/credentials/imagean
 # Installa le dipendenze
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Imposta la variabile d'ambiente
-#ENV GOOGLE_APPLICATION_CREDENTIALS=/app/credentials/imageanalyzer-443109-c6a036efc6a7.json
+# Imposta il PYTHONPATH
+ENV PYTHONPATH=/app
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
-
-
-# FROM python:3.10
-
-# WORKDIR /app
-
-# # Copia i file necessari
-# COPY requirements.txt ./    
-# COPY . /app                 
-
-# # Copia il file delle credenziali nel container
-# COPY credentials/imageanalyzer-443109-c6a036efc6a7.json /app/credentials/imageanalyzer-443109-c6a036efc6a7.json
-
-# # Installa le dipendenze
-# RUN pip install --no-cache-dir -r requirements.txt
-
-# # Comando per eseguire il listener Kafka
-# CMD ["python", "app/main.py"]
-
-
+# Avvia il servizio
+CMD ["python", "app/main.py"]

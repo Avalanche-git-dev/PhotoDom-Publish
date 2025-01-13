@@ -1,0 +1,18 @@
+<div class="manage-users-container">
+    <div *ngIf="isLoading" class="loading-spinner">
+      <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    </div>
+  
+    <div *ngIf="!isLoading && inactiveUsers.length === 0" class="empty-list">
+      <p>Nessun utente inattivo trovato.</p>
+    </div>
+  
+    <div class="users-list">
+      <app-user-card
+        *ngFor="let user of inactiveUsers"
+        [user]="user"
+        (onPromote)="handlePromote($event)"
+      ></app-user-card>
+    </div>
+  </div>
+  

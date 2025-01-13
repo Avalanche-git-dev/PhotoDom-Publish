@@ -1,0 +1,48 @@
+.photo-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    padding: 10px;
+    max-width: 1200px;
+  }
+  
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(585px, 1fr));
+    gap: 30px;
+    justify-content: center; /* Centra le colonne */
+    max-width: 1200px; /* Limita la larghezza massima per avere massimo due colonne */
+  }
+  
+  
+  .loading-spinner {
+    margin-top: 20px;
+  }
+  
+  .empty-gallery {
+    margin-top: 30px;
+    font-size: 18px;
+    color: gray;
+    text-align: center;
+  }
+  
+  .pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-controls button {
+    margin: 0 10px;
+    padding: 5px 15px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .pagination-controls button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  

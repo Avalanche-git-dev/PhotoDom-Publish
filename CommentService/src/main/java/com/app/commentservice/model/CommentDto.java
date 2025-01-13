@@ -13,7 +13,6 @@ public class CommentDto {
     private List<String> repliesIds; // Lista di ID dei commenti di risposta
     private Date createdDate;
 
-    // Costruttore
     public CommentDto(String id, String content, String photoId, String userId, String parentCommentId, List<String> repliesIds, Date createdDate) {
         this.id = id;
         this.content = content;
@@ -24,7 +23,6 @@ public class CommentDto {
         this.createdDate = createdDate;
     }
 
-    // Getters e Setters
     public String getId() {
         return id;
     }

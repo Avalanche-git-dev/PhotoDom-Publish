@@ -1,0 +1,61 @@
+<!-- 
+
+   <div class="photo-selection-modal">
+    <h2>Seleziona una Foto</h2>
+  
+    <div *ngIf="isLoading" class="loading-spinner">
+      <mat-progress-spinner diameter="40" mode="indeterminate"></mat-progress-spinner>
+    </div>
+  
+    <div *ngIf="!isLoading && photos.length > 0" class="photo-list">
+      <div
+        *ngFor="let photo of photos"
+        class="photo-thumbnail"
+        (click)="selectPhoto(photo.id)"
+      >
+        <img [src]="photo.thumbnailUrl" alt="Foto">
+      </div>
+    </div>
+  
+    <div *ngIf="!isLoading && photos.length === 0" class="no-photos">
+      <p>Nessuna foto disponibile.</p>
+    </div>
+  
+    <button mat-button (click)="closeModal()">Chiudi</button>
+  </div>
+   -->
+
+
+   <div class="photo-selection-modal">
+    <h2>Seleziona una Foto</h2>
+  
+    <!-- Spinner di caricamento -->
+    <div *ngIf="isLoading" class="loading-spinner">
+      <mat-progress-spinner diameter="40" mode="indeterminate"></mat-progress-spinner>
+    </div>
+  
+    <!-- Contenitore scorrevole -->
+    <div class="modal-content">
+      <!-- Lista di foto -->
+      <div *ngIf="!isLoading && photos.length > 0" class="photo-list">
+        <div
+          *ngFor="let photo of photos"
+          class="photo-thumbnail"
+          (click)="selectPhoto(photo.id)"
+        >
+          <img [src]="photo.thumbnailUrl" alt="Foto">
+        </div>
+      </div>
+  
+      <!-- Nessuna foto disponibile -->
+      <div *ngIf="!isLoading && photos.length === 0" class="no-photos">
+        <p>Nessuna foto disponibile.</p>
+      </div>
+    </div>
+  
+    <!-- Bottone per chiudere -->
+    <div class="modal-footer">
+      <button mat-flat-button class="button" color="primary" (click)="closeModal()">Chiudi</button>
+    </div>
+  </div>
+  

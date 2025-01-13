@@ -1,0 +1,102 @@
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 4px;
+  padding: 0 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  height: 45px;
+  position: relative; /* Contesto di posizionamento per i risultati */
+  z-index: 100;
+  margin-right: 30px; /* Margine per separarlo da altri elementi */
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  width: 200px;
+  font-size: 16px;
+  padding: 8px;
+}
+
+.filter-select {
+  border: 1px solid #ddd;
+  outline: none;
+  background: white;
+  padding: 5px;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+.search-box button {
+  background: transparent;
+  border: none;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.search-results,
+.no-results {
+  position: absolute; /* Posiziona il contenitore sotto la barra */
+  margin-top: 35px;
+  top: 50px; /* Offset verticale dalla barra */
+  left: 0;
+  width: 100%; /* Stessa larghezza della barra */
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  z-index: 150; /* Assicura che appaia sopra altri elementi */
+}
+
+.result-fix{
+  display: flex; /* Posiziona immagine e testo in linea */
+  align-items: center; /* Centra verticalmente immagine e testo */
+}
+
+.search-result img.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.search-results {
+  max-height: 300px; /* Limita l'altezza */
+  overflow-y: auto; /* Abilita lo scroll verticale */
+ 
+}
+
+.search-result {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.search-result:last-child {
+  border-bottom: none;
+}
+
+.search-result:hover {
+  background-color: #f5f5f5;
+}
+
+.loading-spinner {
+  position: absolute; /* Assicura che il loader rimanga sotto */
+  top: 50px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.no-results {
+  position: absolute; /* Mostra il messaggio nello stesso spazio dei risultati */
+  top: 50px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: gray;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}

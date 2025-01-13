@@ -1,0 +1,16 @@
+<div class="carousel-container">
+  <!-- Freccia Sinistra -->
+  <button class="carousel-btn prev" (click)="prevSlide()">&#10094;</button>
+
+  <!-- Slide Corrente -->
+  <div class="carousel-slide">
+    <img
+      [src]="slides[currentSlide].image"
+      alt="Slide {{ currentSlide + 1 }}"
+      class="carousel-img"
+    />
+  </div>
+
+  <!-- Freccia Destra -->
+  <button class="carousel-btn next" (click)="nextSlide()">&#10095;</button>
+</div>

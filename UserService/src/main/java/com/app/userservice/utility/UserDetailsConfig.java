@@ -12,19 +12,16 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @Configuration
 public class UserDetailsConfig {
 
-    @Bean
-    UserDetailsService userDetailsService(@Value("${spring.security.user.name}") String username,
-                                                 @Value("${spring.security.user.password}") String password) {
-        return new InMemoryUserDetailsManager(
-            User.withUsername(username)
-                .password(password) // Password hashata
-                .roles("Service") // Ruolo assegnato
-                .build()
-        );
-    }
+	@Bean
+	UserDetailsService userDetailsService(@Value("${spring.security.user.name}") String username,
+			@Value("${spring.security.user.password}") String password) {
+		return new InMemoryUserDetailsManager(User.withUsername(username).password(password) // Password hashata
+				.roles("Service") // Ruolo assegnato
+				.build());
+	}
 
-    @Bean
-     PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(); // Encoder per la password
-    }
+	@Bean
+	PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder(); // Encoder per la password
+	}
 }

@@ -11,41 +11,24 @@ import org.springframework.data.mongodb.gridfs.GridFsResource;
 import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class PhotoStorageService {
 
-    @Autowired
-    private GridFsTemplate gridFsTemplate;
+	@Autowired
+	private GridFsTemplate gridFsTemplate;
 
-    public String savePhoto(InputStream photoStream, String filename, String contentType) {
-        ObjectId id = gridFsTemplate.store(photoStream, filename, contentType);
-        return id.toString();
-    }
+	public String savePhoto(InputStream photoStream, String filename, String contentType) {
+		ObjectId id = gridFsTemplate.store(photoStream, filename, contentType);
+		return id.toString();
+	}
 
-//    public GridFsResource getPhoto(String fileId) {
-//        GridFSFile file = gridFsTemplate.findOne(new Query(Criteria.where("_id").is(fileId)));
-//        if (file != null) {
-//            return gridFsTemplate.getResource(file);
-//        }
-//        throw new RuntimeException("File not found");
-//    }
-//    
-    
-//    public Mono<String> savePhoto(InputStream photoStream, String filename, String contentType) {
-//        return Mono.fromCallable(() -> {
-//            ObjectId id = gridFsTemplate.store(photoStream, filename, contentType);
-//            return id.toString();
-//        });
-//    }
-    
-    
-    
-    public GridFsResource getPhoto(String fileId) {
-        return Optional.ofNullable(gridFsTemplate.findOne(new Query(Criteria.where("_id").is(fileId))))
-            .map(gridFsTemplate::getResource)
-            .orElseThrow(() -> new RuntimeException("File not found"));
-    }
+	public GridFsResource getPhoto(String fileId) {
+		return Optional.ofNullable(gridFsTemplate.findOne(new Query(Criteria.where("_id").is(fileId))))
+				.map(gridFsTemplate::getResource).orElseThrow(() -> new RuntimeException("File not found"));
+	}
+	
+	 public void deletePhoto(String fileId) {
+	        gridFsTemplate.delete(new Query(Criteria.where("_id").is(fileId)));
+	    }
 
 }
-

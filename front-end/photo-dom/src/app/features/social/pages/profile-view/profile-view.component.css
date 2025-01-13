@@ -1,0 +1,17 @@
+.profile-container {
+    display: flex;
+    gap: 20px;
+    margin: 20px;
+  }
+  
+  .left-column {
+    flex: 1;
+    max-width: 300px;
+  }
+  
+  .right-column {
+    flex: 2;
+  }
+  
+ 
+  

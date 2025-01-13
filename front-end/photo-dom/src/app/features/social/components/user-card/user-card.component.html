@@ -1,0 +1,17 @@
+<mat-card class="user-card">
+    <div class="card-header">
+      <img *ngIf="profileImage" [src]="profileImage" class="avatar"/>
+      <mat-icon *ngIf="!profileImage">person</mat-icon>
+      <div class="user-info">
+        <h3>{{ user.nickname }}</h3>
+        <p>{{ user.role }}</p>
+      </div>
+    </div>
+    <mat-card-actions>
+      <button mat-button color="warn" (click)="handleBan()" *ngIf="user.status === 'ACTIVE'">Ban</button>
+      <button mat-button color="primary" (click)="handleUnban()" *ngIf="user.status === 'BANNED'">Unban</button>
+      <button mat-button (click)="openDetails()">Vedi Dettagli</button>
+      <button mat-button color="accent" (click)="handlePromote()" *ngIf="user.role === 'USER'">Promuovi a Admin</button>
+    </mat-card-actions>
+  </mat-card>
+  

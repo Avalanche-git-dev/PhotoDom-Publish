@@ -1,7 +1,6 @@
 package com.app.userservice.controller.api;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,79 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.userservice.entity.User;
 import com.app.userservice.model.Credentials;
+import com.app.userservice.model.ProfileView;
 import com.app.userservice.model.UserDto;
+import com.app.userservice.model.UserFilter;
 import com.app.userservice.model.UserMapper;
+import com.app.userservice.model.UserResponse;
 import com.app.userservice.service.UserService;
-
-//@RestController
-//@RequestMapping("/api/users")
-//public class UserController {
-//
-//	@Autowired
-//	private UserService userService;
-//
-//	@Autowired
-//	private KafkaProducerService kafkaProducerService;
-//
-//	@GetMapping
-//	public ResponseEntity<List<UserDto>> getAllUsers() {
-//		List<UserDto> users = userService.getAllUsers();
-//		System.out.println(users);
-//		return ResponseEntity.ok(users);
-//	}
-//
-//	@GetMapping("/profile")
-//	public ResponseEntity<UserDto> getUserById(@RequestParam Long id) {
-//		User user = userService.getUserById(id);
-//
-//		String message = "User: " + UserMapper.toUserDto(user).toString();
-//		kafkaProducerService.sendMessage("user-details-topic", message);
-//		return ResponseEntity.ok(UserMapper.toUserDto(user));
-//	}
-//
-//	@PostMapping("/register")
-//	public ResponseEntity<UserDto> createUser(@RequestBody User user) {
-//		User createdUser = userService.createUser(user);
-//		return ResponseEntity.status(HttpStatus.CREATED).body(UserMapper.toUserDto(createdUser));
-//	}
-//
-//	@PutMapping("/profile/update")
-//	public ResponseEntity<UserDto> updateUser(/* @RequestParam Long id, */ @RequestBody UserDto userDetails) {
-//		User updatedUser = userService.updateUser(/* id, */ userDetails);
-//		return ResponseEntity.ok(UserMapper.toUserDto(updatedUser));
-//	}
-//
-//	@DeleteMapping("/delete")
-//	public ResponseEntity<String> deleteUser(@RequestParam Long id) {
-//		userService.deleteUser(id);
-//		return ResponseEntity.ok("User deleted successfully.");
-//	}
-//
-//	@PutMapping("/credentials/update")
-//	public ResponseEntity<String> changePsw(/* @RequestParam Long id, */ @RequestBody Credentials credentials) {
-//		userService.updateCredentials(/* id, */credentials);
-//		return ResponseEntity.ok("Password updated successfully.");
-//	}
-//
-//	
-//	
-//	
-//	
-//	
-//	
-//	
-//	
-//	
-//	
-//
-//
-//}
-
-
-
-
-
-
 
 
 @RestController
@@ -99,92 +31,96 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-//    @Autowired
-//    private KafkaProducerService kafkaProducerService;
-    
-    
-    
-	@GetMapping
-	public ResponseEntity<List<UserDto>> getAllUsers() {
-		List<UserDto> users = userService.getAllUsers();
-		return ResponseEntity.ok(users);
-	}
+    // Recupera tutti gli utenti
+    @GetMapping
+    public ResponseEntity<UserResponse<List<UserDto>>> getAllUsers() {
+        List<UserDto> users = userService.getAllUsers();
+        return ResponseEntity.ok(UserResponse.success("Users retrieved successfully", HttpStatus.OK, users));
+    }
 
-//    @GetMapping
-//    public ResponseEntity<Map<String, Object>> getAllUsers() {
-//        List<UserDto> users = userService.getAllUsers();
-//        return ResponseEntity.ok(Map.of(
-//                "success", true,
-//                "message", "Users retrieved successfully",
-//                "users", users,
-//                "status", HttpStatus.OK.value()
-//        ));
-//    }
-//
-//    @GetMapping("/profile")
-//    public ResponseEntity<Map<String, Object>> getUserById(@RequestParam Long id) {
-//        User user = userService.getUserById(id);
-//        String message = "User: " + UserMapper.toUserDto(user).toString();
-//        kafkaProducerService.sendMessage("user-details-topic", message);
-//        return ResponseEntity.ok(Map.of(
-//                "success", true,
-//                "message", "User retrieved successfully",
-//                "user", UserMapper.toUserDto(user),
-//                "status", HttpStatus.OK.value()
-//        ));
-//    }
-    
-    
-	@GetMapping("/profile")
-	public ResponseEntity<UserDto> getUserById(@RequestParam Long id) {
-		User user = userService.getUserById(id);
+    // Recupera il profilo di un utente tramite ID
+    @GetMapping("/profile")
+    public ResponseEntity<UserResponse<UserDto>> getUserById(@RequestParam Long id) {
+        User user = userService.getUserById(id);
+        return ResponseEntity.ok(UserResponse.success("User retrieved successfully", HttpStatus.OK, UserMapper.toUserDto(user)));
+    }
 
-//		String message = "User: " + UserMapper.toUserDto(user).toString();
-		return ResponseEntity.ok(UserMapper.toUserDto(user));
-	}
-    
-    
-    
 
+    
+    
+    
+    // Registra un nuovo utente
     @PostMapping("/register")
-    public ResponseEntity<Map<String, Object>> createUser(@RequestBody User user) {
-        User createdUser = userService.createUser(user);
-        return ResponseEntity.status(HttpStatus.CREATED).body(Map.of(
-                "success", true,
-                "message", "User registered successfully",
-                "userId", createdUser.getId(),
-                "status", HttpStatus.CREATED.value()
-        ));
+    public ResponseEntity<UserResponse<Void>> createUser(@RequestBody User user) {
+        userService.createUser(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(
+                UserResponse.success("User registered successfully", HttpStatus.CREATED)
+        );
     }
 
+    // Aggiorna il profilo dell'utente
     @PutMapping("/profile/update")
-    public ResponseEntity<Map<String, Object>> updateUser(@RequestBody UserDto userDetails) {
+    public ResponseEntity<UserResponse<Long>> updateUser(@RequestBody UserDto userDetails) {
         User updatedUser = userService.updateUser(userDetails);
-        return ResponseEntity.ok(Map.of(
-                "success", true,
-                "message", "User updated successfully",
-                "userId", updatedUser.getId(),
-                "status", HttpStatus.OK.value()
-        ));
+        return ResponseEntity.ok(
+                UserResponse.success("User updated successfully", HttpStatus.OK, updatedUser.getId())
+        );
     }
 
+    // Elimina un utente tramite ID
     @DeleteMapping("/delete")
-    public ResponseEntity<Map<String, Object>> deleteUser(@RequestParam Long id) {
+    public ResponseEntity<UserResponse<Void>> deleteUser(@RequestParam Long id) {
         userService.deleteUser(id);
-        return ResponseEntity.ok(Map.of(
-                "success", true,
-                "message", "User deleted successfully",
-                "status", HttpStatus.OK.value()
-        ));
+        return ResponseEntity.ok(UserResponse.success("User deleted successfully", HttpStatus.OK));
     }
 
+    // Aggiorna la password dell'utente
     @PutMapping("/credentials/update")
-    public ResponseEntity<Map<String, Object>> changePsw(@RequestBody Credentials credentials) {
+    public ResponseEntity<UserResponse<Void>> changePassword(@RequestBody Credentials credentials) {
         userService.updateCredentials(credentials);
-        return ResponseEntity.ok(Map.of(
-                "success", true,
-                "message", "Password updated successfully",
-                "status", HttpStatus.OK.value()
-        ));
+        return ResponseEntity.ok(UserResponse.success("Password updated successfully", HttpStatus.OK));
     }
-}
+    
+    
+    @GetMapping("/profile/view")
+    public ResponseEntity<UserResponse<ProfileView>> getProfileView(@RequestParam Long id) {
+        // Chiama il servizio per ottenere il profilo limitato
+        ProfileView profile = userService.getProfile(id);
+
+        // Restituisce una risposta strutturata utilizzando UserResponse
+        return ResponseEntity.ok(
+                UserResponse.success("Profile retrieved successfully", HttpStatus.OK, profile)
+        );
+    }
+    
+    
+    @GetMapping("/nickname")
+    public ResponseEntity<UserResponse<String>> getNickname(@RequestParam Long id) {
+        String nickname = userService.getNicknameById(id);
+        return ResponseEntity.ok(
+                UserResponse.success("Nickname retrieved successfully", HttpStatus.OK, nickname)
+        );
+    }
+
+    // Recupera i nickname di una lista di utenti
+    @GetMapping("/nicknames")
+    public ResponseEntity<UserResponse<List<String>>> getNicknamesBatch(@RequestBody List<Long> ids) {
+        List<String> nicknames = userService.getNicknamesByIds(ids);
+        return ResponseEntity.ok(
+                UserResponse.success("Nicknames retrieved successfully", HttpStatus.OK, nicknames)
+        );
+    }
+    
+    
+    @PostMapping("/search")
+    public ResponseEntity<UserResponse<List<ProfileView>>> searchUsers(@RequestBody UserFilter filter) {
+        List<ProfileView> profiles = userService.findProfileViewsByFilter(filter);
+        return ResponseEntity.ok(
+            UserResponse.success("Profiles retrieved successfully.", HttpStatus.OK, profiles)
+        );
+    }
+    
+    }
+
+
+

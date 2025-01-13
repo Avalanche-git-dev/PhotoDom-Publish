@@ -1,0 +1,56 @@
+/* Card principale */
+.profile-photo-card {
+  width: 300px; /* Stessa larghezza delle altre card */
+  margin: 45px; /* Centrata verticalmente e con spaziatura */
+  padding: 16px;
+  border: 1px solid #ccc; /* Bordo sottile */
+  border-radius: 4px; /* Bordo arrotondato */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Leggera ombra */
+  text-align: center;
+}
+
+mat-card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: #1f4e7a; /* Stessa tonalità di blu */
+}
+
+/* Contenitore pulsanti */
+.action-buttons {
+  display: flex;
+  justify-content: space-between; /* Spaziatura uniforme tra le azioni */
+  align-items: center; /* Allinea i bottoni e i testi orizzontalmente */
+  gap: 15px; /* Spaziatura tra i gruppi di pulsante + testo */
+  margin-top: 10px;
+}
+
+/* Ogni bottone e il suo testo */
+.action-item {
+  display: flex;
+  flex-direction: row; /* Posizionamento orizzontale */
+  align-items: center; /* Centra verticalmente bottone e testo */
+  gap: 8px; /* Spaziatura tra bottone e testo */
+}
+
+/* Pulsanti */
+.action-item button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Dimensione uniforme */
+  height: 40px;
+  border-radius: 50%; /* Pulsanti circolari */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Leggera ombra */
+}
+
+/* Pulsanti con hover */
+.action-item button:hover {
+  background-color: rgba(0, 0, 0, 0.05); /* Effetto hover */
+}
+
+/* Testo accanto ai pulsanti */
+.action-label {
+  font-size: 14px;
+  color: #555;
+}

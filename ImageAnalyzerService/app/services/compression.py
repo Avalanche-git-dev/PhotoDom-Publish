@@ -1,38 +1,39 @@
-# from PIL import Image
-# import os
-
-# def compress_image(file_path, max_size_mb=15.5):
-#     output_path = f"{file_path}_compressed.jpg"
-#     with Image.open(file_path) as img:
-#         quality = 85
-#         while os.path.getsize(file_path) > max_size_mb * 1024 * 1024 and quality > 10:
-#             img.save(output_path, "JPEG", quality=quality)
-#             quality -= 5
-#     return output_path
 
 
+from venv import logger
 from PIL import Image
-import os
+import io
 
-def compress_image(file_path, max_size_mb=15.5):
-    # Percorso per il file compresso
-    output_path = f"{file_path}_compressed.jpg"
+
+def compress_image(image_bytes, quality=70):
     
+
     try:
-        with Image.open(file_path) as img:
-            quality = 85
-            img.save(output_path, "JPEG", quality=quality)  # Salvataggio iniziale
-            
-            # Controlla la dimensione del file e riduce la qualità se necessario
-            while os.path.getsize(output_path) > max_size_mb * 1024 * 1024 and quality > 10:
-                quality -= 5
-                img.save(output_path, "JPEG", quality=quality)
+        # Crea un BytesIO dall'immagine originale
+        image_stream = io.BytesIO(image_bytes)
+        image = Image.open(image_stream)
 
-        # Verifica che il file sia stato creato correttamente
-        if not os.path.exists(output_path):
-            raise FileNotFoundError(f"Il file compresso non è stato creato: {output_path}")
+        # Logga il formato e la modalità dell'immagine
+        logger.info(f"Immagine caricata con formato: {image.format}, modalità: {image.mode}, dimensioni: {image.size}")
 
-        return output_path
+        # Se l'immagine non è in RGB, convertila
+        if image.mode not in ("RGB", "L"):
+            image = image.convert("RGB")
+            logger.info(f"Immagine convertita in modalità RGB.")
+
+        # Crea un BytesIO per l'immagine compressa
+        compressed_stream = io.BytesIO()
+
+        # Salva l'immagine compressa nel nuovo stream
+        image.save(compressed_stream, format='JPEG', optimize=True, quality=quality)
+        compressed_stream.seek(0)
+
+        # Leggi i byte compressi
+        compressed_image_bytes = compressed_stream.read()
+        logger.info(f"Immagine compressa con successo. Dimensione: {len(compressed_image_bytes)} bytes")
+
+        return compressed_image_bytes
+
     except Exception as e:
-        raise RuntimeError(f"Errore durante la compressione: {str(e)}")
-
+        logger.error(f"Errore durante la compressione: {e}")
+        raise e  # Rilancia l'eccezione per essere gestita a livello superiore

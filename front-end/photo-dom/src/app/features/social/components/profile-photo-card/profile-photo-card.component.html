@@ -1,0 +1,24 @@
+
+  
+  <mat-card class="profile-photo-card">
+    <mat-card-title>Gestisci la tua foto profilo</mat-card-title>
+    <div class="action-buttons">
+      <!-- Bottone per caricare una nuova foto -->
+      <div class="action-item">
+        <button mat-icon-button color="primary" (click)="openUploadPhotoModal()">
+          <mat-icon>upload</mat-icon>
+        </button>
+        <span class="action-label">Carica Foto</span>
+      </div>
+  
+      <!-- Bottone per selezionare una foto esistente -->
+      <div class="action-item">
+        <button mat-icon-button color="accent" (click)="openPhotoSelectionModal()">
+          <mat-icon>photo_library</mat-icon>
+        </button>
+        <span class="action-label">Seleziona Foto</span>
+      </div>
+    </div>
+  </mat-card>
+  
+  

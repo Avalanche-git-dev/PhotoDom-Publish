@@ -1,0 +1,34 @@
+.app-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    
+  }
+  
+  .profile-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    margin: 0; /* Rimuove eventuali margini indesiderati */
+    
+    
+  }
+  
+  .profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .nickname {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+  }
+  

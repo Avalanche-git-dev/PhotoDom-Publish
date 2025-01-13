@@ -1,0 +1,74 @@
+/* Card del form */
+.profile-form-card {
+  width: 300px; /* Card più sottile */
+  margin: 45px; /* Centrata */
+  padding: 16px;
+  border: 1px solid #ccc; /* Bordo sottile */
+  border-radius: 0; /* Bordo non arrotondato */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Leggera ombra */
+  text-align: center;
+  align-items: center;
+}
+
+mat-card-title {
+  text-align: center; /* Centrato */
+  font-size: 20px; /* Dimensione maggiore */
+  font-weight: bold;
+  margin-bottom: 16px; /* Spazio sotto il titolo */
+  color: #1F4E7A; /* Colore blu uniforme */
+}
+
+/* Campi del form */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+/* Pulsante */
+button {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.error-message {
+  color: red; /* Rosso per gli errori */
+  font-size: 14px; /* Dimensione leggibile */
+  margin-top: 8px; /* Spazio sopra */
+}
+
+/* Snackbar per successo */
+.success-snackbar {
+  background-color: #4caf50 !important; /* Verde per il successo */
+  color: white !important;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Snackbar per errori */
+.error-snackbar {
+  background-color: #f44336 !important; /* Rosso per errori */
+  color: white !important;
+  font-size: 14px;
+  text-align: center;
+}
+
+mat-form-field.mat-focused {
+  border-color: #1F4E7A; /* Colore blu coerente con il tema */
+}
+
+
+
+/* Animazione per il messaggio di errore */
+.error-message {
+  animation: fade-in 0.3s ease-in-out;
+}
+
+/* Animazione fade-in */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -14,29 +14,29 @@ import com.app.photoservice.socket.PhotoWebSocketHandler;
 @Configuration
 public class WebSocketConfig {
 
-    private final PhotoWebSocketHandler photoWebSocketHandler;
-    
-    private final LikeStatusWebSocketHandler likeStatusWebSocketHandler;
+	private final PhotoWebSocketHandler photoWebSocketHandler;
 
-    public WebSocketConfig(PhotoWebSocketHandler photoWebSocketHandler,LikeStatusWebSocketHandler likeStatusWebSocketHandler) {
-        this.photoWebSocketHandler = photoWebSocketHandler;
-        this.likeStatusWebSocketHandler=likeStatusWebSocketHandler;
-    }
+	private final LikeStatusWebSocketHandler likeStatusWebSocketHandler;
 
-    @Bean
-    public HandlerMapping webSocketHandlerMapping() {
-        return new SimpleUrlHandlerMapping(Map.of(
-                "/ws/photos", photoWebSocketHandler,
-                "/ws/like/status", likeStatusWebSocketHandler
-        ), 1); // Imposta la priorità globale del mapping
-    }
+	public WebSocketConfig(PhotoWebSocketHandler photoWebSocketHandler,
+			LikeStatusWebSocketHandler likeStatusWebSocketHandler) {
+		this.photoWebSocketHandler = photoWebSocketHandler;
+		this.likeStatusWebSocketHandler = likeStatusWebSocketHandler;
+	}
 
-    
-    
-    
-    
-    @Bean
-    public WebSocketHandlerAdapter handlerAdapter() {
-        return new WebSocketHandlerAdapter();
-    }
+	@Bean
+	public HandlerMapping webSocketHandlerMapping() {
+		return new SimpleUrlHandlerMapping(
+				Map.of("/ws/photos", photoWebSocketHandler, "/ws/like/status", likeStatusWebSocketHandler), 1); // Imposta
+																												// la
+																												// priorità
+																												// globale
+																												// del
+																												// mapping
+	}
+
+	@Bean
+	public WebSocketHandlerAdapter handlerAdapter() {
+		return new WebSocketHandlerAdapter();
+	}
 }

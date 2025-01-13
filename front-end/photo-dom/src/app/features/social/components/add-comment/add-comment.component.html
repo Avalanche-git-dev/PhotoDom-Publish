@@ -1,0 +1,29 @@
+
+
+
+
+<mat-card class="add-comment-card">
+  <div>
+
+    <div *ngIf="message" class="response-message" [ngClass]="{ success: isSuccess, error: !isSuccess }">
+      {{ message }}
+    </div>
+
+    <textarea
+      matInput
+      placeholder="Scrivi un commento..."
+      [(ngModel)]="newComment"
+      rows="3"
+      class="comment-textarea"
+    ></textarea>
+  </div>
+
+  <mat-card-actions class="action-area">
+    <button class="button" mat-flat-button color="primary" (click)="addComment()">
+      Invia
+    </button>
+  </mat-card-actions>
+
+ 
+</mat-card>
+

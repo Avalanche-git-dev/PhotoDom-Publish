@@ -1,0 +1,109 @@
+.login-card{
+    background-color: #ffffff;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+	  animation: fadeIn 1s ease-in-out;
+    padding: 40px;
+    border: 1px solid #777;
+    border-radius: 0;
+}
+
+.login-card-title{
+    text-align: center;
+	  font-size: 25px;
+	  margin-bottom: 35px;
+    margin-top: 10px;
+	/* font-weight: 500; */
+}
+
+
+
+/* Stile per i campi input */
+.login-card-input {
+  background-size: cover;
+  margin: 8px 0;
+  width: 75%; /* Riduciamo la larghezza */
+  height: 75px; 
+}
+
+ .login-card-input mat-label {
+  font-size: 14px; /* Riduci il font della label */
+   
+}
+
+.login-card-input input {
+  font-size: 12px;
+ 
+  
+   /* Riduci leggermente il font dell'input */
+}
+
+
+
+
+
+
+
+
+
+
+/* Animation for input focus */
+.login-card input:focus {
+	box-shadow: 0 0 5px rgba(2, 117, 216, 0.3);
+	outline: none;
+} 
+
+
+@keyframes fadeIn {from { opacity:0;
+	transform: translateY(10px);
+}
+
+to {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+}
+
+
+
+
+
+
+
+
+.login-btn {
+    width: 75%;
+    /* padding: 10px; */
+    margin-top: 15px;
+    /* border: none; */
+    /* border-radius: 5px; */
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    background-color: #1F4E7A;
+  }
+  
+  
+  .login-btn:hover {
+    transform: scale(1.05);
+  }
+
+
+
+
+  .login-error {
+    color: red; /* Colore rosso per errori */
+    margin: 10px 0; /* Spaziatura sopra e sotto */
+    padding: 10px;
+    border: 1px solid red; /* Bordo rosso */
+    background-color: white; /* Sfondo rosato */
+    border-radius: 1px; /* Angoli arrotondati */
+  }
+  
+  

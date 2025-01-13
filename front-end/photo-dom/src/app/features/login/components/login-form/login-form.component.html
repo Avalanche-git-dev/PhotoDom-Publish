@@ -1,0 +1,37 @@
+
+
+
+    <mat-card class="login-card">
+      <mat-card-title class="login-card-title">PhotoDom</mat-card-title>
+    
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="login-card-input" appearance="outline">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" />
+          <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
+            Username è obbligatorio
+          </mat-error>
+        </mat-form-field>
+    
+        <mat-form-field class="login-card-input" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" />
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+            Password è obbligatoria
+          </mat-error>
+        </mat-form-field>
+    
+        <div *ngIf="loginError" class="login-error">
+          {{ loginError }}
+        </div>
+    
+        <button class="login-btn" mat-flat-button color="primary" type="submit">
+          Login
+        </button>
+      </form>
+    </mat-card>
+     
+
+
+
+    

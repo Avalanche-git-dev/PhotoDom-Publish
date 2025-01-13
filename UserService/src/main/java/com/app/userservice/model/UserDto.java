@@ -21,8 +21,12 @@ public class UserDto {
     private Long age;
     private String nickname;
     private String telephone;
+    private Long photoProfileId;
+    
     private UserStatus status;
     private Role role;
+    
+   
     
 	public UserDto() {
 		super();
@@ -100,8 +104,17 @@ public class UserDto {
 		this.telephone = telephone;
 	}
 
+
+	public LocalDate getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(LocalDate birthday) {
+		this.birthday = birthday;
+	}
+
 	public UserDto(Long id, String username, String email, String firstName, String lastName, LocalDate birthday,
-			Long age, String nickname, String telephone, UserStatus status, Role role) {
+			Long age, String nickname, String telephone, UserStatus status, Role role, Long photoProfileId) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -114,14 +127,15 @@ public class UserDto {
 		this.telephone = telephone;
 		this.status = status;
 		this.role = role;
+		this.photoProfileId = photoProfileId;
 	}
 
-	public LocalDate getBirthday() {
-		return birthday;
+	public Long getPhotoProfileId() {
+		return photoProfileId;
 	}
 
-	public void setBirthday(LocalDate birthday) {
-		this.birthday = birthday;
+	public void setPhotoProfileId(Long photoProfileId) {
+		this.photoProfileId = photoProfileId;
 	}
 
     

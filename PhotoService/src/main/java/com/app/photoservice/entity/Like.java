@@ -14,18 +14,18 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "likes", schema = "photo_service_db")
 public class Like {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NaturalId
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@NaturalId
+	private Long id;
 
-    @Column(nullable = false)
-    @NaturalId
-    private Long userId; // ID dell'utente che ha messo il like
+	@Column(nullable = false)
+	@NaturalId
+	private Long userId; // ID dell'utente che ha messo il like
 
-    @ManyToOne
-    @JoinColumn(name = "photo_id", nullable = false)
-    private PhotoMetadata photo;
+	@ManyToOne
+	@JoinColumn(name = "photo_id", nullable = false)
+	private PhotoMetadata photo;
 
 	public Like() {
 		super();
@@ -62,8 +62,5 @@ public class Like {
 	public void setPhoto(PhotoMetadata photo) {
 		this.photo = photo;
 	}
-    
-    
-    
 
 }

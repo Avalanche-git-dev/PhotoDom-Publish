@@ -1,0 +1,34 @@
+<div class="photo-gallery">
+    <div class="gallery-grid">
+      <app-post-card
+        *ngFor="let post of posts"
+        [photoUrl]="post.photoUrl"
+        [photoId]="post.id.toString()"
+        [ownerId]="post.ownerId.toString()"
+        [likeCount]="post.likeCount"
+        [commentCount]="post.commentCount"
+        [liked]="post.liked"
+        (likeToggle)="handleLikeToggle(post)"
+        (postDeleted)="removePost($event)" 
+      ></app-post-card>
+    </div>
+  
+    <div *ngIf="isLoading" class="loading-spinner">
+      <mat-progress-spinner diameter="50" mode="indeterminate"></mat-progress-spinner>
+    </div>
+  
+    <div *ngIf="!isLoading && posts.length === 0" class="empty-gallery">
+      <p>Nessuna foto disponibile.</p>
+    </div>
+  
+    <div class="pagination-controls">
+      <button (click)="handlePreviousPage()" [disabled]="currentPage === 0">
+        &lt; Previous
+      </button>
+      <span>Page {{ currentPage + 1 }}</span>
+      <button (click)="handleNextPage()">
+        Next &gt;
+      </button>
+    </div>
+  </div>
+  

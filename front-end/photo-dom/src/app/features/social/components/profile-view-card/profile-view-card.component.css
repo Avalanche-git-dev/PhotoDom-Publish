@@ -1,0 +1,47 @@
+.profile-card {
+  width: 300px;
+  margin: 45px auto;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  align-items: center;
+  height: 500px;
+}
+mat-card-title {
+  font-size: 22px; /* Dimensione maggiore */
+  font-weight: bold;
+  color: #1F4E7A;
+}
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 16px auto;
+  background-color: #1f4e7a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-info {
+  text-align: left;
+  margin-top: 16px;
+}
+
+.profile-info p {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+  

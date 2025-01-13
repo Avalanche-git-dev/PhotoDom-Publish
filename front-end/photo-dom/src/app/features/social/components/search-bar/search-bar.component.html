@@ -1,0 +1,54 @@
+<div class="search-container">
+  <div class="search-box">
+    <!-- Input di ricerca -->
+    <input
+      type="text"
+      placeholder="Cerca..."
+      (input)="onSearch($event)"
+      class="search-input"
+    />
+    <button mat-icon-button aria-label="Search">
+      <mat-icon>search</mat-icon>
+    </button>
+
+    <!-- Dropdown dei filtri -->
+    <select class="filter-select" [(ngModel)]="selectedFilter">
+      <option value="nickname">Nickname</option>
+      <option value="firstName">Nome</option>
+      <option value="lastName">Cognome</option>
+    </select>
+  </div>
+
+  <!-- Risultati della ricerca -->
+  <div
+    *ngIf="searchResults.length > 0"
+    class="search-results"
+  >
+  <div
+  *ngFor="let profile of searchResults"
+  class="search-result"
+  (click)="viewProfile(profile.id)"
+>
+<div class="result-fix">
+ 
+
+  <img *ngIf="profile.profileImage" [src]="profile.profileImage" class="avatar"/>
+  <mat-icon *ngIf="!profile.profileImage">person</mat-icon>
+  <p>{{ profile.nickname }}</p>
+</div>
+</div>
+</div>
+
+  <!-- Spinner di caricamento -->
+  <div *ngIf="isSearching" class="loading-spinner">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+
+  <!-- Messaggio di nessun risultato -->
+  <div
+    *ngIf="!isSearching && hasSearched && searchResults.length === 0"
+    class="no-results"
+  >
+    <p>Nessun risultato trovato.</p>
+  </div>
+</div>

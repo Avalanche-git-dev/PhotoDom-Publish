@@ -1,0 +1,16 @@
+<mat-drawer-container class="drawer-container">
+    <!-- Drawer laterale -->
+    <mat-drawer mode="side" opened>
+      <mat-nav-list>
+        <a mat-list-item routerLink="manage-users" routerLinkActive="active-link">Gestisci Utenti</a>
+        <a mat-list-item routerLink="banned-users" routerLinkActive="active-link">Utenti Bannati</a>
+        <a mat-list-item routerLink="inactive-users" routerLinkActive="active-link">Utenti Inattivi</a>
+      </mat-nav-list>
+    </mat-drawer>
+  
+    <!-- Contenuto principale -->
+    <mat-drawer-content>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+  

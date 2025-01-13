@@ -1,0 +1,21 @@
+<mat-card class="profile-card">
+    <mat-card-header>
+      <mat-card-title>{{ profile?.nickname || 'Nickname' }}</mat-card-title>
+    </mat-card-header>
+  
+    <div class="profile-avatar">
+      <img *ngIf="profileImage" [src]="profileImage"/>
+      <mat-icon *ngIf="!profileImage">person</mat-icon>
+    </div>
+  
+    <mat-card-content>
+      <div class="profile-info">
+        <p><strong>Nome:</strong> {{ profile?.firstName || 'Nome' }}</p>
+        <p><strong>Cognome:</strong> {{ profile?.lastName || 'Cognome' }}</p>
+        <p><strong>Età:</strong> {{ profile?.age || 'Età' }}</p>
+        <p><strong>Telefono:</strong> {{ profile?.telephone || 'Telefono' }}</p>
+        <p><strong>Compleanno:</strong> {{ profile?.birthday || 'Telefono' }}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  

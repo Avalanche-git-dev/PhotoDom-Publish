@@ -1,0 +1,13 @@
+<div class="search-container">
+    <input
+      type="text"
+      [(ngModel)]="query"
+      (keyup.enter)="searchUsers()"
+      placeholder="Cerca per nickname"
+      class="search-input"
+    />
+    <button mat-icon-button (click)="searchUsers()" [disabled]="isSearching">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+  

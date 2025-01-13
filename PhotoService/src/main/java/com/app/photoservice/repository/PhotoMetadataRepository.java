@@ -11,8 +11,7 @@ import com.app.photoservice.entity.PhotoMetadata;
 public interface PhotoMetadataRepository extends JpaRepository<PhotoMetadata, Long> {
 
 	List<PhotoMetadata> findAllByOrderByLikesDesc();
-	Page<PhotoMetadata> findByUserId(Long userId, Pageable pageable);
-	
-	
-}
 
+	Page<PhotoMetadata> findByUserId(Long userId, Pageable pageable);
+
+}

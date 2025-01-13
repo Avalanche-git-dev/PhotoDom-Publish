@@ -1,0 +1,74 @@
+<!-- <mat-card class="register-card">
+    <mat-card-title class="register-card-title">Iscriviti a PhotoDom</mat-card-title>
+    <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+      <mat-form-field class="register-input" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Inserisci la tua email" />
+      </mat-form-field>
+  
+      <mat-form-field class="register-input" appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" placeholder="Crea il tuo username" />
+      </mat-form-field>
+  
+      <mat-form-field class="register-input" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" placeholder="Crea una password" />
+      </mat-form-field>
+  
+      <button mat-raised-button color="accent" class="register-btn" type="submit">Registrati</button>
+    </form>
+  </mat-card>
+   -->
+
+
+
+   <mat-card class="register-card">
+    <mat-card-title class="register-card-title">Iscriviti a PhotoDom</mat-card-title>
+    <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+      <mat-form-field class="register-input" appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="firstName" placeholder="Inserisci il tuo nome" />
+      </mat-form-field>
+  
+      <mat-form-field class="register-input" appearance="outline">
+        <mat-label>Cognome</mat-label>
+        <input matInput formControlName="lastName" placeholder="Inserisci il tuo cognome" />
+      </mat-form-field>
+  
+      <mat-form-field class="register-input" appearance="outline">
+        <mat-label>Data di nascita</mat-label>
+        <input matInput type="date" formControlName="birthday" />
+      </mat-form-field>
+  
+      <mat-form-field class="register-input" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Inserisci la tua email" />
+      </mat-form-field>
+  
+      <mat-form-field class="register-input" appearance="outline">
+        <mat-label>Telefono</mat-label>
+        <input matInput formControlName="telephone" placeholder="Inserisci il tuo numero di telefono" />
+      </mat-form-field>
+  
+      <mat-form-field class="register-input" appearance="outline">
+        <mat-label>Nickname</mat-label>
+        <input matInput formControlName="nickname" placeholder="Crea un nickname" />
+      </mat-form-field>
+  
+      <mat-form-field class="register-input" appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" placeholder="Crea il tuo username" />
+      </mat-form-field>
+  
+      <mat-form-field class="register-input" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" placeholder="Crea una password" />
+      </mat-form-field>
+  
+      <button mat-flat-button class="register-btn" type="submit">
+        Registrati
+      </button>
+    </form>
+  </mat-card>
+  

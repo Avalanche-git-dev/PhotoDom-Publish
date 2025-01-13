@@ -38,7 +38,8 @@ public class SecurityConfig {
 	    @Bean
 	    public CorsConfigurationSource corsConfigurationSource() {
 	        CorsConfiguration configuration = new CorsConfiguration();
-	        configuration.addAllowedOrigin("http://localhost:3000"); // Frontend URL
+	        configuration.addAllowedOrigin("http://localhost:4200"); // Frontend URL
+	        configuration.addAllowedOriginPattern("ws://localhost:4200"); // WebSocket 
 	        configuration.addAllowedMethod("*"); // Consenti tutti i metodi HTTP (GET, POST, ecc.)
 	        configuration.addAllowedHeader("*"); // Consenti tutti gli header
 	        configuration.setAllowCredentials(true); // Permetti le credenziali (JWT, Cookie, ecc.)
@@ -51,6 +52,6 @@ public class SecurityConfig {
 	
 	
 	 private final String[] freeResourceUrls = {"/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**",
-	            "/swagger-resources/**", "/api-docs/**", "/aggregate/**", "/webjars/**", "/actuator/prometheus", "/api/users/register"};
+	            "/swagger-resources/**", "/api-docs/**", "/aggregate/**", "/webjars/**", "/actuator/prometheus", "/api/users/register","/ws/**"};
 
 }

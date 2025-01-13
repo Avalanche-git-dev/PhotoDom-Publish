@@ -21,133 +21,96 @@ import com.app.photoservice.socket.PhotoWebSocketHandler;
 
 import reactor.core.publisher.Mono;
 
-
-    
 @Service
 public class PhotoProcessedConsumer {
 
-    private final PhotoMetadataRepository photoMetadataRepository;
-    private final PhotoStorageService photoStorageService;
-    private final ReactiveRedisTemplate<String, String> cachy;
-    private final ReactiveRedisTemplate<String, PhotoDto> photoCache;
-    private final PhotoWebSocketHandler photoWebSocketHandler;
+	private final PhotoMetadataRepository photoMetadataRepository;
+	private final PhotoStorageService photoStorageService;
+	private final ReactiveRedisTemplate<String, String> cachy;
+	private final ReactiveRedisTemplate<String, PhotoDto> photoCache;
+	private final PhotoWebSocketHandler photoWebSocketHandler;
 
-    public PhotoProcessedConsumer(
-            PhotoMetadataRepository photoMetadataRepository,
-            PhotoStorageService photoStorageService,
-            @Qualifier("cachy") ReactiveRedisTemplate<String, String> cachy,
-            ReactiveRedisTemplate<String, PhotoDto> photoCache,PhotoWebSocketHandler photoWebSocketHandler) {
-        this.photoMetadataRepository = photoMetadataRepository;
-        this.photoStorageService = photoStorageService;
-        this.cachy = cachy;
-        this.photoCache = photoCache;
-        this.photoWebSocketHandler=photoWebSocketHandler;
-    }
+	public PhotoProcessedConsumer(PhotoMetadataRepository photoMetadataRepository,
+			PhotoStorageService photoStorageService, @Qualifier("cachy") ReactiveRedisTemplate<String, String> cachy,
+			ReactiveRedisTemplate<String, PhotoDto> photoCache, PhotoWebSocketHandler photoWebSocketHandler) {
+		this.photoMetadataRepository = photoMetadataRepository;
+		this.photoStorageService = photoStorageService;
+		this.cachy = cachy;
+		this.photoCache = photoCache;
+		this.photoWebSocketHandler = photoWebSocketHandler;
+	}
 
-    @KafkaListener(topics = "photo-processed", groupId = "photo-service-group", containerFactory = "kafkaListenerContainerFactory")
-    public void consumePhotoProcessedEvent(PhotoProcessedEvent event) {
-        try {
-            String photoId = event.getPhotoId();
-            String resultKey = "result:photo:" + photoId;
-            String metadataKey = "metadata:" + photoId;
-//
-            if ("error".equals(event.getStatus())) {
-                System.err.println("Errore ricevuto dal servizio: " + event.getReason());
-                return;
-            }
-            
-            
-            
-//            Mono.just(event)
-//            .flatMap(evt -> {
-//                if ("error".equals(evt.getStatus())) {
-//                    // Genera un errore se lo stato è "error"
-//                    return Mono.error(new RuntimeException("Errore ricevuto dal servizio: " + evt.getReason()));
-//                }
-//                return Mono.just(evt);
-//            });
+	@KafkaListener(topics = "photo-processed", groupId = "photo-service-group", containerFactory = "kafkaListenerContainerFactory")
+	public void consumePhotoProcessedEvent(PhotoProcessedEvent event) {
+		try {
+			String photoId = event.getPhotoId();
+			String resultKey = "result:photo:" + photoId;
+			String metadataKey = "metadata:" + photoId;
 
-            // Recupera immagine processata e metadati dalla cache
-            Mono<String> imageMono = cachy.opsForValue().get(resultKey);
-            Mono<Map<Object, Object>> metadataMono = cachy.opsForHash()
-            	    .entries(metadataKey)
-            	    .collectMap(Map.Entry::getKey, Map.Entry::getValue);
+			if ("error".equals(event.getStatus())) {
+				System.err.println("Errore ricevuto dal servizio: " + event.getReason());
+				return;
+			}
 
-            Mono.zip(imageMono, metadataMono)
-                .flatMap(tuple -> {
-                    String base64Image = tuple.getT1();
-                    Map<Object, Object> metadataMap = tuple.getT2();
+			// Recupera immagine processata e metadati dalla cache
+			Mono<String> imageMono = cachy.opsForValue().get(resultKey);
+			Mono<Map<Object, Object>> metadataMono = cachy.opsForHash().entries(metadataKey)
+					.collectMap(Map.Entry::getKey, Map.Entry::getValue);
 
-                    if (base64Image == null || metadataMap.isEmpty()) {
-                        return Mono.error(new RuntimeException("Dati mancanti in Redis per ID: " + photoId));
-                    }
+			Mono.zip(imageMono, metadataMono).flatMap(tuple -> {
+				String base64Image = tuple.getT1();
+				Map<Object, Object> metadataMap = tuple.getT2();
 
-                    // Conversione dei metadati
-                    String filename = (String) metadataMap.get("filename");
-                    String contentType = (String) metadataMap.get("contentType");
+				if (base64Image == null || metadataMap.isEmpty()) {
+					return Mono.error(new RuntimeException("Dati mancanti in Redis per ID: " + photoId));
+				}
 
-                    if (filename == null || contentType == null) {
-                        return Mono.error(new RuntimeException("Metadati incompleti in Redis per ID: " + photoId));
-                    }
+				// Conversione dei metadati
+				String filename = (String) metadataMap.get("filename");
+				String contentType = (String) metadataMap.get("contentType");
 
-                    // Decodifica immagine
-                    byte[] imageBytes = Base64.getDecoder().decode(base64Image);
+				if (filename == null || contentType == null) {
+					return Mono.error(new RuntimeException("Metadati incompleti in Redis per ID: " + photoId));
+				}
 
-                    // Salva immagine e metadati nel database
-                    String fileId = photoStorageService.savePhoto(new ByteArrayInputStream(imageBytes), filename, contentType);
+				// Decodifica immagine
+				byte[] imageBytes = Base64.getDecoder().decode(base64Image);
 
-                    PhotoMetadata metadata = new PhotoMetadata();
-                    metadata.setUserId(Long.valueOf(event.getUserId()));
-                    metadata.setFilename(filename);
-                    metadata.setContentType(contentType);
-                    metadata.setSize((long) imageBytes.length);
-                    metadata.setFileId(fileId);
-                    metadata.setUploadDate(new Date());
-                    
-                    
+				// Salva immagine e metadati nel database
+				String fileId = photoStorageService.savePhoto(new ByteArrayInputStream(imageBytes), filename,
+						contentType);
 
-                    PhotoMetadata savedMetadata = photoMetadataRepository.save(metadata);
-                    photoWebSocketHandler.notifyNewPhoto(savedMetadata.getId().toString());
-                    
-                    
-//                    try {
-                       // PhotoMetadata exampleMetadata = photoMetadataRepository.save(metadata);
-                        System.out.println(savedMetadata.toString());
-//                    } catch (Exception e) {
-//                        System.err.println("Errore durante il salvataggio dei metadati: " + e.getMessage());
-//                      
-//                    }
+				PhotoMetadata metadata = new PhotoMetadata();
+				metadata.setUserId(Long.valueOf(event.getUserId()));
+				metadata.setFilename(filename);
+				metadata.setContentType(contentType);
+				metadata.setSize((long) imageBytes.length);
+				metadata.setFileId(fileId);
+				metadata.setUploadDate(new Date());
 
-                    // Crea oggetto PhotoDto e aggiorna la cache
-                    PhotoDto photoDto = PhotoMapper.toPhotoDto(savedMetadata, imageBytes, 0);
-                    String photoCacheKey = "photo:" + savedMetadata.getId();
+				PhotoMetadata savedMetadata = photoMetadataRepository.save(metadata);
+				photoWebSocketHandler.notifyNewPhoto(savedMetadata.getId().toString());
 
-                    return photoCache.opsForValue()
-                        .set(photoCacheKey, photoDto)
-                        .then(photoCache.expire(photoCacheKey, Duration.ofMinutes(10)))
-                        .then(Mono.just(savedMetadata));
-                })
-                .flatMap(savedMetadata -> {
-                    // Rimuove chiavi temporanee dalla cache
-                    return cachy.delete("result:photo:" + photoId)
-                        .then(cachy.delete("metadata:" + photoId))
-                        .then(cachy.delete("image:" + photoId))
-                        .thenReturn("Foto salvata e cache aggiornata per ID: " + savedMetadata.getId());
-                })
-                
+				// System.out.println(savedMetadata.toString());
 
-                .subscribe(
-                    successMessage -> System.out.println(successMessage),
-                    error -> System.err.println("Errore durante il processamento della foto: " + error.getMessage())
-                );
+				// Crea oggetto PhotoDto e aggiorna la cache
+				PhotoDto photoDto = PhotoMapper.toPhotoDto(savedMetadata, imageBytes, 0);
+				String photoCacheKey = "photo:" + savedMetadata.getId();
 
-        } catch (Exception e) {
-            System.err.println("Errore critico durante l'elaborazione del messaggio Kafka: " + e.getMessage());
-        }
-    }
+				return photoCache.opsForValue().set(photoCacheKey, photoDto)
+						.then(photoCache.expire(photoCacheKey, Duration.ofMinutes(10))).then(Mono.just(savedMetadata));
+			}).flatMap(savedMetadata -> {
+				// Rimuove chiavi temporanee dalla cache
+				return cachy.delete("result:photo:" + photoId).then(cachy.delete("metadata:" + photoId))
+						.then(cachy.delete("image:" + photoId))
+						.thenReturn("Foto salvata e cache aggiornata per ID: " + savedMetadata.getId());
+			})
+
+					.subscribe(successMessage -> System.out.println(successMessage), error -> System.err
+							.println("Errore durante il processamento della foto: " + error.getMessage()));
+
+		} catch (Exception e) {
+			System.err.println("Errore critico durante l'elaborazione del messaggio Kafka: " + e.getMessage());
+		}
+	}
 }
-
-
-
-
-

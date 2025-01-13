@@ -1,0 +1,46 @@
+<!-- 
+
+   <div class="login-page-container">
+    
+    
+      <app-login-carousel></app-login-carousel>
+
+
+      <div>
+
+      <app-login-form>
+         
+      </app-login-form>
+     
+      
+      </div>
+
+      
+     
+    
+  </div>
+   -->
+
+
+   <div class="login-page-container">
+      <!-- Carousel -->
+      <app-login-carousel></app-login-carousel>
+    
+      <!-- Form di Login o Registrazione -->
+      <div class="form-container">
+        <app-login-form *ngIf="!showRegisterForm"></app-login-form>
+        <app-register-form *ngIf="showRegisterForm"></app-register-form>
+    
+        <mat-card class="divider">
+          <span *ngIf="!showRegisterForm">Non hai un account?</span>
+          <span *ngIf="showRegisterForm">Hai già un account?</span>
+          <a href="javascript:void(0);" (click)="toggleForm()">
+            {{ showRegisterForm ? 'Accedi' : 'Iscriviti' }}
+          </a>
+        </mat-card>
+
+
+
+        
+      </div>
+    </div>

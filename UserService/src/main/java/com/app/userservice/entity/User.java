@@ -49,10 +49,21 @@ public class User {
     
     @Column(nullable = false, unique = true)
     private String telephone;
+    
+    @Column(name = "photo_profile")
+    private Long photoProfileId;
 
     
 
-    @Enumerated(EnumType.STRING)
+    public Long getPhotoProfileId() {
+		return photoProfileId;
+	}
+
+	public void setPhotoProfileId(Long photoProfileId) {
+		this.photoProfileId = photoProfileId;
+	}
+
+	@Enumerated(EnumType.STRING)
     @Column(nullable=false)
     private Role role;
     
@@ -116,32 +127,6 @@ public class User {
 	}
 
 
-
-
-
-
-	
-
-	public User(Long id, String username, String password, String email, String firstName, String lastName,
-			LocalDate birthday, String nickname, String telephone, Role role, UserStatus status) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.password = password;
-		this.email = email;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.birthday = birthday;
-		this.nickname = nickname;
-		this.telephone = telephone;
-		this.role = role;
-		this.status = status;
-	}
-
-	public User() {
-		super();
-	}
-
 	public String getFirstName() {
 		return firstName;
 	}
@@ -192,6 +177,37 @@ public class User {
 	        }
 	        return Period.between(birthday, LocalDate.now()).getYears();
 	    }
+
+		public User(Long id, String username, String password, String email, String firstName, String lastName,
+				LocalDate birthday, String nickname, String telephone, Long photoProfileId, Role role,
+				UserStatus status) {
+			super();
+			this.id = id;
+			this.username = username;
+			this.password = password;
+			this.email = email;
+			this.firstName = firstName;
+			this.lastName = lastName;
+			this.birthday = birthday;
+			this.nickname = nickname;
+			this.telephone = telephone;
+			this.photoProfileId = photoProfileId;
+			this.role = role;
+			this.status = status;
+		}
+
+		public User() {
+			super();
+		}
     
 
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
 }

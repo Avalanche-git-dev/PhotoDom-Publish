@@ -1,0 +1,18 @@
+<mat-dialog-content>
+  <div class="modal-header">
+    <img *ngIf="profileImage" [src]="profileImage" class="avatar"/>
+    <mat-icon *ngIf="!profileImage">person</mat-icon>
+    <h2>Dettagli Utente</h2>
+  </div>
+  <p><strong>Nickname:</strong> {{ user.nickname }}</p>
+  <p><strong>Ruolo:</strong> {{ user.role }}</p>
+  <p><strong>Status:</strong> {{ user.status }}</p>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+  <p><strong>Telefono:</strong> {{ user.telephone }}</p>
+  <p><strong>Compleanno:</strong> {{ user.birthday }}</p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Chiudi</button>
+  <button mat-raised-button color="primary" (click)="viewProfile()">Vai al Profilo</button>
+</mat-dialog-actions>

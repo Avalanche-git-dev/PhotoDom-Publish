@@ -1,0 +1,52 @@
+
+  <mat-card class="post-card">
+    <mat-card-header>
+      <app-app-header [userId]="ownerId"></app-app-header>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="post-image-container">
+        <img [src]="photoUrl" alt="Photo" class="post-image" />
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <div class="post-footer">
+        <button mat-icon-button class="like-button" (click)="toggleLike()">
+          <mat-icon>{{ liked ? 'favorite' : 'favorite_border' }}</mat-icon>
+        </button>
+        <span>{{ likeCount }}</span>
+
+        <button mat-icon-button class="comment-button" (click)="toggleComments()">
+          <mat-icon>comment</mat-icon>
+        </button>
+        <span>{{ commentCount }}</span>
+
+          <!-- Bottone di eliminazione -->
+      <button
+      *ngIf="canDelete"
+      mat-icon-button
+      color="warn"
+      aria-label="Elimina Post"
+      (click)="handleDeletePost()"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+    <span>delete</span>
+
+      </div>
+
+      
+    </mat-card-actions>
+
+    <mat-card-content *ngIf="showComments">
+      <app-comment-list
+        [photoId]="photoId"
+        [initialCommentCount]="commentCount"
+        (commentCountChange)="updateCommentCount($event)"
+        (commentAdded)="reloadComments()"
+      ></app-comment-list>
+    </mat-card-content>
+  </mat-card>
+
+

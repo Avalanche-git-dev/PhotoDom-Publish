@@ -8,22 +8,12 @@ import io.swagger.v3.oas.models.info.Info;
 
 @Configuration
 public class OpenAPIConfiguration {
-	
-	
+
 	@Bean
 	OpenAPI getUserServiceConfig() {
-		return new OpenAPI()
-				.info(new Info().title("Photo Service API")
-						.description("These are the rest API for Photo Service")
-						.version("1.0"));
-//				.externalDocs(new ExternalDocumentation().url("https://www.keycloak.org/docs/latest/server_development/index.html#_user-storage-spi")
-//						.description("User Storage Provider Custom implementation for integrating User-Service in Authorization Server. "));
-						
-						
-						
-				
-				
-		
+		return new OpenAPI().info(new Info().title("Photo Service API")
+				.description("These are the rest API for Photo Service").version("1.0"));
+
 	}
 
 }

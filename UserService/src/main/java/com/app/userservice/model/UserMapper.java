@@ -21,6 +21,7 @@ public class UserMapper {
         userDto.setTelephone(user.getTelephone());
         userDto.setStatus(user.getStatus());
         userDto.setRole(user.getRole());
+        userDto.setPhotoProfileId(user.getPhotoProfileId());
         return userDto;
     }
 
@@ -42,7 +43,25 @@ public class UserMapper {
         adminDto.setStatus(admin.getStatus());
         adminDto.setRole(admin.getRole());
         adminDto.setQualification(admin.getQualification());
+        adminDto.setPhotoProfileId(admin.getPhotoProfileId());
         return adminDto;
+    }
+    
+    
+    public static ProfileView toProfileView(User user) {
+        if (user == null) {
+            return null;
+        }
+        return new ProfileView(
+            user.getId(),
+            user.getFirstName(),
+            user.getLastName(),
+            user.getBirthday(),
+            Long.valueOf(user.getAge()), // Conversione esplicita in Long
+            user.getNickname(),
+            user.getTelephone(),
+            user.getPhotoProfileId()
+        );
     }
 }
 

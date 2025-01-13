@@ -24,11 +24,13 @@ public class Admin extends User {
 
 	
 
+
 	public Admin(Long id, String username, String password, String email, String firstName, String lastName,
-			LocalDate birthday, String nickname, String telephone, Role role, UserStatus status,
+			LocalDate birthday, String nickname, String telephone, Long photoProfileId, Role role, UserStatus status,
 			Qualification qualification) {
-		super(id, username, password, email, firstName, lastName, birthday, nickname, telephone, role, status);
-		this.qualification = Qualification.ADMIN;
+		super(id, username, password, email, firstName, lastName, birthday, nickname, telephone, photoProfileId, role,
+				status);
+		this.qualification = qualification;
 	}
 
 	public Admin() {
