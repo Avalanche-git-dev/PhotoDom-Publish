@@ -9,7 +9,7 @@
 
 - **Studio delle architetture a microservizi**: ciascun servizio è progettato seguendo il principio della singola responsabilità.
 - **Sperimentazione tecnologica**: utilizzo di tecnologie come Java, Spring Boot, Angular, MongoDB, Redis e kafka per costruire un'applicazione scalabile e performante.
-- **Learn by doing, affrontando le logiche di una architettura distrubuita, ottimizzandola in risposta alle esigenze di una cusomter che la rileverà al rilascio.
+- **Learn by doing**: affrontando le logiche di una architettura distrubuita, ottimizzandola in risposta alle esigenze di una cusomter che la rileverà al rilascio.
 
 ## **Requisiti**
 
