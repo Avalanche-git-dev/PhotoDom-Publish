@@ -1,5 +1,9 @@
 package com.app.photoservice.socket;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.lang.NonNull;
@@ -12,72 +16,39 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Sinks;
 
-//@Component
-//public class PhotoWebSocketHandler implements WebSocketHandler {
-//
-//    private static final Logger logger = LoggerFactory.getLogger(PhotoWebSocketHandler.class);
-//
-//    private final Sinks.Many<String> sink = Sinks.many().multicast().onBackpressureBuffer();
-//    private final ConcurrentMap<String, WebSocketSession> activeSessions = new ConcurrentHashMap<>();
-//
-//    @Override
-//    public @NonNull Mono<Void> handle(@NonNull WebSocketSession session) {
-//        activeSessions.put(session.getId(), session);
-//        logger.info("Connessione stabilita: {}", session.getId());
-//
-//        Flux<WebSocketMessage> messageFlux = sink.asFlux()
-//                .map(session::textMessage);
-//
-//        return session.send(messageFlux)
-//                .doOnTerminate(() -> {
-//                    activeSessions.remove(session.getId());
-//                    logger.info("Connessione terminata: {}", session.getId());
-//                    logger.info("Sessioni attive: {}", activeSessions.size());
-//                })
-//                .doOnError(error -> {
-//                    activeSessions.remove(session.getId());
-//                    logger.error("Errore nella connessione WebSocket: {}", error.getMessage());
-//                });
-//    }
-//
-//    public void notifyNewPhoto(String photoId) {
-//        // Notifica tutti i client attivi
-//        sink.tryEmitNext("New photo uploaded: " + photoId);
-//        logger.info("Notifica inviata per nuova foto con ID: {}", photoId);
-//    }
-//
-//
-////    public void checkAndCleanStaleSessions() {
-////        activeSessions.forEach((id, session) -> {
-////            if (!session.isOpen()) {
-////                activeSessions.remove(id);
-////                logger.warn("Rimossa sessione non valida: {}", id);
-////            }
-////        });
-////        logger.info("Pulizia completata. Sessioni attive: {}", activeSessions.size());
-////    }
-//   
-//}   
+ 
 
 @Component
 public class PhotoWebSocketHandler implements WebSocketHandler {
 
-	private static final Logger logger = LoggerFactory.getLogger(PhotoWebSocketHandler.class);
+	 private static final Logger logger = LoggerFactory.getLogger(PhotoWebSocketHandler.class);
 
-	private final Sinks.Many<String> sink = Sinks.many().multicast().onBackpressureBuffer();
+	    private final Map<String, Sinks.Many<String>> sessions = Collections.synchronizedMap(new HashMap<>());
 
-	@Override
-	public @NonNull Mono<Void> handle(@NonNull WebSocketSession session) {
-		logger.info("Connessione stabilita per il WebSocket delle foto: {}", session.getId());
+	    @Override
+	    public @NonNull Mono<Void> handle(@NonNull WebSocketSession session) {
+	        String sessionId = session.getId();
+	        logger.info("Connessione stabilita per il WebSocket delle foto: {}", sessionId);
 
-		Flux<WebSocketMessage> messageFlux = sink.asFlux().map(session::textMessage);
+	        Sinks.Many<String> sink = Sinks.many().multicast().onBackpressureBuffer();
+	        sessions.put(sessionId, sink);
 
-		return session.send(messageFlux).doFinally(
-				signalType -> logger.info("Connessione chiusa per il WebSocket delle foto: {}", session.getId()));
-	}
+	        Flux<WebSocketMessage> messageFlux = sink.asFlux()
+	                .map(session::textMessage);
 
-	public void notifyNewPhoto(String photoId) {
-		sink.tryEmitNext("New photo uploaded: " + photoId);
-		logger.info("Notifica inviata per nuova foto con ID: {}", photoId);
-	}
+	        return session.send(messageFlux)
+	                .doOnTerminate(() -> {
+	                    sessions.remove(sessionId);
+	                    logger.info("Connessione chiusa per il WebSocket delle foto: {}", sessionId);
+	                })
+	                .doOnError(error -> logger.error("Errore WebSocket per le foto: {}", error.getMessage()));
+	    }
+
+	    public void notifyNewPhoto(String photoId) {
+	        String message = "New photo uploaded: " + photoId;
+	        synchronized (sessions) {
+	            sessions.values().forEach(sink -> sink.tryEmitNext(message));
+	        }
+	        logger.info("Notifica inviata per nuova foto con ID: {}", photoId);
+	    }
 }

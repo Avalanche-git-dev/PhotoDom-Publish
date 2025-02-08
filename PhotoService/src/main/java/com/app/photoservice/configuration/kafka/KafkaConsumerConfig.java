@@ -20,28 +20,6 @@ import com.app.photoservice.kafka.event.PhotoProcessedEvent;
 @Configuration
 public class KafkaConsumerConfig {
 
-//    @Bean
-//    ConsumerFactory<String, PhotoEvent> consumerFactory() {
-//        Map<String, Object> props = new HashMap<>();
-//        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-//        props.put(ConsumerConfig.GROUP_ID_CONFIG, "photo-service-group");
-//        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-//        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
-//        props.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
-//        return new DefaultKafkaConsumerFactory<>(props);
-//    }
-//
-//    @Bean
-//     ConcurrentKafkaListenerContainerFactory<String, PhotoEvent> kafkaListenerContainerFactory() {
-//        ConcurrentKafkaListenerContainerFactory<String, PhotoEvent> factory =
-//                new ConcurrentKafkaListenerContainerFactory<>();
-//        factory.setConsumerFactory(consumerFactory());
-//        return factory;
-//    }
-
-
-
-
 
 @Bean
 public ConsumerFactory<String, PhotoProcessedEvent> consumerFactory() {

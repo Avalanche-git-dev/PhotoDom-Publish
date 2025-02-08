@@ -1,5 +1,9 @@
 package com.app.commentservice.socket;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.lang.NonNull;
@@ -16,26 +20,38 @@ import reactor.core.publisher.Sinks;
 @Component
 public class CommentWebSocketHandler implements WebSocketHandler {
 
+  
+	
+	
     private static final Logger logger = LoggerFactory.getLogger(CommentWebSocketHandler.class);
 
-    private final Sinks.Many<String> sink = Sinks.many().multicast().onBackpressureBuffer();
+    private final Map<String, Sinks.Many<String>> sessions = Collections.synchronizedMap(new HashMap<>());
 
     @Override
     public @NonNull Mono<Void> handle(@NonNull WebSocketSession session) {
-        logger.info("Connessione WebSocket per i commenti stabilita: {}", session.getId());
+        String sessionId = session.getId();
+        logger.info("Connessione WebSocket per i commenti stabilita: {}", sessionId);
 
-        // Flux per inviare messaggi al client
+        Sinks.Many<String> sink = Sinks.many().multicast().onBackpressureBuffer();
+        sessions.put(sessionId, sink);
+
         Flux<WebSocketMessage> messageFlux = sink.asFlux()
                 .map(session::textMessage);
 
-        // Gestione invio messaggi e chiusura sessione
         return session.send(messageFlux)
-                .doOnTerminate(() -> logger.info("Connessione WebSocket per i commenti chiusa: {}", session.getId()))
-                .doOnError(error -> logger.error("Errore nella connessione WebSocket: {}", error.getMessage()));
+                .doOnTerminate(() -> {
+                    sessions.remove(sessionId);
+                    logger.info("Connessione WebSocket per i commenti chiusa: {}", sessionId);
+                })
+                .doOnError(error -> logger.error("Errore WebSocket per i commenti: {}", error.getMessage()));
     }
 
     public void notifyCommentUpdate(String message) {
-        sink.tryEmitNext(message);
-        logger.info("Notifica commento inviata: {}", message);
+        synchronized (sessions) {
+            sessions.values().forEach(sink -> sink.tryEmitNext(message));
+        }
+        logger.info("Notifica commento inviata a tutte le sessioni: {}", message);
     }
 }
+  
+

@@ -1,6 +1,5 @@
 package com.app.userservice.entity;
 
-
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -17,45 +16,44 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "users")
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column(nullable = false, unique = true)
-    private String username;
+	@Column(nullable = false, unique = true)
+	private String username;
 
-    @Column(nullable = false)
-    private String password;
+	@Column(nullable = false)
+	private String password;
 
-    @Column(nullable = false, unique = true)
-    private String email;
-    
-    @Column(nullable = false)
-    private String firstName;
-    
-    @Column(nullable = false)
-    private String lastName;
-    
-    @Column(nullable = false)
-    private LocalDate birthday;
-    
-    @Column(unique=true,nullable=false)
-    private String nickname;
-    
-    @Column(nullable = false, unique = true)
-    private String telephone;
-    
-    @Column(name = "photo_profile")
-    private Long photoProfileId;
+	@Column(nullable = false, unique = true)
+	private String email;
 
-    
+	@Column(nullable = false)
+	private String firstName;
 
-    public Long getPhotoProfileId() {
+	@Column(nullable = false)
+	private String lastName;
+
+	@Column(nullable = false)
+	private LocalDate birthday;
+
+	@Column(unique = true, nullable = false)
+	private String nickname;
+
+	@Column(nullable = false, unique = true)
+	private String telephone;
+
+	@Column(name = "photo_profile")
+	private Long photoProfileId;
+
+	public Long getPhotoProfileId() {
 		return photoProfileId;
 	}
 
@@ -64,18 +62,12 @@ public class User {
 	}
 
 	@Enumerated(EnumType.STRING)
-    @Column(nullable=false)
-    private Role role;
-    
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private UserStatus status; 
+	@Column(nullable = false)
+	private Role role;
 
-
-   
-
-
-
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
+	private UserStatus status;
 
 	public UserStatus getStatus() {
 		return status;
@@ -117,7 +109,6 @@ public class User {
 		this.email = email;
 	}
 
-
 	public Role getRole() {
 		return role;
 	}
@@ -125,7 +116,6 @@ public class User {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-
 
 	public String getFirstName() {
 		return firstName;
@@ -142,8 +132,6 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
-
 
 	public LocalDate getBirthday() {
 		return birthday;
@@ -168,46 +156,35 @@ public class User {
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
-    
-	    @Transient
-	    @JsonIgnore
-	    public int getAge() {
-	        if (birthday == null) {
-	            throw new IllegalStateException("Birthday is not set.");
-	        }
-	        return Period.between(birthday, LocalDate.now()).getYears();
-	    }
 
-		public User(Long id, String username, String password, String email, String firstName, String lastName,
-				LocalDate birthday, String nickname, String telephone, Long photoProfileId, Role role,
-				UserStatus status) {
-			super();
-			this.id = id;
-			this.username = username;
-			this.password = password;
-			this.email = email;
-			this.firstName = firstName;
-			this.lastName = lastName;
-			this.birthday = birthday;
-			this.nickname = nickname;
-			this.telephone = telephone;
-			this.photoProfileId = photoProfileId;
-			this.role = role;
-			this.status = status;
+	@Transient
+	@JsonIgnore
+	public int getAge() {
+		if (birthday == null) {
+			throw new IllegalStateException("Birthday is not set.");
 		}
+		return Period.between(birthday, LocalDate.now()).getYears();
+	}
 
-		public User() {
-			super();
-		}
-    
+	public User(Long id, String username, String password, String email, String firstName, String lastName,
+			LocalDate birthday, String nickname, String telephone, Long photoProfileId, Role role, UserStatus status) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.birthday = birthday;
+		this.nickname = nickname;
+		this.telephone = telephone;
+		this.photoProfileId = photoProfileId;
+		this.role = role;
+		this.status = status;
+	}
 
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
+	public User() {
+		super();
+	}
+
 }

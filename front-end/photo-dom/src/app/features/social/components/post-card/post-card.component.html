@@ -23,16 +23,18 @@
         <span>{{ commentCount }}</span>
 
           <!-- Bottone di eliminazione -->
-      <button
-      *ngIf="canDelete"
-      mat-icon-button
-      color="warn"
-      aria-label="Elimina Post"
-      (click)="handleDeletePost()"
-    >
-      <mat-icon>delete</mat-icon>
-    </button>
-    <span>delete</span>
+          <button
+          *ngIf="canDelete"
+          mat-icon-button
+          class="delete-button"
+          color="warn"
+          aria-label="Elimina Post"
+          (click)="handleDeletePost()"
+        >
+          <mat-icon>delete</mat-icon>
+          <span class="delete-text">Delete</span>
+        </button>
+        
 
       </div>
 

@@ -24,9 +24,8 @@
 .post-image-container {
   position: relative;
   width: 100%;
-  padding-top: 75%; 
+  padding-top: 75%;
   background: #000;
-  
 }
 
 .post-image-container img {
@@ -40,13 +39,14 @@
 
 .post-footer {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 10px 15px;
+  gap: 10px; /* Spaziatura uniforme tra i bottoni */
 }
 
 .like-button,
-.comment-button {
+.comment-button,
+.delete-button {
   display: flex;
   align-items: center;
   background: none;
@@ -54,36 +54,48 @@
   color: #555;
   cursor: pointer;
   font-size: 14px;
-  gap: 5px;
+  gap: 5px; /* Spazio tra l'icona e il testo */
+  transition: color 0.2s ease;
 }
 
+/* Colore al passaggio del mouse */
 .like-button:hover,
-.comment-button:hover {
+.comment-button:hover,
+.delete-button:hover {
   color: #000;
 }
 
-.like-button mat-icon {
-  color: red;
+/* Specifico per il bottone delete */
+.delete-button {
+  color: #d32f2f; /* Colore di avviso */
 }
 
-.post-footer button {
-  margin-left: 10px;
+.delete-button:hover {
+  color: #b71c1c; /* Colore più scuro al passaggio del mouse */
+}
+
+.delete-button mat-icon {
+  display : block;
+}
+
+.delete-button .delete-text {
+  font-size: 14px;
+  display: none; /* Sempre visibile */
+  margin-left: 35px; /* Spaziatura tra l'icona e il testo */
+}
+
+
+/* Stile per i bottoni like e comment */
+.like-button mat-icon {
+  color: red;
 }
 
 .comment-button mat-icon {
   color: #555;
 }
 
-
 .mat-snack-bar-container {
   background-color: #323232;
   color: white;
   font-size: 14px;
 }
-
-
-
-
-
-
-

@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 
@@ -33,6 +34,7 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatTabsModule,
     
   ]
 })

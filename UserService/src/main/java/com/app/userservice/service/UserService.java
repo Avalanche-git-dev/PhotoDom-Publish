@@ -9,8 +9,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.app.userservice.entity.Admin;
 import com.app.userservice.entity.Qualification;
 import com.app.userservice.entity.Role;
 import com.app.userservice.entity.User;
@@ -29,6 +29,7 @@ import com.app.userservice.model.ProfileView;
 import com.app.userservice.model.UserDto;
 import com.app.userservice.model.UserFilter;
 import com.app.userservice.model.UserMapper;
+import com.app.userservice.repository.AdminRepository;
 import com.app.userservice.repository.UserRepository;
 import com.app.userservice.socket.UserWebSocketHandler;
 import com.app.userservice.utility.UserContext;
@@ -47,6 +48,9 @@ public class UserService {
 
 	@Autowired
 	private UserWebSocketHandler userWebSocketHandler;
+	
+	@Autowired
+	private AdminRepository adminRepository;
 
 	public String getNicknameById(Long id) {
 		return userRepository.findById(id).map(User::getNickname)
@@ -237,58 +241,34 @@ public class UserService {
 		return true;
 	}
 
-	// Metodo per promuovere un utente a ADMIN
-	private Admin promoteToAdmin(User user) {
-		Admin admin = new Admin();
 
-		// Copia i campi comuni da User ad Admin
-		admin.setId(user.getId()); // Mantieni lo stesso ID
-		admin.setUsername(user.getUsername());
-		admin.setPassword(user.getPassword());
-		admin.setEmail(user.getEmail());
-		admin.setFirstName(user.getFirstName());
-		admin.setLastName(user.getLastName());
-		admin.setBirthday(user.getBirthday());
-		admin.setNickname(user.getNickname());
-		admin.setTelephone(user.getTelephone());
-		admin.setRole(Role.ADMIN);
-		admin.setStatus(UserStatus.ACTIVE);
 
-		// Aggiungi attributi specifici di Admin
-		admin.setQualification(Qualification.ADMIN);
-
-		return admin;
-	}
-
+	@Transactional
 	public void nominateAdmin(Long id) {
-		// Controlla se l'utente esiste
-		User user = userRepository.findById(id)
-				.orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
+	    // Trova l'utente esistente
+	    User user = userRepository.findById(id)
+	            .orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
 
-		// Controlla se è già un ADMIN
-		if (user.getRole() == Role.ADMIN) {
-			throw new AdminAlreadyExistsException("User is already an ADMIN");
-		}
+	    // Verifica se è già un admin
+	    if (user.getRole() == Role.ADMIN) {
+	        throw new AdminAlreadyExistsException("User is already an ADMIN");
+	    }
 
-		// Promuovi l'utente
-		user.setRole(Role.ADMIN);
-		user.setStatus(UserStatus.ACTIVE);
+	    // Aggiorna i campi comuni
+	    user.setRole(Role.ADMIN);
+	    user.setStatus(UserStatus.ACTIVE);
+	    userRepository.save(user);
 
-		if (!(user instanceof Admin)) {
+	    // Aggiungi i dettagli specifici di Admin
+	    adminRepository.insertAdminDetails(user.getId(), Qualification.ADMIN.name());
 
-			userRepository.delete(user);// Rimuovi il vecchio record
-			Admin admin = promoteToAdmin(user);
-			// Promozione a Admin (creazione nuova istanza) in questo ordine dovrebbe andare
-			userRepository.save(admin); // Salva l'istanza di Admin
-		} else {
-			// Se è già Admin, aggiorna i dati
-			Admin admin = (Admin) user;
-			admin.setQualification(Qualification.ADMIN);
-			userRepository.save(admin);
-			String message = "User promoted to Admin: " + id;
-			userWebSocketHandler.notifyUserChange(message);
-		}
+	    // Notifica via WebSocket
+	    String message = "User promoted to Admin: " + id;
+	    userWebSocketHandler.notifyUserChange(message);
 	}
+
+
+
 
 	public User updateUser(/* Long id, */ UserDto userDetails) {
 		User user = userRepository.findById(currentUser.getCurrentUserId()).orElseThrow(

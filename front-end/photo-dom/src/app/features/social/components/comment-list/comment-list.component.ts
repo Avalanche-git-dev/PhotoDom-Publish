@@ -67,7 +67,7 @@ export class CommentListComponent implements OnInit, OnDestroy {
           this.isLoading = false;
         },
         error: (err) => {
-          console.error('Errore nel caricamento dei commenti principali:', err);
+          // console.error('Errore nel caricamento dei commenti principali:', err);
           this.isLoading = false;
         },
       });

@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 
-// Importa i moduli generati dai servizi OpenAPI
+// Servizi
 import { ApiModule as UserApiModule } from '../services/user-service/api.module';
 import { ApiModule as PhotoApiModule } from '../services/photo-service/api.module';
 import { ApiModule as CommentApiModule } from '../services/comment-service/api.module';

@@ -30,7 +30,7 @@ export class FeedGalleryComponent implements OnInit, OnDestroy {
 
   constructor(
     private photoService: PhotoControllerService,
-    private likeStatusWebSocketService: LikeStatusWebSocketService,
+   
     private photoWebSocketService: PhotoWebSocketService
   ) {}
 
@@ -43,19 +43,19 @@ export class FeedGalleryComponent implements OnInit, OnDestroy {
     this.likeStatusSubscription?.unsubscribe();
     // this.likeStatusWebSocketService.disconnect();
     this.photoNotificationSubscription?.unsubscribe();
-    // this.photoWebSocketService.disconnect();
+    this.photoWebSocketService.disconnect();
   }
 
   private connectWebSockets(): void {
-    this.likeStatusWebSocketService.connect();
+    // this.likeStatusWebSocketService.connect();
     this.photoWebSocketService.connect();
 
-    this.likeStatusSubscription = this.likeStatusWebSocketService
-      .getLikeStatusUpdates()
-      .subscribe({
-        next: (update) => this.updateLikeStatus(update),
-        error: (err) => console.error('WebSocket LikeStatus error:', err),
-      });
+    // this.likeStatusSubscription = this.likeStatusWebSocketService
+    //   .getLikeStatusUpdates()
+    //   .subscribe({
+    //     next: (update) => this.updateLikeStatus(update),
+    //     error: (err) => console.error('WebSocket LikeStatus error:', err),
+    //   });
 
     this.photoNotificationSubscription = this.photoWebSocketService
       .getNotifications()
