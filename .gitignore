@@ -1,1 +1,66 @@
-/.metadata/
+.metadata/.log
+# Ignora file temporanei e di configurazione generati da Eclipse
+.metadata/.plugins/com.genuitec.eclipse.devstyle/recent.json
+.metadata/.plugins/org.eclipse.buildship.core/gradle/versions.json
+.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.index
+.metadata/.plugins/org.eclipse.core.resources/.safetable/
+.metadata/.plugins/org.eclipse.core.runtime/.settings/
+.metadata/.plugins/org.eclipse.debug.ui/launchConfigurationHistory.xml
+.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
+.metadata/.plugins/org.eclipse.jdt.core/
+.metadata/.plugins/org.eclipse.m2e.core/
+.metadata/.plugins/org.eclipse.m2e.logback/
+.metadata/.plugins/org.eclipse.wst.sse.core/task-tags.properties
+
+# 📌 Ignora i metadati di Eclipse
+.metadata/
+.metadata/plugins/
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache
+
+# 📌 Ignora file di Visual Studio Code
+.vscode/
+
+# 📌 Ignora cartelle di build di Maven e Angular
+/target/
+/out/
+/build/
+/node_modules/
+/dist/
+/.angular/
+
+# 📌 Ignora file compilati Java
+*.class
+*.jar
+*.war
+*.ear
+
+# 📌 Ignora file di log ovunque si trovino
+logs/
+**/logs/
+*.log
+*.gz
+
+# 📌 Ignora file temporanei e backup
+*.tmp
+*.bak
+*.swp
+*.swo
+*.pid
+
+# 📌 Ignora file specifici di Spring Boot
+/BOOT-INF/
+/META-INF/
+/*.pid
+
+# 📌 Ignora file di test coverage
+/coverage/
+.jacoco.exec
+
+# 📌 Ignora JSON di Angular
+angular.json
