@@ -1,0 +1,38 @@
+global:
+  # Intervallo tra uno scrape e l'altro
+  scrape_interval: 2s
+  evaluation_interval: 2s
+
+scrape_configs:
+
+  # (Facoltativo) Monitorare Prometheus stesso, se gira in Docker
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['prometheus:9090']
+    # Se esegui Prometheus in un container con service name "prometheus"
+    # e port mapping 9090:9090
+
+  # API Gateway (porta 8080)
+  - job_name: 'api-gateway'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['host.docker.internal:8080']
+        # se su Mac/Win con Docker Desktop
+
+  # User-Service (porta 8081)
+  - job_name: 'user-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['host.docker.internal:8081']
+
+  # Photo-Service (porta 8082)
+  - job_name: 'photo-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['host.docker.internal:8082']
+
+  # Comment-Service (porta 8083)
+  - job_name: 'comment-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['host.docker.internal:8083']

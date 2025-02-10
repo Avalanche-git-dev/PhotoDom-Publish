@@ -1,0 +1,166 @@
+version: '3.8'
+
+services:
+  # --------------------------------------------------------------------------
+  # PHOTO-SERVICE DB
+  #  - Postgres (porta 5432)
+  photo-service-postgres:
+    image: postgres:latest
+    container_name: photo-service-postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: momo
+      POSTGRES_DB: photo_service
+    ports:
+      - "5432:5432"
+    volumes:
+      - photo_service_postgres_data:/var/lib/postgresql/data
+      - ./Docker/photo-service-db/metadata:/docker-entrypoint-initdb.d
+
+  #  - Mongo (porta 27017)
+  photo-service-mongo:
+    image: mongo:latest
+    container_name: photo-service-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - photo_service_mongo_data:/data/db
+
+  # --------------------------------------------------------------------------
+  # COMMENT-SERVICE DB (Mongo su porta 27018)
+  comment-service-db:
+    image: mongo:latest
+    container_name: comment-service-db
+    ports:
+      - "27018:27017"  
+    volumes:
+      - comment_mongo_data:/data/db
+
+  # --------------------------------------------------------------------------
+  # USER-SERVICE DB (MySQL su porta 3306)
+  user-service-db:
+    image: mysql:latest
+    container_name: user-service-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_DATABASE=userdb
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - user_mysql_data:/var/lib/mysql
+      - ./Docker/user-service-db:/docker-entrypoint-initdb.d
+
+  # --------------------------------------------------------------------------
+  # REDIS (cache comune)
+  redis-container:
+    image: redis:latest
+    container_name: redis-container
+    ports:
+      - "6379:6379"
+    # In genere va bene senza variabili d'ambiente, a meno che tu non voglia persistere i dati.
+    # Se vuoi persistenza, aggiungi un volume:
+    # volumes:
+    #   - redis_data:/data
+
+  # --------------------------------------------------------------------------
+  # KAFKA INFRASTRUCTURE
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: kafka
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,CONTAINER://kafka:29092
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,CONTAINER://0.0.0.0:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTAINER:PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    ports:
+      - "9092:9092"   # Per localhost
+      - "29092:29092" # Per container
+    depends_on:
+      - zookeeper
+
+  schema-registry:
+    image: confluentinc/cp-schema-registry:7.5.0
+    container_name: schema-registry
+    environment:
+      SCHEMA_REGISTRY_HOST_NAME: schema-registry
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: PLAINTEXT://kafka:29092
+    ports:
+      - "8091:8081"
+    depends_on:
+      - kafka
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui
+    environment:
+      - KAFKA_CLUSTERS_0_NAME=local
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:29092
+      - KAFKA_CLUSTERS_0_SCHEMAREGISTRY=http://schema-registry:8081
+      - KAFKA_CLUSTERS_0_ZOOKEEPER=zookeeper:2181
+    ports:
+      - "8090:8080" # Interfaccia grafica
+    depends_on:
+      - kafka
+      - schema-registry
+
+  loki:
+   image: grafana/loki:main
+   command: ['-config.file=/etc/loki/local-config.yaml']
+   ports:
+    - '3100:3100'
+
+  prometheus:
+   image: prom/prometheus:v2.46.0
+   command:
+    - --enable-feature=exemplar-storage
+    - --config.file=/etc/prometheus/prometheus.yml
+   volumes:
+    - ./Docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+   ports:
+    - '9090:9090'
+
+  grafana:
+    image: grafana/grafana:10.1.0
+    container_name: grafana
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_AUTH_DISABLE_LOGIN_FORM=true
+    ports:
+      - "3000:3000"
+    volumes:
+      # Montiamo la cartella dove c'è il file 'datasources.yaml'
+      # su '/etc/grafana/provisioning/datasources'
+      - ./Docker/grafana:/etc/grafana/provisioning/datasources:ro
+
+    depends_on:
+      - prometheus   # se vuoi che grafana parta dopo prometheus
+      - loki         # se vuoi che grafana parta dopo loki
+      # - tempo      # se usi tempo
+
+  
+
+
+# --------------------------------------------------------------------------
+#                              VOLUMES
+# --------------------------------------------------------------------------
+volumes:
+  photo_service_postgres_data:
+  photo_service_mongo_data:
+  comment_mongo_data:
+  user_mysql_data:
+  # redis_data:  # solo se vuoi persistere Redis
+

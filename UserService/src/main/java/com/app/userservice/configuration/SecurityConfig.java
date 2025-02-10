@@ -25,7 +25,7 @@ public class SecurityConfig {
             .securityMatcher("/keycloak/**") // Filtra solo "/keycloak/**"
             .authorizeHttpRequests(auth -> auth.anyRequest().authenticated()) // Richiede autenticazione
             .httpBasic(Customizer.withDefaults()) // Abilita HTTP Basic
-            .csrf(csrf -> csrf.disable()); // Disabilita CSRF per semplicità
+            .csrf(csrf -> csrf.disable()); 
         return http.build();
     }
 
@@ -41,18 +41,18 @@ public class SecurityConfig {
                 .anyRequest().authenticated() // Tutti gli altri richiedono autenticazione
             )
             .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())))
-            .csrf(csrf -> csrf.disable()); // Disabilita CSRF per semplicità
+            .csrf(csrf -> csrf.disable()); 
         return http.build();
     }
     
-    
+    // Path per Doc e Status
     @Bean
     @Order(3)
     SecurityFilterChain swaggerFilterChain(HttpSecurity http) throws Exception {
         http
-            .securityMatcher("/swagger-ui.html","/v3/api-docs") // Filtra solo Swagger e API docs
+            .securityMatcher("/swagger-ui.html","/v3/api-docs","/actuator/**") // Filtra solo Swagger e API docs
             .authorizeHttpRequests(auth -> auth.anyRequest().permitAll()) // Consenti accesso a tutti
-            .csrf(csrf -> csrf.disable()); // Disabilita CSRF per semplicità
+            .csrf(csrf -> csrf.disable()); 
         return http.build();
     }
 
@@ -63,7 +63,7 @@ public class SecurityConfig {
         JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
 
         converter.setJwtGrantedAuthoritiesConverter(jwt -> {
-            // Estrai il ruolo direttamente dal campo "role" del token JWT
+            // Estrae il ruolo direttamente dal campo "role" del token JWT
             String role = jwt.getClaimAsString("role"); // Campo "role" nel token JWT
             if (role != null) {
                 return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + role.toUpperCase()));

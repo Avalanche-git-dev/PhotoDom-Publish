@@ -81,7 +81,6 @@ public class CommentDto {
 
 	public CommentDto() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
     
     

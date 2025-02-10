@@ -19,7 +19,7 @@ public class SecurityConfig {
 	SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
 		http.csrf(csrf -> csrf.disable())
 				.authorizeExchange(exchange -> exchange
-						.pathMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/webjars/**", "/ws/**")
+						.pathMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/webjars/**", "/ws/**", "/actuator/**")
 						.permitAll() // Consenti l'accesso a Swagger
 						.anyExchange().authenticated() // Autentica tutti gli altri endpoint
 				).oauth2ResourceServer(
@@ -36,13 +36,11 @@ public class SecurityConfig {
 			// Estrae il ruolo dal claim "role"
 			String role = jwt.getClaimAsString("role");
 			if (role != null) {
-				// Converte il ruolo in un SimpleGrantedAuthority con prefisso "ROLE_"
 				return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + role.toUpperCase()));
 			}
-			return Collections.emptyList(); // Nessun ruolo trovato
+			return Collections.emptyList(); 
 		});
 
-		// Adatta il converter per Reactive Security
 		return new ReactiveJwtAuthenticationConverterAdapter(converter);
 	}
 
