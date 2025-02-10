@@ -1,0 +1,8 @@
+com\example\provider\client\UserServiceClientHttp$1.class
+com\example\provider\UserServiceStorageProviderFactory.class
+com\example\provider\UserServiceStorageProvider.class
+com\example\provider\dto\UserDto.class
+com\example\provider\client\UserServiceClient.class
+com\example\provider\adapter\UserAdapter.class
+com\example\provider\dto\LoginRequest.class
+com\example\provider\client\UserServiceClientHttp.class

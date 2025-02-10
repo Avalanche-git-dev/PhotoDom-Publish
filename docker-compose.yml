@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   # --------------------------------------------------------------------------
@@ -32,7 +32,7 @@ services:
     image: mongo:latest
     container_name: comment-service-db
     ports:
-      - "27018:27017"  
+      - "27018:27017"
     volumes:
       - comment_mongo_data:/data/db
 
@@ -86,7 +86,7 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTAINER:PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     ports:
-      - "9092:9092"   # Per localhost
+      - "9092:9092" # Per localhost
       - "29092:29092" # Per container
     depends_on:
       - zookeeper
@@ -117,20 +117,20 @@ services:
       - schema-registry
 
   loki:
-   image: grafana/loki:main
-   command: ['-config.file=/etc/loki/local-config.yaml']
-   ports:
-    - '3100:3100'
+    image: grafana/loki:main
+    command: ["-config.file=/etc/loki/local-config.yaml"]
+    ports:
+      - "3100:3100"
 
   prometheus:
-   image: prom/prometheus:v2.46.0
-   command:
-    - --enable-feature=exemplar-storage
-    - --config.file=/etc/prometheus/prometheus.yml
-   volumes:
-    - ./Docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
-   ports:
-    - '9090:9090'
+    image: prom/prometheus:v2.46.0
+    command:
+      - --enable-feature=exemplar-storage
+      - --config.file=/etc/prometheus/prometheus.yml
+    volumes:
+      - ./Docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "9090:9090"
 
   grafana:
     image: grafana/grafana:10.1.0
@@ -147,12 +147,60 @@ services:
       - ./Docker/grafana:/etc/grafana/provisioning/datasources:ro
 
     depends_on:
-      - prometheus   # se vuoi che grafana parta dopo prometheus
-      - loki         # se vuoi che grafana parta dopo loki
+      - prometheus # se vuoi che grafana parta dopo prometheus
+      - loki # se vuoi che grafana parta dopo loki
       # - tempo      # se usi tempo
 
+  photo-restore:
+    image: mongo:latest
+    container_name: photo-restore
+    depends_on:
+      - photo-service-mongo
+    volumes:
+      - "./Docker/photo-service-db/mongo-dumps/photo_storage:/dump/photo_storage"
+    command: >
+      bash -c "
+        sleep 5;
+        mongorestore --host photo-service-mongo --drop --db photo_storage /dump/photo_storage;
+      "
+  commentdb-restore:
+    image: mongo:latest
+    container_name: commentdb-restore
+    depends_on:
+      - comment-service-db
+    volumes:
+      # Mappa la cartella locale con i dump in /dump/comments_db nel container
+      - "./Docker/comment-service-db/mongo-dumps/comments_db:/dump/comments_db"
+    command: >
+      bash -c "
+        sleep 5;
+        mongorestore --host comment-service-db --drop --db comments_db /dump/comments_db;
+      "
   
-
+   # KEYCLOAK personalizzato
+  keycloak:
+    build:
+      context: ./Docker/keycloak      # Path dove metterai il Dockerfile e i file
+      dockerfile: Dockerfile
+    container_name: keycloak
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    ports:
+      - "8180:8080"
+    depends_on:
+      # Se vuoi che keycloak parta dopo i DB, dipende dalle tue esigenze
+      - photo-service-postgres
+      - user-service-db
+  
+  image-analyzer-service:
+   container_name: image-analyzer
+   build:
+    context: ./ImageAnalyzerService
+    dockerfile: Dockerfile
+   depends_on:
+    - kafka
+    - redis-container
 
 # --------------------------------------------------------------------------
 #                              VOLUMES
@@ -163,4 +211,3 @@ volumes:
   comment_mongo_data:
   user_mysql_data:
   # redis_data:  # solo se vuoi persistere Redis
-

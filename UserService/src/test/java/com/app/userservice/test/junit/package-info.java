@@ -1,1 +1,0 @@
-package com.app.userservice.test.junit;

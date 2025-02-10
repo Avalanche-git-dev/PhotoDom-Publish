@@ -5,7 +5,7 @@
 	<groupId>com.photodom</groupId>
 	<artifactId>user-provider</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>UserProvider</name>
+	<name>user-provider</name>
 	<description>Refractor del modulo di integrazione keycloak</description>
 
 
