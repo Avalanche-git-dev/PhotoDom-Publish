@@ -1,0 +1,209 @@
+# MYSQL (user-service)
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: user-mysql-pvc
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 256Mi
+
+# ---
+
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: user-mysql-init
+#   labels:
+#     app: user-service-db
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service-db
+  labels:
+    app: user-service-db
+spec:
+  ports:
+  - port: 3306
+    targetPort: 3306
+  selector:
+    app: user-service-db
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service-db
+  labels:
+    app: user-service-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-service-db
+  template:
+    metadata:
+      labels:
+        app: user-service-db
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:latest
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-root-secret
+              key: MYSQL_ROOT_PASSWORD
+        - name: MYSQL_DATABASE
+          value: "userdb"
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-root-secret
+              key: MYSQL_ROOT_PASSWORD
+        # - name: MYSQL_ROOT_PASSWORD
+        #   value: "root_password"
+        # - name: MYSQL_DATABASE
+        #   value: "userdb"
+        # - name: MYSQL_PASSWORD
+        #   value: "root_password"
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        volumeMounts:
+        - name: mysql-data
+          mountPath: /var/lib/mysql
+        - name: init-sql
+          mountPath: /docker-entrypoint-initdb.d
+      volumes:
+      - name: mysql-data
+        persistentVolumeClaim:
+          claimName: user-mysql-pvc
+      - name: init-sql
+        configMap:
+          name: user-mysql-init
+---
+apiVersion: v1
+data:
+  MYSQL_ROOT_PASSWORD: cm9vdF9wYXNzd29yZA==
+kind: Secret
+metadata:
+  name: mysql-root-secret
+
+# # =========================
+# # PVC per MySQL
+# # =========================
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: user-mysql-pvc
+# spec:
+#   accessModes:
+#   - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 256Mi
+# ---
+# # =========================
+# # ConfigMap con SQL init
+# # (il file user-db-demo.sql viene montato nel container)
+# # =========================
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: user-mysql-init
+#   labels:
+#     app: user-service-db
+# ---
+# # =========================
+# # Secret per root password
+# # =========================
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: mysql-root-secret
+# type: Opaque
+# data:
+#   MYSQL_ROOT_PASSWORD: cm9vdF9wYXNzd29yZA== # "root_password" base64
+# ---
+# # =========================
+# # Service MySQL
+# # =========================
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: user-service-db
+#   labels:
+#     app: user-service-db
+# spec:
+#   selector:
+#     app: user-service-db
+#   ports:
+#   - port: 3306
+#     targetPort: 3306
+# ---
+# # =========================
+# # Deployment MySQL
+# # =========================
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: user-service-db
+#   labels:
+#     app: user-service-db
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: user-service-db
+#   template:
+#     metadata:
+#       labels:
+#         app: user-service-db
+#     spec:
+#       containers:
+#       - name: mysql
+#         image: mysql:latest
+#         ports:
+#         - containerPort: 3306
+#         env:
+#         - name: MYSQL_ROOT_PASSWORD
+#           valueFrom:
+#             secretKeyRef:
+#               name: mysql-root-secret
+#               key: MYSQL_ROOT_PASSWORD
+#         - name: MYSQL_DATABASE
+#           value: "userdb"
+#         - name: MYSQL_PASSWORD
+#           valueFrom:
+#             secretKeyRef:
+#               name: mysql-root-secret
+#               key: MYSQL_ROOT_PASSWORD
+#         resources:
+#           requests:
+#             memory: "256Mi"
+#             cpu: "250m"
+#           limits:
+#             memory: "512Mi"
+#             cpu: "500m"
+#         volumeMounts:
+#         - name: mysql-data
+#           mountPath: /var/lib/mysql
+#         - name: init-sql
+#           mountPath: /docker-entrypoint-initdb.d
+#       volumes:
+#       - name: mysql-data
+#         persistentVolumeClaim:
+#           claimName: user-mysql-pvc
+#       - name: init-sql
+#         configMap:
+#           name: user-mysql-init

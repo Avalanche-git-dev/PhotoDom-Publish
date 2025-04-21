@@ -1,26 +1,35 @@
-# Usa l'immagine Keycloak 26
+# ======= STAGE 1: Compilazione JAR con Maven =======
+FROM maven:3.8.8-eclipse-temurin-17 AS builder
+
+WORKDIR /build
+COPY ./user-provider /build/user-provider
+WORKDIR /build/user-provider
+
+# Compila il progetto
+RUN mvn clean package -DskipTests && \
+    mkdir -p /final && \
+    cp target/user-provider-0.0.1-SNAPSHOT.jar /final/
+
+# ======= STAGE 2: Estensione Keycloak =======
 FROM quay.io/keycloak/keycloak:26.0.0
 
-# Passo 1: diventiamo root per copiare i file
 USER root
 
-# Copia il tuo provider custom
-# Assumi che tu abbia 'user-provider-0.0.1-SNAPSHOT.jar' nella stessa cartella del Dockerfile
-COPY user-provider-0.0.1-SNAPSHOT.jar /opt/keycloak/providers/
+# Copia il provider compilato da Maven
+COPY --from=builder /final/user-provider-0.0.1-SNAPSHOT.jar /opt/keycloak/providers/
 
-# Copia il realm export (realm-export.json)
-# Presumo che tu abbia il file "realm-export.json" nella stessa cartella
-COPY realm-export.json /opt/keycloak/data/import/
+# Copia il realm JSON (relativo al contesto di build)
+COPY ./Docker/keycloak/realm-export.json /opt/keycloak/data/import/
 
-# Cambia i permessi
+# Permessi
 RUN chown -R keycloak:keycloak /opt/keycloak/providers /opt/keycloak/data/import
 
-# Torna all'utente keycloak
 USER keycloak
 
-# Espone la porta 8080
-EXPOSE 8080
+# EXPOSE 8180
 
-# Avvia Keycloak con import realm
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev","--import-realm","--spi-user-storage-provider-enabled=true","--verbose"]
-            
+# ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start", "--import-realm", "--spi-user-storage-provider-enabled=true", "--verbose", "--http-port=8180"]
+# ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start", "--import-realm", "--verbose", "--http-port=8180", "--spi-user-storage-enabled=true"]
+# ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start", "--import-realm", "--verbose", "--http-port=8180"]
+# ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev", "--import-realm", "--http-port=8180", "--http-enabled=true", "--hostname-url=http://keycloak:8180", "--hostname-strict=false", "--verbose"]
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev", "--http-port=8180", "--hostname=keycloak", "--hostname-strict=false", "--import-realm", "--verbose"]

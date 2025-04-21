@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: commentdb-restore
+spec:
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+      - name: comment-restore
+        image: mongo:latest
+        command:
+        - bash
+        - -c
+        - |
+          sleep 10;
+          mongorestore --host comment-service-db --port 27018 --drop --db comments_db /dump/comments_db
+        volumeMounts:
+        - name: mongo-dump
+          mountPath: /dump/comments_db
+      volumes:
+      - name: mongo-dump
+        hostPath:
+          path: /dump/comments_db
+          type: Directory

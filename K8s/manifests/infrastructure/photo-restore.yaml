@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: photo-restore
+spec:
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+      - name: photo-restore
+        image: mongo:latest
+        command:
+        - bash
+        - -c
+        - |
+          sleep 5;
+          mongorestore --host photo-service-mongo --drop --db photo_storage /dump/photo_storage
+        volumeMounts:
+        - name: mongo-dump
+          mountPath: /dump/photo_storage
+      volumes:
+      - name: mongo-dump
+        hostPath:
+          path: /dump/photo_storage
+          type: Directory

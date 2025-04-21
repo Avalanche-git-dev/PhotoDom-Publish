@@ -37,15 +37,15 @@
         <artifactId>spring-boot-maven-plugin</artifactId>
         <configuration>
           <image>
-            <name>avalanchexd/${project.artifactId}</name>
+            <name>avalanchexd/photo-dom:${project.artifactId}</name>
             <publish>true</publish>
           </image>
-          <docker>
+          <!-- <docker>
             <publishRegistry>
               <username>avalanchexd</username>
               <password>${dockerPassword}</password>
             </publishRegistry>
-          </docker>
+          </docker> -->
           <excludes>
             <exclude>
               <groupId>org.projectlombok</groupId>

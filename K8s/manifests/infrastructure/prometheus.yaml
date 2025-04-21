@@ -1,0 +1,164 @@
+# # ============================
+# # 6. Prometheus
+# # ============================
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: prometheus-config
+#   labels:
+#     name: prometheus-config
+# binaryData: {}
+# data:
+#   prometheus.yml: |
+#     global:
+#       scrape_interval: 15s
+
+#     scrape_configs:
+#       - job_name: 'prometheus'
+#         static_configs:
+#           - targets: ['localhost:9090']
+#       - job_name: 'loki'
+#         static_configs:
+#           - targets: ['loki:3100']
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: prometheus
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: prometheus
+#   template:
+#     metadata:
+#       labels:
+#         app: prometheus
+#     spec:
+#       containers:
+#       - name: prometheus
+#         image: prom/prometheus:v2.46.0
+#         args:
+#         - --enable-feature=exemplar-storage
+#         - --config.file=/etc/prometheus/prometheus.yml
+#         ports:
+#         - containerPort: 9090
+#         volumeMounts:
+#         - name: prometheus-config-volume
+#           mountPath: /etc/prometheus/
+#         resources:
+#           requests:
+#             memory: "128Mi"
+#             cpu: "100m"
+#           limits:
+#             memory: "256Mi"
+#             cpu: "250m"
+#       volumes:
+#       - name: prometheus-config-volume
+#         configMap:
+#           name: prometheus-config
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: prometheus
+# spec:
+#   selector:
+#     app: prometheus
+#   ports:
+#   - port: 9090
+#     targetPort: 9090
+---
+# ============================
+# 6. Prometheus
+# ============================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  labels:
+    name: prometheus-config
+binaryData: {}
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 2s
+      evaluation_interval: 2s
+
+    scrape_configs:
+
+      - job_name: 'prometheus'
+        static_configs:
+          - targets: ['prometheus:9090']
+
+      - job_name: 'api-gateway'
+        metrics_path: '/actuator/prometheus'
+        static_configs:
+          - targets: ['api-gateway:8080']
+
+      - job_name: 'user-service'
+        metrics_path: '/actuator/prometheus'
+        static_configs:
+          - targets: ['user-service:8081']
+
+      - job_name: 'photo-service'
+        metrics_path: '/actuator/prometheus'
+        static_configs:
+          - targets: ['photo-service:8082']
+
+      - job_name: 'comment-service'
+        metrics_path: '/actuator/prometheus'
+        static_configs:
+          - targets: ['comment-service:8083']
+
+      - job_name: 'loki'
+        static_configs:
+          - targets: ['loki:3100']
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      containers:
+      - name: prometheus
+        image: prom/prometheus:v2.46.0
+        args:
+        - --enable-feature=exemplar-storage
+        - --config.file=/etc/prometheus/prometheus.yml
+        ports:
+        - containerPort: 9090
+        volumeMounts:
+        - name: prometheus-config-volume
+          mountPath: /etc/prometheus/
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "250m"
+      volumes:
+      - name: prometheus-config-volume
+        configMap:
+          name: prometheus-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus
+spec:
+  selector:
+    app: prometheus
+  ports:
+  - port: 9090
+    targetPort: 9090

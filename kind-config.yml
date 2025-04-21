@@ -1,0 +1,18 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+  extraPortMappings:
+  - containerPort: 80
+    hostPort: 80
+    listenAddress: "127.0.0.1"
+    protocol: TCP
+  extraMounts:
+  - hostPath: ./Docker/photo-service-db/mongo-dumps/photo_storage
+    containerPath: /dump/photo_storage
+  - hostPath: ./Docker/comment-service-db/mongo-dumps/comments_db
+    containerPath: /dump/comments_db
+  # - hostPath: ./Docker/grafana
+  #   containerPath: /mnt/grafana
+  # - hostPath: ./Docker/prometheus
+  #   containerPath: /mnt/prometheus

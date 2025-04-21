@@ -1,0 +1,102 @@
+# ============================
+# ConfigMap per API Gateway
+# ============================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-gateway-config
+  labels:
+    app: api-gateway
+data:
+  SPRING_PROFILES_ACTIVE: "prod"
+  SPRING_APPLICATION_NAME: "api-gateway"
+  SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI: "http://keycloak:8180/realms/PhotoDom"
+  LOKI_URL: "http://loki:3100/loki/api/v1/push"
+  USER_SERVICE_URI: "http://user-service:8081"
+  PHOTO_SERVICE_URI: "http://photo-service:8082"
+  COMMENT_SERVICE_URI: "http://comment-service:8083"
+---
+# ============================
+# Deployment per API Gateway
+# ============================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+  labels:
+    app: api-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-gateway
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+    spec:
+      containers:
+      - name: api-gateway
+        image: avalanchexd/photo-dom:api-gateway
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_APPLICATION_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: api-gateway-config
+              key: SPRING_APPLICATION_NAME
+        - name: SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI
+          valueFrom:
+            configMapKeyRef:
+              name: api-gateway-config
+              key: SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI
+        - name: LOKI_URL
+          valueFrom:
+            configMapKeyRef:
+              name: api-gateway-config
+              key: LOKI_URL
+        - name: USER_SERVICE_URI
+          valueFrom:
+            configMapKeyRef:
+              name: api-gateway-config
+              key: USER_SERVICE_URI
+        - name: PHOTO_SERVICE_URI
+          valueFrom:
+            configMapKeyRef:
+              name: api-gateway-config
+              key: PHOTO_SERVICE_URI
+        - name: COMMENT_SERVICE_URI
+          valueFrom:
+            configMapKeyRef:
+              name: api-gateway-config
+              key: COMMENT_SERVICE_URI
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "250m"
+        volumeMounts:
+        - name: logs-dir
+          mountPath: /workspace/logs
+      volumes:
+      - name: logs-dir
+        emptyDir: {}
+---
+# ============================
+# Service per API Gateway
+# ============================
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-gateway
+spec:
+  selector:
+    app: api-gateway
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080

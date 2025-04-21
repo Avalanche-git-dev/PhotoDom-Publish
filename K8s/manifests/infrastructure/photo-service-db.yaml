@@ -1,0 +1,172 @@
+# # 📦 PersistentVolumeClaim
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: photo-postgres-pvc
+# spec:
+#   accessModes:
+#   - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 1Gi
+# ---
+# # 🔐 Secret
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: postgres-secret
+# type: Opaque
+# data:
+#   POSTGRES_PASSWORD: bW9tbw== # "momo"
+# ---
+# # 🌐 Service
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: photo-service-postgres
+#   labels:
+#     app: photo-service-postgres
+# spec:
+#   ports:
+#   - port: 5432
+#     targetPort: 5432
+#   selector:
+#     app: photo-service-postgres
+# ---
+# # 🚀 Deployment
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: photo-service-postgres
+#   labels:
+#     app: photo-service-postgres
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: photo-service-postgres
+#   template:
+#     metadata:
+#       labels:
+#         app: photo-service-postgres
+#     spec:
+#       containers:
+#       - name: postgres
+#         image: postgres:latest
+#         ports:
+#         - containerPort: 5432
+#         env:
+#         - name: POSTGRES_USER
+#           value: "root"
+#         - name: POSTGRES_DB
+#           value: "photo_service"
+#         - name: POSTGRES_PASSWORD
+#           valueFrom:
+#             secretKeyRef:
+#               name: postgres-secret
+#               key: POSTGRES_PASSWORD
+#         resources:
+#           requests:
+#             memory: "256Mi"
+#             cpu: "250m"
+#           limits:
+#             memory: "512Mi"
+#             cpu: "500m"
+#         volumeMounts:
+#         - name: postgres-data
+#           mountPath: /var/lib/postgresql/data
+#         - name: init-sql
+#           mountPath: /docker-entrypoint-initdb.d
+#       volumes:
+#       - name: postgres-data
+#         persistentVolumeClaim:
+#           claimName: photo-postgres-pvc
+#       - name: init-sql
+#         configMap:
+#           name: photo-postgres-init
+# 📦 PersistentVolumeClaim
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: photo-postgres-pvc
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 256Mi
+---
+# 🔐 Secret
+apiVersion: v1
+kind: Secret
+metadata:
+  name: postgres-secret
+type: Opaque
+data:
+  POSTGRES_PASSWORD: bW9tbw==
+---
+# 🌐 Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: photo-service-postgres
+  labels:
+    app: photo-service-postgres
+spec:
+  ports:
+  - port: 5432
+    targetPort: 5432
+  selector:
+    app: photo-service-postgres
+---
+# 🚀 Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: photo-service-postgres
+  labels:
+    app: photo-service-postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: photo-service-postgres
+  template:
+    metadata:
+      labels:
+        app: photo-service-postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:latest
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_USER
+          value: "root"
+        - name: POSTGRES_DB
+          value: "photo_service"
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secret
+              key: POSTGRES_PASSWORD
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        volumeMounts:
+        - name: postgres-data
+          mountPath: /var/lib/postgresql/data
+        - name: init-sql
+          mountPath: /docker-entrypoint-initdb.d
+      volumes:
+      - name: postgres-data
+        persistentVolumeClaim:
+          claimName: photo-postgres-pvc
+      - name: init-sql
+        configMap:
+          name: photo-postgres-init

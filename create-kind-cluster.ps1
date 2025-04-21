@@ -1,0 +1,1 @@
+kind create cluster --name photodom --config kind-config.yml

@@ -1,0 +1,118 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: photo-service-config
+  labels:
+    app: photo-service
+data:
+  SPRING_PROFILES_ACTIVE: "prod"
+  SPRING_APPLICATION_NAME: "photo-service"
+  SPRING_DATA_REDIS_HOST: "redis"
+  SPRING_DATA_REDIS_PORT: "6379"
+  SPRING_KAFKA_BOOTSTRAP_SERVERS: "kafka:29092"
+  SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI: "http://keycloak:8180/realms/PhotoDom"
+  LOKI_URL: "http://loki:3100/loki/api/v1/push"
+  SPRING_DATASOURCE_URL: "jdbc:postgresql://photo-service-postgres:5432/photo_service"
+  SPRING_DATASOURCE_USERNAME: "root"
+  SPRING_DATASOURCE_PASSWORD: "momo"
+  SPRING_DATA_MONGODB_URI: "mongodb://photo-service-mongo:27017/photo_storage"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: photo-service
+  labels:
+    app: photo-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: photo-service
+  template:
+    metadata:
+      labels:
+        app: photo-service
+    spec:
+      containers:
+      - name: photo-service
+        image: avalanchexd/photo-dom:photo-service
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8082
+        env:
+        - name: SPRING_APPLICATION_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: photo-service-config
+              key: SPRING_APPLICATION_NAME
+        - name: SPRING_DATA_REDIS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: photo-service-config
+              key: SPRING_DATA_REDIS_HOST
+        - name: SPRING_DATA_REDIS_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: photo-service-config
+              key: SPRING_DATA_REDIS_PORT
+        - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+          valueFrom:
+            configMapKeyRef:
+              name: photo-service-config
+              key: SPRING_KAFKA_BOOTSTRAP_SERVERS
+        - name: SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI
+          valueFrom:
+            configMapKeyRef:
+              name: photo-service-config
+              key: SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI
+        - name: LOKI_URL
+          valueFrom:
+            configMapKeyRef:
+              name: photo-service-config
+              key: LOKI_URL
+        - name: SPRING_DATASOURCE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: photo-service-config
+              key: SPRING_DATASOURCE_URL
+        - name: SPRING_DATASOURCE_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              name: photo-service-config
+              key: SPRING_DATASOURCE_USERNAME
+        - name: SPRING_DATASOURCE_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: photo-service-config
+              key: SPRING_DATASOURCE_PASSWORD
+        - name: SPRING_DATA_MONGODB_URI
+          valueFrom:
+            configMapKeyRef:
+              name: photo-service-config
+              key: SPRING_DATA_MONGODB_URI
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "200m"
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"
+        volumeMounts:
+        - name: logs-dir
+          mountPath: /workspace/logs
+      volumes:
+      - name: logs-dir
+        emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: photo-service
+spec:
+  selector:
+    app: photo-service
+  ports:
+  - name: http
+    port: 8082
+    targetPort: 8082
