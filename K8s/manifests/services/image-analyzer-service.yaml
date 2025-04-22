@@ -1,0 +1,93 @@
+---
+# ==============================================
+# ConfigMap per variabili generiche
+# ==============================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: image-analyzer-config
+  labels:
+    app: image-analyzer
+data:
+  KAFKA_BOOTSTRAP_SERVERS: "kafka:29092"
+  PHOTO_UPLOADED_TOPIC: "photo-uploaded"
+  PHOTO_PROCESSED_TOPIC: "photo-processed"
+  KAFKA_GROUP_ID: "image-analyzer-group"
+  REDIS_HOST: "redis"
+  REDIS_PORT: "6379"
+  GOOGLE_APPLICATION_CREDENTIALS: "/app/credentials/api-Google.json"
+---
+# ==============================================
+# Deployment per image-analyzer
+# ==============================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: image-analyzer
+  labels:
+    app: image-analyzer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: image-analyzer
+  template:
+    metadata:
+      labels:
+        app: image-analyzer
+    spec:
+      containers:
+      - name: image-analyzer
+        image: image-analyzer:local # L'immagine creata localmente
+        imagePullPolicy: Never # NON deve essere cercata online
+        ports:
+        - containerPort: 5000
+        env:
+        - name: KAFKA_BOOTSTRAP_SERVERS
+          valueFrom:
+            configMapKeyRef:
+              name: image-analyzer-config
+              key: KAFKA_BOOTSTRAP_SERVERS
+        - name: PHOTO_UPLOADED_TOPIC
+          valueFrom:
+            configMapKeyRef:
+              name: image-analyzer-config
+              key: PHOTO_UPLOADED_TOPIC
+        - name: PHOTO_PROCESSED_TOPIC
+          valueFrom:
+            configMapKeyRef:
+              name: image-analyzer-config
+              key: PHOTO_PROCESSED_TOPIC
+        - name: KAFKA_GROUP_ID
+          valueFrom:
+            configMapKeyRef:
+              name: image-analyzer-config
+              key: KAFKA_GROUP_ID
+        - name: REDIS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: image-analyzer-config
+              key: REDIS_HOST
+        - name: REDIS_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: image-analyzer-config
+              key: REDIS_PORT
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: "/app/credentials/api-Google.json"
+        volumeMounts:
+        - name: credentials-volume
+          mountPath: /app/credentials
+          readOnly: true
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "250m"
+      volumes:
+      - name: credentials-volume
+        hostPath:
+          path: ./Docker/image-analyzer/credentials
+          type: DirectoryOrCreate

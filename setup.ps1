@@ -99,21 +99,8 @@ kubectl create configmap photo-postgres-init `
 Write-Output " ConfigMap 'photo-postgres-init' creata."
 
 # --------------------------------------------
-# Costruzione immagine custom Keycloak
+# Keycloak + user-provider ( modulo custom )
 # --------------------------------------------
-# Write-Output "`n Costruzione immagine Docker per Keycloak..."
-# Copy-Item -Recurse -Force ./user-provider ./Docker/keycloak/user-provider
-# docker build -t keycloak-custom:latest -f Docker/keycloak/Dockerfile .
-# Write-Output " Immagine 'keycloak-custom:latest' creata."
-
-# Write-Output "`n Caricamento immagine nel cluster Kind..."
-# kind load docker-image keycloak-custom:latest --name photodom
-# Write-Output " Immagine caricata."
-
-# Remove-Item -Recurse -Force ./Docker/keycloak/user-provider
-# Write-Output " Pulizia file temporanei completata."
-
-
 
 Copy-Item -Recurse -Force ./user-provider ./Docker/keycloak/user-provider
 

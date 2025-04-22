@@ -8,9 +8,11 @@ metadata:
 data:
   SPRING_PROFILES_ACTIVE: "prod"
   SPRING_APPLICATION_NAME: "comment-service"
-  SPRING_DATA_MONGODB_HOST: "comment-service-mongo"
+  SPRING_DATA_MONGODB_HOST: "comment-service-db"
   SPRING_DATA_MONGODB_PORT: "27018"
   SPRING_DATA_MONGODB_DATABASE: "comments_db"
+  SPRING_DATA_REDIS_HOST: "redis" # ⬅️ aggiungi questa riga
+  SPRING_DATA_REDIS_PORT: "6379"
   SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI: "http://keycloak:8180/realms/PhotoDom"
   LOKI_URL: "http://loki:3100/loki/api/v1/push"
 ---
@@ -67,6 +69,16 @@ spec:
             configMapKeyRef:
               name: comment-service-config
               key: LOKI_URL
+        - name: SPRING_DATA_REDIS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: comment-service-config
+              key: SPRING_DATA_REDIS_HOST
+        - name: SPRING_DATA_REDIS_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: comment-service-config
+              key: SPRING_DATA_REDIS_PORT
         resources:
           requests:
             memory: "512Mi"
