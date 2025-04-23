@@ -91,8 +91,8 @@ spec:
             configMapKeyRef:
               name: photo-service-config
               key: SPRING_DATA_MONGODB_URI
-        - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
-          value: "kafka:29092"
+        # - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+        #   value: "kafka:29092"
         resources:
           requests:
             memory: "512Mi"

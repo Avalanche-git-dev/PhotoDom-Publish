@@ -7,8 +7,12 @@ COPY requirements.txt ./
 COPY . /app  
 
 
+# # Copia il file delle credenziali nel container
+# COPY credentials/imageanalyzer-443109-c6a036efc6a7.json /app/credentials/imageanalyzer-443109-c6a036efc6a7.json
+
 # Copia il file delle credenziali nel container
-COPY credentials/imageanalyzer-443109-c6a036efc6a7.json /app/credentials/imageanalyzer-443109-c6a036efc6a7.json
+COPY credentials/api-Google.json /app/credentials/api-Google.json
+
 
 # Installa le dipendenze
 RUN pip install --no-cache-dir -r requirements.txt
