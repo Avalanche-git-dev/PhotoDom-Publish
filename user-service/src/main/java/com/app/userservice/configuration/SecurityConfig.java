@@ -50,8 +50,8 @@ public class SecurityConfig {
     @Order(3)
     SecurityFilterChain swaggerFilterChain(HttpSecurity http) throws Exception {
         http
-            .securityMatcher("/swagger-ui.html","/v3/api-docs","/actuator/**") // Filtra solo Swagger e API docs
-            .authorizeHttpRequests(auth -> auth.anyRequest().permitAll()) // Consenti accesso a tutti
+            .securityMatcher("/swagger-ui.html","/v3/api-docs","/actuator/**") 
+            .authorizeHttpRequests(auth -> auth.anyRequest().permitAll()) 
             .csrf(csrf -> csrf.disable()); 
         return http.build();
     }
@@ -63,12 +63,11 @@ public class SecurityConfig {
         JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
 
         converter.setJwtGrantedAuthoritiesConverter(jwt -> {
-            // Estrae il ruolo direttamente dal campo "role" del token JWT
-            String role = jwt.getClaimAsString("role"); // Campo "role" nel token JWT
+            String role = jwt.getClaimAsString("role"); 
             if (role != null) {
                 return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + role.toUpperCase()));
             }
-            return Collections.emptyList(); // Nessun ruolo trovato
+            return Collections.emptyList(); 
         });
 
         return converter;
