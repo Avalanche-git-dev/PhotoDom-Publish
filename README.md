@@ -154,7 +154,7 @@ Per poter utilizzare l'analisi immagini:
 
 1. **Clona il repository**:
    ```bash
-   git clone https://github.com/il-tuo-repository.git
+   https://github.com/Avalanche-git-dev/PhotoDom.git
    cd PhotoDom-MicroServices
    ```
 > **❗ Attenzione:** assicurarsi di aver completato la sezione soprastante Cloud Vision API ⚠️. 
@@ -248,9 +248,9 @@ I file di specifica JSON sono disponibili in `docs/api/`:
 
 | File                          | Servizio        |
 | :---------------------------- | :-------------- |
-| `docs/api/user-api.json`    | user-service    |
-| `docs/api/photo-api.json`   | photo-service   |
-| `docs/api/comment-api.json` | comment-service |
+| `docs/api/user-api.json`    | [user-service](docs/api//user-api.json)    |
+| `docs/api/photo-api.json`   | [photo-service](docs/api//user-api.json)    |
+| `docs/api/comment-api.json` | [comment-service](docs/api//user-api.json)    |
 
 ---
 
