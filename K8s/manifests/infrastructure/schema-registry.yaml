@@ -1,10 +1,77 @@
+# # ============================
+# # Schema Registry Deployment
+# # ============================
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: schema-registry
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: schema-registry
+#   template:
+#     metadata:
+#       labels:
+#         app: schema-registry
+#     spec:
+#       enableServiceLinks: false
+#       containers:
+#       - name: schema-registry
+#         image: confluentinc/cp-schema-registry:7.5.0
+#         ports:
+#         - containerPort: 8091
+#         env:
+#         - name: SCHEMA_REGISTRY_HOST_NAME
+#           value: schema-registry
+#         - name: SCHEMA_REGISTRY_LISTENERS
+#           value: http://0.0.0.0:8091
+#         - name: SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS
+#           value: PLAINTEXT://kafka-headless.default.svc.cluster.local:29092
+#         resources:
+#           requests:
+#             memory: "128Mi"
+#             cpu: "100m"
+#           limits:
+#             memory: "256Mi"
+#             cpu: "250m"
+# ---
+# # ============================
+# # Schema Registry Service
+# # ============================
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: schema-registry
+# spec:
+#   selector:
+#     app: schema-registry
+#   ports:
+#   - port: 8091
+#     targetPort: 8091
 # ============================
-# Schema Registry Deployment
+# Schema Registry Config & Deployment
 # ============================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: schema-registry-config
+  labels:
+    app: schema-registry
+  namespace: default
+data:
+  # Ascolto sulla porta 8091
+  SCHEMA_REGISTRY_HOST_NAME: "schema-registry"
+  SCHEMA_REGISTRY_LISTENERS: "http://0.0.0.0:8091"
+  # Bootstrap verso Kafka service interno su 29092
+  SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: "PLAINTEXT://kafka:29092"
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: schema-registry
+  labels:
+    app: schema-registry
 spec:
   replicas: 1
   selector:
@@ -23,11 +90,20 @@ spec:
         - containerPort: 8091
         env:
         - name: SCHEMA_REGISTRY_HOST_NAME
-          value: schema-registry
+          valueFrom:
+            configMapKeyRef:
+              name: schema-registry-config
+              key: SCHEMA_REGISTRY_HOST_NAME
         - name: SCHEMA_REGISTRY_LISTENERS
-          value: http://0.0.0.0:8091
+          valueFrom:
+            configMapKeyRef:
+              name: schema-registry-config
+              key: SCHEMA_REGISTRY_LISTENERS
         - name: SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS
-          value: PLAINTEXT://kafka-headless.default.svc.cluster.local:29092
+          valueFrom:
+            configMapKeyRef:
+              name: schema-registry-config
+              key: SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS
         resources:
           requests:
             memory: "128Mi"
@@ -36,16 +112,16 @@ spec:
             memory: "256Mi"
             cpu: "250m"
 ---
-# ============================
-# Schema Registry Service
-# ============================
 apiVersion: v1
 kind: Service
 metadata:
   name: schema-registry
+  labels:
+    app: schema-registry
 spec:
   selector:
     app: schema-registry
   ports:
-  - port: 8091
+  - name: http
+    port: 8091
     targetPort: 8091

@@ -72,13 +72,21 @@ spec:
             configMapKeyRef:
               name: api-gateway-config
               key: COMMENT_SERVICE_URI
+        - name: SPRING_RESILIENCE4J_CIRCUITBREAKER_CONFIGS_DEFAULT_MINIMUM_NUMBER_OF_CALLS
+          value: "10"
+        - name: SPRING_RESILIENCE4J_CIRCUITBREAKER_CONFIGS_DEFAULT_WAIT_DURATION_IN_OPEN_STATE
+          value: "20s"
+        - name: SPRING_RESILIENCE4J_CIRCUITBREAKER_CONFIGS_DEFAULT_SLIDING_WINDOW_SIZE
+          value: "20"
+        - name: SPRING_RESILIENCE4J_CIRCUITBREAKER_CONFIGS_DEFAULT_FAILURE_RATE_THRESHOLD
+          value: "60"
         resources:
           requests:
-            memory: "256Mi"
-            cpu: "100m"
-          limits:
             memory: "512Mi"
-            cpu: "250m"
+            cpu: "200m"
+          limits:
+            memory: "1024Mi"
+            cpu: "450m"
         volumeMounts:
         - name: logs-dir
           mountPath: /workspace/logs

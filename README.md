@@ -1,157 +1,270 @@
 # Photo-Dom - Documentazione Tecnica
-
-**Photo-Dom** è un'applicazione social sviluppata da zero considerabile pertanto di tipo gestionale, da consegnare a un customer, progettata per esplorare e implementare:
-1. **Logiche di architettura a microservizi**: affrontare i concetti chiave, come la decomposizione del dominio, la comunicazione tra servizi e la resilienza.
-2. **Conoscenze tecnologiche**: ampliare le competenze introducendo una varietà di tecnologie, stack e pattern di progettazione.
-
+![alt text](<Immagine 2025-04-20 133458.png>)
+**Photo-Dom** è un'applicazione social sviluppata da zero considerabile pertanto di tipo gestionale, progettata per esplorare e implementare:
 
 ### Obiettivi principali:
-
-- **Studio delle architetture a microservizi**: ciascun servizio è progettato seguendo il principio della singola responsabilità.
-- **Sperimentazione tecnologica**: utilizzo di tecnologie come Java, Spring Boot, Angular, MongoDB, Redis e kafka per costruire un'applicazione scalabile e performante.
-- **Learn by doing**: affrontando le logiche di una architettura distrubuita, ottimizzandola in risposta alle esigenze di una cusomter che la rileverà al rilascio.
-
-## **Requisiti**
-
-Per modellare la realtà al meglio i requisiti del customer sono:
-- Creare una applicazione flessibile, che abbia una struttura tale da poter accettare in futuro aggiunte di intere features senza dover modificare il codice preesistente.
-- L'applicazione deve essere altamente scalabile, sopratutto orizzontalmente. Il cliente esige infatti che l'applicazione mantenga i costi contenuti in termini di risorse visto l'incognita dell'utenza.
-- Allo stesso modo del punto precedente, l'aumento dei costi dovrà essere correlazionato all'aumento di utenza e gestito in maniera dinamica.
-- Il cliente richiede l'implementazione di una logica tale da permettere all'applicazione di essere resiliente, e di ridurre al minimo le dipendenze fra servizi.
-
-
-
-## **Features**
-
-**Photo-Dom** è un social network dove gli utenti possono:
-- Autenticazione protetta, e distinzione fra ruoli admin/user.
-- Creare, caricare e gestire foto.
-- Interagire sia con i profili di altri utenti che con le foto di altri utenti tramite like e commenti.
-- Gli amministratori possono gestire gli utenti (es. bannare, promuovere, monitorare, rimuovere post non consoni).
-- Supporto a notifiche in tempo reale per like/commenti tramite WebSocket. 
-
-L'applicazione è composta da più servizi indipendenti, ognuno con responsabilità ben definite, e utilizza tecnologie moderne per garantire scalabilità, monitoraggio e manutenzione.
+- **Architettura a microservizi**.
+- **Competenze tecnologiche avanzate**.
+- **Scalabilità, resilienza, comunicazione asincrona, ottimizzazione KPI, learn by doing**.
 
 ---
 
-### **General Networking**
-La rete è organizzata per consentire comunicazioni interne sicure tra i microservizi e connessioni esterne per i client.
+## Requisiti
 
-#### **Topologia di rete**
-1. **Client (Frontend)**: Angular, comunicazione con il backend tramite HTTP/REST e WebSocket.
-2. **Gateway API**: Punto di ingresso centrale per il routing delle richieste verso i microservizi.
-3. **Microservizi**: Comunicazione tra servizi tramite REST o messaggi asincroni (Apache Kafka).
-4. **Database**: Ogni servizio gestisce il proprio database (ad esempio, MongoDB per foto e Commenti, mentre per utenti MySQL).
+- Struttura flessibile per aggiunte future.
+- Scalabilità orizzontale.
+- Contenimento dei costi.
+- Architettura resiliente.
 
+---
 
-#### **Diagramma della rete**
+## Features
+
+- Registrazione/login sicuro con ruoli (Admin/User).
+- Caricamento, gestione e interazione sulle foto.
+- Like e commenti in real-time via WebSocket.
+- Admin dashboard per la gestione degli utenti.
+- Visione di contenuti sicuri grazie al safe-search.
+
+---
+
+## General Networking
+
+### Topologia
+- Frontend Angular via HTTP/WebSocket.
+- API Gateway come punto unico di ingresso.
+- Comunicazioni REST e Kafka tra microservizi.
+- Database dedicati: MongoDB, MySQL, PostgreSQL.
+- Caching distribuito: Redis.
+- Sicurezza: Keycloak come Identity Provider.
+
+### Diagramma
 ![Diagramma UML](PhotoDom-General.png)
 
+---
 
+## Concetti Generali
 
-
-
-## **Concetti Generali**
-
-Questo progetto è stato sviluppato con l'obiettivo di:
-
-### **Applicare principi di progettazione avanzata**
-- **Single Responsibility Principle (SRP)**: ogni servizio è responsabile di una specifica funzione, riducendo le dipendenze e migliorando la manutenibilità.
-- **Event-Driven Architecture**: utilizzo di Apache Kafka per eventi asincroni tra i microservizi.
-
-### **Garantire resilienza e scalabilità**
-- **Resilience4J**: Circuit breaker per gestire i guasti dei servizi.
-- **API Gateway**: Bilanciamento del carico e gestione centralizzata delle richieste.
-
-### **Implementare una sicurezza avanzata**
-- **Keycloak** come Identity Provider (IDP) per OAuth2 e JWT.
-- Protezione degli endpoint con **Spring Security**.
+- **Single Responsibility Principle** applicato.
+- **Event-Driven Architecture** tramite Kafka.
+- **Resilienza** tramite Circuit Breaker (Resilience4J).
+- **Sicurezza avanzata** con OIDC, OAuth2, JWT, Keycloak.
 
 ---
 
-## **Tecnologie utilizzate**
+## Tecnologie Utilizzate
 
-### **Backend**
-- **Java 17+** con **Spring Boot 3.3.7**: Framework principale per lo sviluppo dei microservizi.
-- **Spring Security**: Implementazione di OAuth2 e JWT.
-- **MongoDB**: Archiviazione delle foto e dei commenti.
-- **MySQL**: Gestione degli utenti.
-- **Redis**: Cache distribuita per migliorare le prestazioni.
-- **Apache Kafka**: Messaggistica asincrona per comunicazioni event-driven.
-- **Loki**: Logging centralizzato per monitoraggio e debug.
+### Backend
+- **Java 17+** e **Spring Boot 3.3.7**
+- **Python 3.10** con **Pillow** , **Python-kafk** e **redis* 
+- **Spring Security**
+- **MongoDB**, **MySQL**, **Redis**, **Apache Kafka**, **Loki**, **PostgreSQL**
 
-### **Frontend**
-- **Angular 22**: Framework per lo sviluppo del frontend.
-- **Angular Material**: Libreria per un design moderno e responsivo.
-- **RxJS**: Gestione reattiva e asincrona.
-- **WebSocket**: Notifiche in tempo reale per aggiornamenti di like e commenti.
+### Frontend
+- **Angular 22**
+- **Angular Material**
+- **RxJS**, **WebSocket**
+- **Bootstrap 5.3.3**
 
 ---
 
-## **Caratteristiche principali**
+## Caratteristiche principali
 
-### **Gestione utenti**
-- Registrazione sicura con OAuth2 e Keycloak.
-- Ruoli distinti: **Admin** e **User**.
-- Login e gestione social profilo come funzionalità di base.
-- Gestione utenti e contenuto del social, come funzionalità avanzata per gli ADMIN.
-
-### **Gestione delle foto**
-- Caricamento, modifica ed eliminazione delle foto.
-- Gestione tramite event driven architecture e caching con Redis.
-- Photo-Service gestisce le operazioni crud e le funzionalità riguardanti le foto.
-- Image-Analyzer-Service, è un piccolo servizio containerizzato on permise, scritto in python, che si occupa di:
- - Analizzare l'immagine tramite CloudVisionApi.
- - Ottimizzarne formato e dimensione per la corretta conservazione dei contenuti mediatici.
-- Salvataggio scalabile su **MongoDB** tramite **GridFS** del contenuto dell'immagine, dei suoi metadati su PostgreSQL.
-
-### **Interazioni social**
-- Aggiunta e rimozione di commenti e repliche agli stessi.
-- Sistema di like per le foto.
-- Notifiche in tempo reale.
-
-### **Amministrazione avanzata**
-- Moderazione utenti (ban, promozione).
-- Monitoraggio dei post e gestione contenuti non conformi.
-
-### **Resilienza e monitoraggio**
+- Gestione utenti sicura (Keycloak e OAuth2 con supporto di Jwt).
+- Gestione ruoli e accessi.
+- CRUD foto, commenti, likes.
+- Vista aggiuntiva di moderazione per ADMIN.
+- Filtraggio immagini con contenuti non leciti tramite **Cloud Vision API** + ottimizzazione **Servizio Python**.
 - Logging centralizzato con **Loki**.
-- Circuit breaker per mantenere la disponibilità del sistema.
+- Dashboard per monitoraggio live **Grafana**.
 
 ---
 
-## **Avvio dell'applicazione**
+## Struttura delle Cartelle Principali
 
-### **Backend**
-1. Configura i database (**MySQL** per gli utenti, **MongoDB** per le foto e i commenti).
-2. Assicurati che **Kafka** e **Redis** siano in esecuzione.
-3. Avvia ogni servizio dalla directory corrispondente:
+| Cartella                          | Descrizione                                                          |
+| :-------------------------------- | :------------------------------------------------------------------- |
+| `api-gateway/`                    | Gateway API centrale (Spring Cloud)                                  |
+| `user-service/`                   | Microservizio gestione utenti (Java Spring)                          |
+| `photo-service/`                  | Microservizio gestione foto (Java Spring)                            |
+| `comment-service/`                | Microservizio gestione commenti (Java Spring)                        |
+| `image-analyzer-service/`         | Servizio Python per analisi immagini (Google Vision API)             |
+| `user-provider`                   | Modulo Maven middleware per integrazione Keycloak - User-Service.             |
+| `front-end/`                      | Applicazione frontend Angular                                        |
+| `k8s/manifests/`                  | Manifests Kubernetes per infrastruttura e servizi                    |
+| `Docker/`                         | Dockerfile e configurazioni database                                |
+| `setup.ps1`                       | Script PowerShell per setup cluster Kind e deploy                    |
+| `create-kind-cluster.ps1`         | Script PowerShell per creare cluster Kind                            |
+| `delete-kind-cluster.ps1`         | Script PowerShell per cancellare cluster Kind e pulire \`/etc/hosts\`|
+| `README.md`                       | Guida completa                                                       |
+
+---
+
+## Comunicazioni interne
+
+- **REST API** per user management e login.
+- **Kafka topics** per eventi asincroni (foto caricate, foto analizzata).
+- **WebSocket** per notifiche real-time.
+
+---
+
+# Guida Deploy Locale: 
+
+## Prerequisiti
+
+- Docker Desktop installato.
+- Kubernetes abilitato.
+- Kind installato.
+- NodeJS e npm installati.
+
+> **⚠️ Deploy Kubernetes limitato a 1 replica:**  
+> Per motivi di risorse, tutti i microservizi vengono avviati con una singola replica nel cluster locale Kind. L’infrastruttura è comunque pensata per essere deployabile in qualunque ambiente (on-premise o cloud), con preferenza per il cloud per sfruttarne scalabilità e alta disponibilità.
+
+
+> **⚠️ Deploy Docker:**
+> E' possibile deployare l'applicazione anche come docker-compose a scopo di test in locale, con unica differenza che bisogna avviare il front-end, cambiando i puntamenti in \front-end\photo-dom\src\environments\environment.ts con le indicazioni lasciate nei commenti. Fatto ciò basterà seguire le istruzioni lasciate nel Dockerfile al percorso \front-end\photo-dom\ e lanciare in seguito il comando
+```bash
+   docker-compose up -d --build
+```
+
+
+
+## Cloud Vision API ⚠️
+
+Per poter utilizzare l'analisi immagini:
+
+1. Registrarsi su [Google Cloud Vision](https://cloud.google.com/vision).
+1. Apri il [Google Cloud Console](https://console.cloud.google.com) e crea un nuovo progetto o selezionane uno esistente.
+3. Abilitare Cloud Vision API.
+   ![alt text](image.png) ![alt text](image-2.png)
+<!-- 4. Creare una chiave di tipo **Account di Servizio**.![alt text](image-3.png) -->
+4. Nel menu a sinistra, vai su **IAM & Admin** > **Service Accounts**. 
+5. Seleziona il Service Account che vuoi usare (o creane uno nuovo con **Create Service Account**).  
+6. Nella riga del Service Account, clicca sui tre puntini in **Actions** → **Manage keys**  
+7. Vai nella tab **Keys**, poi clicca **Add Key** → **Create new key**. 
+   ![alt text](image-1.png) 
+8. Scegli il formato **JSON** e premi **Create**.  
+9. Il file `credentials.json` verrà scaricato automaticamente nella cartella predefinita del tuo browser.  
+10. Rinominarlo in `api-Google.json`.
+11. Copiarlo nella cartella `image-analyzer-service/credentials/` del progetto.
+> **❗ Attenzione:** Senza questo passaggio non sarà possibile il funzionamento della funzionalità di upload. 
+---
+
+# Procedura di Avvio
+
+1. **Clona il repository**:
    ```bash
-   mvn spring-boot:run
+   git clone https://github.com/il-tuo-repository.git
+   cd PhotoDom-MicroServices
+   ```
+> **❗ Attenzione:** assicurarsi di aver completato la sezione soprastante Cloud Vision API ⚠️. 
 
-### **Frontend**
-1. Installa le dipendenze: npm install 
-2. Avvia il server di sviluppo, utilizzando lo script: ng serve
-3. Visita l'applicazione su: http://localhost:4200
+
+2. **Crea il cluster Kind**:
+
+   ```bash
+   ./create-kind-cluster.ps1
+   ```
+
+3. **Esegui il setup completo**:
+   ```bash
+   ./setup.ps1
+   ```
+
+4. **Controlla i Pod**:
+   ```bash
+   kubectl get pods
+   ```
+
+   Attendere finché tutti i container risultano in stato `Running`.
+
+
+5. **Esegui il port-forward Keycloak**:
+   ```bash
+   kubectl port-forward svc/keycloak 8180:8180
+   ```
+
+6. **Esegui il port-forward API-Gateway**:
+   ```bash
+   kubectl port-forward svc/api-gateway 8080:8080
+   ```
+
+7. **Esegui il port-forward Frontend**:
+   ```bash
+   kubectl port-forward service/front-end 4200:80
+   ```
+
+8. **Accedi all'applicazione**:
+   - Apri il browser su [http://localhost:4200](http://localhost:4200)
+
+
+> **❗ Nota** In caso di errori iniziali attendere 2-3 minuti: Kubernetes potrebbe impiegare più tempo ad avviare tutto.
+
+
+# Utils & Monitoring
+
+
+1. **Esegui il port-forward Grafana**:
+   ```bash
+   kubectl port-forward svc/grafana 3000:3000
+   ```
+
+2. **Accedi a Grafana**:
+   - Apri il browser su [http://localhost:3000](http://localhost:3000)
+
+3. **Esegui il port-forward Kafka-ui**:
+   ```bash
+   kubectl port-forward svc/kafka-ui 8090:8090
+   ```
+
+4. **Accedi a Kafka-ui**:
+   - Apri il browser su [http://localhost:8090](http://localhost:8090)
+
+
+5. **Accedi alla console di Keycloak**:
+   - Apri il browser su [http://localhost:8180](http://localhost:8180)
+  
+
+6. **Per eliminare il cluster e pulire il file hosts**:
+   ```bash
+   ./delete-kind-cluster.ps1
+   ```  
+
+---
+
+
+# Deliverable e Testing
+
 
 ## **Documentazione API**
 
-Ogni microservizio è documentato tramite **Swagger/OpenAPI**. Puoi esplorare la documentazione direttamente tramite Swagger UI o accedere alle specifiche in formato JSON per ulteriori integrazioni.
+Ogni servizio ha la sua documentazione OpenAPI:
 
-- **User Service**:
-  - **Swagger UI**: [http://localhost:8081/swagger-ui.html](http://localhost:8081/swagger-ui.html)
-  - **OpenAPI JSON**: [docs/api/user-api.json](docs/api//user-api.json)
+- **User Service**: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+- **Photo Service**: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+- **Comment Service**: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
-- **Photo Service**:
-  - **Swagger UI**: [http://localhost:8082/swagger-ui.html](http://localhost:8082/swagger-ui.html)
-  - **OpenAPI JSON**: [docs/api/photo-api.json](docs/api/photo-api.json)
+I file di specifica JSON sono disponibili in `docs/api/`:
 
-- **Comment Service**:
-  - **Swagger UI**: [http://localhost:8083/swagger-ui.html](http://localhost:8083/swagger-ui.html)
-  - **OpenAPI JSON**: [docs/api/comment-api.json](docs/api/comment-api.json)
+| File                          | Servizio        |
+| :---------------------------- | :-------------- |
+| `docs/api/user-api.json`    | user-service    |
+| `docs/api/photo-api.json`   | photo-service   |
+| `docs/api/comment-api.json` | comment-service |
 
 ---
 
+### Consultazione senza deploy
+
+Puoi importare i file direttamente nel **Swagger Editor**:
+
+1. Apri il [Swagger Editor online](https://editor.swagger.io/).  
+2. Vai su **File > Import File**.  
+3. Seleziona il file desiderato da `docs/api`.  
+
+In questo modo potrai esplorare la documentazione OpenAPI senza dover avviare i servizi in locale.  
+
+---
 ## **Test delle API**
 
 Le collection Postman per testare le API sono disponibili nei seguenti file:
@@ -164,31 +277,31 @@ Le collection Postman per testare le API sono disponibili nei seguenti file:
 - **ApiGateway**: [Scarica](docs/test/PhotoDom-MicroServices-APIGATEWAY.postman_collection.json)
 - **WebFlow Endpoint**: [Scarica](docs/test/PhotoDom-MicroServices-WebFlow-TEST.postman_collection.json)
 
+> **⚠️ Attenzione:** Prima di testare una API è necessario richiedere un token tramite TokenId, o TokenIdAdmin previste nella WebFlow Endpoint, utilizzandone il token risultato come header di tipo Bearer sarà possibile chiamare il backend da autenticati. In caso contrario sarà vietato l'accesso.
+
 
 Puoi importare questi file in Postman:
 1. Apri Postman.
 2. Vai su **File > Import**.
 3. Carica il file JSON.
+---
 
+# Learning Objectives
 
-
-
-## **Learning Objectives**
-
-Questo progetto offre un'ottima opportunità per apprendere:
-
-1. Progettazione e implementazione di **architetture a microservizi**.
-2. Configurazione e utilizzo di strumenti avanzati come **Redis**, **Kafka** e **MongoDB GridFS**.
-3. Applicazione e studio delle principali componenti di spring cloud e dei pattern per ottimizzarne la flessibilità e la scalabilità.
-4. Sicurezza delle applicazioni tramite **OAuth2**, **JWT** e **Keycloak**.
-5. Realizzazione di un frontend con **Angular**, ottimizzato per:
-   - Propagazione corretta delle risposte dal backend, grazie alla formattazione uniforme delle risposte e ai **Global Exception Handler** per ogni servizio.
-   - Riduzione dei tempi di risposta tramite **caching** backend con **Redis**.
-   - Notifiche in tempo reale sfruttando **WebSocket**.
-6. Monitoraggio delle applicazioni con **Loki** e logging centralizzato per debug e tracciamento.
+- Realizzazione architetture a microservizi.
+- Cloud Native Application.
+- Gestione sicura delle autenticazioni.
+- Scalabilità orizzontale, resilienza e logging distribuito.
+- Comunicazione sincrona e asincrona.
+- Integrazione fra piu sistemi e applicativi di tipo diverso fra loro.
 
 ---
 
-## **Contributori**
+# Contributore
 
 - [Mohamed Gabr Ashour](https://github.com/Avalanche-git-dev) - **Sviluppatore full-stack**
+
+---
+
+> **Photo-Dom**: non solo un'applicazione, ma un ecosistema distribuito completo per imparare e migliorarsi.
+

@@ -98,7 +98,7 @@ public class PhotoProcessedConsumer {
 				String photoCacheKey = "photo:" + savedMetadata.getId();
 
 				return photoCache.opsForValue().set(photoCacheKey, photoDto)
-						.then(photoCache.expire(photoCacheKey, Duration.ofMinutes(10))).then(Mono.just(savedMetadata));
+						.then(photoCache.expire(photoCacheKey, Duration.ofMinutes(1))).then(Mono.just(savedMetadata));
 			}).flatMap(savedMetadata -> {
 				// Rimuove chiavi temporanee dalla cache
 				return cachy.delete("result:photo:" + photoId).then(cachy.delete("metadata:" + photoId))

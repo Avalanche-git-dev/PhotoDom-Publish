@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -7,12 +8,14 @@ import { Subject, Observable } from 'rxjs';
 export class UserWebSocketService {
   private webSocket: WebSocket | null = null;
   private messageSubject = new Subject<string>();
-
+  private readonly url = environment.apiRootUrl.replace('http', 'ws') + '/ws/users';
   constructor() {}
 
   connect(): void {
     // Apri connessione WebSocket tramite proxy
-    this.webSocket = new WebSocket('ws://localhost:8080/ws/users');
+    // this.webSocket = new WebSocket('ws://localhost:8080/ws/users');
+    this.webSocket = new WebSocket(this.url);
+
 
     this.webSocket.onopen = () => {
       console.log('WebSocket connesso');

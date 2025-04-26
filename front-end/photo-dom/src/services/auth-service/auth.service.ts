@@ -5,9 +5,12 @@ import { catchError, tap } from 'rxjs/operators';
 import {jwtDecode} from 'jwt-decode'; // Per decodificare il token JWT
 import { User, TokenSet } from './models/auth.models';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
-const KEYCLOAK_TOKEN_URL = 'http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token';
-const KEYCLOAK_LOGOUT_URL = 'http://localhost:8180/realms/PhotoDom/protocol/openid-connect/logout';
+// const KEYCLOAK_TOKEN_URL = 'http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token';
+// const KEYCLOAK_LOGOUT_URL = 'http://localhost:8180/realms/PhotoDom/protocol/openid-connect/logout';
+const KEYCLOAK_TOKEN_URL = `${environment.keycloakUrl}/token`;
+const KEYCLOAK_LOGOUT_URL = `${environment.keycloakUrl}/logout`;
 
 @Injectable({
   providedIn: 'root',

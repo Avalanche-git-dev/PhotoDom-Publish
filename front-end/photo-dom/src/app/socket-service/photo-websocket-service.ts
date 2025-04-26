@@ -2,6 +2,7 @@
 
 import { Injectable } from "@angular/core";
 import { Subject, Observable } from "rxjs";
+import { environment } from "../../environments/environment";
 
 
 
@@ -12,9 +13,12 @@ import { Subject, Observable } from "rxjs";
 export class PhotoWebSocketService {
   private webSocket: WebSocket | null = null;
   private notificationSubject = new Subject<string>();
+  private readonly url = environment.apiRootUrl.replace('http', 'ws') + '/ws/photos';
 
   connect(): void {
-    this.webSocket = new WebSocket('ws://localhost:8080/ws/photos');
+    // this.webSocket = new WebSocket('ws://localhost:8080/ws/photos');
+    this.webSocket = new WebSocket(this.url);
+
 
     this.webSocket.onmessage = (event) => {
       const message = event.data.trim(); // Rimuove spazi o caratteri strani

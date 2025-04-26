@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -10,11 +11,14 @@ export class LikeStatusWebSocketService {
     photoId: number;
     liked: boolean;
   }>();
-
+  private readonly url = environment.apiRootUrl.replace('http', 'ws') + '/ws/like/status';
   constructor() {}
 
   connect(): void {
-    this.webSocket = new WebSocket('ws://localhost:8080/ws/like/status');
+    // this.webSocket = new WebSocket('ws://localhost:8080/ws/like/status');
+    this.webSocket = new WebSocket(this.url);
+
+    
 
     this.webSocket.onopen = () => {
       console.log('WebSocket LikeStatus connesso');

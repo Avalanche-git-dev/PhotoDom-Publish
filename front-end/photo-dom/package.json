@@ -5,6 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build-prod": "ng build --configuration production",
+    "build:ssr": "ng build && ng run photo-dom-2:server",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:photo-dom-2": "node dist/photo-dom-2/server/server.mjs",

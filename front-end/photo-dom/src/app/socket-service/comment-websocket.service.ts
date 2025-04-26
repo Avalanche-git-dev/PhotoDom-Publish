@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CommentWebSocketService {
   private socket!: WebSocket;
-  private url: string = 'ws://localhost:8080/ws/comments'; // URL del WebSocket
+  // private url: string = 'ws://localhost:8080/ws/comments';
+  private url: string = environment.apiRootUrl.replace('http', 'ws') + '/ws/comments';  
   private listeners: ((message: string) => void)[] = [];
 
   connect(): void {

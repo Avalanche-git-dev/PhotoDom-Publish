@@ -2,6 +2,7 @@
 FROM maven:3.8.8-eclipse-temurin-17 AS builder
 
 WORKDIR /build
+# COPY ../../user-provider /build/user-provider
 COPY ./user-provider /build/user-provider
 WORKDIR /build/user-provider
 
@@ -20,6 +21,9 @@ COPY --from=builder /final/user-provider-0.0.1-SNAPSHOT.jar /opt/keycloak/provid
 
 # Copia il realm JSON (relativo al contesto di build)
 COPY ./Docker/keycloak/realm-export.json /opt/keycloak/data/import/
+
+# Docker version Copia il realm JSON (relativo al contesto di build)
+# COPY ./realm-export.json /opt/keycloak/data/import/
 
 # Permessi
 RUN chown -R keycloak:keycloak /opt/keycloak/providers /opt/keycloak/data/import

@@ -9,6 +9,7 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AuthService } from '../auth-service/auth.service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -16,9 +17,12 @@ import { AuthService } from '../auth-service/auth.service';
 export class AuthInterceptor implements HttpInterceptor {
   // **Lista di URL esclusi dall'interceptor**
   private excludedUrls = [
-    'http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token', // Login
-    'http://localhost:8180/realms/PhotoDom/protocol/openid-connect/logout', // Logout
-    'http://localhost:8080/api/users/register' // Registrazione utente
+    // 'http://localhost:8180/realms/PhotoDom/protocol/openid-connect/token', // Login
+    // 'http://localhost:8180/realms/PhotoDom/protocol/openid-connect/logout', // Logout
+    // 'http://localhost:8080/api/users/register' // Registrazione utente
+    `${environment.keycloakUrl}/token`,
+    `${environment.keycloakUrl}/logout`,
+    `${environment.apiRootUrl}/api/users/register`
   ];
 
   constructor(private authService: AuthService) {}

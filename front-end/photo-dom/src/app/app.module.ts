@@ -18,6 +18,7 @@ import { AuthInterceptor } from '../services/auth-interceptor/auth.interceptor';
 import { GlobalErrorHandler } from '../services/error-handler/global-error-handler';
 import { SocialModule } from './features/social/social.module';
 import { AdminGuard } from '../services/admin-guard/admin.guard';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -26,9 +27,12 @@ import { AdminGuard } from '../services/admin-guard/admin.guard';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    UserApiModule.forRoot({ rootUrl: 'http://localhost:8080' }),
-    PhotoApiModule.forRoot({ rootUrl: 'http://localhost:8080' }),
-    CommentApiModule.forRoot({ rootUrl: 'http://localhost:8080' }),
+    // UserApiModule.forRoot({ rootUrl: 'http://localhost:8080' }),
+    // PhotoApiModule.forRoot({ rootUrl: 'http://localhost:8080' }),
+    // CommentApiModule.forRoot({ rootUrl: 'http://localhost:8080' }),
+    UserApiModule.forRoot({ rootUrl: environment.apiRootUrl }),
+    PhotoApiModule.forRoot({ rootUrl: environment.apiRootUrl }),
+    CommentApiModule.forRoot({ rootUrl: environment.apiRootUrl }),
     AuthModule,
     SocialModule
     
