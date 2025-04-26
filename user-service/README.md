@@ -8,7 +8,7 @@ Microservizio parte del progetto **Photo-Dom**, responsabile della **gestione de
 
 - Registrazione sicura utenti.
 - Autenticazione utenti tramite Keycloak (Resource Server JWT).
-- Integrazione con **Keycloak** tramite modulo [**`user-provider.`**](..\user-provider\README.md)
+- Integrazione con **Keycloak** tramite modulo [**`user-provider.`**](../user-provider/README.md)
 - CRUD profilo personale.
 - Promozione, bannaggio e gestione stato utente.
 - Interazione tramite **WebSocket** (es. notifiche).
