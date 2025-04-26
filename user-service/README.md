@@ -1,3 +1,8 @@
+<p align="right">
+  <strong>🇮🇹 Italiano</strong> |
+  <a href="./README.en.md">🇬🇧 English</a>
+</p>
+
 # User-Service
 
 Microservizio parte del progetto **Photo-Dom**, responsabile della **gestione degli utenti**: registrazione, autenticazione, gestione ruoli e integrazione con il sistema di autenticazione Keycloak.
