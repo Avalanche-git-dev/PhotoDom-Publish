@@ -154,7 +154,7 @@ Per poter utilizzare l'analisi immagini:
 
 1. **Clona il repository**:
    ```bash
-   https://github.com/Avalanche-git-dev/PhotoDom.git
+   git clone https://github.com/Avalanche-git-dev/PhotoDom.git
    cd PhotoDom-MicroServices
    ```
 > **❗ Attenzione:** assicurarsi di aver completato la sezione soprastante Cloud Vision API ⚠️. 
