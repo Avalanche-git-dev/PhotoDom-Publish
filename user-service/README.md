@@ -61,7 +61,7 @@ Microservizio parte del progetto **Photo-Dom**, responsabile della **gestione de
 
 - **OAuth2 Resource Server**: validazione dei token JWT emessi da Keycloak.
 - Endpoint protetti tramite separazione delle **route** e protezione nel Filter Chain basato sui ruoli `USER`, `ADMIN`.
-- Autenticazioni e autorizzazioni gestite tramite una sequenza orchestrate di [Security Filter Chain](\src\main\java\com\app\userservice\configuration\SecurityConfig.java) forniti da **Spring Security**.
+- Autenticazioni e autorizzazioni gestite tramite una sequenza orchestrate di [Security Filter Chain](src/main/java/com/app/userservice/configuration/SecurityConfig.java) forniti da **Spring Security**.
 - Comunicazione HTTPS suggerita per ambienti di produzione.
 
 ---
@@ -82,7 +82,7 @@ Accesso Swagger:
 
 - [http://localhost:8081/swagger-ui.html](http://localhost:8081/swagger-ui.html)
 
-> **⚠️ Funziona direttamente se deployato con docker-compose**  
+> **⚠️ Funziona direttamente solo se deployato con docker-compose**  
 
 > **✅ Se deployato con K8S, basta eseguire il seguente comando :**
    ```bash
@@ -136,8 +136,8 @@ Estratte dal `pom.xml`:
 
 ## 📈 Documentazione API
 
-| API                         | JSON                                 |
-| :-------------------------- | :---------------------------------- |
+| API                          | JSON                                      |
+| :--------------------------  | :----------------------------------       |
 | **Swagger UI**               | [user-service](..\docs\api\user-api.json) |
 
 

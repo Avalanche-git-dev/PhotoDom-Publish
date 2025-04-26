@@ -84,10 +84,8 @@ public class UserController {
     
     @GetMapping("/profile/view")
     public ResponseEntity<UserResponse<ProfileView>> getProfileView(@RequestParam Long id) {
-        // Chiama il servizio per ottenere il profilo limitato
         ProfileView profile = userService.getProfile(id);
 
-        // Restituisce una risposta strutturata utilizzando UserResponse
         return ResponseEntity.ok(
                 UserResponse.success("Profile retrieved successfully", HttpStatus.OK, profile)
         );
