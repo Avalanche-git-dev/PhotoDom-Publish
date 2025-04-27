@@ -1,6 +1,6 @@
 <p align="right">
-  <strong>🇮🇹 Italiano</strong> |
-  <a href="./README.md">🇬🇧 English</a>
+  <strong>🇬🇧 English</strong> |
+  <a href="./README.md">🇮🇹 Italiano</a>
 </p>
 
 # API-Gateway
