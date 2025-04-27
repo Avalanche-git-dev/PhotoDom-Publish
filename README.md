@@ -94,7 +94,7 @@
 | [`photo-service/`](photo-service/README.md)                  | Microservizio gestione foto (Java Spring)                            |
 | [`comment-service/`](comment-service/README.md)                | Microservizio gestione commenti (Java Spring)                        |
 | [`image-analyzer-service/`](image-analyzer-service/README.md)         | Servizio Python per analisi immagini (Google Vision API)             |
-| [`user-provider/`](user-provider/README.md)                   | Modulo Maven middleware per integrazione Keycloak - User-Service.             |
+| [`user-provider/`](user-provider/README.md)                   | Modulo Maven per integrazione Keycloak - User-Service.             |
 | [`front-end/`](front-end/README.md)                      | Applicazione frontend Angular                                        |
 | `k8s/manifests/`                  | Manifests Kubernetes per infrastruttura e servizi                    |
 | `Docker/`                         | Dockerfile e configurazioni database                                |
@@ -139,10 +139,9 @@
 Per poter utilizzare l'analisi immagini:
 
 1. Registrarsi su [Google Cloud Vision](https://cloud.google.com/vision).
-1. Apri il [Google Cloud Console](https://console.cloud.google.com) e crea un nuovo progetto o selezionane uno esistente.
+2. Apri il [Google Cloud Console](https://console.cloud.google.com) e crea un nuovo progetto o selezionane uno esistente.
 3. Abilitare Cloud Vision API.
    ![alt text](image.png) ![alt text](image-2.png)
-<!-- 4. Creare una chiave di tipo **Account di Servizio**.![alt text](image-3.png) -->
 4. Nel menu a sinistra, vai su **IAM & Admin** > **Service Accounts**. 
 5. Seleziona il Service Account che vuoi usare (o creane uno nuovo con **Create Service Account**).  
 6. Nella riga del Service Account, clicca sui tre puntini in **Actions** → **Manage keys**  

@@ -20,8 +20,8 @@ public class SecurityConfig {
 		http.csrf(csrf -> csrf.disable())
 				.authorizeExchange(exchange -> exchange
 						.pathMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/webjars/**", "/ws/**", "/actuator/**")
-						.permitAll() // Consenti l'accesso a Swagger
-						.anyExchange().authenticated() // Autentica tutti gli altri endpoint
+						.permitAll() 
+						.anyExchange().authenticated() 
 				).oauth2ResourceServer(
 						oauth2 -> oauth2.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())));
 

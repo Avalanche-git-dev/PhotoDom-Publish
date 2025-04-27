@@ -45,7 +45,7 @@ public class CommentService {
 				return commentRepository.findById(comment.getParentCommentId()).flatMap(parentComment -> {
 					parentComment.addReply(comment);
 					return commentRepository.save(comment) // Salva la risposta
-							.flatMap(savedComment -> commentRepository.save(parentComment) // Aggiorna il padre
+							.flatMap(savedComment -> commentRepository.save(parentComment) // Aggiorno il padre
 									.thenReturn(savedComment))
 							.doOnSuccess(savedComment -> {
 								commentWebSocketHandler.notifyCommentUpdate("Reply added: " + savedComment.getId());

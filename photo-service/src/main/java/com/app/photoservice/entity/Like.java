@@ -16,12 +16,10 @@ import jakarta.persistence.Table;
 public class Like {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	// @NaturalId
 	private Long id;
 
 	@Column(nullable = false)
-	// @NaturalId
-	private Long userId; // ID dell'utente che ha messo il like
+	private Long userId; 
 
 	@ManyToOne
 	@JoinColumn(name = "photo_id", nullable = false)

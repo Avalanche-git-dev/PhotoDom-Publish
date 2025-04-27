@@ -7,10 +7,10 @@ public class CommentDto {
 
     private String id;
     private String content;
-    private String photoId;  // ID della foto associata
-    private String userId;   // ID dell'utente che ha scritto il commento
-    private String parentCommentId; // ID del commento genitore
-    private List<String> repliesIds; // Lista di ID dei commenti di risposta
+    private String photoId;  
+    private String userId;   
+    private String parentCommentId; 
+    private List<String> repliesIds; 
     private Date createdDate;
 
     public CommentDto(String id, String content, String photoId, String userId, String parentCommentId, List<String> repliesIds, Date createdDate) {

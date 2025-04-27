@@ -39,10 +39,10 @@ public class SecurityConfig {
 				// Converte il ruolo in un SimpleGrantedAuthority con prefisso "ROLE_"
 				return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + role.toUpperCase()));
 			}
-			return Collections.emptyList(); // Nessun ruolo trovato
+			return Collections.emptyList(); 
 		});
 
-		// Adatta il converter per Reactive Security
+		
 		return new ReactiveJwtAuthenticationConverterAdapter(converter);
 	}
 

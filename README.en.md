@@ -18,20 +18,20 @@
 
 ## Requirements
 
-- Flexible structure for future additions.  
-- Horizontal scalability.  
-- Cost containment.  
+- Flexible structure for future additions.
+- Horizontal scalability.
+- Cost containment.
 - Resilient architecture.
 
 ---
 
 ## Features
 
-- Secure registration/login with roles (Admin/User).  
-- Photo upload, management and interaction.  
-- Real-time likes and comments via WebSocket.  
-- Admin dashboard for user management.  
-- Safe-search to ensure content safety.
+- Secure registration/login with roles (Admin/User).
+- Photo upload, management, and interaction.
+- Real-time likes and comments via WebSocket.
+- Admin dashboard for user management.
+- Safe-search to ensure content security.
 
 ---
 
@@ -39,11 +39,11 @@
 
 ### Topology
 
-- Angular frontend via HTTP/WebSocket.  
-- API Gateway as single entry point.  
-- REST and Kafka communications between microservices.  
-- Dedicated databases: MongoDB, MySQL, PostgreSQL.  
-- Distributed caching: Redis.  
+- Angular frontend via HTTP/WebSocket.
+- API Gateway as a single entry point.
+- REST and Kafka communications between microservices.
+- Dedicated databases: MongoDB, MySQL, PostgreSQL.
+- Distributed caching: Redis.
 - Security: Keycloak as Identity Provider.
 
 ### Diagram
@@ -54,10 +54,10 @@
 
 ## Core Concepts
 
-- **Single Responsibility Principle** applied.  
-- **Event-Driven Architecture** via Kafka.  
-- **Resilience** via Circuit Breaker (Resilience4J).  
-- **Advanced security** with OIDC, OAuth2, JWT, Keycloak.
+- **Single Responsibility Principle** applied.
+- **Event-Driven Architecture** with Kafka.
+- **Resilience** with Circuit Breaker (Resilience4J).
+- **Advanced security** with OIDC, OAuth2, JWT, and Keycloak.
 
 ---
 
@@ -65,28 +65,28 @@
 
 ### Backend
 
-- **Java 17+** & **Spring Boot 3.3.7**  
-- **Python 3.10** with **Pillow**, **python-kafka**, **redis**  
-- **Spring Security**  
+- **Java 17+** & **Spring Boot 3.3.7**
+- **Python 3.10** with **Pillow**, **kafka-python**, and **redis**
+- **Spring Security**
 - **MongoDB**, **MySQL**, **Redis**, **Apache Kafka**, **Loki**, **PostgreSQL**
 
 ### Frontend
 
-- **Angular 22**  
-- **Angular Material**  
-- **RxJS**, **WebSocket**  
+- **Angular 22**
+- **Angular Material**
+- **RxJS**, **WebSocket**
 - **Bootstrap 5.3.3**
 
 ---
 
 ## Key Features
 
-- Secure user management (Keycloak & OAuth2 with JWT support).  
-- Role-based access control.  
-- CRUD for photos, comments, likes.  
-- Additional moderation view for ADMIN.  
-- Image filtering of illicit content via **Cloud Vision API** + optimized **Python Service**.  
-- Centralized logging with **Loki**.  
+- Secure user management (Keycloak & OAuth2 with JWT support).
+- Role-based access control.
+- CRUD operations for photos, comments, likes.
+- Additional moderation view for ADMIN.
+- Image filtering of unsafe content using **Cloud Vision API** + optimized **Python Service**.
+- Centralized logging with **Loki**.
 - Live monitoring dashboard with **Grafana**.
 
 ---
@@ -95,26 +95,26 @@
 
 | Folder                       | Description                                                           |
 | :--------------------------- | :-------------------------------------------------------------------- |
-| `api-gateway/`               | Central API Gateway (Spring Cloud)                                    |
-| `user-service/`              | User-management microservice (Java Spring)                            |
-| `photo-service/`             | Photo-management microservice (Java Spring)                           |
-| `comment-service/`           | Comment-management microservice (Java Spring)                         |
-| `image-analyzer-service/`    | Python image-analysis service (Google Vision API)                     |
-| `user-provider/`             | Maven module for Keycloak–User-Service integration                    |
-| `front-end/`                 | Angular frontend application                                          |
-| `k8s/manifests/`             | Kubernetes manifests for infrastructure and services                  |
+| [`api-gateway/`](api-gateway/README.en.md)               | Central API Gateway (Spring Cloud Gateway)                           |
+| [`user-service/`](user-service/README.en.md)             | User management microservice (Java Spring)                           |
+| [`photo-service/`](photo-service/README.en.md)           | Photo management microservice (Java Spring)                          |
+| [`comment-service/`](comment-service/README.en.md)       | Comment management microservice (Java Spring)                        |
+| [`image-analyzer-service/`](image-analyzer-service/README.en.md) | Python microservice for image analysis (Google Vision API)     |
+| [`user-provider/`](user-provider/README.en.md)           | Maven module for Keycloak–User-Service integration                   |
+| [`front-end/`](front-end/README.en.md)                   | Angular frontend application                                          |
+| `k8s/manifests/`             | Kubernetes manifests for infrastructure and services                 |
 | `Docker/`                    | Dockerfiles and database configurations                               |
 | `setup.ps1`                  | PowerShell script to set up Kind cluster and deploy                   |
 | `create-kind-cluster.ps1`    | PowerShell script to create Kind cluster                              |
 | `delete-kind-cluster.ps1`    | PowerShell script to delete Kind cluster and clean `/etc/hosts`       |
-| `README.md`                  | Italian README (default)                                              |
+| `README.en.md`               | Main documentation                                                    |
 
 ---
 
 ## Internal Communications
 
-- **REST API** for user management and login.  
-- **Kafka topics** for asynchronous events (photo uploaded, photo analyzed).  
+- **REST API** for user management and login.
+- **Kafka topics** for asynchronous events (photo uploaded, photo analyzed).
 - **WebSocket** for real-time notifications.
 
 ---
@@ -123,17 +123,20 @@
 
 ## Prerequisites
 
-- Docker Desktop installed.  
-- Kubernetes enabled.  
-- Kind installed.  
+- Docker Desktop installed.
+- Kubernetes enabled.
+- Kind installed.
 - Node.js and npm installed.
 
 > **⚠️ Kubernetes deploy limited to 1 replica:**  
-> For resource reasons, all microservices run with a single replica in the local Kind cluster. The infrastructure is nonetheless ready for any environment (on-prem or cloud), with preference for cloud to leverage scalability and high availability.
+> Due to resource constraints, all microservices are launched with a single replica in the local Kind cluster.  
+> The infrastructure is designed to be deployable in any environment (on-premise or cloud), with a preference for cloud environments to leverage scalability and high availability.
 
 > **⚠️ Docker Compose deploy:**  
-> You can also deploy via Docker Compose for local testing. Update the frontend environment URLs in  
-> `front-end/photo-dom/src/environments/environment.ts` as commented, then run:
+> The application can also be deployed using Docker Compose for local testing.  
+> You must manually update the frontend environment configuration:  
+> `front-end/photo-dom/src/environments/environment.ts`.  
+> After that, run:
 > ```bash
 > docker-compose up -d --build
 > ```
@@ -142,87 +145,85 @@
 
 ## Cloud Vision API ⚠️
 
-To use the image-analysis feature:
+To enable image analysis:
 
-1. Sign in to [Google Cloud Vision](https://cloud.google.com/vision).  
-2. In the [Google Cloud Console](https://console.cloud.google.com), create or select a project.  
+1. Register on [Google Cloud Vision](https://cloud.google.com/vision).  
+2. Open [Google Cloud Console](https://console.cloud.google.com) and create/select a project.  
 3. Enable the Cloud Vision API.  
-4. In the left menu go to **IAM & Admin > Service Accounts**.  
-5. Select or create a Service Account.  
-6. Under **Actions** click the three dots → **Manage Keys**.  
-7. In **Keys** tab click **Add Key > Create new key**. Choose **JSON**, then **Create**.  
-8. Rename the downloaded `credentials.json` to `api-Google.json`.  
-9. Copy it into `image-analyzer-service/credentials/`.  
->  
-> **❗ Without this step, upload feature will not work.**
+4. Navigate to **IAM & Admin > Service Accounts**.
+![alt text](image.png) ![alt text](image-2.png)  
+5. Create or select a service account.  
+6. Go to **Manage Keys** → **Add Key > Create new key**.  
+7. Select **JSON** format and click **Create**. 
+![alt text](image-1.png) 
+8. Rename the downloaded file to `api-Google.json`.  
+9. Copy it into `image-analyzer-service/credentials/`.
+
+> **❗️ Important:** Without this setup, image upload functionality will not work!
 
 ---
 
 ## Startup Procedure
 
-1. **Clone the repo**:  
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/Avalanche-git-dev/PhotoDom.git
    cd PhotoDom-MicroServices
    ```
-   > **❗** Ensure you completed the Cloud Vision API setup above.
 
-2. **Create Kind cluster**:  
+2. **Create the Kind cluster**:
    ```bash
    ./create-kind-cluster.ps1
    ```
 
-3. **Run full setup**:  
+3. **Run the complete setup**:
    ```bash
    ./setup.ps1
    ```
 
-4. **Check Pods**:  
+4. **Check Pod statuses**:
    ```bash
    kubectl get pods
    ```
-   Wait until all are in `Running` state.
 
-5. **Port-forward Keycloak**:  
+5. **Port-forward Keycloak**:
    ```bash
    kubectl port-forward svc/keycloak 8180:8180
    ```
 
-6. **Port-forward API Gateway**:  
+6. **Port-forward API-Gateway**:
    ```bash
    kubectl port-forward svc/api-gateway 8080:8080
    ```
 
-7. **Port-forward Frontend**:  
+7. **Port-forward Frontend**:
    ```bash
    kubectl port-forward svc/front-end 4200:80
    ```
 
-8. **Open the app**:  
-   Navigate to [http://localhost:4200](http://localhost:4200)
-
-> **❗** If you get errors, wait 2–3 minutes: Kubernetes may need extra time to spin up all services.
+8. **Access the application**:
+   Open your browser and go to [http://localhost:4200](http://localhost:4200).
 
 ---
 
 ## Utils & Monitoring
 
-1. **Port-forward Grafana**:  
+1. **Port-forward Grafana**:
    ```bash
    kubectl port-forward svc/grafana 3000:3000
    ```
    → [http://localhost:3000](http://localhost:3000)
 
-2. **Port-forward Kafka-UI**:  
+2. **Port-forward Kafka-UI**:
    ```bash
    kubectl port-forward svc/kafka-ui 8090:8090
    ```
    → [http://localhost:8090](http://localhost:8090)
 
-3. **Open Keycloak console**:  
+3. **Access Keycloak Admin Console**:
    → [http://localhost:8180](http://localhost:8180)
 
-4. **Delete cluster & clean hosts**:  
+4. **Delete the cluster**:
    ```bash
    ./delete-kind-cluster.ps1
    ```
@@ -233,55 +234,44 @@ To use the image-analysis feature:
 
 ### API Documentation
 
-Each service provides OpenAPI docs:
+Each service exposes OpenAPI documentation:
 
-- **User Service**: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)  
-- **Photo Service**: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)  
-- **Comment Service**: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)  
+| Path                                | Service           |
+| :---------------------------------- | :---------------- |
+| `/aggregate/user-service/v3/api-docs`   | User Service      |
+| `/aggregate/photo-service/v3/api-docs`  | Photo Service     |
+| `/aggregate/comment-service/v3/api-docs`| Comment Service   |
 
-JSON specs in `docs/api/`:
-
-| File                           | Service             |
-| :----------------------------- | :------------------ |
-| `docs/api/user-api.json`       | user-service        |
-| `docs/api/photo-api.json`      | photo-service       |
-| `docs/api/comment-api.json`    | comment-service     |
-
-#### Offline Viewing
-
-Import into Swagger Editor:
-
-1. Open [editor.swagger.io](https://editor.swagger.io).  
-2. **File > Import File** → select spec from `docs/api`.
+Swagger available at:  
+- [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
 ---
 
 ### API Testing
 
-Postman collections in `docs/test/`:
+Collections are available in `docs/test/`:
 
-- **User**: `PhotoDom-MicroServices-User.postman_collection.json`  
-- **Admin**: `PhotoDom-MicroServices-Admin.postman_collection.json`  
-- **Keycloak**: `PhotoDom-MicroServices-Keycloak.postman_collection.json`  
-- **Photo**: `PhotoDom-MicroServices-Photo.postman_collection.json`  
-- **Comment**: `PhotoDom-MicroServices-Comment.postman_collection.json`  
-- **API Gateway**: `PhotoDom-MicroServices-APIGATEWAY.postman_collection.json`  
-- **WebFlow**: `PhotoDom-MicroServices-WebFlow-TEST.postman_collection.json`  
+- **User Controller**
+- **Admin Controller**
+- **Keycloak Controller**
+- **Photo Controller**
+- **Comment Controller**
+- **API Gateway**
+- **WebFlow Endpoint**
 
-> **⚠️** Obtain a Bearer token (TokenId or TokenIdAdmin via WebFlow) before calling any protected endpoint.
-
-Import in Postman via **File > Import**.
+> **⚠️ Important:**  
+> Obtain a valid Bearer token (TokenId or TokenIdAdmin) before accessing secured APIs!
 
 ---
 
 # Learning Objectives
 
-- Building microservices architectures.  
-- Cloud-native applications.  
-- Secure authentication management.  
-- Horizontal scalability, resilience, distributed logging.  
-- Synchronous and asynchronous communication.  
-- Integration of heterogeneous systems and applications.
+- Microservices architecture design.
+- Cloud-native application development.
+- Secure authentication management.
+- Scalability, resilience, distributed logging.
+- Synchronous and asynchronous communication.
+- Heterogeneous system integration.
 
 ---
 
@@ -291,4 +281,4 @@ Import in Postman via **File > Import**.
 
 ---
 
-> **Photo-Dom**: not just an app, but a full distributed ecosystem for learning and improvement.
+> **Photo-Dom**: more than just an app – a complete distributed ecosystem for learning and growth.

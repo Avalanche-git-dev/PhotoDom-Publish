@@ -21,13 +21,13 @@ public class Comment implements CommentComponent, Serializable {
 
     private String content;
 
-    private String photoId; // ID della foto
+    private String photoId; 
 
-    private String userId;  // ID dell'utente
+    private String userId;  
 
-    private String parentCommentId; // ID del commento genitore
+    private String parentCommentId; 
 
-    private List<String> replyIds = new ArrayList<>(); // Lista di ID delle risposte
+    private List<String> replyIds = new ArrayList<>(); 
 
     private Date createdDate;
 
