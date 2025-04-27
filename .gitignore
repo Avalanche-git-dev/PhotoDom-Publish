@@ -66,5 +66,7 @@ logs/
 angular.json
 
 
-#local key
-image-analyzer-service/credentials/
+# ignora tutto in credentials
+/image-analyzer-service/credentials/*
+# ma non ignorare il placeholder README.txt
+!/image-analyzer-service/credentials/README.txt
