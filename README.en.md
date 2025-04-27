@@ -66,7 +66,7 @@
 ### Backend
 
 - **Java 17+** & **Spring Boot 3.3.7**
-- **Python 3.10** with **Pillow**, **kafka-python**, and **redis**
+- **Python 3.10** with **Pillow**, **kafka-python**, and **Redis**
 - **Spring Security**
 - **MongoDB**, **MySQL**, **Redis**, **Apache Kafka**, **Loki**, **PostgreSQL**
 

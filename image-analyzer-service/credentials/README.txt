@@ -1,1 +1,0 @@
-# In questa castella va copiato il file di credenziali.json scaricato da GoogleCloud.

@@ -3,58 +3,63 @@
   <strong>🇬🇧 English</strong>
 </p>
 
-# Frontend - Photo-Dom
+# Front-End - Photo-Dom
 
-Simple guide for running the **Photo-Dom Frontend** locally.
-
----
-
-## Requirements
-
-- **Node.js** installed (suggested latest LTS version).
-- **Angular CLI** installed globally (optional, but recommended).
-
-Install Angular CLI globally (if not installed):
-
-```bash
-npm install -g @angular/cli
-```
+This project represents the frontend part of the **Photo-Dom** application, developed with **Angular 22**.
 
 ---
 
-## Setup & Run (Local Development)
+## ⚙️ Requirements
 
-1. Open **Node.js Command Prompt** or a terminal with Angular CLI available.
-2. Move into the frontend project folder:
-
-```bash
-cd front-end/photo-dom
-```
-
-3. Install dependencies:
-
-```bash
-npm install
-```
-
-4. Start the application in development mode:
-
-```bash
-ng serve
-```
-
-5. Open your browser and go to:
-
-- [http://localhost:4200](http://localhost:4200)
-
-> **\u26a0\ufe0f**: Always verify the environment configuration inside `src/environments/environment.ts` before starting.
+- **Node.js** installed (recommended LTS version 18+).
+- **Angular CLI** installed globally:
+  ```bash
+  npm install -g @angular/cli
+  ```
 
 ---
 
-# \ud83c\udf1f Status
+## 🐳 Note on Docker-Compose Deployment
 
-**Ready** — Frontend operational for development and production builds.
+If using **Docker-Compose**:
+
+- Make sure **Node.js** is installed for the initial setup.
+- Open the **Node.js Prompt** or a terminal with Angular CLI.
+- Execute:
+  ```bash
+  npm install
+  ```
+  to install all project dependencies.
+
+- Navigate to the frontend directory:
+  ```bash
+  cd front-end/photo-dom
+  ```
+
+- Start the project in local development mode:
+  ```bash
+  ng serve
+  ```
+
+- Once started, the frontend will be available at:
+  - [http://localhost:4200](http://localhost:4200)
+
+> ⚠️ Remember to update the API endpoints if necessary in:
+> `src/environments/environment.ts`
 
 ---
 
-> **Photo-Dom Frontend**: Fast, scalable, and reactive!
+# 🔄 Deployment Modes
+
+- **Development Mode**: manual `ng serve`.
+- **Production Mode**: automated build via Docker-Compose or Kubernetes.
+
+---
+
+# 👩‍💻 Contributor
+
+- [Mohamed Gabr Ashour](https://github.com/Avalanche-git-dev)
+
+---
+
+> **Photo-Dom**: not just an application, but a complete distributed ecosystem to learn and grow.
