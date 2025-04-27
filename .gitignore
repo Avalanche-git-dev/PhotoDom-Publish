@@ -67,4 +67,4 @@ angular.json
 
 
 #local key
-image-analyzer-service/credentials/
+/image-analyzer-service/credentials/
