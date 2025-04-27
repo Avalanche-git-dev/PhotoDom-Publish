@@ -89,13 +89,13 @@
 
 | Cartella                          | Descrizione                                                          |
 | :-------------------------------- | :------------------------------------------------------------------- |
-| [`api-gateway/`](api-gateway/README.md)                  | Gateway API centrale (Spring Cloud)                                  |
-| [`user-service/`](user-service/README.md)                   | Microservizio gestione utenti (Java Spring)                          |
-| [`photo-service/`](photo-service/README.md)                  | Microservizio gestione foto (Java Spring)                            |
-| [`comment-service/`](comment-service/README.md)                | Microservizio gestione commenti (Java Spring)                        |
-| [`image-analyzer-service/`](image-analyzer-service/README.md)         | Servizio Python per analisi immagini (Google Vision API)             |
-| [`user-provider/`](user-provider/README.md)                   | Modulo Maven per integrazione Keycloak - User-Service.             |
-| [`front-end/`](front-end/README.md)                      | Applicazione frontend Angular                                        |
+| [`api-gateway/`](api-gateway/)                  | Gateway API centrale (Spring Cloud)                                  |
+| [`user-service/`](user-service/)                   | Microservizio gestione utenti (Java Spring)                          |
+| [`photo-service/`](photo-service/)                  | Microservizio gestione foto (Java Spring)                            |
+| [`comment-service/`](comment-service/)                | Microservizio gestione commenti (Java Spring)                        |
+| [`image-analyzer-service/`](image-analyzer-service/)         | Servizio Python per analisi immagini (Google Vision API)             |
+| [`user-provider/`](user-provider/)                   | Modulo Maven per integrazione Keycloak - User-Service.             |
+| [`front-end/`](front-end/)                      | Applicazione frontend Angular                                        |
 | `k8s/manifests/`                  | Manifests Kubernetes per infrastruttura e servizi                    |
 | `Docker/`                         | Dockerfile e configurazioni database                                |
 | `setup.ps1`                       | Script PowerShell per setup cluster Kind e deploy                    |
