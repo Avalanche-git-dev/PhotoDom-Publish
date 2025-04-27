@@ -1,1 +1,1 @@
-# In questa castella va copiato il file di credenziali.json scaricato da GoogleCloud.
+# In questa cartella va copiato il file di credentials.json, rinominato api-Google.json scaricato, da GoogleCloud.
